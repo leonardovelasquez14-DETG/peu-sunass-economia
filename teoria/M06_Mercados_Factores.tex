@@ -1,0 +1,271 @@
+\documentclass[aspectratio=169, 10pt]{beamer}
+\usepackage{sunass_estilo}
+
+\title{Módulo VI: Los Mercados de Factores}
+\subtitle{Guía Teórica de Repaso Rápido · PEU SUNASS}
+\author[PEU SUNASS · Economía]{Preparación Examen de Admisión PEU SUNASS}
+\institute{Basado en el Temario Oficial de Economía · Microeconomía}
+\date[2026]{2026}
+
+\begin{document}
+
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+% ==============================================================================
+% SLIDE 2: MAPA CONCEPTUAL
+% ==============================================================================
+\begin{frame}{Mapa Conceptual: Los Mercados de Factores}
+  \vspace{0.15cm}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}
+      \tarjeta{azulPrincipal}{1. Demanda de Trabajo}{
+        Es una \textbf{demanda derivada} del producto.\\
+        • Competencia en producto: \(w = VPMg_L = P \cdot PMg_L\).\\
+        • Monopolio en producto: \(w = IPMg_L = IMg \cdot PMg_L\).
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{naranjaAcento}{2. Oferta de Trabajo}{
+        Elección ocio vs. consumo:\\
+        • Efecto Sustitución vs. Efecto Ingreso.\\
+        • Posible curva hacia atrás (\textit{backward-bending}).
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{verdeAcento}{3. Monopsonio y Bilateral}{
+        • \textbf{Monopsonio:} único comprador de factor (\(GMg_L > GMe_L\)).\\
+        • \textbf{Monopolio Bilateral:} monopsonio vs. sindicato (salario indeterminado).
+      }
+    \end{column}
+  \end{columns}
+
+  \vspace{0.2cm}
+  \recuadroclave{
+    \small\textbf{Regla General de Contratación:} Una firma maximizadora contrata trabajo hasta que el Ingreso del Producto Marginal iguala al Gasto Marginal en el factor: \quad \(IPMg_L = GMg_L\).
+  }
+  \mensajefinal{Si hay competencia perfecta en producto y en trabajo, \(IPMg_L = VPMg_L = w\) y no existe ningún tipo de explotación.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 3: DEMANDA DE TRABAJO (CP vs LP, COMPETENCIA vs MONOPOLIO)
+% ==============================================================================
+\begin{frame}{1. Demanda de Trabajo: Competencia vs. Monopolio en Producto}
+  \begin{columns}[T]
+    \begin{column}{0.53\textwidth}
+      {\small\textbf{Explotación Monopolística (\(VPMg_L > IPMg_L\))}}
+      \vspace{0.05cm}
+      \begin{tikzpicture}[scale=0.78]
+        \begin{axis}[
+          axis lines=left,
+          xlabel={Trabajo ($L$)}, ylabel={Salario ($w$)},
+          xmin=0, xmax=9, ymin=0, ymax=9,
+          xtick={3.2, 5.2}, xticklabels={$L_M$, $L_C$},
+          ytick={3.5}, yticklabels={$w^*$},
+          width=8.2cm, height=5.2cm
+        ]
+          % VPMg_L
+          \addplot[azulPrincipal, very thick, domain=0.5:8.2] {8.5 - 0.96*x};
+          \node[azulPrincipal, font=\scriptsize, anchor=west] at (axis cs:5.8, 3.2) {$VPMg_L = P \cdot PMg_L$};
+          % IPMg_L
+          \addplot[rojoAcento, very thick, domain=0.5:5.5] {8.5 - 1.56*x};
+          \node[rojoAcento, font=\scriptsize, anchor=east] at (axis cs:3.0, 4.0) {$IPMg_L$};
+          % Salario w*
+          \draw[verdeAcento, very thick] (axis cs:0, 3.5) -- (axis cs:8.2, 3.5);
+          % Lineas punteadas
+          \draw[dotted, grisTexto] (axis cs:3.2, 0) -- (axis cs:3.2, 5.4);
+          \draw[dotted, grisTexto] (axis cs:5.2, 0) -- (axis cs:5.2, 3.5);
+          % Flecha explotacion
+          \draw[<->, thick, naranjaAcento] (axis cs:3.2, 3.55) -- (axis cs:3.2, 5.38) node[midway, right, font=\tiny] {Brecha};
+        \end{axis}
+      \end{tikzpicture}
+    \end{column}
+
+    \begin{column}{0.44\textwidth}
+      \indicador{Corto Plazo vs. Largo Plazo}{azulPrincipal}{\(|\varepsilon_{L,w}^{LP}| > |\varepsilon_{L,w}^{CP}|\)}
+      {\scriptsize
+        • A \textbf{CP}, \(K\) es fijo: la demanda es el tramo decreciente de \(VPMg_L\).\\
+        • A \textbf{LP}, \(K\) varía: si cae \(w\), la firma sustituye \(K\) por \(L\) y además expande \(q\) (demanda más elástica).\\[4pt]
+      }
+      \indicador{Monopolio en el Producto}{rojoAcento}{\(IPMg_L = P\left(1 - \frac{1}{|\varepsilon_d|}\right)PMg_L < VPMg_L\)}
+      {\scriptsize
+        • El monopolista contrata menos trabajo (\(L_M < L_C\)) porque vender más producto baja \(P\).\\
+        • La diferencia \(VPMg_L - w\) se llama \textbf{explotación monopolística}.
+      }
+    \end{column}
+  \end{columns}
+
+  \mensajefinal{A largo plazo, la demanda de trabajo es más elástica cuanto más fácil sea sustituir capital por trabajo (mayor \(\sigma\)).}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 4: OFERTA DE TRABAJO (OCIO VS CONSUMO)
+% ==============================================================================
+\begin{frame}{2. Oferta de Trabajo Individual: Ocio vs. Consumo}
+  \begin{columns}[T]
+    \begin{column}{0.52\textwidth}
+      {\small\textbf{Curva de Oferta de Trabajo Hacia Atrás}}
+      \vspace{0.05cm}
+      \begin{tikzpicture}[scale=0.78]
+        \begin{axis}[
+          axis lines=left,
+          xlabel={Horas Trabajadas ($L = T - H$)}, ylabel={Salario ($w$)},
+          xmin=0, xmax=9, ymin=0, ymax=9,
+          xtick=\empty, ytick={4.8}, yticklabels={$w_0$},
+          width=8.0cm, height=5.2cm
+        ]
+          % Curva backward-bending: L(w) = 3w - 0.3125 w^2 -> max en w=4.8, L=7.2
+          \addplot[azulPrincipal, ultra thick, domain=0.2:7.8, samples=50] ({3*x - 0.3125*x^2}, {x});
+          \draw[dashed, grisTexto] (axis cs:0, 4.8) -- (axis cs:7.2, 4.8);
+          \node[verdeAcento, font=\scriptsize, anchor=west] at (axis cs:4.5, 2.3) {$ES > |EI|$ (Sube $L$)};
+          \node[rojoAcento, font=\scriptsize, anchor=west] at (axis cs:5.8, 6.8) {$|EI| > ES$ (Cae $L$)};
+        \end{axis}
+      \end{tikzpicture}
+    \end{column}
+
+    \begin{column}{0.45\textwidth}
+      \indicador{Condición de Equilibrio Ocio-Consumo}{azulPrincipal}{\(TMS_{H,C} = \frac{UMg_{\text{ocio}}}{UMg_{\text{consumo}}} = w\)}
+      {\scriptsize
+        • El salario real \(w\) es el \textbf{costo de oportunidad del ocio} (\(H\)).\\[4pt]
+      }
+      \indicador{Efecto Sustitución vs. Ingreso}{naranjaAcento}{\(\frac{\partial L}{\partial w} = \underbrace{ES}_{(+)} + \underbrace{EI}_{(-)}\)}
+      {\scriptsize
+        • \textbf{ES (+):} Sube \(w \Rightarrow\) el ocio se encarece \(\Rightarrow\) trabaja más.\\
+        • \textbf{EI (-):} Sube \(w \Rightarrow\) el trabajador es más rico; si el ocio es un bien normal, demanda más ocio \(\Rightarrow\) trabaja menos.\\
+        • Para salarios altos, \(|EI| > ES\) y la oferta se dobla hacia atrás.
+      }
+    \end{column}
+  \end{columns}
+
+  \mensajefinal{Para salarios muy altos, el efecto ingreso puede superar al efecto sustitución si el ocio es un bien normal.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 5: MONOPSONIO Y SALARIO MÍNIMO
+% ==============================================================================
+\begin{frame}{3. El Monopsonio y el Efecto del Salario Mínimo}
+  \begin{columns}[T]
+    \begin{column}{0.53\textwidth}
+      {\small\textbf{Equilibrio del Monopsonista (\(GMg_L = VPMg_L\))}}
+      \vspace{0.05cm}
+      \begin{tikzpicture}[scale=0.78]
+        \begin{axis}[
+          axis lines=left,
+          xlabel={Trabajo ($L$)}, ylabel={Salario ($w$)},
+          xmin=0, xmax=9, ymin=0, ymax=10,
+          xtick={3.5, 5.25}, xticklabels={$L_M$, $L_C$},
+          ytick={3.5, 5.25, 7.0}, yticklabels={$w_M$, $w_C$, $VPMg$},
+          width=8.2cm, height=5.2cm
+        ]
+          % S = GMe = w(L) = L
+          \addplot[azulPrincipal, very thick, domain=0:8] {x};
+          \node[azulPrincipal, font=\scriptsize, anchor=west] at (axis cs:6.8, 7.1) {$S = GMe_L$};
+          % GMg = 2L
+          \addplot[rojoAcento, very thick, domain=0:4.8] {2*x};
+          \node[rojoAcento, font=\scriptsize, anchor=south east] at (axis cs:4.6, 8.8) {$GMg_L$};
+          % VPMg = 10.5 - L
+          \addplot[verdeAcento, very thick, domain=0.5:8.5] {10.5 - x};
+          \node[verdeAcento, font=\scriptsize, anchor=west] at (axis cs:7.0, 3.6) {$VPMg_L$};
+
+          % Puntos
+          \draw[dotted, grisTexto] (axis cs:3.5, 0) -- (axis cs:3.5, 7.0) -- (axis cs:0, 7.0);
+          \draw[dotted, grisTexto] (axis cs:0, 3.5) -- (axis cs:3.5, 3.5);
+          \draw[dotted, grisTexto] (axis cs:5.25, 0) -- (axis cs:5.25, 5.25) -- (axis cs:0, 5.25);
+          \addplot[only marks, mark=*, mark size=2.5pt, rojoAcento] coordinates {(3.5, 3.5)};
+        \end{axis}
+      \end{tikzpicture}
+    \end{column}
+
+    \begin{column}{0.44\textwidth}
+      \indicador{Gasto Marginal del Monopsonista}{rojoAcento}{\(GMg_L = w(L) + L \frac{dw}{dL} > GMe_L\)}
+      {\scriptsize
+        • Para contratar un trabajador extra debe subir el salario a \textbf{todos} los anteriores: \(GMg_L\) tiene el doble de pendiente que la oferta lineal.\\
+        • Contrata menos (\(L_M < L_C\)) y paga menos (\(w_M < w_C < VPMg_L\)).\\
+        • \textbf{Explotación monopsónica:} \(VPMg_L - w_M\).\\[4pt]
+      }
+      \indicador{Salario Mínimo en Monopsonio}{verdeAcento}{\(w_{\min} \in (w_M, VPMg(L_M)] \implies \uparrow L\)}
+      {\scriptsize
+        • Un salario mínimo moderado aplana el \(GMg_L\) y \textbf{aumenta simultáneamente el salario y el empleo} (hasta \(L_C\)).
+      }
+    \end{column}
+  \end{columns}
+
+  \mensajefinal{A diferencia de la competencia perfecta, en un monopsonio un salario mínimo bien calibrado puede elevar el empleo.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 6: CAPITAL, REGLA DE HOTELLING, RENTA PURA Y SINDICATOS
+% ==============================================================================
+\begin{frame}{4. Capital, Regla de Hotelling, Renta Pura y Sindicatos}
+  \vspace{0.05cm}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}
+      \tarjeta{azulPrincipal}{Capital y Recursos Agotables}{
+        • \textbf{Costo de uso del capital:} \(P \cdot PMg_K = P_K(r + \delta)\).\\
+        • \textbf{Regla de Hotelling (no renovables):} En equilibrio competitivo, el precio neto (renta de escasez \(P_t - c\)) crece a la tasa de interés:\\
+        \(\quad \frac{P_{t+1}-c}{P_t-c} = 1 + r\).
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{verdeAcento}{Renta Económica Pura (Tierra)}{
+        Pago por encima del mínimo necesario para mantener el factor en su uso actual.\\[2pt]
+        • Si la oferta es \textbf{perfectamente inelástica} (tierra o acuífero fijo, \(\varepsilon_s=0\)), \textbf{100\% del pago es renta económica pura}.\\
+        • Un impuesto sobre ella tiene \(PIE = 0\).
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{naranjaAcento}{Modelos de Sindicatos}{
+        • \textbf{Sindicato monopolista:} fija \(w > w_c\), firma elige \(L\) sobre su demanda (ineficiente).\\
+        • \textbf{Negociación eficiente:} negocian \((w, L)\) sobre la \textbf{curva de contrato} (igualando \(TMS_{w,L}^{sind} = \text{isobeneficio}\)).
+      }
+    \end{column}
+  \end{columns}
+
+  \vspace{0.1cm}
+  \recuadroclave{
+    \small\textbf{Discriminación Salarial en Monopsonio:} Si el monopsonista segmenta dos grupos de oferta laboral, iguala el \(GMg\) de cada grupo al \(VPMg_L\) y paga menor salario al grupo con \textbf{oferta más inelástica}.
+  }
+  \mensajefinal{Mientras más inelástica es la oferta de un factor productivo, mayor proporción de su remuneración constituye renta económica.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 7: MONOPOLIO BILATERAL Y CONCLUSIONES MÓDULO VI
+% ==============================================================================
+\begin{frame}{5. Monopolio Bilateral y Formulario Rápido — Módulo VI}
+  \vspace{0.05cm}
+  \recuadroclave{
+    \small\textbf{Monopolio Bilateral (Monopsonio vs. Sindicato):} El salario de equilibrio es \textbf{teóricamente indeterminado} dentro del rango \([w_M, w_S]\) y se resuelve por poder de negociación (ej. Solución de Nash).
+  }
+
+  \vspace{0.15cm}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}
+      \tarjeta{verdeAcento}{Fórmulas Imprescindibles}{
+        • Comp.: \(w = P \cdot PMg_L\)\\
+        • Monop. Prod.: \(w = IMg \cdot PMg_L\)\\
+        • Monopsonio: \(GMg_L = w\left(1 + \frac{1}{\varepsilon_s}\right) = VPMg_L\)
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{azulPrincipal}{Trampas de Examen}{
+        • Confundir explotación monopolística (\(VPMg > IPMg\)) con monopsónica (\(IPMg > w\)).\\
+        • Creer que el salario mínimo siempre crea desempleo (en monopsonio puede subir \(L\)).\\
+        • Olvidar que el ingreso no salarial desplaza la oferta laboral.
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{rojoAcento}{Siguientes Pasos}{
+        • Practicar Bloque B y C del Módulo 06 en el Simulador.\\
+        • Conectar poder de mercado con el Módulo VII (Teoría de Juegos y Oligopolio).
+      }
+    \end{column}
+  \end{columns}
+
+  \vspace{0.25cm}
+  \begin{center}
+    {\color{azulPrincipal}\Large\textbf{¡Éxito!}} \quad {\color{grisTexto}Módulo VI · Mercados de Factores · PEU SUNASS 2026}
+  \end{center}
+\end{frame}
+
+\end{document}

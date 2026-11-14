@@ -1,0 +1,307 @@
+\documentclass[aspectratio=169, 10pt]{beamer}
+\usepackage{sunass_estilo}
+
+\title{Módulo VIII: Otras Fallas de Mercado}
+\subtitle{Guía Teórica de Repaso Rápido · PEU SUNASS (Núcleo Ambiental y Sanitario)}
+\author[PEU SUNASS · Economía]{Preparación Examen de Admisión PEU SUNASS}
+\institute{Basado en el Temario Oficial de Economía · Economía Pública e Información}
+\date[2026]{2026}
+
+\begin{document}
+
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+% ==============================================================================
+% SLIDE 2: MAPA CONCEPTUAL
+% ==============================================================================
+\begin{frame}{Mapa Conceptual: Otras Fallas de Mercado}
+  \vspace{0.15cm}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}
+      \tarjeta{rojoAcento}{1. Externalidades}{
+        Efectos directos no compensados en precios:\\
+        • \(CMS = CMP + CME\) (negativa).\\
+        • \(BMS = BMP + BME\) (positiva).\\
+        • Pigou, Coase y permisos negociables.
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{azulPrincipal}{2. Bienes Públicos y Comunes}{
+        Clasificación por \textbf{rivalidad} y \textbf{exclusión}.\\
+        • Condición de Samuelson (\(\sum TMS_i = TMT\)).\\
+        • Problema del \textit{free rider} y Tragedia de los Comunes.
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{verdeAcento}{3. Información Asimétrica}{
+        • \textbf{Pre-contractual:} Selección Adversa (Akerlof, Spence).\\
+        • \textbf{Post-contractual:} Riesgo Moral (Principal-Agente).
+      }
+    \end{column}
+  \end{columns}
+
+  \vspace{0.2cm}
+  \recuadroclave{
+    \small\textbf{Relevancia en SUNASS:} El tratamiento de aguas residuales corrige \textbf{externalidades negativas} ambientales; el agua potable genera \textbf{externalidades positivas} en salud pública.
+  }
+  \mensajefinal{Cuando existen externalidades, bienes públicos o información asimétrica, el Primer Teorema del Bienestar falla.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 3: EXTERNALIDADES Y SOLUCIONES (PIGOU VS COASE)
+% ==============================================================================
+\begin{frame}{1. Externalidades Negativas, Impuesto de Pigou y Coase}
+  \begin{columns}[T]
+    \begin{column}{0.53\textwidth}
+      {\small\textbf{Externalidad Negativa en Producción (\(CMS > CMP\))}}
+      \vspace{0.05cm}
+      \begin{tikzpicture}[scale=0.78]
+        \begin{axis}[
+          axis lines=left,
+          xlabel={Cantidad ($Q$)}, ylabel={Costo / Beneficio},
+          xmin=0, xmax=9, ymin=0, ymax=10,
+          xtick={4.0, 5.5}, xticklabels={$Q^*_{\text{soc}}$, $Q_M$},
+          ytick={4.8, 6.2}, yticklabels={$P_M$, $P^*$},
+          width=8.2cm, height=5.2cm
+        ]
+          % PIE
+          \addplot[fill=rojoAcento!25, draw=none] coordinates {(4.0,6.2) (5.5,4.8) (5.5,7.4)} \closedcycle;
+          % Demanda BMP = 10.3 - Q
+          \addplot[azulPrincipal, very thick, domain=0.5:8.5] {10.3 - x};
+          \node[azulPrincipal, font=\scriptsize, anchor=west] at (axis cs:6.8, 3.6) {$D = BMS$};
+          % CMP = 1.5 + 0.6Q
+          \addplot[verdeAcento, very thick, domain=0:8.0] {1.5 + 0.6*x};
+          \node[verdeAcento, font=\scriptsize, anchor=west] at (axis cs:6.8, 5.8) {$CMP$};
+          % CMS = 1.5 + 1.15Q
+          \addplot[rojoAcento, very thick, domain=0:6.8] {1.5 + 1.15*x};
+          \node[rojoAcento, font=\scriptsize, anchor=south east] at (axis cs:6.4, 8.9) {$CMS$};
+          % Lineas
+          \draw[dotted, grisTexto] (axis cs:4.0, 0) -- (axis cs:4.0, 6.2) -- (axis cs:0, 6.2);
+          \draw[dotted, grisTexto] (axis cs:5.5, 0) -- (axis cs:5.5, 7.4);
+          \draw[dotted, grisTexto] (axis cs:0, 4.8) -- (axis cs:5.5, 4.8);
+          \node[rojoAcento, font=\tiny] at (axis cs:4.95, 6.1) {\textbf{PIE}};
+          % Pigou t*
+          \draw[<->, thick, naranjaAcento] (axis cs:4.0, 3.9) -- (axis cs:4.0, 6.1) node[midway, left, font=\tiny] {$t^*$};
+        \end{axis}
+      \end{tikzpicture}
+    \end{column}
+
+    \begin{column}{0.44\textwidth}
+      \indicador{Impuesto / Subsidio Pigouviano}{naranjaAcento}{\(t^* = CME(Q^*_{\text{soc}})\)}
+      {\scriptsize
+        • Grava con \(t^*\) igual al \textbf{costo marginal externo} evaluado en el óptimo social (no en \(Q_M\)).\\
+        • Si es externalidad \textbf{positiva}, se da un subsidio \(s^* = BME(Q^*_{\text{soc}})\).\\[4pt]
+      }
+      \indicador{Teorema de Coase}{azulPrincipal}{\text{Derechos claros + Cero costos de transacción}}
+      {\scriptsize
+        • Las partes negocian y alcanzan el \textbf{mismo nivel eficiente \(Q^*_{\text{soc}}\)} sin importar quién posea el derecho de propiedad inicial (aunque la riqueza/distribución sí cambia).\\
+        • \textbf{Permisos negociables (Cap-and-Trade):} fijan \(Q^*\) y el mercado halla el precio del permiso (minimiza costos de abatimiento).
+      }
+    \end{column}
+  \end{columns}
+
+  \mensajefinal{En el mercado libre, las externalidades negativas se sobreproducen (\(Q_M > Q^*_{\text{soc}}\)) y las positivas se subproducen (\(Q_M < Q^*_{\text{soc}}\)).}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 4: BIENES PÚBLICOS Y RECURSOS COMUNES
+% ==============================================================================
+\begin{frame}{2. Bienes Públicos, Free Rider y Recursos Comunes}
+  \vspace{0.1cm}
+  \begin{columns}[T]
+    \begin{column}{0.52\textwidth}
+      {\small\textbf{Clasificación Económica de los Bienes}}
+      \vspace{0.15cm}
+      \renewcommand{\arraystretch}{1.45}
+      {\scriptsize
+      \begin{tabular}{@{}lcc@{}}
+        \toprule
+        & \textbf{Excluible} & \textbf{No Excluible} \\
+        \midrule
+        \textbf{Rival} & \textbf{Bien Privado} & \textbf{Recurso Común} \\
+        & \textit{Agua embotellada} & \textit{Acuífero subterráneo} \\
+        \midrule
+        \textbf{No Rival} & \textbf{Bien Club} & \textbf{Bien Público Puro} \\
+        & \textit{TV por cable} & \textit{Defensa, alcantarillado pluvial} \\
+        \bottomrule
+      \end{tabular}
+      }
+      \vspace{0.15cm}
+      {\scriptsize
+        • \textbf{Tragedia de los Comunes:} Al no ser excluible pero sí rival, se sobreexplota porque cada usuario iguala \(PMe\) (y no \(PMg\)) al costo de extracción.
+      }
+    \end{column}
+
+    \begin{column}{0.45\textwidth}
+      \indicador{Condición de Samuelson}{azulPrincipal}{\(\sum_{i=1}^n TMS_i(G) = CMg(G) = TMT\)}
+      {\scriptsize
+        • A diferencia de un bien privado (suma \textbf{horizontal}), la demanda social de un bien público es la \textbf{suma vertical} de las disponibilidades marginales a pagar (\(DAP_i\)).\\
+        • \textbf{No rivalidad:} \(CMg\) de servir a un usuario adicional es cero (\(P^*=0\) una vez provisto).\\[4pt]
+      }
+      \indicador{Problema del Polizón (Free Rider)}{rojoAcento}{\text{Subprovisión privada de } G}
+      {\scriptsize
+        • Al no poder excluir a quien no paga, cada individuo oculta su verdadera valoración (\(DAP\)) esperando que otros paguen.
+      }
+    \end{column}
+  \end{columns}
+
+  \mensajefinal{La provisión eficiente de un bien público exige sumar verticalmente las valoraciones individuales (Samuelson), no horizontalmente.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 5: ASIMETRÍA DE INFORMACIÓN (SELECCIÓN ADVERSA Y RIESGO MORAL)
+% ==============================================================================
+\begin{frame}{3. Asimetría de Información: Selección Adversa y Riesgo Moral}
+  \vspace{0.02cm}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \tarjeta{rojoAcento}{Selección Adversa (Pre-contractual)}{
+        Información oculta \textbf{antes} del contrato (Akerlof: mercado de ``limones'').\\[2pt]
+        • El precio promedio expulsa a los de buena calidad y deja solo a los de alto riesgo.\\
+        • \textbf{Señalización (Spence):} el informado envía señal costosa (ej. título).\\
+        • \textbf{Cribado (Rothschild-Stiglitz):} el desinformado ofrece menús con deducibles.
+      }
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \tarjeta{azulPrincipal}{Riesgo Moral (Post-contractual)}{
+        Acción oculta \textbf{después} del contrato (Principal-Agente).\\[2pt]
+        • El agente reduce esfuerzo o asume más riesgo al estar cubierto.\\
+        • \textbf{Soluciones:} pago por desempeño, deducibles y copagos.\\
+        • \textit{Trade-off:} incentivos vs. reparto óptimo del riesgo.
+      }
+    \end{column}
+  \end{columns}
+
+  \vspace{0.05cm}
+  \recuadroclave{
+    \small\textbf{En Regulación SUNASS:} La EPS conoce mejor sus costos reales que el regulador (\textbf{selección adversa}) y su esfuerzo gerencial para reducir pérdidas de agua no es totalmente observable (\textbf{riesgo moral}).
+  }
+  \mensajefinal{Regla nemotécnica: Selección Adversa = \textit{características ocultas antes} del contrato; Riesgo Moral = \textit{acciones ocultas después}.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 6: EXTERNALIDAD POSITIVA Y EQUILIBRIO DE LINDAHL / CLARKE-GROVES
+% ==============================================================================
+\begin{frame}{4. Externalidad Positiva, Precios de Lindahl y VCG}
+  \begin{columns}[T]
+    \begin{column}{0.52\textwidth}
+      {\small\textbf{Externalidad Positiva (\(BMS = BMP + BME > CMP\))}}
+      \vspace{0.05cm}
+      \begin{tikzpicture}[scale=0.78]
+        \begin{axis}[
+          axis lines=left,
+          xlabel={Cantidad ($Q$)}, ylabel={Beneficio / Costo},
+          xmin=0, xmax=9, ymin=0, ymax=10,
+          xtick={3.5, 5.2}, xticklabels={$Q_M$, $Q^*_{\text{soc}}$},
+          ytick={4.5, 6.2}, yticklabels={$P_M$, $P^*$},
+          width=8.0cm, height=5.0cm
+        ]
+          % PIE por subproducción: de Q=3.5 (BMP=4.5, BMS=6.8) a Q=5.2 (BMS=6.2? no: CMP=6.2)
+          \addplot[fill=verdeAcento!25, draw=none] coordinates {(3.5,4.5) (5.2,6.2) (3.5,7.67)} \closedcycle;
+          % BMP = 8 - x
+          \addplot[azulPrincipal, very thick, domain=0.5:7.5] {8 - x};
+          \node[azulPrincipal, font=\scriptsize, anchor=north east] at (axis cs:6.8, 1.5) {$BMP$};
+          % BMS = 10.7 - 0.865 x -> en 5.2 es 6.2, en 3.5 es 7.67
+          \addplot[verdeAcento, very thick, domain=0.5:8.5] {10.7 - 0.865*x};
+          \node[verdeAcento, font=\scriptsize, anchor=west] at (axis cs:6.4, 5.4) {$BMS$};
+          % CMP = CMg = 1 + x -> en 3.5 es 4.5, en 5.2 es 6.2
+          \addplot[rojoAcento, very thick, domain=0.2:7.8] {1 + x};
+          \node[rojoAcento, font=\scriptsize, anchor=west] at (axis cs:6.8, 7.9) {$CMg$};
+          % Lineas
+          \draw[dotted, grisTexto] (axis cs:3.5, 0) -- (axis cs:3.5, 7.67);
+          \draw[dotted, grisTexto] (axis cs:5.2, 0) -- (axis cs:5.2, 6.2) -- (axis cs:0, 6.2);
+          \draw[dotted, grisTexto] (axis cs:0, 4.5) -- (axis cs:3.5, 4.5);
+          \draw[<->, thick, naranjaAcento] (axis cs:5.2, 2.8) -- (axis cs:5.2, 6.2) node[midway, right, font=\tiny] {$s^*$};
+          \node[verdeAcento, font=\tiny] at (axis cs:4.1, 6.0) {\textbf{PIE}};
+        \end{axis}
+      \end{tikzpicture}
+    \end{column}
+
+    \begin{column}{0.45\textwidth}
+      \indicador{Subsidio Óptimo (Ext. Positiva)}{verdeAcento}{\(s^* = BME(Q^*_{\text{soc}})\)}
+      {\scriptsize
+        • El mercado subproduce (\(Q_M < Q^*_{\text{soc}}\)). Ejemplo: conexiones domiciliarias de agua potable y alcantarillado (reduce enfermedades hídricas).\\[4pt]
+      }
+      \indicador{Mecanismos en Bienes Públicos}{azulPrincipal}{\text{Lindahl vs. Clarke-Groves (VCG)}}
+      {\scriptsize
+        • \textbf{Equilibrio de Lindahl:} precios personalizados \(\tau_i = TMS_i\) tales que todos demandan la misma cantidad \(G^*\) (\(\sum \tau_i = CMg\)), aunque persiste el incentivo a mentir si no es anónimo.\\
+        • \textbf{Mecanismo VCG (Clarke-Groves):} cobra a cada agente el costo externo que su voto impone a los demás \(\implies\) decir la verdad es \textbf{estrategia dominante}.
+      }
+    \end{column}
+  \end{columns}
+
+  \mensajefinal{El mecanismo de Clarke-Groves induce revelación honesta de preferencias en bienes públicos, pero en general no logra equilibrio presupuestario.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 7: MODELO FORMAL PRINCIPAL-AGENTE Y SEÑALIZACIÓN DE SPENCE
+% ==============================================================================
+\begin{frame}{5. Diseño de Contratos: Principal-Agente y Spence}
+  \vspace{0.01cm}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \tarjeta{azulPrincipal}{Modelo Principal–Agente (Restricciones)}{
+        El Principal diseña \(w(q)\) sujeto a:\\[2pt]
+        1. \textbf{Participación (IR):} \(E[U(w) - c(e)] \ge \bar{U}\).\\
+        2. \textbf{Incentivos (IC):} \(e^* \in \arg\max_e E[U(w) - c(e)]\).\\
+        • Si el agente es \textbf{neutral al riesgo}, se le vende la empresa (renta fija) y se logra el \textit{First-Best}.
+      }
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \tarjeta{verdeAcento}{Señalización de Spence (Equilibrios)}{
+        Requiere \textbf{cruce único}: señalizar es más barato para tipos altos (\(c_H < c_L\)).\\[2pt]
+        • \textbf{Separador:} solo \(H\) adquiere \(s^*\) (\(w_H > w_L\)).\\
+        • \textbf{Agrupador (\textit{Pooling}):} ambos eligen igual \(s\) y cobran salario promedio.
+      }
+    \end{column}
+  \end{columns}
+
+  \vspace{0.04cm}
+  \recuadroclave{
+    \small\textbf{Screening (Rothschild-Stiglitz):} En mercados de seguros con selección adversa, nunca existe un equilibrio \textit{pooling}; solo puede existir un equilibrio \textit{separador} donde el de bajo riesgo recibe cobertura \textbf{incompleta} y el de alto riesgo cobertura \textbf{completa}.
+  }
+  \mensajefinal{Para que una señal sea creíble en mercados con información asimétrica, debe ser más barata de adquirir para el tipo de alta productividad.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 8: CONCLUSIONES Y CHEAT-SHEET MÓDULO VIII
+% ==============================================================================
+\begin{frame}{Conclusiones y Formulario Rápido — Módulo VIII}
+  \vspace{0.05cm}
+  \recuadroclave{
+    \small\textbf{Regla de Oro:} Las fallas de mercado justifican la intervención pública (impuestos pigouvianos, provisión de bienes públicos, regulación de contratos) para restaurar la eficiencia social.
+  }
+
+  \vspace{0.15cm}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}
+      \tarjeta{verdeAcento}{Fórmulas Imprescindibles}{
+        • Externalidad: \(CMS = CMP + CME\)\\
+        • Pigou: \(t^* = CME(Q_{\text{soc}}^*)\)\\
+        • Samuelson: \(\sum_{i=1}^n TMS_i = TMT\)
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{azulPrincipal}{Trampas de Examen}{
+        • Evaluar \(t^*\) en \(Q_M\) en vez de en \(Q_{\text{soc}}^*\).\\
+        • Confundir bien público (no rival + no excluible) con recurso común (rival + no excluible).\\
+        • Invertir señalización (emite el informado) vs. screening (diseña el desinformado).
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{rojoAcento}{Siguientes Pasos}{
+        • Practicar Bloques B y C del Módulo 08 en el Simulador.\\
+        • Continuar con Módulo IX (Econometría).
+      }
+    \end{column}
+  \end{columns}
+
+  \vspace{0.25cm}
+  \begin{center}
+    {\color{azulPrincipal}\Large\textbf{¡Éxito!}} \quad {\color{grisTexto}Módulo VIII · Otras Fallas de Mercado · PEU SUNASS 2026}
+  \end{center}
+\end{frame}
+
+\end{document}

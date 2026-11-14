@@ -1,0 +1,344 @@
+\documentclass[aspectratio=169, 10pt]{beamer}
+\usepackage{sunass_estilo}
+
+\title{Módulo V: Monopolio y Regulación}
+\subtitle{Guía Teórica de Repaso Rápido · PEU SUNASS (Núcleo Regulatorio)}
+\author[PEU SUNASS · Economía]{Preparación Examen de Admisión PEU SUNASS}
+\institute{Basado en el Temario Oficial de Economía · Microeconomía y Regulación}
+\date[2026]{2026}
+
+\begin{document}
+
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+% ==============================================================================
+% SLIDE 2: MAPA CONCEPTUAL DEL MÓDULO V
+% ==============================================================================
+\begin{frame}{Mapa Conceptual: Monopolio y Regulación}
+  \vspace{0.15cm}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}
+      \tarjeta{azulPrincipal}{1. Monopolio Maximizador}{
+        Único oferente, barreras a la entrada y demanda decreciente (\(P > IMg\)).\\
+        Equilibrio: \(IMg = CMg\), Índice de Lerner y peso muerto (\(PIE\)).
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{naranjaAcento}{2. Discriminación de Precios}{
+        Captura del excedente del consumidor:\\
+        1er grado (perfecta), 2do grado (bloques), 3er grado (segmentación) y tarifa en dos partes.
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{verdeAcento}{3. Monopolio Natural (SUNASS)}{
+        Subaditividad de costos (\(CMg < CMe\)).\\
+        Regulación tarifaria: \(P=CMe\), Ramsey-Boiteux, Tasa de Retorno vs. Price-Cap (\(RPI-X\)).
+      }
+    \end{column}
+  \end{columns}
+
+  \vspace{0.2cm}
+  \recuadroclave{
+    \small\textbf{Fórmula Fundamental del Monopolista:} \quad \(IMg(Q) = P(Q)\left(1 - \frac{1}{|\varepsilon_d|}\right)\) \quad \(\implies\) \quad \textbf{Índice de Lerner:} \ \(L = \frac{P - CMg}{P} = \frac{1}{|\varepsilon_d|}\)
+  }
+  \mensajefinal{Un monopolista maximizador de beneficios con \(CMg > 0\) jamás opera en el tramo inelástico de la demanda (\(|\varepsilon_d| < 1\)).}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 3: EQUILIBRIO DEL MONOPOLIO Y PÉRDIDA DE EFICIENCIA (PIE)
+% ==============================================================================
+\begin{frame}{1. Equilibrio del Monopolista y Pérdida de Eficiencia}
+  \begin{columns}[T]
+    \begin{column}{0.53\textwidth}
+      {\small\textbf{Comparación Monopolio (\(Q_M, P_M\)) vs. Competencia (\(Q_C, P_C\))}}
+      \vspace{0.05cm}
+      \begin{tikzpicture}[scale=0.78]
+        \begin{axis}[
+          axis lines=left,
+          xlabel={Cantidad ($Q$)}, ylabel={Precio / Costo},
+          xmin=0, xmax=10, ymin=0, ymax=11,
+          xtick={3.5, 7.0}, xticklabels={$Q_M$, $Q_C$},
+          ytick={3.0, 6.5}, yticklabels={$P_C=CMg$, $P_M$},
+          width=8.2cm, height=5.2cm
+        ]
+          % PIE
+          \addplot[fill=rojoAcento!28, draw=none] coordinates {(3.5,3.0) (7.0,3.0) (3.5,6.5)} \closedcycle;
+          % Beneficio monopolio
+          \addplot[fill=azulClaroFondo, draw=none] coordinates {(0,3.0) (3.5,3.0) (3.5,6.5) (0,6.5)} \closedcycle;
+          % Demanda P = 10 - Q
+          \addplot[azulPrincipal, very thick, domain=0:9.5] {10 - x};
+          \node[azulPrincipal, font=\scriptsize, anchor=west] at (axis cs:7.8, 2.2) {$D$};
+          % IMg = 10 - 2Q
+          \addplot[naranjaAcento, very thick, domain=0:5.0] {10 - 2*x};
+          \node[naranjaAcento, font=\scriptsize, anchor=north] at (axis cs:4.7, 1.3) {$IMg$};
+          % CMg constante = 3
+          \addplot[verdeAcento, very thick, domain=0:9.5] {3};
+          \node[verdeAcento, font=\scriptsize, anchor=south] at (axis cs:8.3, 3.1) {$CMg$};
+
+          % Puntos y lineas
+          \draw[dotted, grisTexto] (axis cs:3.5, 0) -- (axis cs:3.5, 6.5) -- (axis cs:0, 6.5);
+          \draw[dotted, grisTexto] (axis cs:7.0, 0) -- (axis cs:7.0, 3.0);
+          \node[rojoAcento, font=\scriptsize] at (axis cs:4.6, 4.1) {\textbf{PIE}};
+          \node[azulPrincipal, font=\scriptsize] at (axis cs:1.7, 4.75) {\textbf{\(\pi_M\)}};
+        \end{axis}
+      \end{tikzpicture}
+    \end{column}
+
+    \begin{column}{0.44\textwidth}
+      \indicador{No tiene Curva de Oferta}{rojoAcento}{\text{No existe relación única } \(P \leftrightarrow Q\)}
+      {\scriptsize
+        • La decisión \((Q_M, P_M)\) depende de la forma de la demanda (desplazamientos de \(D\) pueden cambiar \(P\) sin cambiar \(Q\) o viceversa).\\[4pt]
+      }
+      \indicador{Pérdida Irrecuperable y Costo Social}{azulPrincipal}{\(PIE = \frac{1}{2}(P_M - CMg)(Q_C - Q_M)\)}
+      {\scriptsize
+        • En demanda lineal con \(CMg\) cte.: \(Q_M = \frac{1}{2}Q_C\).\\
+        • \textbf{Búsqueda de rentas (Rent-seeking):} gasto improductivo para obtener/mantener el monopolio puede disipar hasta toda \(\pi_M\).\\
+        • \textbf{Impuesto específico \(t\):} con demanda isoelástica (\(|\varepsilon|\) cte.), el monopolista traslada \textbf{más del 100\%} de \(t\) al precio (\(\frac{dP}{dt} = \frac{|\varepsilon|}{|\varepsilon|-1} > 1\)).
+      }
+    \end{column}
+  \end{columns}
+
+  \mensajefinal{El monopolio restringe la cantidad (\(Q_M < Q_C\)) y eleva el precio (\(P_M > CMg\)), destruyendo bienestar social.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 4: DISCRIMINACIÓN DE PRECIOS Y TARIFA EN DOS PARTES
+% ==============================================================================
+\begin{frame}{2. Discriminación de Precios y Tarifa en Dos Partes}
+  \vspace{0.1cm}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}
+      \tarjeta{verdeAcento}{1er Grado (Perfecta)}{
+        Cobra a cada unidad su máxima disposición a pagar.\\[4pt]
+        • Extrae \textbf{100\% del \(EC\)} (\(\pi = W\)).\\
+        • Produce la cantidad eficiente \(Q_C\) \(\implies \mathbf{PIE = 0}\).
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{naranjaAcento}{2do Grado (Bloques / Autoselección)}{
+        El precio varía según la cantidad consumida (ej. tarifas por bloques).\\[4pt]
+        • Requiere restricción de compatibilidad de incentivos (menús).\\
+        • \textit{Usado en EPS para separar consumo básico y suntuario.}
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{azulPrincipal}{3er Grado (Segmentación)}{
+        Cobra precios distintos a grupos identificables (ej. doméstico vs. comercial):\\
+        \(IMg_1(Q_1) = IMg_2(Q_2) = CMg\)\\[3pt]
+        \(\frac{P_1}{P_2} = \frac{1 - 1/|\varepsilon_2|}{1 - 1/|\varepsilon_1|}\).\\
+        \textbf{Precio más alto al grupo más inelástico.}
+      }
+    \end{column}
+  \end{columns}
+
+  \vspace{0.15cm}
+  \recuadroclave{
+    \small\textbf{Tarifa en Dos Partes (\(T(Q) = F + pQ\)):} Con consumidores idénticos, el monopolista fija el cargo por uso en \(p^* = CMg\) (eficiencia) y el cargo fijo en \(F^* = EC(p^*)\) para capturar todo el excedente.
+  }
+  \mensajefinal{La discriminación de 3er grado solo aumenta el bienestar respecto al precio único si incrementa el producto total vendido.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 5: MONOPOLIO NATURAL Y EL DILEMA REGULATORIO
+% ==============================================================================
+\begin{frame}{3. El Monopolio Natural y el Dilema de la Regulación}
+  \begin{columns}[T]
+    \begin{column}{0.53\textwidth}
+      {\small\textbf{Tarificación First-Best (\(P=CMg\)) vs. Second-Best (\(P=CMe\))}}
+      \vspace{0.05cm}
+      \begin{tikzpicture}[scale=0.78]
+        \begin{axis}[
+          axis lines=left,
+          xlabel={Cantidad ($Q$)}, ylabel={Tarifa / Costo},
+          xmin=0, xmax=10, ymin=0, ymax=10,
+          xtick={4.8, 6.8}, xticklabels={$Q_{CMe}$, $Q_{CMg}$},
+          ytick={2.2, 4.2}, yticklabels={$P_{CMg}$, $P_{CMe}$},
+          width=8.2cm, height=5.2cm
+        ]
+          % Déficit si P = CMg
+          \addplot[fill=rojoAcento!25, draw=none] coordinates {(0,2.2) (6.8,2.2) (6.8,3.4) (0,3.4)} \closedcycle;
+          % CMe decreciente: 2.2 + 8/(x+0.8)
+          \addplot[azulPrincipal, very thick, domain=0.6:9.2, samples=50] {2.2 + 8/(x+0.8)};
+          \node[azulPrincipal, font=\scriptsize, anchor=south] at (axis cs:8.2, 3.2) {$CMe$};
+          % CMg constante = 2.2
+          \addplot[verdeAcento, very thick, domain=0:9.5] {2.2};
+          \node[verdeAcento, font=\scriptsize, anchor=north] at (axis cs:8.8, 2.1) {$CMg$};
+          % Demanda P = 9 - Q
+          \addplot[naranjaAcento, very thick, domain=0:9] {9 - x};
+          \node[naranjaAcento, font=\scriptsize, anchor=west] at (axis cs:7.6, 1.5) {$D$};
+
+          % Puntos
+          \draw[dotted, grisTexto] (axis cs:4.8, 0) -- (axis cs:4.8, 4.2) -- (axis cs:0, 4.2);
+          \draw[dotted, grisTexto] (axis cs:6.8, 0) -- (axis cs:6.8, 3.4) -- (axis cs:0, 3.4);
+          \node[rojoAcento, font=\tiny] at (axis cs:3.2, 2.8) {\textbf{Déficit si \(P=CMg\)}};
+        \end{axis}
+      \end{tikzpicture}
+    \end{column}
+
+    \begin{column}{0.44\textwidth}
+      \indicador{Definición de Monopolio Natural}{azulPrincipal}{\(CMe\) decreciente \(\implies CMg < CMe\)}
+      {\scriptsize
+        • Altos costos fijos hundidos (redes de agua/desagüe) y bajos \(CMg\): duplicar redes es socialmente ineficiente (subaditividad).\\[4pt]
+      }
+      \indicador{El Dilema Regulatorio}{rojoAcento}{\(P = CMg \implies \pi < 0 \text{ (Quiebra)}\)}
+      {\scriptsize
+        • \textbf{First-Best (\(P = CMg\)):} Máxima eficiencia (\(PIE=0\)), pero genera pérdida igual al \(CF\) (requiere subsidio estatal).\\
+        • \textbf{Second-Best (\(P = CMe\)):} Autofinanciamiento (\(\pi = 0\)), aunque con una pequeña \(PIE\).\\
+        • \textbf{Tarifa en Dos Partes:} Cargo fijo = \(CF/N\), Cargo variable = \(CMg\).
+      }
+    \end{column}
+  \end{columns}
+
+  \mensajefinal{En saneamiento (SUNASS), las tarifas suelen diseñarse para cubrir costos medios de largo plazo (autofinanciamiento) más subsidios cruzados.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 6: MODELOS DE REGULACIÓN TARIFARIA (RAMSEY, ROR, PRICE-CAP)
+% ==============================================================================
+\begin{frame}{4. Mecanismos de Regulación Económica (SUNASS)}
+  \vspace{0.1cm}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}
+      \tarjeta{azulPrincipal}{Precios de Ramsey-Boiteux}{
+        En monopolios multiproducto (agua + alcantarillado), minimiza la \(PIE\) sujeto a \(\pi=0\):\\[3pt]
+        \(\frac{P_i - CMg_i}{P_i} = \frac{\lambda}{|\varepsilon_i|}\)\\[3pt]
+        \textbf{Regla:} Cargar mayor margen al bien con demanda más \textbf{inelástica}.
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{rojoAcento}{Tasa de Retorno (Rate of Return)}{
+        Fija \(P\) para garantizar un retorno \(s > r\) sobre el capital invertido.\\[3pt]
+        • \textbf{Efecto Averch-Johnson:} Incentivo a \textbf{sobrecapitalizar} (\(K/L\) ineficientemente alto).\\
+        • Bajo incentivo a reducir costos.
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{verdeAcento}{Price-Cap (\(RPI - X\))}{
+        Fija un techo tarifario ajustado por inflación (\(RPI\)) menos factor de productividad (\(X\)).\\[3pt]
+        • \textbf{Alto poder de incentivo:} la firma se queda con el ahorro de costos entre revisiones (5 años en SUNASS).\\
+        • Riesgo: degradación de la calidad.
+      }
+    \end{column}
+  \end{columns}
+
+  \vspace{0.15cm}
+  \recuadroclave{
+    \small\textbf{Competencia por Comparación (Yardstick Competition):} El regulador usa los costos de otras EPS comparables (``empresa modelo eficiente'') para fijar la tarifa, reduciendo la asimetría de información.
+  }
+  \mensajefinal{La regulación por Price-Cap (\(RPI-X\)) y empresa modelo promueve la eficiencia productiva, mientras que la tasa de retorno protege el capital pero induce sobrecapitalización.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 7: MONOPOLIO MULTIPLANTA, COASE Y DOBLE MARGINALIZACIÓN
+% ==============================================================================
+\begin{frame}{5. Monopolio Multiplanta, Bien Duradero y Doble Marginalización}
+  \vspace{0.01cm}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}
+      \tarjeta{azulPrincipal}{Monopolio Multiplanta}{
+        Reparte \(Q = q_1 + q_2\) entre plantas igualando costos marginales:\\[2pt]
+        \(IMg(Q) = CMg_1(q_1) = CMg_2(q_2)\)\\[2pt]
+        • Si \(CMg_1 < CMg_2\) siempre, cierra la planta 2 o la activa cuando \(CMg_1\) alcanza \(\min CMg_2\).
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{rojoAcento}{Bien Duradero (Coase)}{
+        Quien vende bienes duraderos \textbf{compite consigo mismo en el futuro}.\\[2pt]
+        • Los clientes esperan rebajas futuras, forzando \(P \to CMg\).\\
+        • \textbf{Soluciones:} alquilar (\textit{leasing}), obsolescencia o recompra.
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{verdeAcento}{Doble Marginalización}{
+        Monopolio \textit{upstream} vende a monopolio \textit{downstream}:\\
+        • Doble margen: \(P > P_M\), \(Q < Q_M\), menor \(\pi\) total.\\
+        • La \textbf{integración vertical} elimina el doble margen y \textbf{baja \(P\)}.
+      }
+    \end{column}
+  \end{columns}
+
+  \vspace{0.04cm}
+  \recuadroclave{
+    \small\textbf{Impuesto Ad-Valorem vs. Específico en Monopolio:} Para una misma recaudación fiscal, un impuesto \textbf{ad-valorem} (\(\tau\)) induce mayor producción \(Q\) y menor \(P\) que un impuesto específico (\(t\)), por lo que domina en bienestar.
+  }
+  \mensajefinal{La integración vertical entre monopolios sucesivos beneficia tanto a las firmas como a los consumidores al eliminar la doble marginalización.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 8: PEAK-LOAD, SUBSIDIOS CRUZADOS Y CAPTURA REGULATORIA
+% ==============================================================================
+\begin{frame}{6. Peak-Load Pricing, Subsidios Cruzados y Captura}
+  \vspace{0.05cm}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}
+      \tarjeta{azulPrincipal}{Tarifas Peak-Load (Hora Punta)}{
+        Demanda fluctúa entre periodo valle (\(D_1\)) y punta (\(D_2\)) con capacidad rígida \(\bar{K}\):\\
+        • \textbf{Periodo valle:} \(P_1 = b\) (solo \(CMg\) operativo).\\
+        • \textbf{Periodo punta:} \(P_2 = b + \beta\) (cubre \(CMg\) operativo + costo marginal de capacidad \(\beta\)).
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{naranjaAcento}{Subsidios Cruzados (SUNASS)}{
+        Usuarios no residenciales/comerciales pagan \(P > CMe\) para subsidiar a usuarios vulnerables (\(P < CMe\)).\\[2pt]
+        • Financia el acceso sin aporte fiscal.\\
+        • \textbf{Riesgo:} incentivo al \textit{cream-skimming} (entrada selectiva solo al segmento rentable) si no hay exclusividad legal.
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{rojoAcento}{Captura Regulatoria (Stigler)}{
+        Teoría económica de la regulación:\\
+        • Los grupos pequeños y concentrados (empresas reguladas) tienen mayor incentivo a influir en el regulador que los consumidores dispersos.\\
+        • La transparencia tarifaria y audiencias públicas mitigan la captura.
+      }
+    \end{column}
+  \end{columns}
+
+  \vspace{0.1cm}
+  \recuadroclave{
+    \small\textbf{Empaquetamiento (Bundling):} Vender dos bienes juntos puede elevar beneficios si las valoraciones de los consumidores están \textbf{negativamente correlacionadas}.
+  }
+  \mensajefinal{Las tarifas diferenciadas por bloque y horario (\textit{peak-load}) asignan eficientemente la capacidad instalada de la red.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 9: CONCLUSIONES Y CHEAT-SHEET MÓDULO V
+% ==============================================================================
+\begin{frame}{Conclusiones y Formulario Rápido — Módulo V}
+  \vspace{0.05cm}
+  \recuadroclave{
+    \small\textbf{Regla de Oro:} El monopolista fija \(IMg = CMg\) con poder de mercado \(L = 1/|\varepsilon_d|\); el regulador busca acercar \(P\) hacia \(CMg\) o \(CMe\) preservando la sostenibilidad financiera.
+  }
+
+  \vspace{0.15cm}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}
+      \tarjeta{verdeAcento}{Fórmulas Imprescindibles}{
+        • Lerner: \(L = \frac{P-CMg}{P} = \frac{1}{|\varepsilon_d|}\)\\
+        • 3er grado: \(IMg_1 = IMg_2 = CMg\)\\
+        • Ramsey: \(\frac{P_i-CMg_i}{P_i} = \frac{\lambda}{|\varepsilon_i|}\)
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{azulPrincipal}{Trampas de Examen}{
+        • Creer que el monopolista tiene curva de oferta.\\
+        • Olvidar el Efecto Averch-Johnson (exceso de \(K\) en Tasa de Retorno).\\
+        • Confundir 1er grado (\(PIE=0\)) con precio único.
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{rojoAcento}{Siguientes Pasos}{
+        • Practicar Bloque C del Módulo 05 en el Simulador (casos EPS).\\
+        • Dominar el cálculo de \(PIE\) y tarifas en dos partes.
+      }
+    \end{column}
+  \end{columns}
+
+  \vspace{0.25cm}
+  \begin{center}
+    {\color{azulPrincipal}\Large\textbf{¡Éxito!}} \quad {\color{grisTexto}Módulo V · Monopolio y Regulación · PEU SUNASS 2026}
+  \end{center}
+\end{frame}
+
+\end{document}

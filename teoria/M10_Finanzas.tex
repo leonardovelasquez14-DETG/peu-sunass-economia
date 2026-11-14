@@ -1,0 +1,287 @@
+\documentclass[aspectratio=169, 10pt]{beamer}
+\usepackage{sunass_estilo}
+
+\title{Módulo X: Finanzas y Evaluación de Proyectos}
+\subtitle{Guía Teórica de Repaso Rápido · PEU SUNASS}
+\author[PEU SUNASS · Economía]{Preparación Examen de Admisión PEU SUNASS}
+\institute{Basado en el Temario Oficial de Economía · Finanzas Corporativas y Regulatorias}
+\date[2026]{2026}
+
+\begin{document}
+
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+% ==============================================================================
+% SLIDE 2: MAPA CONCEPTUAL Y VALOR DEL DINERO EN EL TIEMPO
+% ==============================================================================
+\begin{frame}{1. Capital, Tasas de Interés y Valor del Dinero en el Tiempo}
+  \vspace{0.1cm}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}
+      \tarjeta{azulPrincipal}{Capitalización y TEA}{
+        • \textbf{Compuesta:} \(VF = VP(1+i)^n\).\\
+        • \textbf{Tasa Efectiva (TEA):} \(TEA = \left(1 + \frac{TNA}{m}\right)^m - 1\).\\
+        • \textbf{Continua:} \(VF = VP \cdot e^{rn}\).
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{naranjaAcento}{Rentas y Perpetuidades}{
+        • \textbf{Perpetuidad:} \(VP = \frac{C}{r}\) (con crecimiento \(g < r\): \(VP = \frac{C_1}{r - g}\)).\\
+        • \textbf{Anualidad vencida:} \(VP = C \cdot \frac{1 - (1+r)^{-n}}{r}\).
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{verdeAcento}{Ecuación de Fisher (Inflación)}{
+        \((1 + i_{\text{nom}}) = (1 + r_{\text{real}})(1 + \pi)\)\\[3pt]
+        • Aproximación: \(r \approx i - \pi\).\\
+        • \textbf{Consistencia:} flujos nominales se descuentan con tasa nominal; flujos reales con tasa real.
+      }
+    \end{column}
+  \end{columns}
+
+  \vspace{0.15cm}
+  \recuadroclave{
+    \small\textbf{Regla de Oro de Consistencia:} Nunca mezcles flujos de caja en soles constantes (reales) con una tasa de descuento nominal (que incluye inflación).
+  }
+  \mensajefinal{Un sol hoy vale más que un sol mañana por su costo de oportunidad (tasa de interés), riesgo e inflación.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 3: INDICADORES FINANCIEROS Y DUPONT
+% ==============================================================================
+\begin{frame}{2. Interpretación de Principales Indicadores Financieros}
+  \vspace{0.1cm}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}
+      \tarjeta{azulPrincipal}{Liquidez (Corto Plazo)}{
+        • \textbf{Liquidez Corriente:} \(\frac{\text{Activo Cte.}}{\text{Pasivo Cte.}}\).\\
+        • \textbf{Prueba Ácida:} \(\frac{\text{Activo Cte.} - \text{Inventarios}}{\text{Pasivo Cte.}}\).\\
+        • \textbf{Capital de Trabajo:} \(AC - PC\).
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{naranjaAcento}{Solvencia y Cobertura}{
+        • \textbf{Endeudamiento:} \(\frac{\text{Pasivo Total}}{\text{Patrimonio}}\) o \(\frac{D}{A}\).\\
+        • \textbf{Cobertura de Intereses:} \(\frac{EBIT}{\text{Gastos Financieros}}\).\\
+        • \textbf{EBITDA:} Utilidad operativa + Depreciación + Amortización (proxy de flujo operativo).
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{verdeAcento}{Rentabilidad e Identidad DuPont}{
+        • \(ROA = \frac{\text{Utilidad Neta}}{\text{Activos}}\).\\
+        • \textbf{Identidad DuPont:}\\
+        \(ROE = \underbrace{\frac{UN}{\text{Ventas}}}_{\text{Margen}} \times \underbrace{\frac{\text{Ventas}}{\text{Activos}}}_{\text{Rotación}} \times \underbrace{\frac{\text{Activos}}{\text{Patrimonio}}}_{\text{Apalancamiento}}\)
+      }
+    \end{column}
+  \end{columns}
+
+  \vspace{0.15cm}
+  \recuadroclave{
+    \small\textbf{Flujo de Caja Libre (FCL) vs. Accionista (FCA):} \quad \(FCL = EBIT(1-T) + \text{Dep} - CAPEX - \Delta CTN\) (se descuenta al \textbf{WACC}; el \(FCA\) se descuenta al \(k_e\)).
+  }
+  \mensajefinal{Un proyecto puede mostrar utilidad contable positiva y aun así tener flujo de caja negativo por inversiones en CAPEX o capital de trabajo.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 4: CRITERIOS DE EVALUACIÓN (VAN, TIR, CAE)
+% ==============================================================================
+\begin{frame}{3. Evaluación de Proyectos: VAN, TIR, B/C y CAE}
+  \begin{columns}[T]
+    \begin{column}{0.52\textwidth}
+      {\small\textbf{Perfil del VAN y Conflicto con la TIR}}
+      \vspace{0.05cm}
+      \begin{tikzpicture}[scale=0.78]
+        \begin{axis}[
+          axis lines=left,
+          xlabel={Tasa de descuento ($r$)}, ylabel={$VAN(r)$},
+          xmin=0, xmax=0.35, ymin=-30, ymax=110,
+          xtick={0.10, 0.16, 0.25}, xticklabels={$r^*$, $r_{\text{Fisher}}$, $TIR_A$},
+          ytick={0},
+          width=8.0cm, height=5.1cm
+        ]
+          % Eje 0
+          \draw[grisTexto, thin] (axis cs:0,0) -- (axis cs:0.35,0);
+          % Proyecto A (flujos tardios -> mayor pendiente)
+          \addplot[azulPrincipal, very thick, domain=0:0.30] {100 - 400*x};
+          \node[azulPrincipal, font=\scriptsize, anchor=west] at (axis cs:0.02, 92) {Proy. A (Mayor escala)};
+          % Proyecto B (flujos tempranos -> mayor TIR, menor VAN a r*)
+          \addplot[rojoAcento, very thick, domain=0:0.34] {68 - 200*x};
+          \node[rojoAcento, font=\scriptsize, anchor=west] at (axis cs:0.18, 36) {Proy. B (Mayor TIR)};
+          % Tasa de Fisher (100-400x = 68-200x => 32 = 200x => x = 0.16)
+          \draw[dotted, verdeAcento, thick] (axis cs:0.16, 0) -- (axis cs:0.16, 36);
+          \draw[dashed, grisTexto] (axis cs:0.10, 0) -- (axis cs:0.10, 60);
+          \addplot[only marks, mark=*, mark size=2.4pt, verdeAcento] coordinates {(0.16, 36)};
+        \end{axis}
+      \end{tikzpicture}
+    \end{column}
+
+    \begin{column}{0.45\textwidth}
+      \indicador{Valor Actual Neto (VAN)}{azulPrincipal}{\(VAN = -I_0 + \sum_{t=1}^n \frac{FC_t}{(1+r)^t} > 0\)}
+      {\scriptsize
+        • Mide la creación absoluta de riqueza. \textbf{Criterio supremo} ante proyectos mutuamente excluyentes.\\[4pt]
+      }
+      \indicador{Limitaciones de la TIR}{rojoAcento}{\text{Falla si hay escala distinta o flujos no convencionales}}
+      {\scriptsize
+        • \textbf{Múltiples TIR:} si los flujos cambian de signo más de una vez (Regla de Descartes).\\
+        • \textbf{Tasa de Fisher:} tasa donde \(VAN_A = VAN_B\). Si \(r < r_{\text{Fisher}}\), la TIR puede contradecir al VAN.\\
+        • \textbf{Vidas útiles distintas:} usar \textbf{CAE} (Costo Anual Equivalente) o repetir cadena.
+      }
+    \end{column}
+  \end{columns}
+
+  \mensajefinal{Ante cualquier conflicto entre TIR y VAN en proyectos mutuamente excluyentes, siempre se elige el proyecto de mayor VAN.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 5: RIESGO, CAPM Y WACC REGULATORIO (SUNASS)
+% ==============================================================================
+\begin{frame}{4. Riesgo, CAPM y WACC Regulatorio en EPS (SUNASS)}
+  \vspace{0.1cm}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}
+      \tarjeta{azulPrincipal}{CAPM y Costo del Patrimonio}{
+        \(k_e = r_f + \beta_L (E[R_m] - r_f) + RP\)\\[4pt]
+        • Solo se remunera el \textbf{riesgo sistemático} (\(\beta\)), no el riesgo diversificable.\\
+        • \(RP\): Prima por riesgo país (EMBI Peru).
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{naranjaAcento}{Apalancamiento (Hamada)}{
+        \(\beta_L = \beta_U \left[1 + (1 - T)\frac{D}{E}\right]\)\\[4pt]
+        • \(\beta_U\): beta del negocio puro (desapalancado).\\
+        • A mayor deuda \(D/E\), sube el riesgo financiero y sube \(k_e\).
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{verdeAcento}{WACC Regulatorio SUNASS}{
+        \(WACC = \frac{E}{V}k_e + \frac{D}{V}k_d(1 - T)\)\\[4pt]
+        • Tasa de descuento oficial para calcular la \textbf{Base de Capital} y la tarifa media en el Plan Maestro Optimizado (PMO).\\
+        • Incluye el \textbf{escudo fiscal} \((1-T)\) de la deuda.
+      }
+    \end{column}
+  \end{columns}
+
+  \vspace{0.15cm}
+  \recuadroclave{
+    \small\textbf{Fórmula de Tarifa Media (SUNASS):} El Valor Presente de los Ingresos Tarifarios debe cubrir el VP de Costos de O\&M + Inversiones (CAPEX) + Impuestos, descontados al \textbf{WACC real} aprobado por el regulador.
+  }
+  \mensajefinal{En el modelo CAPM, el riesgo no sistemático se elimina diversificando el portafolio y no recibe prima de retorno.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 6: VALUACIÓN DE BONOS, DURACIÓN Y ACCIONES (GORDON-SHAPIRO)
+% ==============================================================================
+\begin{frame}{5. Valuación de Bonos, Duración y Acciones}
+  \vspace{0.05cm}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}
+      \tarjeta{azulPrincipal}{Precio de Bonos y YTM}{
+        \(P_B = \sum_{t=1}^n \frac{C}{(1+y)^t} + \frac{VN}{(1+y)^n}\)\\[3pt]
+        • \textbf{Relación inversa} entre precio \(P_B\) y tasa de rendimiento (\(YTM = y\)).\\
+        • Si \(c = y \Rightarrow\) Bono \textbf{a la par} (\(P=VN\)).\\
+        • Si \(c > y \Rightarrow\) \textbf{con prima}; si \(c < y \Rightarrow\) \textbf{bajo par}.
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{naranjaAcento}{Duración y Convexidad}{
+        • \textbf{Duración de Macaulay (\(D\)):} vida media ponderada de los flujos.\\
+        • \textbf{Duración Modificada:} \(D_{\text{mod}} = \frac{D}{1+y}\).\\
+        • Aproximación lineal: \(\frac{\Delta P}{P} \approx -D_{\text{mod}}\,\Delta y\) (a mayor vencimiento y menor cupón, mayor riesgo de tasa).
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{verdeAcento}{Acciones (Gordon-Shapiro)}{
+        Dividendos creciendo a tasa constante \(g < k_e\):\\[3pt]
+        \(P_0 = \frac{D_1}{k_e - g} = \frac{D_0(1+g)}{k_e - g}\)\\[3pt]
+        • \(g = ROE \times b\) (tasa de retención de utilidades).\\
+        • Si el proyecto invierte al \(ROE = k_e\), el PVGO es cero.
+      }
+    \end{column}
+  \end{columns}
+
+  \vspace{0.08cm}
+  \recuadroclave{
+    \small\textbf{Racionamiento de Capital y TIRM:} Con presupuesto limitado se ordenan proyectos por el \textbf{Índice de Rentabilidad} (\(IR = \frac{VP(\text{Flujos})}{I_0} > 1\)); la \textbf{TIRM} corrige a la TIR asumiendo reinversión al \(WACC\) y no a la propia TIR.
+  }
+  \mensajefinal{Los bonos cupón cero tienen una Duración de Macaulay exactamente igual a su plazo de vencimiento (\(D = n\)).}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 7: MARKOWITZ (CML VS SML), MODIGLIANI-MILLER Y OPCIONES
+% ==============================================================================
+\begin{frame}{6. Portafolio (CML vs. SML), Modigliani–Miller y Opciones}
+  \vspace{0.05cm}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}
+      \tarjeta{azulPrincipal}{Markowitz: CML vs. SML}{
+        • \textbf{Ratio de Sharpe:} \(SR = \frac{E[R_p] - r_f}{\sigma_p}\).\\
+        • \textbf{CML (Línea del Mercado de Capitales):} relaciona \(E[R_p]\) con riesgo total \(\sigma_p\) (solo para \textbf{portafolios eficientes}).\\
+        • \textbf{SML (Línea del Mercado de Valores):} relaciona \(E[R_i]\) con \(\beta_i\) (para \textbf{todo activo individual}).
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{naranjaAcento}{Modigliani–Miller (MM I y II)}{
+        • \textbf{Sin impuestos:} la estructura de capital es \textbf{irrelevante} (\(V_L = V_U\)); el \(WACC\) es constante y \(k_e\) sube linealmente con \(D/E\).\\
+        • \textbf{Con impuestos:} \(V_L = V_U + T\cdot D\) (valor del escudo fiscal).\\
+        • \textbf{Trade-off:} equilibra escudo fiscal vs. costos de quiebra.
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{verdeAcento}{Derivados y Paridad Put–Call}{
+        • \textbf{Call} (derecho a comprar) vs. \textbf{Put} (derecho a vender) al precio de ejercicio \(K\).\\
+        • \textbf{Paridad Put–Call (europeas):}\\
+        \(\quad C + \frac{K}{(1+r)^T} = P + S_0\)\\
+        • \textbf{Forwards / Futuros:} fijan tipo de cambio o precio futuro para cubrir riesgos.
+      }
+    \end{column}
+  \end{columns}
+
+  \vspace{0.08cm}
+  \recuadroclave{
+    \small\textbf{Alpha de Jensen (\(\alpha_i\)):} Si un activo está por \textbf{encima} de la SML (\(\alpha_i = R_i - [r_f + \beta_i(R_m - r_f)] > 0\)), está \textbf{subvaluado} y conviene comprarlo.
+  }
+  \mensajefinal{En mercados eficientes sin fricciones, las decisiones de financiamiento no crean valor; solo lo hacen las decisiones de inversión con \(VAN > 0\).}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 8: CONCLUSIONES Y CHEAT-SHEET MÓDULO X
+% ==============================================================================
+\begin{frame}{Conclusiones y Formulario Rápido — Módulo X}
+  \vspace{0.05cm}
+  \recuadroclave{
+    \small\textbf{Regla de Oro:} Todo activo vale el valor presente de sus flujos futuros descontados a una tasa coherente con su riesgo (WACC / CAPM) y su unidad monetaria (nominal vs. real).
+  }
+
+  \vspace{0.15cm}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}
+      \tarjeta{verdeAcento}{Fórmulas Imprescindibles}{
+        • Fisher: \((1+i) = (1+r)(1+\pi)\)\\
+        • CAPM: \(k_e = r_f + \beta_L(R_m - r_f)\)\\
+        • WACC: \(\frac{E}{V}k_e + \frac{D}{V}k_d(1-T)\)
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{azulPrincipal}{Trampas de Examen}{
+        • Usar TIR en vez de VAN cuando hay distinta escala o flujos no convencionales.\\
+        • Comparar VAN directo en proyectos con diferente vida útil (usar CAE).\\
+        • Olvidar el escudo fiscal \((1-T)\) en \(k_d\).
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{rojoAcento}{Siguientes Pasos}{
+        • Practicar Bloques B y C del Módulo 10 en el Simulador.\\
+        • Realizar un Simulacro Completo de 90 preguntas (150 min).
+      }
+    \end{column}
+  \end{columns}
+
+  \vspace{0.25cm}
+  \begin{center}
+    {\color{azulPrincipal}\Large\textbf{¡Éxito!}} \quad {\color{grisTexto}Módulo X · Finanzas y Evaluación de Proyectos · PEU SUNASS 2026}
+  \end{center}
+\end{frame}
+
+\end{document}

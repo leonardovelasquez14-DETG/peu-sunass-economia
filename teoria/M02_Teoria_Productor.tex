@@ -1,0 +1,602 @@
+\documentclass[aspectratio=169, 10pt]{beamer}
+\usepackage{sunass_estilo}
+
+\title{Módulo II: Teoría del Productor}
+\subtitle{Guía Teórica de Repaso Rápido · PEU SUNASS}
+\author[PEU SUNASS · Economía]{Preparación Examen de Admisión PEU SUNASS}
+\institute{Basado en el Temario Oficial de Economía · Microeconomía}
+\date[2026]{2026}
+
+\begin{document}
+
+% ==============================================================================
+% SLIDE 1: PORTADA
+% ==============================================================================
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+% ==============================================================================
+% SLIDE 2: MAPA CONCEPTUAL DEL MÓDULO II
+% ==============================================================================
+\begin{frame}{Mapa Conceptual del Módulo II}
+  \vspace{0.2cm}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}
+      \tarjeta{azulPrincipal}{1. Tecnología y Producción}{
+        Transformación de insumos \((K,L)\) en producto \(q = f(K,L)\).\\
+        Corto plazo (\(PMg, PMe\), etapas) vs. largo plazo (isocuantas, rendimientos a escala).
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{naranjaAcento}{2. Elección y Costos}{
+        Minimización del costo \(wL + rK\) sujeta a \(f(K,L)=\bar{q}\).\\
+        Isocostos, \(TMST\), senda de expansión y Lema de Shephard.
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{verdeAcento}{3. Costos CP/LP y Escala}{
+        Relación \(CMg, CVMe, CMe\), envolvente a largo plazo, economías de escala, de alcance y subaditividad.
+      }
+    \end{column}
+  \end{columns}
+
+  \vspace{0.3cm}
+  \recuadroclave{
+    \textbf{Problema Dual de la Firma:} \quad \(\min_{K,L} wL + rK \ \text{s.a.}\ f(K,L)=q\) \quad \(\Longleftrightarrow\) \quad \(\max_{q} p\cdot q - C(w,r,q)\)
+  }
+
+  \mensajefinal{Toda firma maximizadora de beneficios es necesariamente minimizadora de costos, pero no viceversa.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 3: PRODUCCIÓN A CORTO PLAZO Y LAS 3 ETAPAS
+% ==============================================================================
+\begin{frame}{1. Producción a Corto Plazo y Etapas de Producción}
+  \begin{columns}[T]
+    \begin{column}{0.53\textwidth}
+      {\small\textbf{Producto Medio (\(PMe_L\)) y Producto Marginal (\(PMg_L\))}}
+      \vspace{0.05cm}
+      \begin{tikzpicture}[scale=0.78]
+        \begin{axis}[
+          axis lines=left,
+          xlabel={Trabajo ($L$)}, ylabel={$PMe_L, PMg_L$},
+          xmin=0, xmax=7.5, ymin=-2.5, ymax=9,
+          xtick={4, 5.333}, xticklabels={$L_1$, $L_2$},
+          ytick={0},
+          width=8.2cm, height=5.2cm
+        ]
+          % Eje 0
+          \draw[grisTexto, thin] (axis cs:0,0) -- (axis cs:7.5,0);
+          % PMe_L = 3L - 0.375 L^2
+          \addplot[azulPrincipal, very thick, domain=0:7.2, samples=50] {3*x - 0.375*x^2};
+          \node[azulPrincipal, font=\scriptsize, anchor=south west] at (axis cs:4.1, 6.1) {$PMe_L$};
+          % PMg_L = 6L - 1.125 L^2
+          \addplot[rojoAcento, very thick, domain=0:6.1, samples=50] {6*x - 1.125*x^2};
+          \node[rojoAcento, font=\scriptsize, anchor=south west] at (axis cs:2.7, 8.0) {$PMg_L$};
+
+          % Divisiones de etapas
+          \draw[dashed, verdeAcento] (axis cs:4, -2.5) -- (axis cs:4, 6);
+          \draw[dashed, verdeAcento] (axis cs:5.333, -2.5) -- (axis cs:5.333, 0);
+          \node[font=\tiny, grisTexto] at (axis cs:2.0, -1.5) {\textbf{Etapa I}};
+          \node[font=\tiny, verdeAcento] at (axis cs:4.67, -1.5) {\textbf{Etapa II}};
+          \node[font=\tiny, rojoAcento] at (axis cs:6.4, -1.5) {\textbf{Etapa III}};
+        \end{axis}
+      \end{tikzpicture}
+    \end{column}
+
+    \begin{column}{0.44\textwidth}
+      \indicador{Relación \(PMg_L\) y \(PMe_L\)}{azulPrincipal}{\(\frac{d\,PMe_L}{dL} = \frac{1}{L}(PMg_L - PMe_L)\)}
+      {\scriptsize
+        • Si \(PMg_L > PMe_L\), el \(PMe_L\) es creciente.\\
+        • \(PMg_L\) corta al \(PMe_L\) exactamente en su \textbf{máximo} (\(L_1\)).\\[5pt]
+      }
+      \indicador{Etapa Racional de Producción}{verdeAcento}{\(\text{Etapa II: } PMe_L \ge PMg_L \ge 0\)}
+      {\scriptsize
+        • \textbf{Etapa I:} \(PMg_K < 0\) (exceso de \(K\) respecto a \(L\)).\\
+        • \textbf{Etapa II:} ambos factores tienen \(PMg \ge 0\).\\
+        • \textbf{Etapa III:} \(PMg_L < 0\) (exceso de \(L\)).\\
+        • \textbf{Ley de Rend. Marginales Decrecientes:} \(\frac{\partial^2 q}{\partial L^2} < 0\) a partir del punto de inflexión de \(PT\).
+      }
+    \end{column}
+  \end{columns}
+
+  \mensajefinal{Ninguna firma racional opera en la Etapa I ni en la Etapa III; el óptimo siempre está en la Etapa II.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 4: ISOCUANTAS, TMST Y ELASTICIDAD DE SUSTITUCIÓN
+% ==============================================================================
+\begin{frame}{2. Isocuantas, \(TMST\) y Elasticidad de Sustitución (\(\sigma\))}
+  \begin{columns}[T]
+    \begin{column}{0.52\textwidth}
+      {\small\textbf{Tecnologías Clásicas y Grado de Sustitución}}
+      \vspace{0.05cm}
+      \begin{tikzpicture}[scale=0.73]
+        % Cobb-Douglas
+        \draw[->, thick] (0,0) -- (3.1,0) node[right, font=\scriptsize] {$L$};
+        \draw[->, thick] (0,0) -- (0,2.6) node[above, font=\scriptsize] {$K$};
+        \draw[azulPrincipal, very thick, domain=0.45:2.7, samples=40] plot (\x, {1.1/\x});
+        \node[font=\scriptsize, azulPrincipal] at (1.7, 2.2) {\textbf{Cobb-Douglas}};
+        \node[font=\tiny, grisTexto] at (1.7, 1.8) {$\sigma = 1$};
+
+        % Leontief
+        \begin{scope}[xshift=4.0cm]
+          \draw[->, thick] (0,0) -- (3.1,0) node[right, font=\scriptsize] {$L$};
+          \draw[->, thick] (0,0) -- (0,2.6) node[above, font=\scriptsize] {$K$};
+          \draw[verdeAcento, very thick] (0.8, 2.2) -- (0.8, 0.8) -- (2.7, 0.8);
+          \draw[grisTexto, dotted] (0,0) -- (2.3, 2.3);
+          \node[font=\scriptsize, verdeAcento] at (2.0, 2.2) {\textbf{Leontief}};
+          \node[font=\tiny, grisTexto] at (2.0, 1.8) {$\sigma = 0$};
+        \end{scope}
+
+        % Sustitutos perfectos
+        \begin{scope}[yshift=-3.3cm]
+          \draw[->, thick] (0,0) -- (3.1,0) node[right, font=\scriptsize] {$L$};
+          \draw[->, thick] (0,0) -- (0,2.5) node[above, font=\scriptsize] {$K$};
+          \draw[naranjaAcento, very thick] (0, 2.1) -- (2.1, 0);
+          \node[font=\scriptsize, naranjaAcento] at (1.8, 2.1) {\textbf{Lineal (Sust.)}};
+          \node[font=\tiny, grisTexto] at (1.8, 1.7) {$\sigma = \infty$};
+        \end{scope}
+
+        % CES general
+        \begin{scope}[xshift=4.0cm, yshift=-3.3cm]
+          \draw[->, thick] (0,0) -- (3.1,0) node[right, font=\scriptsize] {$L$};
+          \draw[->, thick] (0,0) -- (0,2.5) node[above, font=\scriptsize] {$K$};
+          \draw[rojoAcento, very thick, domain=0.35:2.7, samples=40] plot (\x, {0.9/\x + 0.25});
+          \node[font=\scriptsize, rojoAcento] at (1.8, 2.1) {\textbf{CES General}};
+          \node[font=\tiny, grisTexto] at (1.8, 1.7) {$\sigma = \frac{1}{1-\rho}$};
+        \end{scope}
+      \end{tikzpicture}
+    \end{column}
+
+    \begin{column}{0.45\textwidth}
+      \indicador{Tasa Marginal de Sustitución Técnica}{azulPrincipal}{\(TMST_{L,K} = -\frac{dK}{dL}\Big|_{dq=0} = \frac{PMg_L}{PMg_K}\)}
+      \indicador{Elasticidad de Sustitución (\(\sigma\))}{rojoAcento}{\(\sigma = \frac{\%\Delta(K/L)}{\%\Delta(TMST)} = \frac{d\ln(K/L)}{d\ln(TMST)}\)}
+      {\scriptsize
+        • \textbf{Función CES:} \(q = A\left[\alpha K^\rho + (1-\alpha)L^\rho\right]^{\frac{\nu}{\rho}}\)\\
+        • Si \(\rho \to 1 \implies \sigma \to \infty\) (Sustitutos perfectos).\\
+        • Si \(\rho \to 0 \implies \sigma \to 1\) (Cobb-Douglas).\\
+        • Si \(\rho \to -\infty \implies \sigma \to 0\) (Leontief).
+      }
+    \end{column}
+  \end{columns}
+
+  \mensajefinal{A mayor \(\sigma\), menor curvatura de la isocuanta y mayor facilidad para sustituir trabajo por capital ante cambios salariales.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 5: RENDIMIENTOS A ESCALA (LARGO PLAZO)
+% ==============================================================================
+\begin{frame}{3. Rendimientos a Escala vs. Rendimientos Marginales}
+  \vspace{0.15cm}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}
+      \tarjeta{verdeAcento}{Rendimientos Crecientes (REC)}{
+        \(f(tK, tL) > t \cdot f(K,L)\) para \(t>1\).\\[4pt]
+        Si duplicas insumos, la producción \textbf{más que se duplica}.\\
+        \textit{Causa: especialización, redes de tuberías (geometría de volumen vs. área).}
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{azulPrincipal}{Rendimientos Constantes (RCE)}{
+        \(f(tK, tL) = t \cdot f(K,L)\) para \(t>1\).\\[4pt]
+        Si duplicas insumos, la producción se \textbf{duplica exactamente}.\\
+        Función homogénea de grado \(k = 1\).
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{rojoAcento}{Rendimientos Decrecientes (RDE)}{
+        \(f(tK, tL) < t \cdot f(K,L)\) para \(t>1\).\\[4pt]
+        Si duplicas insumos, la producción \textbf{menos que se duplica}.\\
+        \textit{Causa: costos de coordinación y burocracia.}
+      }
+    \end{column}
+  \end{columns}
+
+  \vspace{0.2cm}
+  \recuadroclave{
+    \small\textbf{En Cobb-Douglas \(q = A K^\alpha L^\beta\):} \quad \(\alpha + \beta > 1 \Rightarrow \text{REC}\) \quad|\quad \(\alpha + \beta = 1 \Rightarrow \text{RCE}\) \quad|\quad \(\alpha + \beta < 1 \Rightarrow \text{RDE}\)
+  }
+  \mensajefinal{¡Trampa de examen! Una firma puede tener RCE a largo plazo y a la vez rendimientos marginales decrecientes en cada factor.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 6: MINIMIZACIÓN DE COSTOS, ISOCOSTOS Y SENDA DE EXPANSIÓN
+% ==============================================================================
+\begin{frame}{4. Isocostos, Minimización de Costos y Senda de Expansión}
+  \begin{columns}[T]
+    \begin{column}{0.53\textwidth}
+      {\small\textbf{Tangencia Óptima y Senda de Expansión}}
+      \vspace{0.05cm}
+      \begin{tikzpicture}[scale=0.78]
+        \begin{axis}[
+          axis lines=left,
+          xlabel={Trabajo ($L$)}, ylabel={Capital ($K$)},
+          xmin=0, xmax=10, ymin=0, ymax=9,
+          xtick={3, 5}, xticklabels={$L_1^*$, $L_2^*$},
+          ytick={3, 5}, yticklabels={$K_1^*$, $K_2^*$},
+          width=8.0cm, height=5.2cm
+        ]
+          % Isocostos
+          \addplot[grisTexto, thick, domain=0:6] {6 - x};
+          \addplot[aceroAcento, very thick, domain=0:10] {10 - x};
+          % Isocuantas
+          \addplot[azulPrincipal, thick, domain=1.3:7.5, samples=40] {9/x};
+          \addplot[azulPrincipal, very thick, domain=2.8:9.2, samples=40] {25/x};
+          % Senda de expansión
+          \addplot[naranjaAcento, very thick, dashed, domain=0:7.5] {x};
+          \node[naranjaAcento, font=\scriptsize, anchor=west] at (axis cs:6.3, 6.6) {\textbf{Senda de Expansión}};
+          % Puntos óptimos
+          \addplot[only marks, mark=*, mark size=2.5pt, verdeAcento] coordinates {(3,3) (5,5)};
+        \end{axis}
+      \end{tikzpicture}
+    \end{column}
+
+    \begin{column}{0.44\textwidth}
+      \indicador{Condición de Eficiencia Técnica}{azulPrincipal}{\(TMST_{L,K} = \frac{PMg_L}{PMg_K} = \frac{w}{r}\)}
+      \indicador{Principio Equimarginal}{verdeAcento}{\(\frac{PMg_L}{w} = \frac{PMg_K}{r} = \frac{1}{CMg}\)}
+      {\scriptsize
+        • \textbf{Recta Isocosto:} \(K = \frac{C}{r} - \frac{w}{r}L\) (pendiente \(-w/r\)).\\
+        • \textbf{Senda de Expansión:} combina \((L^*, K^*)\) al variar \(q\) con precios \((w,r)\) fijos.\\
+        • \textbf{Lema de Shephard:} las demandas condicionadas se obtienen derivando la función de costo:\\
+        \(\quad L^c(w,r,q) = \frac{\partial C}{\partial w}, \qquad K^c(w,r,q) = \frac{\partial C}{\partial r}\)
+      }
+    \end{column}
+  \end{columns}
+
+  \mensajefinal{En funciones homotéticas, la senda de expansión es un rayo lineal que parte del origen: la razón \(K/L\) es independiente de \(q\).}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 7: DUALIDAD, FUNCIÓN DE COSTOS Y BENEFICIOS
+% ==============================================================================
+\begin{frame}{5. Propiedades de Costos y Maximización de Beneficios}
+  \vspace{0.1cm}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}
+      \tarjeta{azulPrincipal}{Función de Costo \(C(w,r,q)\)}{
+        \textbf{1. Homogénea de grado 1} en \((w,r)\): si \(w, r\) se duplican, \(C\) se duplica.\\
+        \textbf{2. Cóncava} en \((w,r)\): \(\frac{\partial^2 C}{\partial w^2} = \frac{\partial L^c}{\partial w} \le 0\).\\
+        \textbf{3. No decreciente} en \(q, w, r\).
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{naranjaAcento}{Maximización de Beneficios}{
+        \(\max_{K,L} \pi = p f(K,L) - wL - rK\)\\[3pt]
+        • \(p \cdot PMg_L = VPMg_L = w\)\\
+        • \(p \cdot PMg_K = VPMg_K = r\)\\
+        \textit{No existe solución finita en competencia si hay REC en todo el rango.}
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{verdeAcento}{Función \(\pi(p,w,r)\) y Hotelling}{
+        • \textbf{Homogénea de grado 1} y \textbf{Convexa} en \((p,w,r)\).\\
+        • \textbf{Lema de Hotelling:}\\
+        \(\frac{\partial \pi}{\partial p} = q^s(p,w,r)\)\\
+        \(\frac{\partial \pi}{\partial w} = -L^d(p,w,r)\)
+      }
+    \end{column}
+  \end{columns}
+
+  \vspace{0.15cm}
+  \recuadroclave{
+    \small\textbf{Teorema de Euler (RCE):} Si \(f(K,L)\) es homogénea de grado 1, \(q = PMg_L\cdot L + PMg_K\cdot K\). Pagando su \(VPMg\), el beneficio económico es \(\pi = 0\).
+  }
+  \mensajefinal{Las demandas condicionadas \(L^c(w,r,q)\) tienen pendiente negativa siempre; las incondicionadas \(L^d(p,w,r)\) también por convexidad de \(\pi\).}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 8: CURVAS DE COSTOS A CORTO PLAZO
+% ==============================================================================
+\begin{frame}{6. Curvas de Costos a Corto Plazo}
+  \begin{columns}[T]
+    \begin{column}{0.53\textwidth}
+      {\small\textbf{Geometría de \(CMg\), \(CMeT\), \(CVMe\) y \(CFMe\)}}
+      \vspace{0.05cm}
+      \begin{tikzpicture}[scale=0.78]
+        \begin{axis}[
+          axis lines=left,
+          xlabel={Producción ($q$)}, ylabel={Costos (\$)},
+          xmin=0, xmax=9, ymin=0, ymax=14,
+          xtick={3, 4.5}, xticklabels={$q_{\min}^{CVMe}$, $q_{\min}^{CMe}$},
+          ytick=\empty,
+          width=8.2cm, height=5.2cm
+        ]
+          % C(q) = 12 + 6q - 1.5q^2 + 0.1667 q^3 ->
+          % CVMe = 6 - 1.5q + 0.1667 q^2 -> min en q = 4.5? 1.5 / 0.333 = 4.5.
+          % Hagamos CVMe = 7 - 2q + 0.333 q^2 -> min en q=3 (val=4)
+          % Entonces CMg = 7 - 4q + q^2 -> en q=3 es 7-12+9 = 4! (min de CMg en q=2, val=3)
+          % CMe = 9/q + 7 - 2q + 0.333 q^2 -> en q=4.5: 2 + 7 - 9 + 6.75 = 6.75; CMg(4.5) = 7 - 18 + 20.25 = 9.25 (cortan en q=4.1 aprox)
+          % Pongamos CF = 6: CMe = 6/q + 7 - 2q + 0.333 q^2 -> CMg = CMe => 6/q = 2q - 0.667 q^2 => q=3.85 aprox.
+          \addplot[azulPrincipal, very thick, domain=0.6:7.5, samples=50] {6/x + 7 - 2*x + 0.333*x^2};
+          \node[azulPrincipal, font=\scriptsize, anchor=west] at (axis cs:6.8, 10.5) {$CMe$};
+          \addplot[verdeAcento, very thick, domain=0.2:7.5, samples=50] {7 - 2*x + 0.333*x^2};
+          \node[verdeAcento, font=\scriptsize, anchor=west] at (axis cs:7.0, 7.6) {$CVMe$};
+          \addplot[rojoAcento, very thick, domain=0.2:5.8, samples=50] {7 - 4*x + x^2};
+          \node[rojoAcento, font=\scriptsize, anchor=south east] at (axis cs:5.5, 13.0) {$CMg$};
+          \addplot[grisTexto, dashed, thick, domain=0.6:8.0, samples=40] {6/x};
+          \node[grisTexto, font=\scriptsize, anchor=south] at (axis cs:7.2, 1.0) {$CFMe$};
+        \end{axis}
+      \end{tikzpicture}
+    \end{column}
+
+    \begin{column}{0.44\textwidth}
+      \indicador{Vínculo Producción-Costos}{azulPrincipal}{\(CMg = \frac{w}{PMg_L} \ \mid \ CVMe = \frac{w}{PMe_L}\)}
+      {\scriptsize
+        • Donde \(PMg_L\) es máximo, el \(CMg\) es mínimo.\\
+        • \(CMg\) corta al \(CVMe\) y al \(CMe\) en sus \textbf{mínimos}.\\
+        • \(CMe - CVMe = CFMe \to 0\) cuando \(q \to \infty\).\\[3pt]
+      }
+      \indicador{Costos Hundidos vs. Fijos}{rojoAcento}{\(\text{Costo Hundido} \neq \text{Evitable}\)}
+      {\scriptsize
+        • \textbf{Costo hundido:} irrecuperable (ej. redes enterradas); \textbf{no influye} en decisiones marginales.\\
+        • \textbf{Costo de oportunidad:} explícitos + implícitos.
+      }
+    \end{column}
+  \end{columns}
+
+  \mensajefinal{A corto plazo, la diferencia entre el precio y el \(CVMe\) determina si la firma produce o cierra temporalmente.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 9: REGLA DE CIERRE (CP), SALIDA (LP) Y EXCEDENTE DEL PRODUCTOR
+% ==============================================================================
+\begin{frame}{6b. Decisión de Producir, Cerrar (CP) o Salir (LP)}
+  \begin{columns}[T]
+    \begin{column}{0.53\textwidth}
+      {\small\textbf{Curva de Oferta de la Firma a Corto Plazo}}
+      \vspace{0.05cm}
+      \begin{tikzpicture}[scale=0.78]
+        \begin{axis}[
+          axis lines=left,
+          xlabel={Producción ($q$)}, ylabel={Precio / Costo},
+          xmin=0, xmax=7.5, ymin=0, ymax=14,
+          xtick={3, 3.85}, xticklabels={$q_c$, $q_b$},
+          ytick={4, 6.2, 10}, yticklabels={$\min CVMe$, $\min CMe$, $P_1$},
+          width=8.2cm, height=5.2cm
+        ]
+          % CMe y CVMe
+          \addplot[azulPrincipal, thick, domain=0.7:6.8, samples=50] {6/x + 7 - 2*x + 0.333*x^2};
+          \node[azulPrincipal, font=\tiny, anchor=west] at (axis cs:6.2, 9.0) {$CMe$};
+          \addplot[verdeAcento, thick, domain=0.2:6.8, samples=50] {7 - 2*x + 0.333*x^2};
+          \node[verdeAcento, font=\tiny, anchor=west] at (axis cs:6.2, 6.2) {$CVMe$};
+          % CMg tramo inactivo (debajo de min CVMe)
+          \addplot[grisTexto, dashed, thick, domain=0.2:3.0, samples=30] {7 - 4*x + x^2};
+          % Oferta CP (CMg encima de min CVMe)
+          \addplot[rojoAcento, ultra thick, domain=3.0:5.8, samples=40] {7 - 4*x + x^2};
+          \node[rojoAcento, font=\scriptsize, anchor=south east] at (axis cs:5.5, 13.0) {\textbf{Oferta CP (\(CMg\))}};
+          % Punto de cierre
+          \addplot[only marks, mark=*, mark size=2.5pt, rojoAcento] coordinates {(3, 4)};
+          \draw[rojoAcento, ultra thick] (axis cs:0.05, 0) -- (axis cs:0.05, 4);
+          % Lineas de referencia
+          \draw[dotted, grisTexto] (axis cs:0, 4) -- (axis cs:3, 4);
+          \draw[dotted, grisTexto] (axis cs:0, 6.2) -- (axis cs:3.85, 6.2);
+          \draw[dotted, grisTexto] (axis cs:0, 10) -- (axis cs:5.0, 10);
+        \end{axis}
+      \end{tikzpicture}
+    \end{column}
+
+    \begin{column}{0.44\textwidth}
+      \indicador{Corto Plazo: Regla de Cierre}{rojoAcento}{\(P < \min CVMe \implies q^* = 0\)}
+      {\scriptsize
+        • \textbf{Si \(P > \min CMe\):} Produce con beneficios (\(\pi > 0\)).\\
+        • \textbf{Si \(\min CVMe \le P < \min CMe\):} \textbf{Produce con pérdidas} (\(\pi < 0\)), pero cubre todo el \(CV\) y parte del \(CF\) (pierde menos que cerrando).\\
+        • \textbf{Si \(P < \min CVMe\):} \textbf{Cierra temporalmente} y pierde solo \(-CF\).\\[4pt]
+      }
+      \indicador{Largo Plazo y Excedente}{azulPrincipal}{\(P < \min CMe_{LP} \implies \text{Sale del mercado}\)}
+      {\scriptsize
+        • A LP todos los costos son evitables (\(CF=0\)).\\
+        • \textbf{Excedente del Productor:} \(EP = IT - CV = \pi + CF\).
+      }
+    \end{column}
+  \end{columns}
+
+  \mensajefinal{Producir con pérdidas es óptimo a corto plazo siempre que el precio supere al Costo Variable Medio (\(P \ge CVMe\)).}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 10: ESTÁTICA COMPARATIVA, INSUMO INFERIOR Y COSTOS CUASI-FIJOS
+% ==============================================================================
+\begin{frame}{6c. Estática Comparativa, Insumos Inferiores y Costos Cuasi-Fijos}
+  \vspace{0.08cm}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}
+      \tarjeta{azulPrincipal}{Sustitución vs. Efecto Producto}{
+        Si sube el salario \(w\):\\
+        • \textbf{Minimización (\(q\) fijo):} \(\frac{\partial L^c}{\partial w} \le 0\) (solo sustitución).\\
+        • \textbf{Beneficios (\(q\) libre):} \(\frac{\partial L^d}{\partial w} \le 0\) (sustitución + caída de escala).\\
+        \textit{Simetría:} \(\frac{\partial L^c}{\partial r} = \frac{\partial K^c}{\partial w}\).
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{naranjaAcento}{Insumo Normal vs. Inferior}{
+        Por el Lema de Shephard (\(\frac{\partial CMg}{\partial w} = \frac{\partial L^c}{\partial q}\)):\\
+        • \textbf{Insumo normal:} \(\frac{\partial L^c}{\partial q} > 0 \Rightarrow\) si sube \(w\), sube el \(CMg\).\\
+        • \textbf{Insumo inferior:} \(\frac{\partial L^c}{\partial q} < 0 \Rightarrow\) si sube \(w\), el \(CMg\) \textbf{baja}.
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{verdeAcento}{Fijo vs. Cuasi-Fijo vs. Hundido}{
+        • \textbf{Fijo puro:} se paga incluso si \(q=0\) (afecta \(\pi\), no cierre).\\
+        • \textbf{Cuasi-fijo:} \(CF_q\) solo se paga si \(q>0\) (ej. licencia anual). \textbf{Sí afecta la regla de cierre}: cerrar si \(P < \min\frac{CV+CF_q}{q}\).\\
+        • \textbf{Hundido:} irrecuperable.
+      }
+    \end{column}
+  \end{columns}
+
+  \vspace{0.1cm}
+  \recuadroclave{
+    \small\textbf{Ley de la Oferta:} Como \(\pi(p,w,r)\) es convexa en \(p\), \(\frac{\partial q^s}{\partial p} = \frac{\partial^2 \pi}{\partial p^2} \ge 0\). La curva de oferta competitiva \textbf{nunca tiene pendiente negativa}.
+  }
+  \mensajefinal{Un aumento del costo fijo puro no cambia el \(CMg\) ni el nivel óptimo \(q^*\), pero un costo cuasi-fijo sí puede forzar el cierre.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 11: COSTOS A LARGO PLAZO Y CURVA ENVOLVENTE
+% ==============================================================================
+\begin{frame}{7. Costos a Largo Plazo y Envolvente de Planta}
+  \begin{columns}[T]
+    \begin{column}{0.53\textwidth}
+      {\small\textbf{Envolvente \(CMe_{LP}\) de Tres Tamaños de Planta}}
+      \vspace{0.05cm}
+      \begin{tikzpicture}[scale=0.78]
+        \begin{axis}[
+          axis lines=left,
+          xlabel={Producción ($q$)}, ylabel={Costo Medio},
+          xmin=0, xmax=11, ymin=0, ymax=10,
+          xtick={5.5}, xticklabels={$q_{EME}$},
+          ytick=\empty,
+          width=8.2cm, height=5.2cm
+        ]
+          % CMe_LP: 3 + 0.25*(x-5.5)^2
+          \addplot[azulPrincipal, ultra thick, domain=1.2:9.8, samples=60] {3 + 0.25*(x-5.5)^2};
+          \node[azulPrincipal, font=\scriptsize, anchor=north] at (axis cs:5.5, 2.7) {\textbf{\(CMe_{LP}\) (Envolvente)}};
+          % Planta 1 (izquierda)
+          \addplot[naranjaAcento, thick, dashed, domain=0.5:4.5, samples=40] {4.5 + 0.65*(x-2.0)^2};
+          \node[naranjaAcento, font=\tiny] at (axis cs:2.0, 8.2) {$CMe_{CP1}$};
+          % Planta 2 (óptima en EME)
+          \addplot[verdeAcento, thick, dashed, domain=3.2:7.8, samples=40] {3.0 + 0.7*(x-5.5)^2};
+          \node[verdeAcento, font=\tiny] at (axis cs:5.5, 8.2) {$CMe_{CP2}$};
+          % Planta 3 (derecha)
+          \addplot[rojoAcento, thick, dashed, domain=6.5:10.5, samples=40] {4.5 + 0.65*(x-9.0)^2};
+          \node[rojoAcento, font=\tiny] at (axis cs:9.0, 8.2) {$CMe_{CP3}$};
+        \end{axis}
+      \end{tikzpicture}
+    \end{column}
+
+    \begin{column}{0.44\textwidth}
+      \indicador{Escala Mínima Eficiente (EME)}{verdeAcento}{\(\min CMe_{LP}(q)\)}
+      {\scriptsize
+        • En el tramo de \textbf{economías de escala} (\(q < q_{EME}\)), \(CMe_{LP}\) es tangente a la \textbf{izquierda} del mínimo de \(CMe_{CP}\).\\
+        • En \(q_{EME}\), coincide el mínimo de \(CMe_{LP}\) y de \(CMe_{CP}\).\\
+        • En \textbf{deseconomías} (\(q > q_{EME}\)), es tangente a la \textbf{derecha}.\\[5pt]
+      }
+      \indicador{Regla de Costos Marginales}{azulPrincipal}{\(C(q) \le C_{CP}(q, \bar{K}) \ \forall q\)}
+      {\scriptsize
+        • En el punto de tangencia \(\bar{q}\):\\
+        \(\quad CMe_{LP}(\bar{q}) = CMe_{CP}(\bar{q}) \quad \text{y} \quad CMg_{LP}(\bar{q}) = CMg_{CP}(\bar{q})\).
+      }
+    \end{column}
+  \end{columns}
+
+  \mensajefinal{Por definición, \(CMe_{LP}(q)\) nunca puede estar por encima de ninguna \(CMe_{CP}(q)\), pues a largo plazo todos los factores son ajustables.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 10: ECONOMÍAS DE ESCALA, ALCANCE Y SUBADITIVIDAD (NÚCLEO SUNASS)
+% ==============================================================================
+\begin{frame}{8. Escala, Alcance y Subaditividad (Núcleo Regulatorio SUNASS)}
+  \vspace{0.05cm}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}
+      \tarjeta{azulPrincipal}{Economías de Escala (\(S\))}{
+        \(S = \frac{CMe(q)}{CMg(q)} = \frac{1}{\varepsilon_{C,q}}\)\\[3pt]
+        • \(S > 1\) (\(CMg < CMe\)): Economías de escala (\(CMe\) decreciente).\\
+        • \(S = 1\): RCE.\\
+        • \(S < 1\): Deseconomías de escala.
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{naranjaAcento}{Economías de Alcance (Scope)}{
+        \(C(q_1, q_2) < C(q_1, 0) + C(0, q_2)\)\\[3pt]
+        Producir dos servicios juntos es más barato que por separado.\\
+        \textbf{SUNASS:} Agua potable + alcantarillado en una EPS.
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{verdeAcento}{Subaditividad de Costos}{
+        \(C\!\left(\sum_{i=1}^n q_i\right) < \sum_{i=1}^n C(q_i)\)\\[3pt]
+        Una sola firma abastece al mercado más barato que dos o más.\\
+        Condición exacta de Monopolio Natural.
+      }
+    \end{column}
+  \end{columns}
+
+  \vspace{0.08cm}
+  \recuadroclave{
+    \small\textbf{Distinción clave de examen:} Las economías de escala implican subaditividad, pero \textbf{puede haber subaditividad sin economías de escala} (en el tramo donde \(CMe\) ya crece lentamente).
+  }
+  \mensajefinal{Las EPS de saneamiento exhiben fuertes economías de escala, economías de densidad de red y economías de alcance.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 13: FUNCIONES DE COSTOS CERRADAS Y PROGRESO TECNOLÓGICO
+% ==============================================================================
+\begin{frame}{9. Funciones de Costos Clásicas y Progreso Tecnológico}
+  \vspace{0.05cm}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}
+      \tarjeta{azulPrincipal}{Cobb-Douglas: \(q = A L^\alpha K^\beta\)}{
+        Sea \(\nu = \alpha + \beta\):\\[2pt]
+        \(C(w,r,q) = \nu \left(\frac{q}{A}\right)^{\frac{1}{\nu}} \left(\frac{w}{\alpha}\right)^{\frac{\alpha}{\nu}} \left(\frac{r}{\beta}\right)^{\frac{\beta}{\nu}}\)\\[3pt]
+        • Elasticidad costo-producto: \(\varepsilon_{C,q} = \frac{1}{\nu}\).\\
+        • Si \(\alpha+\beta=1\), \(C(w,r,q)\) es lineal en \(q\) (\(CMg = CMe\)).
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{verdeAcento}{Leontief y Lineal}{
+        • \textbf{Leontief} \(q = \min\{aL, bK\}\):\\
+        \(\quad C(w,r,q) = q \left(\frac{w}{a} + \frac{r}{b}\right)\)\\[3pt]
+        • \textbf{Sustitutos perfectos} \(q = aL + bK\):\\
+        \(\quad C(w,r,q) = q \cdot \min\left\{\frac{w}{a}, \frac{r}{b}\right\}\)\\
+        (usa solo el insumo más barato por unidad de producto).
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{naranjaAcento}{Progreso Tecnológico}{
+        Desplaza la isocuanta hacia el origen:\\
+        • \textbf{Neutral de Hicks:} \(q = A(t)f(K,L)\) (deja inalterada la \(TMST\) para igual \(K/L\)).\\
+        • \textbf{Neutral de Harrod:} \(q = f(K, A(t)L)\) (\textit{ahorrador de trabajo}).\\
+        • \textbf{Neutral de Solow:} \(q = f(A(t)K, L)\) (\textit{ahorrador de capital}).
+      }
+    \end{column}
+  \end{columns}
+
+  \vspace{0.08cm}
+  \recuadroclave{
+    \small\textbf{Fórmula de Elasticidad de Costos:} \quad \(\varepsilon_{C,q} = \frac{CMg}{CMe} = \frac{1}{S} = \frac{1}{\nu}\) \quad (para funciones homogéneas de grado \(\nu\)).
+  }
+  \mensajefinal{Si una función de producción es homogénea de grado \(\nu > 1\) (REC), su función de costos es homogénea en \(q\) de grado \(1/\nu < 1\).}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 14: CONCLUSIONES / FORMULARIO RÁPIDO MÓDULO II
+% ==============================================================================
+\begin{frame}{Conclusiones y Formulario Rápido — Módulo II}
+  \vspace{0.05cm}
+  \recuadroclave{
+    \small\textbf{Regla de Oro:} La firma minimiza costos igualando el cociente de productividades marginales al cociente de precios de factores (\(TMST = w/r\)).
+  }
+
+  \vspace{0.15cm}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}
+      \tarjeta{verdeAcento}{Fórmulas Imprescindibles}{
+        • \(TMST = \frac{PMg_L}{PMg_K} = \frac{w}{r}\)\\
+        • Shephard: \(L^c = \frac{\partial C}{\partial w}\)\\
+        • Escala: \(S = \frac{CMe}{CMg}\)
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{azulPrincipal}{Trampas de Examen}{
+        • Confundir rendimientos marginales (CP) con rendimientos a escala (LP).\\
+        • Creer que monopolio natural exige \(CMe\) siempre decreciente (basta subaditividad).\\
+        • Incluir costos hundidos en decisiones marginales.
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{rojoAcento}{Siguientes Pasos}{
+        • Practicar Bloque B y C del Módulo 02 en el Simulador.\\
+        • Repasar funciones CES, Cobb-Douglas y cálculo de \(CMg/CMe\) en EPS.
+      }
+    \end{column}
+  \end{columns}
+
+  \vspace{0.35cm}
+  \begin{center}
+    {\color{azulPrincipal}\Large\textbf{¡Éxito!}} \quad {\color{grisTexto}Módulo II · Teoría del Productor · PEU SUNASS 2026}
+  \end{center}
+\end{frame}
+
+\end{document}

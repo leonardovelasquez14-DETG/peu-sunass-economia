@@ -1,0 +1,204 @@
+\section*{Bloque C. Casos con implicancias regulatorias y sector saneamiento}
+
+\noindent\textit{Preguntas 66 a 90. Evalúan aplicaciones econométricas avanzadas al sector de agua y saneamiento: estimación de elasticidades de demanda, tarifas por bloques crecientes, fronteras estocásticas de costos (SFA) en EPS, diferencias en diferencias (Diff-in-Diff), regresión discontinua en SISFOH, WACC y modelos de datos de panel.}
+
+\q{En la estimación econométrica de la demanda de agua potable residencial para fijar tarifas en SUNASS, la especificación comúnmente adoptada es de tipo log-log: $\ln(Q_i) = \alpha + \beta_P \ln(P_i) + \beta_Y \ln(Y_i) + \gamma Z_i + u_i$. Los parámetros $\beta_P$ y $\beta_Y$ representan directamente:}
+\begin{opts}
+  \item el consumo básico de subsistencia y el cargo fijo mensual.
+  \item la elasticidad precio directa y la elasticidad ingreso de la demanda de agua potable.
+  \item la semielasticidad de la tarifa y el costo marginal.
+  \item el margen de beneficio de la empresa prestadora.
+\end{opts}
+
+\q{En los sistemas de tarifas de agua por bloques crecientes (Increasing Block Tariffs - IBT) utilizados por las EPS peruanas, la estimación por MCO de la demanda de agua enfrenta un grave problema de endogeneidad porque:}
+\begin{opts}
+  \item la Superintendencia no publica las resoluciones tarifarias en El Peruano.
+  \item el agua potable es un bien homogéneo.
+  \item el precio marginal por metro cúbico pagado por el hogar se determina simultáneamente con la cantidad consumida (al consumir más metros cúbicos, el hogar salta a un bloque con tarifa marginal más alta), violando $Cov(P, u) = 0$.
+  \item el consumo de agua es perfectamente constante mes a mes.
+\end{opts}
+
+\q{Para corregir la endogeneidad de la tarifa marginal en modelos de demanda de agua con bloques crecientes, la literatura econométrica y los estudios regulatorios emplean como variable instrumental:}
+\begin{opts}
+  \item la tasa de interés interbancaria del BCRP.
+  \item el índice de precios al consumidor de alimentos y bebidas.
+  \item el PIB per cápita nacional.
+  \item la tarifa del primer bloque de consumo o la estructura tarifaria fijada para EPS de características similares, combinada con la diferencia de Taylor-Nordin.
+\end{opts}
+
+\q{SUNASS utiliza modelos de Análisis de Frontera Estocástica (Stochastic Frontier Analysis - SFA) para estimar los costos eficientes de las EPS. La ventaja econométrica clave de SFA frente a una regresión MCO estándar es que:}
+\begin{opts}
+  \item descompone el término de error en dos componentes: un error asimétrico no negativo que mide la ineficiencia técnica y un error simétrico que captura choques aleatorios no controlables.
+  \item no requiere recopilar datos contables de las empresas.
+  \item asume que todas las empresas operan con rentabilidad idéntica al 100\%.
+  \item elimina la necesidad de calcular pruebas de significancia $t$.
+\end{opts}
+
+\q{Al estimar una función de costos translogarítmica multirregulada para las 50 EPS del Perú, se evalúan simultáneamente economías de escala y economías de densidad de clientes. La economía de densidad se define econométricamente como:}
+\begin{opts}
+  \item la tasa de depreciación de los micromedidores instalados.
+  \item el incremento porcentual en el costo cuando el volumen de agua distribuida aumenta manteniendo constante la longitud de la red de tuberías y el número de clientes.
+  \item la relación entre el costo laboral y el costo de capital de la planta de tratamiento.
+  \item la reducción en el costo promedio cuando se fusionan dos EPS geográficamente lejanas.
+\end{opts}
+
+\q{En una regresión de corte transversal de costos de operación (OPEX) que incluye a Sedapal junto a empresas provinciales pequeñas (como EPS Moyobamba o EPS Ilo), la presencia de heterocedasticidad es sumamente probable debido a que:}
+\begin{opts}
+  \item los residuos siguen una distribución uniforme discreta.
+  \item las EPS utilizan diferentes tipos de medidores ultrasónicos.
+  \item la escala de producción y la dispersión de los costos son masivamente mayores en empresas metropolitanas grandes que en pequeñas prestadoras locales, violando la varianza constante del error.
+  \item todas las EPS aplican idénticas tarifas residenciales.
+\end{opts}
+
+\q{Para corregir la distorsión inferencial causada por la heterocedasticidad en la estimación de costos de EPS con muestras pequeñas a medianas ($n \approx 50$), la literatura econométrica recomienda utilizar la corrección de White modificada:}
+\begin{opts}
+  \item regresión de cuantiles no condicionada.
+  \item HC0 simple.
+  \item MCO sin corregir.
+  \item HC3 (Jackknife heteroskedasticity-consistent), la cual penaliza las observaciones con alto apalancamiento (leverage) y exhibe un desempeño superior en muestras pequeñas.
+\end{opts}
+
+\q{Al modelar series de tiempo mensuales de caudales de captación de agua en ríos de la vertiente del Pacífico para planificar el abastecimiento de EPS, la presencia de estacionalidad y persistencia intertemporal se modela mediante:}
+\begin{opts}
+  \item modelos autorregresivos integrados de media móvil estacionales (SARIMA), que capturan la autocorrelación serial y los ciclos hidrológicos anuales.
+  \item regresión lineal simple con constante nula.
+  \item modelos de corte transversal de Heckman.
+  \item análisis de componentes principales no lineales.
+\end{opts}
+
+\q{En modelos de series de tiempo de demanda de agua urbana donde se evalúa el impacto de episodios de El Niño, la aplicación de errores estándar HAC de Newey-West con $L$ rezagos permite:}
+\begin{opts}
+  \item sustituir la recolección de datos pluviométricos de Senamhi.
+  \item obtener inferencia asintóticamente robusta frente a la correlación serial inducida por la persistencia de los choques climáticos y la heterocedasticidad estacional.
+  \item eliminar la tendencia determinística de la población.
+  \item garantizar que el estadístico de Durbin-Watson sea idéntico a 2.
+\end{opts}
+
+\q{En un panel de seguimiento de consumo de agua con micromedidores domiciliarios a lo largo de 5 años, el hecho de que los hogares con medidores defectuosos o manipulados sean retirados sistemáticamente de la base de datos genera un problema de:}
+\begin{opts}
+  \item violación del Teorema de Gauss-Markov por exceso de observaciones.
+  \item multicolinealidad perfecta entre el tiempo y la tarifa.
+  \item sesgo de atrición o supervivencia no aleatorio (Attrition Bias), que puede invalidar la consistencia de las estimaciones si el desgaste del medidor está correlacionado con el volumen de agua consumido.
+  \item discriminación de precios de segundo grado.
+\end{opts}
+
+\q{Para evaluar el impacto de un programa piloto de instalación masiva de micromedidores sobre el consumo de agua ejecutado por una EPS, la metodología cuasiexperimental estándar es:}
+\begin{opts}
+  \item comparar el promedio simple de consumo de la ciudad antes y después de la obra sin grupo de control.
+  \item una regresión de corte transversal sin constante.
+  \item la prueba de normalidad de Jarque-Bera.
+  \item el estimador de Diferencias en Diferencias (Diff-in-Diff), comparando la trayectoria del consumo entre el grupo de tratamiento (hogares con nuevo medidor) y un grupo de control (hogares que permanecieron con tarifa asignada).
+\end{opts}
+
+\q{El supuesto de identificación indispensable para la validez causal del estimador de Diferencias en Diferencias en la evaluación del programa de micromedición es:}
+\begin{opts}
+  \item el supuesto de tendencias paralelas (Parallel Trends Assumption): en ausencia del programa, el consumo del grupo de tratamiento habría seguido la misma trayectoria temporal que el grupo de control.
+  \item la ausencia absoluta de multicolinealidad entre los hogares.
+  \item que el coeficiente $R^2$ sea exactamente igual a 1.
+  \item que la tarifa de agua sea igual al costo medio.
+\end{opts}
+
+\q{Para medir el impacto de la tarifa subsidiada del SISFOH sobre el bienestar de los hogares pobres, cuando el subsidio se asigna estrictamente si el puntaje de pobreza del hogar es menor a un umbral $c_0$, el método econométrico óptimo es:}
+\begin{opts}
+  \item el método de componentes principales de Hotelling.
+  \item un modelo de Regresión Discontinua (Regression Discontinuity Design - RDD) nítido o difuso.
+  \item una prueba de Durbin-Watson para corte transversal.
+  \item un modelo de vectores autorregresivos (VAR).
+\end{opts}
+
+\q{Al modelar encuestas de SUNASS sobre la decisión discreta de un hogar de pagar o no una tarifa adicional por agua con 24 horas continuas de servicio ($Y_i \in \{0, 1\}$), la estimación por el Modelo Lineal de Probabilidad (MLP) mediante MCO presenta la debilidad de que:}
+\begin{opts}
+  \item obliga a que el tamaño de muestra sea infinito.
+  \item los coeficientes estimados son siempre iguales a cero.
+  \item puede predecir probabilidades fuera del intervalo $[0, 1]$ y adolece inherentemente de heterocedasticidad, siendo preferible estimar modelos no lineales de elección discreta como Logit o Probit por Máxima Verosimilitud.
+  \item no permite calcular el coeficiente de correlación de Pearson.
+\end{opts}
+
+\q{En un modelo de costos de inversión de las EPS que incluye simultáneamente como regresores: longitud de redes ($Km$), número de conexiones de agua ($Conex$) y volumen total producido ($m^3$), es muy probable encontrar Factores de Inflación de Varianza ($VIF > 10$) debido a:}
+\begin{opts}
+  \item la correlación serial negativa entre los operadores.
+  \item la falta de normalidad de los residuos de White.
+  \item la presencia de subsidios cruzados.
+  \item la fuerte multicolinealidad estructural entre variables que reflejan conjuntamente la escala física y operativa de la infraestructura de saneamiento.
+\end{opts}
+
+\q{Al modelar los costos de mantenimiento de redes de una EPS, si se incluye el porcentaje de Agua No Facturada ($ANF$) como regresor explicativo, existe endogeneidad por causalidad inversa porque:}
+\begin{opts}
+  \item un alto ANF (fugas no controladas) incrementa los costos de reparación, pero a su vez un recorte presupuestal en mantenimiento preventivo dispara las fugas y eleva el ANF.
+  \item no existen datos históricos sobre el agua en el Perú.
+  \item el ANF no puede medirse con instrumentos físicos.
+  \item el ANF es una variable fija determinada por ley.
+\end{opts}
+
+\q{En encuestas de hogares donde se evalúa el gasto en agua potable, muchas familias periurbanas carecen de conexión a la red pública y no reportan tarifa de EPS. Modelar el gasto en agua solo para los hogares conectados genera un problema econométrico de:}
+\begin{opts}
+  \item autocorrelación de orden 12.
+  \item multicolinealidad perfecta en la variable independiente.
+  \item violación del supuesto de no autocorrelación de Durbin.
+  \item sesgo de selección muestral (Sample Selection Bias), el cual se corrige mediante el procedimiento en dos etapas de James Heckman (Heckit).
+\end{opts}
+
+\q{Al estimar la productividad de las 50 EPS mediante un panel de datos durante el periodo regulatorio 2020-2025 ($Y_{it} = \alpha_i + X_{it}\beta + u_{it}$), el modelo de Efectos Fijos (Fixed Effects) es preferible al de MCO agrupado (Pooled) porque:}
+\begin{opts}
+  \item no requiere calcular los grados de libertad.
+  \item asume que todas las EPS tienen exactamente la misma eficiencia de gestión.
+  \item controla por la heterogeneidad no observada e invariante en el tiempo de cada EPS (geografía local, cultura de pago de la ciudad, antigüedad media de las tuberías) aun cuando esté correlacionada con los regresores $X_{it}$.
+  \item elimina automáticamente los errores estándar de la regresión.
+\end{opts}
+
+\q{La prueba de Hausman en modelos de datos de panel compara el estimador de Efectos Fijos ($\hat{\beta}_{FE}$) con el de Efectos Aleatorios ($\hat{\beta}_{RE}$). Si la hipótesis nula $H_0: Cov(\alpha_i, X_{it}) = 0$ es rechazada estadísticamente ($p < 0.05$):}
+\begin{opts}
+  \item ambos estimadores son idénticos al estimador MCO agrupado.
+  \item el modelo no puede estimarse por ningún método econométrico.
+  \item el estimador de Efectos Aleatorios es consistente y más eficiente.
+  \item el estimador de Efectos Aleatorios es inconsistente debido a la correlación entre la heterogeneidad individual y los regresores, debiendo utilizarse obligatoriamente el estimador de Efectos Fijos.
+\end{opts}
+
+\q{En el cálculo del Costo Promedio Ponderado de Capital (WACC regulatorio) que fija SUNASS para remunerar las inversiones de las EPS, el costo del capital accionario ($K_e$) se estima habitualmente mediante el modelo Capital Asset Pricing Model (CAPM): $K_e = R_f + \beta_L (R_m - R_f) + RP$. En esta ecuación, el coeficiente $\beta_L$ se estima econométricamente mediante:}
+\begin{opts}
+  \item una regresión de series de tiempo del retorno de las acciones de empresas reguladas comparables contra el retorno del portafolio de mercado.
+  \item la prueba de Durbin-Watson sobre la tasa de interés interbancaria.
+  \item el logaritmo natural del volumen de agua facturada por Sedapal.
+  \item el cociente entre el activo fijo y el pasivo corriente de la EPS.
+\end{opts}
+
+\q{Dado que las EPS peruanas son empresas estatales no cotizadas en bolsa, SUNASS utiliza Betas de empresas comparables internacionales (proxy) desapalancadas y reapalancadas mediante la fórmula de Hamada: $\beta_L = \beta_U [1 + (1 - T)(D/E)]$. Si la Beta desapalancada promedio es $\beta_U = 0.50$, la tasa del impuesto a la renta es $T = 30\%$ y la estructura óptima de endeudamiento es $D/E = 0.60$, ¿cuál es la Beta apalancada regulada $\beta_L$?}
+\begin{opts}
+  \item $\beta_L = 1.00$
+  \item $\beta_L = 0.71$
+  \item $\beta_L = 0.85$
+  \item $\beta_L = 0.50$
+\end{opts}
+
+\q{Para modelar econométricamente el número de roturas de tuberías o incidentes de atoros de alcantarillado por sector hidrográfico ($Y_i = 0, 1, 2, \dots$, datos de conteo), el modelo más apropiado que supera la limitación de la regresión lineal es:}
+\begin{opts}
+  \item el modelo de paseo aleatorio con deriva.
+  \item la prueba de cointegración de Engle-Granger.
+  \item el modelo de regresión de Poisson o el modelo Binomial Negativo (este último preferible cuando existe sobredispersión, es decir, $Var(Y) > E[Y]$).
+  \item el modelo de Mínimos Cuadrados Ordinarios simple sin intercepto.
+\end{opts}
+
+\q{En la detección forense de colusión en licitaciones públicas de obras de agua y saneamiento convocadas por el Estado peruano, los econometristas analizan anomalías estadísticas en las ofertas de los postores buscando:}
+\begin{opts}
+  \item un coeficiente $R^2$ igual a cero en la ecuación de contratación.
+  \item que todos los postores coticen exactamente al costo marginal.
+  \item una distribución bimodal de los precios de mercado.
+  \item una varianza anormalmente reducida de las propuestas económicas y una correlación artificialmente alta entre los precios unitarios de competidores independientes en diferentes ítems licitados.
+\end{opts}
+
+\q{Un regulador implementa un modelo de Nowcasting para proyectar en tiempo real la recaudación tarifaria de las EPS durante episodios de crisis macroeconómica. Este método econométrico se caracteriza por:}
+\begin{opts}
+  \item estimar el estado contemporáneo de variables rezagadas mediante el aprovechamiento sistemático de datos de alta frecuencia (como consumo eléctrico, transacciones bancarias y facturación electrónica) disponibles antes de los reportes contables oficiales.
+  \item asumir que el término de perturbación estocástica es conocido con total certeza.
+  \item proyectar variables a 50 años utilizando el Teorema de Coase.
+  \item utilizar únicamente modelos de equilibrio general computable estáticos.
+\end{opts}
+
+\q{En las auditorías regulatorias de calidad bacteriológica del agua potable realizadas por SUNASS y DIGESA, la determinación del tamaño mínimo de muestra de grifos fiscalizados ($n$) para contrastar cumplimiento normativo exige balancear:}
+\begin{opts}
+  \item la tasa de descuento del BCRP y el tipo de cambio spot.
+  \item el error de Tipo I (riesgo del productor: sancionar a una EPS que sí cumple la norma) y el error de Tipo II (riesgo del consumidor: no detectar agua con coliformes fecales que pone en riesgo la salud pública), maximizando la potencia estadística de la prueba.
+  \item la depreciación contable de los autoclaves de laboratorio.
+  \item el $R^2$ ajustado con el factor de inflación de varianza.
+\end{opts}
+

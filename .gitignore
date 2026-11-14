@@ -1,0 +1,25 @@
+# Archivos temporales de compilación LaTeX / Beamer
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.vrb
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Progreso personal del simulador (se regenera localmente al estudiar)
+cuaderno_errores.json
+historial_simulacros.json
+
+# Sistema operativo / Editor
+.DS_Store
+Thumbs.db
+*~

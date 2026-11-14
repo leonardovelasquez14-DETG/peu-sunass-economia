@@ -1,0 +1,284 @@
+\section*{Bloque B. Aplicaciones cuantitativas y contrastes econométricos}
+
+\noindent\textit{Preguntas 31 a 65. Evalúan la capacidad de cálculo analítico de estimadores, varianzas residuales, pruebas de significancia, diagnósticos de heterocedasticidad (White, Breusch-Pagan), autocorrelación (Durbin-Watson, Prais-Winsten), sesgo de variable omitida, variables instrumentales (2SLS) y pruebas de especificación.}
+
+\q{En una regresión lineal simple $Y_i = \beta_0 + \beta_1 X_i + u_i$ con $n = 50$ observaciones, se tiene: $\sum (X_i - \bar{X})^2 = 400$, $\sum (Y_i - \bar{Y})^2 = 900$ y $\sum (X_i - \bar{X})(Y_i - \bar{Y}) = 600$. ¿Cuál es el valor estimado de la pendiente MCO $\hat{\beta}_1$?}
+\begin{opts}
+  \item $\hat{\beta}_1 = 2.25$
+  \item $\hat{\beta}_1 = 1.00$
+  \item $\hat{\beta}_1 = 1.50$
+  \item $\hat{\beta}_1 = 0.67$
+\end{opts}
+
+\q{Para los datos de la pregunta anterior, determine el coeficiente de correlación lineal de Pearson $r$ y el coeficiente de determinación $R^2$ del modelo:}
+\begin{opts}
+  \item $r = 0.80$ y $R^2 = 0.64$
+  \item $r = 0.50$ y $R^2 = 0.25$
+  \item $r = 0.75$ y $R^2 = 0.56$
+  \item $r = 1.00$ y $R^2 = 1.00$
+\end{opts}
+
+\q{En un modelo de regresión con $n = 45$ observaciones y $k = 5$ parámetros estimados, la Suma de Cuadrados Residuales es $SCR = 800$. ¿Cuál es la varianza residual estimada ($s^2$) y el error estándar de la regresión ($s$)?}
+\begin{opts}
+  \item $s^2 = 20$ y $s = 4.47$
+  \item $s^2 = 17.78$ y $s = 4.22$
+  \item $s^2 = 25$ y $s = 5.00$
+  \item $s^2 = 16$ y $s = 4.00$
+\end{opts}
+
+\q{En una regresión de demanda de agua, el coeficiente estimado de la variable precio es $\hat{\beta}_1 = -0.45$ con un error estándar de $EE(\hat{\beta}_1) = 0.15$. El tamaño muestral es $n = 120$ y el modelo tiene $k = 4$ parámetros. Para contrastar $H_0: \beta_1 = 0$ frente a $H_1: \beta_1 \neq 0$ con un nivel de significancia del $5\%$ (valor crítico bilateral $t_{0.025, 116} \approx 1.98$):}
+\begin{opts}
+  \item El estadístico es $t = -6.75$, no concluyente.
+  \item El estadístico es $t = -3.00$, cuyo valor absoluto $|-3.00| > 1.98$, por lo que se rechaza $H_0$ concluyendo que el precio es estadísticamente significativo al $5\%$.
+  \item El estadístico es $t = -0.067$, no significativo.
+  \item El estadístico es $t = -1.50$, por lo que no se rechaza $H_0$.
+\end{opts}
+
+\q{Un modelo de regresión múltiple con $k = 4$ parámetros (3 variables explicativas más constante) y $n = 64$ observaciones arroja un coeficiente de determinación de $R^2 = 0.60$. ¿Cuál es el valor del estadístico $F$ de significancia global de la regresión?}
+\begin{opts}
+  \item $F = 45.0$
+  \item $F = 20.0$
+  \item $F = 30.0$
+  \item $F = 15.0$
+\end{opts}
+
+\q{Se contrastan 2 restricciones lineales simultáneas ($q = 2$) en un modelo no restringido con $k = 6$ parámetros y $n = 106$ observaciones. La suma de cuadrados residuales no restringida es $SCR_{NR} = 500$ y la restringida es $SCR_R = 560$. El valor del estadístico $F$ es:}
+\begin{opts}
+  \item $F = 12.0$
+  \item $F = 15.0$
+  \item $F = 8.0$
+  \item $F = 6.0$
+\end{opts}
+
+\q{La estimación de una función de demanda residencial de agua arroja el modelo: $\ln(Q) = 2.4 - 0.35 \ln(P) + 0.40 \ln(Y)$, donde $Q$ es el consumo mensual en $m^3$, $P$ es la tarifa por $m^3$ y $Y$ es el ingreso familiar. Si la tarifa de agua sube en un $10\%$, manteniendo el ingreso constante:}
+\begin{opts}
+  \item el consumo de agua se reduce en aproximadamente $3.5\%$, confirmando una demanda inelástica al precio.
+  \item el consumo de agua aumenta en $4.0\%$ por ser un bien Giffen.
+  \item el consumo de agua se reduce en 3.5 metros cúbicos absolutos.
+  \item la elasticidad precio de la demanda es igual a $-0.035$.
+\end{opts}
+
+\q{En una ecuación semilogarítmica de costos operativos de EPS: $\ln(OPEX) = 8.2 + 0.04 \, Conexiones$, donde $Conexiones$ está expresada en miles de conexiones activas. Si una EPS añade 5 mil conexiones adicionales a su red:}
+\begin{opts}
+  \item sus costos operativos aumentan en 200 soles.
+  \item sus costos operativos aumentan en aproximadamente un $20\%$ ($100 \times 0.04 \times 5$).
+  \item sus costos operativos aumentan en un $4\%$.
+  \item la elasticidad costo de las conexiones es $0.04$.
+\end{opts}
+
+\q{En un modelo lineal-log $Y = 50 + 200 \ln(X)$, si la variable $X$ se incrementa en un $1\%$:}
+\begin{opts}
+  \item la variable dependiente $Y$ aumenta en un $1\%$.
+  \item la variable dependiente $Y$ aumenta en 200 unidades.
+  \item la variable dependiente $Y$ aumenta en aproximadamente 2 unidades ($200 / 100$).
+  \item la variable dependiente $Y$ se duplica.
+\end{opts}
+
+\q{Al analizar la multicolinealidad entre dos variables explicativas en un modelo de costos de saneamiento, la regresión auxiliar de una de ellas sobre las demás arroja un coeficiente de determinación de $R_j^2 = 0.80$. ¿Cuál es el Factor de Inflación de la Varianza ($VIF$) correspondiente?}
+\begin{opts}
+  \item $VIF = 10.0$
+  \item $VIF = 4.0$
+  \item $VIF = 1.25$
+  \item $VIF = 5.0$
+\end{opts}
+
+\q{En un modelo con dos regresores y constante, si la matriz $(X'X)^{-1}$ tiene en su diagonal principal los elementos $[0.5, 0.04, 0.09]$ y la varianza residual estimada es $s^2 = 25$, ¿cuál es el error estándar del segundo estimador de pendiente $EE(\hat{\beta}_2)$?}
+\begin{opts}
+  \item $EE(\hat{\beta}_2) = 1.50$
+  \item $EE(\hat{\beta}_2) = 2.25$
+  \item $EE(\hat{\beta}_2) = 5.00$
+  \item $EE(\hat{\beta}_2) = 0.75$
+\end{opts}
+
+\q{Para contrastar heterocedasticidad mediante la prueba de White en un modelo con 2 regresores sin interacciones (la regresión auxiliar incluye constante, $X_1, X_2, X_1^2, X_2^2, X_1 X_2$, total 5 regresores excluyendo constante), se tiene $n = 100$ y el $R^2$ auxiliar es $R_{aux}^2 = 0.15$. El estadístico $LM$ de White y su distribución son:}
+\begin{opts}
+  \item $LM = 30.0 \sim F_{5, 95}$
+  \item $LM = 15.0 \sim \chi^2_5$
+  \item $LM = 7.5 \sim \chi^2_2$
+  \item $LM = 1.50 \sim t_{95}$
+\end{opts}
+
+\q{En una prueba de Breusch-Pagan con $m = 3$ variables explicativas en la ecuación de la varianza y $n = 80$ observaciones, el $R^2$ de la regresión auxiliar de residuos al cuadrado es $R_{BP}^2 = 0.10$. El estadístico $LM = n R_{BP}^2$ es:}
+\begin{opts}
+  \item $LM = 2.4$
+  \item $LM = 26.67$
+  \item $LM = 8.0$
+  \item $LM = 0.8$
+\end{opts}
+
+\q{Si se conoce que la varianza del error en un modelo de corte transversal es proporcional al cuadrado de una variable $X_i$ ($Var(u_i|X) = \sigma^2 X_i^2$), la transformación adecuada de Mínimos Cuadrados Ponderados (WLS) sobre la ecuación $Y_i = \beta_0 + \beta_1 X_i + u_i$ exige estimar:}
+\begin{opts}
+  \item $Y_i X_i = \beta_0 X_i + \beta_1 X_i^2 + u_i X_i$
+  \item $\frac{Y_i}{X_i^2} = \frac{\beta_0}{X_i^2} + \frac{\beta_1}{X_i} + \frac{u_i}{X_i^2}$
+  \item $\ln(Y_i) = \beta_0 + \beta_1 \ln(X_i) + u_i$
+  \item $\frac{Y_i}{X_i} = \beta_0 \left(\frac{1}{X_i}\right) + \beta_1 + \frac{u_i}{X_i}$
+\end{opts}
+
+\q{En una regresión de series de tiempo trimestrales de consumo de agua con $n = 100$ observaciones, el coeficiente de autocorrelación muestral de primer orden de los residuos es $\hat{\rho} = 0.60$. ¿Cuál es el valor aproximado del estadístico de Durbin-Watson $d$?}
+\begin{opts}
+  \item $d \approx 0.80$
+  \item $d \approx 3.20$
+  \item $d \approx 1.20$
+  \item $d \approx 2.00$
+\end{opts}
+
+\q{Si los límites críticos de Durbin-Watson para $n = 100$ y $k' = 2$ regresores al nivel del $5\%$ son $d_L = 1.63$ y $d_U = 1.72$, y el valor calculado es $d = 0.80$, la conclusión estadística es:}
+\begin{opts}
+  \item no existe autocorrelación serial.
+  \item existe evidencia concluyente de autocorrelación serial positiva ($d < d_L$).
+  \item existe autocorrelación serial negativa.
+  \item la prueba cae en la zona de indecisión.
+\end{opts}
+
+\q{Si en un modelo de series de tiempo el estadístico de Durbin-Watson resulta ser $d = 1.30$, ¿cuál es el valor estimado del parámetro autorregresivo $\hat{\rho}$ para aplicar la transformación de Cochrane-Orcutt?}
+\begin{opts}
+  \item $\hat{\rho} \approx -0.35$
+  \item $\hat{\rho} \approx 0.15$
+  \item $\hat{\rho} \approx 0.35$
+  \item $\hat{\rho} \approx 0.70$
+\end{opts}
+
+\q{Bajo la transformación cuasi-diferenciada de Prais-Winsten con parámetro $\hat{\rho} = 0.35$, la variable dependiente transformada para el primer periodo ($t=1$) se define como:}
+\begin{opts}
+  \item $Y_1^* = Y_1 - 0.35 Y_0$
+  \item $Y_1^* = Y_1$
+  \item $Y_1^* = 0$
+  \item $Y_1^* = \sqrt{1 - (0.35)^2} \, Y_1 \approx 0.9367 \, Y_1$
+\end{opts}
+
+\q{El verdadero modelo poblacional es $Y = 10 + 4 X_1 + 2 X_2 + u$, pero el investigador omite por error la variable $X_2$ y estima por MCO la regresión simple $Y = \tilde{\beta}_0 + \tilde{\beta}_1 X_1 + v$. Si la regresión auxiliar de la variable omitida es $X_2 = 1.5 + 0.5 X_1$, ¿a qué valor convergerá el estimador de la pendiente $\tilde{\beta}_1$?}
+\begin{opts}
+  \item $\tilde{\beta}_1$ converge a 5.0 (sesgo positivo de +1.0)
+  \item $\tilde{\beta}_1$ converge a 6.0
+  \item $\tilde{\beta}_1$ converge a 2.0
+  \item $\tilde{\beta}_1$ converge a 4.0
+\end{opts}
+
+\q{En una regresión simple con regresor endógeno $X$, se utiliza un instrumento exógeno $Z$. Se dispone de: $\widehat{Cov}(Z, Y) = 150$ y $\widehat{Cov}(Z, X) = 75$. ¿Cuál es el estimador de Variables Instrumentales $\hat{\beta}_{IV}$?}
+\begin{opts}
+  \item $\hat{\beta}_{IV} = 0.50$
+  \item $\hat{\beta}_{IV} = 2.00$
+  \item $\hat{\beta}_{IV} = 11250$
+  \item $\hat{\beta}_{IV} = 1.50$
+\end{opts}
+
+\q{En la estimación por Mínimos Cuadrados en Dos Etapas (MC2E / 2SLS) con un regresor endógeno, la regresión de primera etapa arrojó un estadístico $F$ sobre los instrumentos excluidos de $F = 4.2$. Siguiendo la regla de oro de Stock, Wright y Yogo (2002) para detectar 'Instrumentos Débiles':}
+\begin{opts}
+  \item la prueba de Durbin-Watson rechaza la endogeneidad.
+  \item el modelo debe estimarse por MCO sin instrumentos.
+  \item los instrumentos son débiles porque el estadístico $F < 10$, lo que implica que el estimador 2SLS puede estar fuertemente sesgado hacia el estimador MCO y los errores estándar estar distorsionados.
+  \item los instrumentos son perfectamente fuertes y válidos.
+\end{opts}
+
+\q{Para verificar si una variable sospechosa $X_1$ es realmente endógena mediante la prueba de especificación de Durbin-Wu-Hausman en forma de regresión:}
+\begin{opts}
+  \item se reemplaza $X_1$ por su inversa.
+  \item se exige que el $R^2$ sea mayor a 0.90.
+  \item se calcula la correlación entre $X_1$ y la constante.
+  \item se obtienen los residuos de la primera etapa $\hat{v}$ y se incorporan como un regresor adicional en la ecuación estructural original estimada por MCO; si el coeficiente de $\hat{v}$ es estadísticamente significativo según la prueba $t$, se rechaza la exogeneidad concluyendo que $X_1$ es endógena.
+\end{opts}
+
+\q{En un modelo con 1 variable endógena y 3 instrumentos excluidos (modelo sobreidentificado con $m = 3$ y $k_1 = 1$, grados de sobreidentificación $m - k_1 = 2$), la prueba de restricciones de sobreidentificación de Sargan arroja un estadístico de $Sargan = n R_{aux}^2 = 1.20$. Si el valor crítico al $5\%$ de $\chi^2_2$ es $5.99$, la conclusión es:}
+\begin{opts}
+  \item no se rechaza la hipótesis nula, lo que sugiere que los instrumentos son válidos y satisfacen la restricción de exclusión ($Cov(Z, u) = 0$).
+  \item los instrumentos son inválidos y están correlacionados con el error.
+  \item el modelo carece de observaciones suficientes.
+  \item debe eliminarse la variable endógena.
+\end{opts}
+
+\q{Al modelar diferencias de costos operativos entre regiones con 4 categorías (Costa, Sierra, Selva y Lima Metropolitana), si un economista incluye una variable ficticia (dummy) para cada una de las 4 regiones y además incluye el término constante en la regresión MCO:}
+\begin{opts}
+  \item el modelo gana máxima precisión econométrica.
+  \item se incurre en la 'Trampa de las Variables Ficticias' (Dummy Variable Trap), generando multicolinealidad perfecta que impide la estimación matemática de los coeficientes.
+  \item el $R^2$ se multiplica por cuatro.
+  \item los coeficientes miden directamente la desviación estándar.
+\end{opts}
+
+\q{En un modelo salarial $\ln(W) = \beta_0 + \beta_1 Educ + \beta_2 Mujer + \beta_3 (Educ \times Mujer) + u$, donde $Mujer$ es una dummy (1 si es mujer, 0 si es hombre), el retorno porcentual a un año adicional de educación para una mujer es:}
+\begin{opts}
+  \item $\beta_1$
+  \item $\beta_2 + \beta_3$
+  \item $\beta_1 + \beta_3$
+  \item $\beta_1 \times \beta_3$
+\end{opts}
+
+\q{En una regresión lineal con variables estandarizadas (donde cada variable se transforma restando su media y dividiendo entre su desviación estándar $Z_X = \frac{X - \bar{X}}{S_X}$):}
+\begin{opts}
+  \item la varianza residual es igual a $n - k$.
+  \item el $R^2$ se convierte en un número negativo.
+  \item los errores estándar se duplican.
+  \item el término constante estimado $\hat{\beta}_0$ es siempre idénticamente igual a cero.
+\end{opts}
+
+\q{La matriz de proyección o 'Matriz Sombrero' (Hat Matrix) definida como $H = X(X'X)^{-1}X'$ cumple las propiedades algebraicas de ser:}
+\begin{opts}
+  \item simétrica ($H' = H$) e idempotente ($H^2 = H$), con traza igual al número de regresores ($tr(H) = k$).
+  \item no invertible bajo cualquier dimensión.
+  \item estrictamente diagonal con ceros en la diagonal principal.
+  \item antisimétrica y ortogonal.
+\end{opts}
+
+\q{Una propiedad algebraica exacta de los residuos de MCO ($e = Y - X\hat{\beta}$) en cualquier modelo que incluya término constante es que:}
+\begin{opts}
+  \item los residuos son independientes entre sí para cualquier tamaño muestral.
+  \item la suma de los residuos es cero ($\sum_{i=1}^n e_i = 0$) y los residuos son ortogonales a cada uno de los regresores ($X'e = 0$).
+  \item la media de los residuos es igual a la varianza de $Y$.
+  \item el producto de los residuos es igual a 1.
+\end{opts}
+
+\q{La descomposición clásica de la varianza en MCO establece que la Suma Total de Cuadrados ($STC$) se descompone en Suma de Cuadrados Explicada ($SEC$) más Suma de Cuadrados Residuales ($SCR$): $STC = SEC + SCR$. Esta igualdad se cumple estrictamente siempre que:}
+\begin{opts}
+  \item el número de observaciones sea mayor a 1000.
+  \item no exista correlación entre $Y$ y $X$.
+  \item el modelo de regresión incluya un término constante (intercepto).
+  \item todos los regresores sigan una distribución normal bivariada.
+\end{opts}
+
+\q{Para un coeficiente estimado $\hat{\beta}_1 = 2.50$ con $EE(\hat{\beta}_1) = 0.25$ en una muestra con $n - k = 60$ grados de libertad (valor crítico $t_{0.025} = 2.00$), el intervalo de confianza al $95\%$ es:}
+\begin{opts}
+  \item $[1.50, \; 3.50]$
+  \item $[2.25, \; 2.75]$
+  \item $[2.45, \; 2.55]$
+  \item $[2.00, \; 3.00]$
+\end{opts}
+
+\q{Al realizar una predicción individual puntual de $Y_0$ para un vector de valores de regresores $x_0$, la varianza del error de predicción individual $Var(Y_0 - \hat{Y}_0)$ es:}
+\begin{opts}
+  \item $\sigma^2 [1 + x_0' (X'X)^{-1} x_0]$, la cual es mayor que la varianza de la media condicional debido a la incertidumbre intrínseca de la perturbación futura $u_0$.
+  \item $\sigma^2 (X'X)^{-1}$
+  \item $\sigma^2 / n$
+  \item idéntica a cero si la muestra es grande.
+\end{opts}
+
+\q{En la selección entre especificaciones de modelos rivales, el Criterio de Información de Schwarz (BIC / SIC) se diferencia del Criterio de Akaike (AIC) en que:}
+\begin{opts}
+  \item el AIC solo se utiliza en modelos con variables instrumentales.
+  \item el BIC penaliza la inclusión de parámetros adicionales de forma más severa que el AIC (utilizando $\ln(n) k$ frente a $2k$), tendiendo a seleccionar modelos más parsimoniosos.
+  \item el BIC no penaliza el número de parámetros.
+  \item el BIC requiere que el $R^2$ sea mayor a 0.80.
+\end{opts}
+
+\q{La prueba de normalidad de Jarque-Bera sobre los residuos de MCO evalúa si el coeficiente de asimetría muestral $S$ y la curtosis muestral $K$ coinciden con los de una distribución normal teórica ($S=0, K=3$). Su estadístico es:}
+\begin{opts}
+  \item $JB = n (S + K) \sim t_{n-2}$
+  \item $JB = \sqrt{n} (K - 3)$
+  \item $JB = \frac{n}{6} \left( S^2 + \frac{(K - 3)^2}{4} \right) \sim \chi^2_2$
+  \item $JB = \frac{S^2}{K^2} \sim F_{1, n}$
+\end{opts}
+
+\q{La prueba RESET de Ramsey (Regression Equation Specification Error Test) se utiliza en econometría para:}
+\begin{opts}
+  \item contrastar si existe heterocedasticidad condicionada.
+  \item determinar el número óptimo de rezagos en un modelo ARIMA.
+  \item calcular la elasticidad cruzada de la demanda.
+  \item detectar errores de especificación de la forma funcional o variables omitidas incorporando potencias de los valores ajustados $\hat{Y}^2, \hat{Y}^3$ en una regresión auxiliar y evaluando su significancia con una prueba $F$.
+\end{opts}
+
+\q{Al estimar un modelo de MCO con restricciones lineales $R\beta = r$ (por ejemplo, rendimientos constantes a escala en una función Cobb-Douglas $\beta_1 + \beta_2 = 1$), el estimador MCO restringido $\hat{\beta}_R$ frente al no restringido $\hat{\beta}_{NR}$:}
+\begin{opts}
+  \item siempre tiene una suma de residuos al cuadrado mayor o igual ($SCR_R \ge SCR_{NR}$), pues optimiza sobre un espacio más acotado de parámetros.
+  \item siempre tiene una suma de residuos al cuadrado menor o igual ($SCR_R \le SCR_{NR}$).
+  \item es necesariamente inconsistente.
+  \item no permite calcular errores estándar.
+\end{opts}
+

@@ -1,0 +1,409 @@
+\documentclass[aspectratio=169, 10pt]{beamer}
+\usepackage{sunass_estilo}
+
+\title{Módulo III: Competencia Perfecta}
+\subtitle{Guía Teórica de Repaso Rápido · PEU SUNASS}
+\author[PEU SUNASS · Economía]{Preparación Examen de Admisión PEU SUNASS}
+\institute{Basado en el Temario Oficial de Economía · Microeconomía}
+\date[2026]{2026}
+
+\begin{document}
+
+% ==============================================================================
+% SLIDE 1: PORTADA
+% ==============================================================================
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+% ==============================================================================
+% SLIDE 2: SUPUESTOS Y MAPA CONCEPTUAL
+% ==============================================================================
+\begin{frame}{Mapa Conceptual y Supuestos de la Competencia Perfecta}
+  \vspace{0.15cm}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}
+      \tarjeta{azulPrincipal}{1. Supuestos Estructurales}{
+        • \textbf{Atomicidad:} muchos compradores y vendedores pequeños (precio-aceptantes).\\
+        • \textbf{Homogeneidad:} producto idéntico (sustituto perfecto).\\
+        • \textbf{Información perfecta} y cero costos de transacción.
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{naranjaAcento}{2. Equilibrio CP y LP}{
+        • \textbf{Corto plazo:} número fijo de firmas \(N\); puede haber \(\pi > 0\) o \(\pi < 0\).\\
+        • \textbf{Largo plazo:} libre entrada y salida \(\implies \pi = 0\) en equilibrio.
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{verdeAcento}{3. Bienestar e Intervención}{
+        • Maximiza \(W = EC + EP\) (eficiencia asignativa y productiva).\\
+        • Análisis de impuestos, subsidios, precios tope y aranceles (\(PIE\)).
+      }
+    \end{column}
+  \end{columns}
+
+  \vspace{0.2cm}
+  \recuadroclave{
+    \small\textbf{Consecuencia clave:} Cada firma enfrenta una curva de demanda individual \textbf{perfectamente elástica} (\(|\varepsilon_d| = \infty\)) al precio de mercado: \(P = IMe = IMg\).
+  }
+  \mensajefinal{En competencia perfecta ninguna empresa tiene poder de mercado: el Índice de Lerner es \(L = \frac{P-CMg}{P} = 0\).}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 3: MAXIMIZACIÓN DEL BENEFICIO Y OFERTA DE CORTO PLAZO
+% ==============================================================================
+\begin{frame}{1. Maximización del Beneficio y Oferta de la Industria (CP)}
+  \begin{columns}[T]
+    \begin{column}{0.53\textwidth}
+      {\small\textbf{Agregación Horizontal de Ofertas Individuales}}
+      \vspace{0.05cm}
+      \begin{tikzpicture}[scale=0.76]
+        % Panel Izq: Firma
+        \begin{axis}[
+          axis lines=left,
+          xlabel={$q_i$}, ylabel={$P$},
+          xmin=0, xmax=5.5, ymin=0, ymax=9,
+          xtick={3.5}, xticklabels={$q_i^*$},
+          ytick={2.5, 6}, yticklabels={$\min CVMe$, $P^*$},
+          width=4.2cm, height=5.0cm,
+          name=firma
+        ]
+          \addplot[azulPrincipal, very thick, domain=1.5:4.5, samples=30] {2.5 + 0.4*(x-1.5)^2};
+          \addplot[grisTexto, dashed, domain=0.2:1.5, samples=20] {2.5 + 0.4*(x-1.5)^2};
+          \draw[rojoAcento, very thick] (axis cs:0, 6) -- (axis cs:5.0, 6);
+          \draw[dotted, grisTexto] (axis cs:3.5, 0) -- (axis cs:3.5, 6);
+          \node[azulPrincipal, font=\tiny] at (axis cs:4.2, 7.6) {$CMg_i$};
+        \end{axis}
+
+        % Panel Der: Industria (N firmas)
+        \begin{axis}[
+          at={(firma.east)}, anchor=west, xshift=1.0cm,
+          axis lines=left,
+          xlabel={$Q = \sum q_i$}, ylabel={$P$},
+          xmin=0, xmax=8, ymin=0, ymax=9,
+          xtick={4.5}, xticklabels={$Q^*$},
+          ytick={2.5, 6}, yticklabels={$\min CVMe$, $P^*$},
+          width=4.4cm, height=5.0cm
+        ]
+          \addplot[verdeAcento, very thick, domain=1.5:6.5, samples=30] {2.5 + 0.14*(x-1.5)^2};
+          \addplot[naranjaAcento, very thick, domain=1.0:7.2] {9.2 - 0.71*x};
+          \draw[dotted, grisTexto] (axis cs:0, 6) -- (axis cs:4.5, 6) -- (axis cs:4.5, 0);
+          \node[verdeAcento, font=\tiny] at (axis cs:5.8, 7.8) {$S_{CP}$};
+          \node[naranjaAcento, font=\tiny] at (axis cs:6.4, 3.8) {$D$};
+        \end{axis}
+      \end{tikzpicture}
+    \end{column}
+
+    \begin{column}{0.44\textwidth}
+      \indicador{Condición de Primer y Segundo Orden}{azulPrincipal}{\(P = CMg(q_i) \quad \text{y} \quad \frac{d\,CMg}{dq_i} > 0\)}
+      {\scriptsize
+        • La firma produce en el tramo \textbf{creciente} del \(CMg\) por encima de \(\min CVMe\).\\
+        • Si \(P = CMg\) se cumple en el tramo decreciente, es un mínimo de beneficio.\\[5pt]
+      }
+      \indicador{Oferta de la Industria (CP)}{verdeAcento}{\(Q^s(P) = \sum_{i=1}^N q_i^s(P)\)}
+      {\scriptsize
+        • Es la \textbf{suma horizontal} de las ofertas individuales.\\
+        • Si los precios de factores suben al expandirse toda la industria, \(S_{CP}\) es más inelástica que la suma simple.
+      }
+    \end{column}
+  \end{columns}
+
+  \mensajefinal{Un impuesto de suma alzada (fijo) o un alza del costo fijo NO desplaza \(S_{CP}\); solo reduce \(\pi\) en el corto plazo.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 4: EQUILIBRIO A LARGO PLAZO (LIBRE ENTRADA Y SALIDA)
+% ==============================================================================
+\begin{frame}{2. Equilibrio Competitivo a Largo Plazo (\(\pi = 0\))}
+  \begin{columns}[T]
+    \begin{column}{0.53\textwidth}
+      {\small\textbf{Ajuste de Entrada/Salida hasta Beneficio Económico Nulo}}
+      \vspace{0.05cm}
+      \begin{tikzpicture}[scale=0.78]
+        \begin{axis}[
+          axis lines=left,
+          xlabel={Producción ($q_i$)}, ylabel={Precio / Costo},
+          xmin=0, xmax=8, ymin=0, ymax=10,
+          xtick={4.0}, xticklabels={$q_{EME}$},
+          ytick={3.5}, yticklabels={$P_{LP}^*$},
+          width=8.2cm, height=5.2cm
+        ]
+          % CMe_LP
+          \addplot[azulPrincipal, very thick, domain=1.2:6.8, samples=50] {3.5 + 0.5*(x-4)^2};
+          \node[azulPrincipal, font=\scriptsize, anchor=west] at (axis cs:6.1, 6.2) {$CMe_{LP}$};
+          % CMg_LP
+          \addplot[rojoAcento, very thick, domain=2.0:5.8, samples=40] {3.5 + 1.5*(x-4)^2};
+          \node[rojoAcento, font=\scriptsize, anchor=south east] at (axis cs:5.6, 8.2) {$CMg_{LP}$};
+          % Precio LP = min CMe_LP
+          \draw[verdeAcento, very thick] (axis cs:0, 3.5) -- (axis cs:7.5, 3.5);
+          \node[verdeAcento, font=\scriptsize, anchor=south west] at (axis cs:0.3, 3.6) {\(P = IMg\)};
+          % Punto optimo
+          \addplot[only marks, mark=*, mark size=2.6pt, verdeAcento] coordinates {(4.0, 3.5)};
+          \draw[dotted, grisTexto] (axis cs:4.0, 0) -- (axis cs:4.0, 3.5);
+        \end{axis}
+      \end{tikzpicture}
+    \end{column}
+
+    \begin{column}{0.44\textwidth}
+      \indicador{Condición Triple de Equilibrio LP}{verdeAcento}{\(P^* = CMg_{LP} = \min CMe_{LP}\)}
+      {\scriptsize
+        • \textbf{Eficiencia asignativa:} \(P = CMg\) (no hay peso muerto).\\
+        • \textbf{Eficiencia productiva:} se produce en la Escala Mínima Eficiente (\(\min CMe_{LP}\)).\\
+        • \textbf{Beneficio económico nulo (\(\pi = 0\)):} no hay incentivos para entrar ni salir. Incluye el \textbf{beneficio normal} (costo de oportunidad del capital).\\[5pt]
+      }
+      \indicador{Número de Firmas en Equilibrio}{azulPrincipal}{\(N^* = \frac{Q^d(P_{LP}^*)}{q_{EME}}\)}
+      {\scriptsize
+        Si aumenta la demanda de mercado, a CP sube \(P\) y \(\pi>0\), entran nuevas firmas, \(S_{CP}\) se desplaza a la derecha y \(P\) retorna a \(\min CMe_{LP}\).
+      }
+    \end{column}
+  \end{columns}
+
+  \mensajefinal{En el equilibrio a largo plazo, el beneficio económico es cero (\(\pi=0\)), pero el beneficio contable es positivo.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 5: OFERTA DE LA INDUSTRIA A LARGO PLAZO (3 CASOS CLÁSICOS)
+% ==============================================================================
+\begin{frame}{3. Oferta de la Industria a Largo Plazo (\(S_{LP}\))}
+  \vspace{0.1cm}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}
+      \tarjeta{azulPrincipal}{Costos Constantes (\(S_{LP}\) Horizontal)}{
+        Al expandirse la industria, el precio de los insumos \textbf{no varía} (industria pequeña frente al mercado de factores).\\[4pt]
+        \(S_{LP}\) es perfectamente elástica al nivel \(P = \min CMe_{LP}\).
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{naranjaAcento}{Costos Crecientes (\(S_{LP}\) Positiva)}{
+        Al entrar firmas, la mayor demanda de insumos específicos (ej. tierra o ingenieros especialistas) sube \((w, r)\) y eleva \(\min CMe_{LP}\).\\[4pt]
+        \(S_{LP}\) tiene \textbf{pendiente positiva}.
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{verdeAcento}{Costos Decrecientes (\(S_{LP}\) Negativa)}{
+        La expansión genera \textbf{externalidades pecuniarias positivas} (mejores redes de proveedores, infraestructura común) y baja \(\min CMe_{LP}\).\\[4pt]
+        \(S_{LP}\) tiene \textbf{pendiente negativa}.
+      }
+    \end{column}
+  \end{columns}
+
+  \vspace{0.15cm}
+  \recuadroclave{
+    \small\textbf{Renta Económica vs. Cuasi-Renta:} A LP, si hay firmas con insumos escasos de menor costo, ellas obtienen \textbf{renta económica} (diferencia frente a la firma marginal), mientras la firma marginal tiene \(\pi = 0\). A CP, el \(EP = IT - CV = \pi + CF\) se llama \textbf{cuasi-renta}.
+  }
+  \mensajefinal{Un aumento en la demanda siempre sube \(Q^*\) en cualquier industria, pero solo sube \(P^*\) a LP en industrias de costos crecientes.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 6: EXCEDENTES Y EFICIENCIA DE PARETO
+% ==============================================================================
+\begin{frame}{4. Excedentes del Consumidor, Productor y Bienestar Social}
+  \begin{columns}[T]
+    \begin{column}{0.53\textwidth}
+      {\small\textbf{Maximización del Excedente Total (\(W = EC + EP\))}}
+      \vspace{0.05cm}
+      \begin{tikzpicture}[scale=0.78]
+        \begin{axis}[
+          axis lines=left,
+          xlabel={Cantidad ($Q$)}, ylabel={Precio ($P$)},
+          xmin=0, xmax=10, ymin=0, ymax=10,
+          xtick={4.5}, xticklabels={$Q^*$},
+          ytick={1.5, 5.1, 9.0}, yticklabels={$a$, $P^*$, $b$},
+          width=8.2cm, height=5.2cm
+        ]
+          % Areas EC y EP
+          \addplot[fill=azulClaroFondo, draw=none] coordinates {(0,5.1) (4.5,5.1) (0,9.0)} \closedcycle;
+          \addplot[fill=verdeAcento!18, draw=none] coordinates {(0,1.5) (4.5,5.1) (0,5.1)} \closedcycle;
+          % Demanda y Oferta
+          \addplot[azulPrincipal, very thick, domain=0:9] {9 - 0.8667*x};
+          \addplot[verdeAcento, very thick, domain=0:8] {1.5 + 0.8*x};
+          % Lineas de equilibrio
+          \draw[dashed, grisTexto] (axis cs:0, 5.1) -- (axis cs:4.5, 5.1) -- (axis cs:4.5, 0);
+          \addplot[only marks, mark=*, mark size=2.6pt, rojoAcento] coordinates {(4.5, 5.1)};
+          % Etiquetas
+          \node[azulPrincipal, font=\small] at (axis cs:1.4, 6.4) {\textbf{EC}};
+          \node[verdeAcento, font=\small] at (axis cs:1.4, 3.8) {\textbf{EP}};
+          \node[azulPrincipal, font=\scriptsize, anchor=west] at (axis cs:7.0, 2.8) {$D$};
+          \node[verdeAcento, font=\scriptsize, anchor=west] at (axis cs:7.0, 7.2) {$S$};
+        \end{axis}
+      \end{tikzpicture}
+    \end{column}
+
+    \begin{column}{0.44\textwidth}
+      \indicador{Excedente del Consumidor (\(EC\))}{azulPrincipal}{\(EC = \int_0^{Q^*} P^d(Q)\,dQ - P^* Q^*\)}
+      \indicador{Excedente del Productor (\(EP\))}{verdeAcento}{\(EP = P^* Q^* - \int_0^{Q^*} CMg(Q)\,dQ = \pi + CF\)}
+      {\scriptsize
+        • En \(Q^*\), la disposición marginal a pagar (\(P^d\)) iguala al costo marginal de producir (\(CMg\)).\\
+        • Cualquier desviación \(Q \neq Q^*\) destruye bienestar y genera una \textbf{Pérdida Irrecuperable de Eficiencia (PIE)}.\\
+        • Es la expresión práctica del \textbf{Primer Teorema del Bienestar}.
+      }
+    \end{column}
+  \end{columns}
+
+  \mensajefinal{El equilibrio competitivo maximiza la suma \(EC + EP\), pero no garantiza equidad distributiva.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 7: IMPUESTOS, INCIDENCIA Y PÉRDIDA DE EFICIENCIA (PIE)
+% ==============================================================================
+\begin{frame}{5. Impuestos Específicos, Incidencia y Peso Muerto (\(PIE\))}
+  \begin{columns}[T]
+    \begin{column}{0.53\textwidth}
+      {\small\textbf{Impuesto Unitario \(t\): Brecha \(P_c - P_p = t\)}}
+      \vspace{0.05cm}
+      \begin{tikzpicture}[scale=0.78]
+        \begin{axis}[
+          axis lines=left,
+          xlabel={Cantidad ($Q$)}, ylabel={Precio ($P$)},
+          xmin=0, xmax=10, ymin=0, ymax=10,
+          xtick={3.0, 4.5}, xticklabels={$Q_t$, $Q^*$},
+          ytick={3.9, 5.1, 6.4}, yticklabels={$P_p$, $P^*$, $P_c$},
+          width=8.2cm, height=5.2cm
+        ]
+          % Areas: Recaudacion y PIE
+          \addplot[fill=naranjaAcento!20, draw=none] coordinates {(0,3.9) (3.0,3.9) (3.0,6.4) (0,6.4)} \closedcycle;
+          \addplot[fill=rojoAcento!30, draw=none] coordinates {(3.0,3.9) (4.5,5.1) (3.0,6.4)} \closedcycle;
+          % Demanda y Oferta
+          \addplot[azulPrincipal, very thick, domain=0:9] {9 - 0.8667*x};
+          \addplot[verdeAcento, very thick, domain=0:8] {1.5 + 0.8*x};
+          \addplot[verdeAcento, thick, dashed, domain=0:6.5] {4.0 + 0.8*x};
+          % Lineas punteadas
+          \draw[dotted, grisTexto] (axis cs:0, 6.4) -- (axis cs:3.0, 6.4) -- (axis cs:3.0, 0);
+          \draw[dotted, grisTexto] (axis cs:0, 3.9) -- (axis cs:3.0, 3.9);
+          \draw[dotted, grisTexto] (axis cs:0, 5.1) -- (axis cs:4.5, 5.1) -- (axis cs:4.5, 0);
+          % Etiquetas
+          \node[naranjaAcento, font=\scriptsize] at (axis cs:1.5, 5.15) {\textbf{Recaud.}};
+          \node[rojoAcento, font=\scriptsize] at (axis cs:3.45, 5.15) {\textbf{PIE}};
+        \end{axis}
+      \end{tikzpicture}
+    \end{column}
+
+    \begin{column}{0.44\textwidth}
+      \indicador{Incidencia Económica}{naranjaAcento}{\(\frac{\Delta P_c}{|\Delta P_p|} = \frac{\varepsilon_s}{|\varepsilon_d|}\)}
+      {\scriptsize
+        • La \textbf{incidencia legal} (quién paga en ventanilla) es irrelevante.\\
+        • \textbf{Regla de oro:} El lado \textbf{más inelástico} del mercado absorbe la mayor parte del impuesto.\\[4pt]
+      }
+      \indicador{Pérdida Irrecuperable (Triángulo de Harberger)}{rojoAcento}{\(PIE = \frac{1}{2} t (Q^* - Q_t) \approx \frac{1}{2} t^2 Q^* \frac{\varepsilon_s |\varepsilon_d|}{\varepsilon_s + |\varepsilon_d|}\)}
+      {\scriptsize
+        • La \(PIE\) crece con el \textbf{cuadrado} de la tasa impositiva (\(t^2\)) y es mayor cuanto más \textbf{elásticas} son \(D\) y \(S\).\\
+        • Un subsidio \(s\) también genera \(PIE = \frac{1}{2} s \Delta Q\).
+      }
+    \end{column}
+  \end{columns}
+
+  \mensajefinal{Duplicar la tasa de un impuesto cuadruplica la pérdida irrecuperable de eficiencia en el mercado.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 8: CONTROLES DE PRECIOS, CUOTAS Y ARANCELES
+% ==============================================================================
+\begin{frame}{6. Controles de Precios, Cuotas y Apertura Comercial}
+  \vspace{0.1cm}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}
+      \tarjeta{rojoAcento}{Precio Máximo (Tope)}{
+        Efectivo solo si \(P_{\max} < P^*\).\\[4pt]
+        • Genera \textbf{escasez} (\(Q^d > Q^s\)) y racionamiento/colas.\\
+        • Puede bajar o subir el \(EP\), pero siempre reduce el bienestar total (\(PIE > 0\)).
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{naranjaAcento}{Precio Mínimo (Piso)}{
+        Efectivo solo si \(P_{\min} > P^*\).\\[4pt]
+        • Genera \textbf{excedente de oferta} (\(Q^s > Q^d\)).\\
+        • Ej. salario mínimo en mercado competitivo: causa desempleo si \(w_{\min} > w^*\).
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{azulPrincipal}{Economía Abierta y Arancel}{
+        Si \(P_w < P_{aut}\): el país \textbf{importa} y gana bienestar neto.\\[4pt]
+        • Un \textbf{arancel \(t\)} eleva \(P = P_w + t\), reduce importaciones y crea dos triángulos de \(PIE\) (distorsión de producción y consumo).
+      }
+    \end{column}
+  \end{columns}
+
+  \vspace{0.15cm}
+  \recuadroclave{
+    \small\textbf{Regla en Controles de Precios:} Cuando un precio tope causa escasez, el volumen transado lo determina el lado corto (\(Q = Q^s(P_{\max})\)) y la \(PIE\) depende de cómo se raciona el bien.
+  }
+  \mensajefinal{El libre comercio siempre eleva el excedente agregado frente a la autarquía, aunque genera ganadores y perdedores internos.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 9: AD-VALOREM VS ESPECÍFICO, CUOTAS Y MODELO DE LA TELARAÑA
+% ==============================================================================
+\begin{frame}{7. Ad-Valorem, Cuotas de Producción y Modelo de la Telaraña}
+  \vspace{0.05cm}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}
+      \tarjeta{azulPrincipal}{Ad-Valorem vs. Específico}{
+        • \textbf{Específico (\(t\)):} \(P_c = P_p + t\) (traslación paralela).\\
+        • \textbf{Ad-Valorem (\(\tau\)):} \(P_c = P_p(1+\tau)\) (rotación de la curva).\\
+        • En \textbf{competencia perfecta}, ambos generan la \textbf{misma \(PIE\)} para igual recaudación.
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{naranjaAcento}{Arancel vs. Cuota de Importación}{
+        Para igual volumen restringido, el arancel y la cuota generan igual \(P\), \(Q\) y \(PIE\).\\[2pt]
+        \textbf{Diferencia clave:} En el arancel, el rectángulo \((P_d - P_w)\cdot M\) es \textbf{recaudación fiscal}; en la cuota, se convierte en \textbf{renta de cuota} para quien recibe la licencia.
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{verdeAcento}{Modelo de la Telaraña (Cobweb)}{
+        Oferta con rezago: \(Q_t^s = S(P_{t-1})\), \(Q_t^d = D(P_t)\):\\
+        • \textbf{Convergente:} \(|dP/dQ_S| > |dP/dQ_D|\) (oferta más inelástica que demanda).\\
+        • \textbf{Divergente:} \(|dP/dQ_S| < |dP/dQ_D|\).\\
+        • \textbf{Ciclo perpetuo:} pendientes iguales.
+      }
+    \end{column}
+  \end{columns}
+
+  \vspace{0.1cm}
+  \recuadroclave{
+    \small\textbf{Subsidio en Equilibrio Competitivo:} \(P_p - P_c = s\). Eleva \(Q\) por encima de \(Q^*\) (sobreproducción) y genera \(PIE = \frac{1}{2} s (Q_s - Q^*)\) porque el gasto estatal supera la ganancia de \(EC + EP\).
+  }
+  \mensajefinal{En competencia perfecta los impuestos ad-valorem y específicos son equivalentes en bienestar; en monopolio el ad-valorem domina.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 10: CONCLUSIONES Y FORMULARIO RÁPIDO MÓDULO III
+% ==============================================================================
+\begin{frame}{Conclusiones y Formulario Rápido — Módulo III}
+  \vspace{0.05cm}
+  \recuadroclave{
+    \small\textbf{Regla de Oro:} La competencia perfecta logra eficiencia paretiana en el punto donde \(P = CMg\) (asignativa) y a largo plazo en \(P = \min CMe_{LP}\) (productiva).
+  }
+
+  \vspace{0.05cm}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}
+      \tarjeta{verdeAcento}{Fórmulas Imprescindibles}{
+        • Equilibrio LP: \(P = CMg_{LP} = \min CMe_{LP}\)\\
+        • Incidencia: \(\frac{\Delta P_c}{|\Delta P_p|} = \frac{\varepsilon_s}{|\varepsilon_d|}\)\\
+        • \(PIE = \frac{1}{2} t \Delta Q\)
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{azulPrincipal}{Trampas de Examen}{
+        • Creer que \(\pi=0\) a LP implica cero ganancia contable (incluye beneficio normal).\\
+        • Confundir \(S_{LP} > 0\) con falla de mercado (es por costos crecientes).\\
+        • Olvidar que \(CF\) no mueve \(S_{CP}\).
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{rojoAcento}{Siguientes Pasos}{
+        • Practicar Bloques B y C del Módulo 03 en el Simulador.\\
+        • Enlazar con el Módulo IV (Equilibrio General y Bienestar).
+      }
+    \end{column}
+  \end{columns}
+
+  \vspace{0.12cm}
+  \begin{center}
+    {\color{azulPrincipal}\Large\textbf{¡Éxito!}} \quad {\color{grisTexto}Módulo III · Competencia Perfecta · PEU SUNASS 2026}
+  \end{center}
+\end{frame}
+
+\end{document}

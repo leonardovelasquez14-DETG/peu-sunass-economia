@@ -1,0 +1,154 @@
+\documentclass[11pt,a4paper]{article}
+
+% ---------- Codificación y tipografía ----------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{top=2.3cm,bottom=2.3cm,left=2.2cm,right=2.2cm}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{setspace}
+\usepackage{multicol}
+\usepackage{needspace}
+
+\setstretch{1.08}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+
+% ---------- Encabezado y pie ----------
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\small Banco de Preguntas PEU --- SUNASS}
+\rhead{\small Módulo VII: Competencia Imperfecta}
+\cfoot{\small \thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% ---------- Títulos ----------
+\titleformat{\section}{\large\bfseries}{\thesection}{0.8em}{}
+\titlespacing*{\section}{0pt}{14pt}{6pt}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.6em}{}
+\titlespacing*{\subsection}{0pt}{10pt}{4pt}
+
+% ---------- Comandos del examen ----------
+\newcounter{qnum}
+\newcommand{\q}[1]{%
+  \needspace{8\baselineskip}%
+  \par\medskip\refstepcounter{qnum}%
+  \noindent\textbf{\theqnum.}\ #1\par\nopagebreak[4]
+}
+\newenvironment{opts}
+  {\begin{enumerate}[label=\Alph*),leftmargin=2.0em,itemsep=1pt,topsep=2pt,parsep=0pt,partopsep=0pt]}
+  {\end{enumerate}}
+\makeatletter
+\@itempenalty=10000
+\makeatother
+\newcommand{\sol}[3]{\par\noindent\textbf{#1. #2.}\ #3\par\smallskip}
+
+\begin{document}
+
+% ============================================================
+% PORTADA
+% ============================================================
+\begin{titlepage}
+\thispagestyle{empty}
+\centering
+\vspace*{1.2cm}
+
+{\Large\bfseries BANCO DE PREGUNTAS}\\[0.35cm]
+{\large EXAMEN DE ADMISIÓN}\\[0.15cm]
+{\large PROGRAMA DE EXTENSIÓN UNIVERSITARIA (PEU)}\\[0.15cm]
+{\large SUPERINTENDENCIA NACIONAL DE SERVICIOS DE SANEAMIENTO}\\[0.05cm]
+{\large SUNASS}\\[1.0cm]
+
+\rule{\linewidth}{0.9pt}\\[0.55cm]
+{\LARGE\bfseries MÓDULO VII: COMPETENCIA IMPERFECTA}\\[0.35cm]
+{\large Especialidad: Economía}\\[0.55cm]
+\rule{\linewidth}{0.9pt}\\[1.0cm]
+
+\begin{tabular}{ll}
+\toprule
+Número de preguntas: & 90 \\
+Bloque A: & 30 preguntas \\
+Bloque B: & 35 preguntas \\
+Bloque C: & 25 preguntas \\
+Duración sugerida: & 150 minutos \\
+Nivel: & Microeconomía intermedia--avanzada \\
+Formato: & Opción múltiple (A, B, C, D) \\
+\bottomrule
+\end{tabular}
+
+\vfill
+{\small Material de preparación académica. Uso interno.}\\[0.15cm]
+{\small Edición 2026}
+\end{titlepage}
+
+% ============================================================
+% INSTRUCCIONES
+% ============================================================
+\section*{Instrucciones generales}
+
+\begin{enumerate}[label=\arabic*.,leftmargin=1.6em,itemsep=3pt]
+  \item El presente banco contiene \textbf{90 preguntas de opción múltiple}. Cada pregunta tiene una sola respuesta correcta.
+  \item No se descuenta por respuesta incorrecta; se recomienda responder todas las preguntas.
+  \item El tiempo sugerido de resolución es de \textbf{150 minutos}. Use calculadora no programable.
+  \item Las preguntas están organizadas en tres bloques: fundamentos teóricos, aplicaciones cuantitativas y casos regulatorios del sector saneamiento.
+  \item El \textbf{solucionario completo} y la \textbf{tabla de claves rápidas} se encuentran al final. Se recomienda resolver el examen antes de consultarlos.
+\end{enumerate}
+
+\section*{Estructura del banco}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{@{}p{1.4cm}>{\raggedright\arraybackslash}p{7.6cm}cc@{}}
+\toprule
+\textbf{Bloque} & \textbf{Contenido} & \textbf{Preguntas} & \textbf{Peso} \\
+\midrule
+A & Fundamentos teóricos y conceptuales: teoría de juegos estáticos y dinámicos, equilibrio de Nash, SPNE, oligopolio de Cournot, Bertrand y Stackelberg, estabilidad de cárteles y competencia monopolística. & 1--30 & 33.3\% \\
+B & Aplicaciones cuantitativas: equilibrios en cantidades y precios con costos simétricos y asimétricos, funciones de reacción, matrices 2x2, factor de descuento crítico ($\delta^*$), tangencia de Chamberlin y exceso de capacidad. & 31--65 & 38.9\% \\
+C & Casos con implicancias regulatorias: competencia por el mercado (Demsetz), licitaciones colusorias (bid rigging) en saneamiento, facilidades esenciales, acceso de terceros, proveedores de insumos para EPS y programas de clemencia de Indecopi. & 66--90 & 27.8\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{Competencias evaluadas}
+
+\noindent El banco evalúa la capacidad de modelar interacciones estratégicas entre empresas, calcular equilibrios de mercado no cooperativos (Cournot, Bertrand, Stackelberg), evaluar la sostenibilidad de la colusión mediante factores de descuento intertemporal, caracterizar la competencia monopolística con diferenciación de producto y analizar prácticas restrictivas a la competencia y licitaciones colusorias en el sector de agua y saneamiento.
+
+\section*{Notación principal}
+
+{\small
+\renewcommand{\arraystretch}{1.0}
+\begin{center}
+\begin{tabular}{@{}ll@{\hspace{1.0cm}}ll@{}}
+\toprule
+$P$ & Precio de mercado & $Q, q_i$ & Producción de la industria y empresa $i$ \\
+$BR_i$ & Función de mejor respuesta (reacción) & $c, CMg$ & Costo marginal \\
+$\pi_i$ & Beneficio económico de la empresa $i$ & $\delta$ & Factor de descuento intertemporal \\
+$SPNE$ & Equilibrio de Nash perfecto en subjuegos & $DWL$ & Pérdida irrecuperable de eficiencia \\
+$n$ & Número de empresas en el mercado & $t$ & Costo de transporte / diferenciación \\
+$s_i$ & Estrategia del jugador $i$ & $SSNIP$ & Test del monopolista hipotético \\
+$\varepsilon_{ij}$ & Elasticidad cruzada de la demanda & $ECPR$ & Regla de paridad eficiente de componentes \\
+\bottomrule
+\end{tabular}
+\end{center}
+}
+
+\newpage
+\setcounter{qnum}{0}
+
+\input{m7_bloque_a.tex}
+\input{m7_bloque_b.tex}
+\input{m7_bloque_c.tex}
+\input{m7_claves.tex}
+\input{m7_solucionario.tex}
+
+\end{document}

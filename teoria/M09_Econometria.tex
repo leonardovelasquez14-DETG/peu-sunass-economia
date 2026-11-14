@@ -1,0 +1,311 @@
+\documentclass[aspectratio=169, 10pt]{beamer}
+\usepackage{sunass_estilo}
+
+\title{Módulo IX: Econometría}
+\subtitle{Guía Teórica de Repaso Rápido · PEU SUNASS}
+\author[PEU SUNASS · Economía]{Preparación Examen de Admisión PEU SUNASS}
+\institute{Basado en el Temario Oficial de Economía · Métodos Cuantitativos}
+\date[2026]{2026}
+
+\begin{document}
+
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+% ==============================================================================
+% SLIDE 2: MAPA CONCEPTUAL Y MCRL (GAUSS-MÁRKOV)
+% ==============================================================================
+\begin{frame}{1. El Modelo Clásico de Regresión Lineal (MCRL)}
+  \vspace{0.1cm}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}
+      \tarjeta{azulPrincipal}{Supuestos de Gauss-Márkov}{
+        1. Linealidad en parámetros: \(y = X\beta + u\).\\
+        2. Rango completo: sin multicolinealidad perfecta.\\
+        3. \textbf{Exogeneidad:} \(E[u|X] = 0\).\\
+        4. \textbf{Esfericidad:} \(\text{Var}(u|X) = \sigma^2 I\) (homocedasticidad + no autocorrelación).
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{verdeAcento}{Estimador MCO y MELI}{
+        \(\hat{\beta}_{MCO} = (X'X)^{-1} X'y\)\\[3pt]
+        • \textbf{Teorema de Gauss-Márkov:} Bajo los 4 supuestos, MCO es \textbf{MELI} (Mejor Estimador Lineal Insesgado / \textit{BLUE}).\\
+        • \(\text{Var}(\hat{\beta}|X) = \sigma^2 (X'X)^{-1}\).
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{naranjaAcento}{Bondad de Ajuste}{
+        \(SCT = SCE + SCR\)\\
+        \(R^2 = \frac{SCE}{SCT} = 1 - \frac{SCR}{SCT}\)\\[3pt]
+        • \(R^2\) nunca baja al añadir variables.\\
+        • \(\bar{R}^2 = 1 - \frac{SCR/(n-k)}{SCT/(n-1)}\) penaliza por grados de libertad.
+      }
+    \end{column}
+  \end{columns}
+
+  \vspace{0.15cm}
+  \recuadroclave{
+    \small\textbf{Propiedad Algebraica de MCO:} Los residuos siempre son ortogonales a los regresores (\(X'\hat{u} = 0\)) y si hay intercepto, suman cero (\(\sum \hat{u}_i = 0\)).
+  }
+  \mensajefinal{La normalidad de los errores (\(u \sim N(0,\sigma^2 I)\)) NO es necesaria para Gauss-Márkov (MELI), solo para inferencia exacta en muestras pequeñas.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 3: INFERENCIA ESTADÍSTICA (PRUEBAS t, F Y SIGNIFICANCIA)
+% ==============================================================================
+\begin{frame}{2. Inferencia en el MCRL: Pruebas \(t\) y \(F\)}
+  \begin{columns}[T]
+    \begin{column}{0.52\textwidth}
+      {\small\textbf{Región de Rechazo y Estadístico \(t\) de Student}}
+      \vspace{0.05cm}
+      \begin{tikzpicture}[scale=0.78]
+        \begin{axis}[
+          axis lines=left,
+          xlabel={Estadístico \(t\)}, ylabel={Densidad},
+          xmin=-4, xmax=4, ymin=0, ymax=0.45,
+          xtick={-1.96, 0, 1.96}, xticklabels={$-t_{\alpha/2}$, $0$, $+t_{\alpha/2}$},
+          ytick=\empty,
+          width=8.0cm, height=5.0cm
+        ]
+          % Colas de rechazo
+          \addplot[fill=rojoAcento!35, draw=none, domain=-3.8:-1.96, samples=25] {0.3989*exp(-0.5*x^2)} \closedcycle;
+          \addplot[fill=rojoAcento!35, draw=none, domain=1.96:3.8, samples=25] {0.3989*exp(-0.5*x^2)} \closedcycle;
+          % Curva normal/t
+          \addplot[azulPrincipal, very thick, domain=-3.8:3.8, samples=60] {0.3989*exp(-0.5*x^2)};
+          \node[rojoAcento, font=\tiny] at (axis cs:2.7, 0.12) {Rechazo \(H_0\)};
+          \node[rojoAcento, font=\tiny] at (axis cs:-2.7, 0.12) {Rechazo \(H_0\)};
+          \node[verdeAcento, font=\scriptsize] at (axis cs:0, 0.18) {\(1-\alpha = 95\%\)};
+        \end{axis}
+      \end{tikzpicture}
+    \end{column}
+
+    \begin{column}{0.45\textwidth}
+      \indicador{Prueba Individual (\(t\)-Student)}{azulPrincipal}{\(t = \frac{\hat{\beta}_j - \beta_{j,0}}{ee(\hat{\beta}_j)} \sim t_{n-k}\)}
+      {\scriptsize
+        • Rechaza \(H_0\) si \(|t| > t_{\text{crítico}}\) o si \(\text{p-valor} < \alpha\).\\[4pt]
+      }
+      \indicador{Prueba Conjunta (\(F\) de Snedecor)}{naranjaAcento}{\(F = \frac{(SCR_R - SCR_{NR}) / q}{SCR_{NR} / (n - k)} \sim F_{q, \, n-k}\)}
+      {\scriptsize
+        • Evalúa \(q\) restricciones lineales simultáneas (\(H_0: R\beta = r\)).\\
+        • \textbf{Relación clave:} Para \(q=1\) restricción, \(F_{1, n-k} = t_{n-k}^2\).\\
+        • \textbf{Errores de contraste:} Error Tipo I (\(\alpha = P(\text{rechazar } H_0 \mid H_0 \text{ cierta})\)); Error Tipo II (\(\beta\)).
+      }
+    \end{column}
+  \end{columns}
+
+  \mensajefinal{Un p-valor menor al nivel de significancia \(\alpha\) (ej. 0.05) implica rechazar la hipótesis nula \(H_0\).}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 4: VIOLACIONES DE ESFERICIDAD Y MULTICOLINEALIDAD
+% ==============================================================================
+\begin{frame}{3. Violaciones: Heterocedasticidad, Autocorrelación y Colinealidad}
+  \vspace{0.08cm}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}
+      \tarjeta{rojoAcento}{Heterocedasticidad}{
+        \(\text{Var}(u_i|X) = \sigma_i^2 \neq \text{cte.}\)\\[3pt]
+        • \textbf{Efecto:} MCO sigue insesgado y consistente, pero \textbf{no es eficiente} y los \(ee\) están sesgados (invalida \(t, F\)).\\
+        • \textbf{Tests:} White, Breusch-Pagan.\\
+        • \textbf{Solución:} Errores robustos de White o MCG/MCP.
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{naranjaAcento}{Autocorrelación}{
+        \(\text{Cov}(u_t, u_s | X) \neq 0\) (\(t \neq s\)).\\[3pt]
+        • \textbf{Efecto:} MCO insesgado (si \(X\) es estric. exógena), pero \textbf{ineficiente} y \(ee\) sesgados.\\
+        • \textbf{Tests:} Durbin-Watson (\(DW \approx 2(1-\hat{\rho})\)), Breusch-Godfrey.\\
+        • \textbf{Solución:} MCG (Prais-Winsten) o errores HAC (Newey-West).
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{azulPrincipal}{Multicolinealidad}{
+        Alta correlación entre regresores (pero no perfecta).\\[3pt]
+        • \textbf{Efecto:} MCO \textbf{sigue siendo MELI}, pero las varianzas y \(ee\) se inflan (\(R^2\) alto con \(t\) bajos).\\
+        • \textbf{Diagnóstico:} \(VIF_j = \frac{1}{1-R_j^2} > 10\).\\
+        • \textbf{Solución:} Más datos, o no hacer nada si solo interesa predecir.
+      }
+    \end{column}
+  \end{columns}
+
+  \vspace{0.1cm}
+  \recuadroclave{
+    \small\textbf{Durbin-Watson (DW):} \(DW \approx 2 \Rightarrow\) no autocorrelación; \quad \(DW \to 0 \Rightarrow\) autocorrelación positiva (\(\rho > 0\)); \quad \(DW \to 4 \Rightarrow\) negativa (\(\rho < 0\)).
+  }
+  \mensajefinal{Ni la heterocedasticidad, ni la autocorrelación pura, ni la multicolinealidad sesgan a \(\hat{\beta}_{MCO}\); solo afectan eficiencia e inferencia.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 5: ENDOGENEIDAD Y VARIABLES INSTRUMENTALES (MC2E)
+% ==============================================================================
+\begin{frame}{4. Endogeneidad y Variables Instrumentales (MC2E)}
+  \vspace{0.02cm}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \tarjeta{rojoAcento}{El Problema Fatal: \(\text{Cov}(X_j, u) \neq 0\)}{
+        MCO es \textbf{sesgado e inconsistente} (no converge con \(n \to \infty\)).\\[2pt]
+        \textbf{Tres fuentes de endogeneidad:}\\
+        1. \textbf{Variable omitida:} \(\text{Sesgo} = \beta_{\text{om}} \frac{\text{Cov}(X, Z_{\text{om}})}{\text{Var}(X)}\).\\
+        2. \textbf{Error de medición en \(X\):} \textit{sesgo de atenuación} (hacia \(0\)).\\
+        3. \textbf{Simultaneidad:} oferta y demanda juntas.
+      }
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \tarjeta{verdeAcento}{Solución: Variables Instrumentales (MC2E)}{
+        Un instrumento válido \(Z\) debe cumplir:\\[2pt]
+        1. \textbf{Relevancia:} \(\text{Cov}(Z, X) \neq 0\) (1ra etapa \(F > 10\); si no, es \textit{instrumento débil}).\\
+        2. \textbf{Exogeneidad:} \(\text{Cov}(Z, u) = 0\) (restricción de exclusión).\\
+        • \textbf{Test de Hausman:} compara MCO vs. VI para probar endogeneidad.
+      }
+    \end{column}
+  \end{columns}
+
+  \vspace{0.05cm}
+  \recuadroclave{
+    \small\textbf{Estimador VI simple:} \quad \(\hat{\beta}_{VI} = \frac{\text{Cov}(Z, y)}{\text{Cov}(Z, X)}\) \quad | \quad Con sobreidentificación (más instrumentos que endógenos), se usa \textbf{Test de Sargan} para validez conjunta.
+  }
+  \mensajefinal{Cuando hay endogeneidad, aumentar el tamaño de muestra \(n\) NO corrige el sesgo de MCO.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 6: SERIES DE TIEMPO Y MICROECONOMETRÍA BÁSICA
+% ==============================================================================
+\begin{frame}{5. Series de Tiempo, Cointegración y Variable Dependiente Limitada}
+  \vspace{0.1cm}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}
+      \tarjeta{azulPrincipal}{Estacionariedad y Raíz Unitaria}{
+        Serie \(I(0)\) (estacionaria débil): media, varianza constantes y autocovarianza solo depende del rezago.\\[3pt]
+        • \textbf{Caminata aleatoria (\(I(1)\)):} \(y_t = y_{t-1} + \varepsilon_t\) (no estacionaria, varianza crece con \(t\)).\\
+        • \textbf{Test ADF:} \(H_0\): existe raíz unitaria (es \(I(1)\)).
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{rojoAcento}{Regresión Espuria vs. Cointegración}{
+        • \textbf{Espuria:} regresar dos \(I(1)\) independientes da \(R^2\) y \(t\) falsamente altos (señal: \(R^2 > DW\)).\\
+        • \textbf{Cointegración (Engle-Granger):} dos series \(I(1)\) están cointegradas si existe \(\beta\) tal que el residuo \(\hat{u}_t = y_t - \beta x_t\) es \(\mathbf{I(0)}\) (equilibrio LP).
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{verdeAcento}{Modelos Discretos (Probit/Logit)}{
+        Para \(y_i \in \{0,1\}\):\\
+        • \textbf{MPL:} puede predecir \(\hat{p} \notin [0,1]\) y es heterocedástico.\\
+        • \textbf{Logit / Probit:} garantizan \(P(y=1|X) \in (0,1)\) y se estiman por \textbf{Máxima Verosimilitud (MV)}.
+      }
+    \end{column}
+  \end{columns}
+
+  \vspace{0.05cm}
+  \recuadroclave{
+    \small\textbf{Datos de Panel:} \textbf{Efectos Fijos (FE)} elimina heterogeneidad inobservable invariante en el tiempo correlacionada con \(X\); \textbf{Efectos Aleatorios (RE)} exige \(\text{Cov}(\alpha_i, X_{it}) = 0\) (Test de Hausman decide entre FE y RE).
+  }
+  \mensajefinal{Si dos variables \(I(1)\) están cointegradas, MCO es superconsistente y captura su relación de equilibrio de largo plazo.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 7: FRISCH-WAUGH-LOVELL, FORMAS FUNCIONALES Y TESTS DIAGNÓSTICOS
+% ==============================================================================
+\begin{frame}{6. Frisch–Waugh–Lovell, Formas Funcionales y Diagnóstico}
+  \vspace{0.04cm}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}
+      \tarjeta{azulPrincipal}{Teorema FWL y Dummy}{
+        • \textbf{FWL:} \(\hat{\beta}_1\) en \(y = \beta_1 X_1 + \beta_2 X_2 + u\) equivale a regresar \(y\) sobre el residuo de \(X_1\) tras limpiar el efecto lineal de \(X_2\).\\
+        • \textbf{Trampa Dummy:} con intercepto, incluir \(m-1\) categorías para evitar colinealidad perfecta.
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{verdeAcento}{Formas Funcionales}{
+        • \textbf{Lin-Lin:} \(\Delta y = \beta \Delta x\) (efecto marginal).\\
+        • \textbf{Log-Log:} \(\text{\%}\Delta y \approx \beta\,\text{\%}\Delta x\) (\textbf{elasticidad cte.}).\\
+        • \textbf{Log-Lin:} \(\text{\%}\Delta y \approx (100\beta)\Delta x\) (semielasticidad).\\
+        • \textbf{Lin-Log:} \(\Delta y \approx (\beta/100)\text{\%}\Delta x\).
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{naranjaAcento}{Tests de Diagnóstico y Selección}{
+        • \textbf{Test de Chow:} prueba cambio estructural entre dos submuestras (\(F\)).\\
+        • \textbf{RESET de Ramsey:} detecta forma funcional omitida (potencias \(\hat{y}^2, \hat{y}^3\)).\\
+        • \textbf{Jarque-Bera:} normalidad (\(JB \sim \chi^2_2\)).\\
+        • \textbf{AIC vs. BIC:} BIC penaliza más \(k\) (\(\ln n > 2\)).
+      }
+    \end{column}
+  \end{columns}
+
+  \vspace{0.06cm}
+  \recuadroclave{
+    \small\textbf{Interpretación exacta en Log-Lin con Dummy:} Si \(\ln(y) = \beta_0 + \delta D + u\), el cambio porcentual exacto al pasar de \(D=0\) a \(D=1\) es \((e^{\delta} - 1)\times 100\%\) (solo \(\approx 100\delta\) si \(\delta\) es pequeño).
+  }
+  \mensajefinal{El Teorema de Frisch–Waugh–Lovell explica formalmente el significado de \textit{ceteris paribus} en la regresión múltiple.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 8: ARMA, GRANGER, MCE Y EVALUACIÓN DE IMPACTO CAUSAL
+% ==============================================================================
+\begin{frame}{7. Dinámica (ARMA/Granger/MCE) e Inferencia Causal}
+  \vspace{0.04cm}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \tarjeta{azulPrincipal}{ARMA, Granger y Corrección de Errores}{
+        • \textbf{ARMA(\(p,q\)):} AR(\(p\)) estacionario si raíces del polinomio \(\phi(L)\) caen fuera del círculo unitario; MA(\(q\)) invertible análogamente.\\
+        • \textbf{Causalidad de Granger:} \(X\) causa a \(Y\) en el sentido de Granger si rezagos de \(X\) mejoran el pronóstico de \(Y\) (precedencia temporal, no causalidad filosófica).\\
+        • \textbf{MCE / VECM:} \(\Delta y_t = \alpha(y_{t-1} - \beta x_{t-1}) + \dots\) (ajuste hacia equilibrio LP con \(\alpha < 0\)).
+      }
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \tarjeta{verdeAcento}{Evaluación de Impacto (SUNASS / Política)}{
+        • \textbf{Diferencias en Diferencias (DiD):} \(\hat{\delta}_{DiD} = (\bar{Y}_{T,1} - \bar{Y}_{T,0}) - (\bar{Y}_{C,1} - \bar{Y}_{C,0})\); exige el supuesto de \textbf{tendencias paralelas}.\\
+        • \textbf{Regresión Discontinua (RDD):} identifica el efecto causal local (\textit{LATE}) en el umbral de corte (ej. puntaje SISFOH para subsidio).\\
+        • \textbf{Matching (PSM):} empareja tratados y controles por observables (asume selección en observables).
+      }
+    \end{column}
+  \end{columns}
+
+  \vspace{0.06cm}
+  \recuadroclave{
+    \small\textbf{Volatilidad Financiera (ARCH / GARCH):} Modelan la \textbf{varianza condicional} cambiante en el tiempo (\(\sigma_t^2 = \omega + \alpha \varepsilon_{t-1}^2 + \beta \sigma_{t-1}^2\)) típica de series financieras.
+  }
+  \mensajefinal{Toda relación de cointegración entre series \(I(1)\) admite una representación mediante un Modelo de Corrección de Errores (Teorema de Granger).}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 9: CONCLUSIONES Y CHEAT-SHEET MÓDULO IX
+% ==============================================================================
+\begin{frame}{Conclusiones y Formulario Rápido — Módulo IX}
+  \vspace{0.05cm}
+  \recuadroclave{
+    \small\textbf{Regla de Oro:} Prioriza identificar si se viola la \textbf{exogeneidad} (sesga \(\hat{\beta}\), requiere VI/Panel) o solo la \textbf{esfericidad} (afecta \(ee\) e inferencia, requiere errores robustos/MCG).
+  }
+
+  \vspace{0.15cm}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}
+      \tarjeta{verdeAcento}{Fórmulas Imprescindibles}{
+        • MCO: \(\hat{\beta} = (X'X)^{-1}X'y\)\\
+        • VIF: \(VIF_j = \frac{1}{1-R_j^2}\)\\
+        • F conjunta: \(\frac{(SCR_R - SCR_{NR})/q}{SCR_{NR}/(n-k)}\)
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{azulPrincipal}{Trampas de Examen}{
+        • Creer que heterocedasticidad o multicolinealidad sesgan \(\hat{\beta}_{MCO}\).\\
+        • Usar DW cuando hay rezagos de \(y\) como regresor (debe usarse Breusch-Godfrey).\\
+        • Confundir \(H_0\) del test ADF (\(H_0\): raíz unitaria = no estacionaria).
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{rojoAcento}{Siguientes Pasos}{
+        • Practicar Bloques A y B del Módulo 09 en el Simulador.\\
+        • Completar el repaso con el Módulo X (Finanzas y WACC).
+      }
+    \end{column}
+  \end{columns}
+
+  \vspace{0.25cm}
+  \begin{center}
+    {\color{azulPrincipal}\Large\textbf{¡Éxito!}} \quad {\color{grisTexto}Módulo IX · Econometría · PEU SUNASS 2026}
+  \end{center}
+\end{frame}
+
+\end{document}

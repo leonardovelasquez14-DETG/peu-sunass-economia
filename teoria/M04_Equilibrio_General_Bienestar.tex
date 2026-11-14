@@ -1,0 +1,276 @@
+\documentclass[aspectratio=169, 10pt]{beamer}
+\usepackage{sunass_estilo}
+
+\title{Módulo IV: Equilibrio General y Bienestar}
+\subtitle{Guía Teórica de Repaso Rápido · PEU SUNASS}
+\author[PEU SUNASS · Economía]{Preparación Examen de Admisión PEU SUNASS}
+\institute{Basado en el Temario Oficial de Economía · Microeconomía}
+\date[2026]{2026}
+
+\begin{document}
+
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+% ==============================================================================
+% SLIDE 2: MAPA CONCEPTUAL
+% ==============================================================================
+\begin{frame}{Mapa Conceptual: Equilibrio General y Bienestar}
+  \vspace{0.15cm}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}
+      \tarjeta{azulPrincipal}{1. Equilibrio General}{
+        Analiza todos los mercados simultáneamente (interdependencia).\\
+        • \textbf{Ley de Walras:} \(\sum_{i=1}^k p_i z_i(p) \equiv 0\).\\
+        • Solo importan los \textbf{precios relativos}.
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{naranjaAcento}{2. Caja de Edgeworth}{
+        Economía de intercambio puro (\(2\times 2\)):\\
+        • Eficiencia en el intercambio (\(TMS^A = TMS^B\)).\\
+        • \textbf{Curva de Contrato} y Núcleo.
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{verdeAcento}{3. Teoremas del Bienestar}{
+        • \textbf{1er Teorema:} Todo eq. competitivo es óptimo de Pareto.\\
+        • \textbf{2do Teorema:} Todo óptimo de Pareto es alcanzable vía transferencias de suma alzada.
+      }
+    \end{column}
+  \end{columns}
+
+  \vspace{0.2cm}
+  \recuadroclave{
+    \small\textbf{Ley de Walras:} Si de \(k\) mercados hay \(k-1\) en equilibrio (\(z_i=0\)), el \(k\)-ésimo mercado también está necesariamente en equilibrio.
+  }
+  \mensajefinal{En equilibrio general solo se determinan precios relativos (\(k-1\) ecuaciones independientes para \(k\) precios); siempre se fija un numerario.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 3: CAJA DE EDGEWORTH DE INTERCAMBIO
+% ==============================================================================
+\begin{frame}{1. La Caja de Edgeworth y Curva de Contrato}
+  \begin{columns}[T]
+    \begin{column}{0.52\textwidth}
+      {\small\textbf{Eficiencia de Pareto en el Intercambio}}
+      \vspace{0.05cm}
+      \begin{tikzpicture}[scale=0.82]
+        % Caja
+        \draw[thick, aceroAcento] (0,0) rectangle (6.8,4.6);
+        \node[font=\scriptsize, azulPrincipal, anchor=north east] at (0,0) {$O_A$};
+        \node[font=\scriptsize, rojoAcento, anchor=south west] at (6.8,4.6) {$O_B$};
+        \node[font=\tiny, grisTexto] at (3.4, -0.3) {Total $x_1 = \bar{x}_1^A + \bar{x}_1^B$};
+        \node[font=\tiny, grisTexto, rotate=90] at (-0.35, 2.3) {Total $x_2$};
+
+        % Curva de contrato
+        \draw[verdeAcento, ultra thick] (0,0) .. controls (2.2, 1.0) and (4.6, 3.6) .. (6.8,4.6);
+        \node[verdeAcento, font=\scriptsize] at (4.9, 2.4) {\textbf{Curva de Contrato}};
+
+        % Dotación inicial W
+        \fill[naranjaAcento] (1.6, 3.3) circle (2.5pt) node[above, font=\scriptsize] {$W$};
+
+        % Curvas de indiferencia por W (lente de mejora paretiana)
+        \draw[azulPrincipal, thick] (0.5, 4.3) .. controls (1.2, 2.8) and (2.6, 1.5) .. (5.0, 0.8);
+        \draw[rojoAcento, thick] (1.0, 3.9) .. controls (2.6, 3.2) and (4.2, 2.0) .. (5.5, 0.9);
+
+        % Equilibrio E* sobre curva de contrato
+        \fill[azulPrincipal] (3.4, 2.3) circle (2.8pt) node[above left, font=\scriptsize] {$E^*$};
+        \draw[azulPrincipal, thick, dashed] (1.8, 3.9) .. controls (2.6, 2.8) and (3.8, 1.9) .. (5.2, 1.2);
+        \draw[rojoAcento, thick, dashed] (1.7, 3.6) .. controls (2.8, 2.7) and (3.9, 1.8) .. (5.0, 1.0);
+        % Recta presupuestaria
+        \draw[grisTexto, thick] (1.6, 3.3) -- (5.2, 1.3);
+      \end{tikzpicture}
+    \end{column}
+
+    \begin{column}{0.45\textwidth}
+      \indicador{Condición de Eficiencia en Intercambio}{verdeAcento}{\(TMS_{1,2}^A = TMS_{1,2}^B\)}
+      {\scriptsize
+        • En \(W\), las curvas se cruzan y forman el \textbf{lente de intercambio}: cualquier punto interior mejora al menos a uno sin empeorar al otro.\\
+        • \textbf{Curva de Contrato:} conjunto de todos los óptimos de Pareto.\\
+        • \textbf{Núcleo:} tramo de la curva de contrato dentro del lente (mejora a ambos respecto a \(W\)).\\[4pt]
+      }
+      \indicador{Equilibrio Walrasiano}{azulPrincipal}{\(TMS^A = \frac{p_1}{p_2} = TMS^B\)}
+      {\scriptsize
+        • En \(E^*\), ambas restricciones de exceso de demanda se anulan y la recta de precios es tangente a ambas curvas.
+      }
+    \end{column}
+  \end{columns}
+
+  \mensajefinal{Un punto es Óptimo de Pareto si es imposible mejorar el bienestar de alguien sin reducir el de otro agente.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 4: EFICIENCIA GLOBAL CON PRODUCCIÓN
+% ==============================================================================
+\begin{frame}{2. Equilibrio General con Producción (3 Condiciones de Pareto)}
+  \vspace{0.1cm}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}
+      \tarjeta{azulPrincipal}{1. Eficiencia en el Consumo}{
+        \(TMS_{1,2}^A = TMS_{1,2}^B\)\\[4pt]
+        Asigna los bienes producidos de forma óptima entre los consumidores (sobre la Curva de Contrato de consumo).
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{naranjaAcento}{2. Eficiencia en la Producción}{
+        \(TMST_{L,K}^X = TMST_{L,K}^Y\)\\[4pt]
+        Asigna capital y trabajo de forma óptima entre industrias (sobre la \textbf{Frontera de Posibilidades de Producción - FPP}).
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{verdeAcento}{3. Eficiencia Global (Mix)}{
+        \(TMT_{X,Y} = TMS_{X,Y}^A = TMS_{X,Y}^B\)\\[4pt]
+        La tasa a la que la economía transforma \(X\) en \(Y\) (\(\frac{CMg_X}{CMg_Y}\)) iguala la valoración marginal de los consumidores.
+      }
+    \end{column}
+  \end{columns}
+
+  \vspace{0.2cm}
+  \recuadroclave{
+    \small\textbf{FPP y Costo de Oportunidad:} La pendiente de la FPP es \(-TMT_{X,Y} = -\frac{CMg_X}{CMg_Y}\). En competencia perfecta: \(\frac{p_X}{p_Y} = \frac{CMg_X}{CMg_Y} = TMT_{X,Y}\).
+  }
+  \mensajefinal{Producir sobre la FPP garantiza eficiencia técnica, pero solo igualar \(TMT = TMS\) garantiza eficiencia económica global.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 5: LOS DOS TEOREMAS DEL BIENESTAR
+% ==============================================================================
+\begin{frame}{3. Los Dos Teoremas Fundamentales del Bienestar}
+  \vspace{0.15cm}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \tarjeta{azulPrincipal}{Primer Teorema del Bienestar}{
+        \textbf{Enunciado:} Todo equilibrio competitivo (walrasiano) es un \textbf{Óptimo de Pareto}.\\[4pt]
+        • \textbf{Supuesto clave:} Preferencias localmente no saciadas (y mercados completos, sin externalidades ni poder de mercado).\\
+        • \textbf{No requiere convexidad.}\\
+        • \textit{Significado:} La ``mano invisible'' logra eficiencia, pero \textbf{no garantiza equidad}.
+      }
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \tarjeta{verdeAcento}{Segundo Teorema del Bienestar}{
+        \textbf{Enunciado:} Cualquier Óptimo de Pareto deseado puede sostenerse como equilibrio competitivo mediante \textbf{transferencias de suma alzada} (redistribución inicial) y dejando actuar al mercado.\\[4pt]
+        • \textbf{Supuesto clave:} \textbf{Preferencias y conjuntos de producción convexos.}\\
+        • \textit{Significado:} Separa el problema de la \textbf{eficiencia} del problema de la \textbf{equidad}.
+      }
+    \end{column}
+  \end{columns}
+
+  \vspace{0.2cm}
+  \recuadroclave{
+    \small\textbf{Lección de Política Regulatoria:} Para ayudar a hogares pobres en agua potable sin distorsionar precios, es mejor dar un \textbf{bono directo (suma alzada)} que distorsionar el precio por debajo del \(CMg\).
+  }
+  \mensajefinal{Los impuestos distorsionadores rompen la igualdad \(TMS = TMT\) y violan el Segundo Teorema.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 6: FUNCIONES DE BIENESTAR SOCIAL Y TEOREMA DE ARROW
+% ==============================================================================
+\begin{frame}{4. Elección Social, Equidad y Teorema de Imposibilidad de Arrow}
+  \vspace{0.1cm}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}
+      \tarjeta{azulPrincipal}{Utilitarista (Bentham)}{
+        \(W = \sum_{i=1}^n U_i\)\\[4pt]
+        Maximiza la suma total de utilidades. Indiferente a cómo se distribuye entre ricos y pobres si la suma crece.
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{verdeAcento}{Rawlsiana (Maximin)}{
+        \(W = \min\{U_1, U_2, \dots, U_n\}\)\\[4pt]
+        Maximiza el bienestar del individuo \textbf{peor situado}. Curvas de indiferencia social en forma de ``L'' (Leontief).
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{rojoAcento}{Teorema de Arrow}{
+        No existe regla de votación colectiva que cumpla simultáneamente:\\
+        1. Dominio universal\\
+        2. Eficiencia de Pareto\\
+        3. Independencia de alternativas irrelevantes (IIA)\\
+        4. \textbf{No dictadura}
+      }
+    \end{column}
+  \end{columns}
+
+  \vspace{0.15cm}
+  \recuadroclave{
+    \small\textbf{Paradoja de Condorcet:} La regla de mayoría simple puede generar preferencias sociales \textbf{intransitivas} (ciclos de votación \(A \succ B \succ C \succ A\)).
+  }
+  \mensajefinal{El óptimo social se alcanza donde la curva de isobienestar social es tangente a la Frontera de Posibilidades de Utilidad (FPU).}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 7: PRODUCCIÓN 2x2, TEOREMAS H-O Y CRITERIO KALDOR-HICKS
+% ==============================================================================
+\begin{frame}{5. Estática Comparativa \(2\times 2\), Existencia y Kaldor-Hicks}
+  \vspace{0.05cm}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}
+      \tarjeta{azulPrincipal}{Teoremas \(2\times 2\) (Producción)}{
+        • \textbf{Stolper-Samuelson:} Si sube \(P_X\), aumenta la retribución real del factor usado \textbf{intensivamente en \(X\)} y cae la del otro factor.\\
+        • \textbf{Rybczynski:} Si crece la dotación de \(L\), aumenta más que proporcionalmente la producción del bien intensivo en \(L\) y \textbf{cae} la del otro.
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{verdeAcento}{Existencia y Unicidad Walrasiana}{
+        • \textbf{Existencia (Arrow-Debreu):} Garantizada por el Teorema de Punto Fijo de \textbf{Brouwer} (funciones continuas) o \textbf{Kakutani}, si el exceso de demanda es continuo y homogéneo.\\
+        • \textbf{Unicidad:} Exige sustitubilidad bruta o preferencias reveladas agregadas (WARP).
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{naranjaAcento}{Criterio de Kaldor-Hicks}{
+        Un cambio mejora el bienestar si los ganadores \textbf{podrían compensar} a los perdedores y seguir mejor (mejora potencial de Pareto).\\[3pt]
+        • \textit{No exige} que la compensación ocurra efectivamente.\\
+        • Base teórica del análisis Costo-Beneficio (equivalente a \(\Delta W > 0\)).
+      }
+    \end{column}
+  \end{columns}
+
+  \vspace{0.1cm}
+  \recuadroclave{
+    \small\textbf{FPP Cóncava vs. Lineal:} La FPP es cóncava al origen cuando existen intensidades factoriales distintas entre \(X\) e \(Y\) o rendimientos marginales decrecientes; solo es recta si hay proporciones idénticas y RCE.
+  }
+  \mensajefinal{El Teorema de Sonnenschein-Mantel-Debreu demuestra que el equilibrio general puede ser múltiple e inestable sin supuestos fuertes en la demanda agregada.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 8: CONCLUSIONES Y CHEAT-SHEET MÓDULO IV
+% ==============================================================================
+\begin{frame}{Conclusiones y Formulario Rápido — Módulo IV}
+  \vspace{0.05cm}
+  \recuadroclave{
+    \small\textbf{Regla de Oro:} El mercado competitivo alcanza la eficiencia paretiana (\(TMS = TMST = TMT\)), pero la equidad depende de la distribución inicial o transferencias de suma alzada.
+  }
+
+  \vspace{0.15cm}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}
+      \tarjeta{verdeAcento}{Fórmulas Imprescindibles}{
+        • Ley de Walras: \(\sum p_i z_i(p) \equiv 0\)\\
+        • Consumo: \(TMS^A = TMS^B\)\\
+        • Global: \(TMT_{X,Y} = \frac{CMg_X}{CMg_Y} = TMS_{X,Y}\)
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{azulPrincipal}{Trampas de Examen}{
+        • Creer que el 1er Teorema requiere convexidad (solo el 2do la exige).\\
+        • Confundir Óptimo de Pareto con equidad o justicia.\\
+        • Olvidar que un punto dentro del lente mejora a ambos agentes.
+      }
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \tarjeta{rojoAcento}{Siguientes Pasos}{
+        • Practicar Bloque A y B del Módulo 04 en el Simulador.\\
+        • Repasar cálculo de curva de contrato con Cobb-Douglas.
+      }
+    \end{column}
+  \end{columns}
+
+  \vspace{0.25cm}
+  \begin{center}
+    {\color{azulPrincipal}\Large\textbf{¡Éxito!}} \quad {\color{grisTexto}Módulo IV · Equilibrio General y Bienestar · PEU SUNASS 2026}
+  \end{center}
+\end{frame}
+
+\end{document}

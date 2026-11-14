@@ -1,0 +1,153 @@
+\documentclass[11pt,a4paper]{article}
+
+% ---------- Codificación y tipografía ----------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{top=2.3cm,bottom=2.3cm,left=2.2cm,right=2.2cm}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{setspace}
+\usepackage{multicol}
+\usepackage{needspace}
+
+\setstretch{1.08}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+
+% ---------- Encabezado y pie ----------
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\small Banco de Preguntas PEU --- SUNASS}
+\rhead{\small Módulo X: Finanzas}
+\cfoot{\small \thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% ---------- Títulos ----------
+\titleformat{\section}{\large\bfseries}{\thesection}{0.8em}{}
+\titlespacing*{\section}{0pt}{14pt}{6pt}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.6em}{}
+\titlespacing*{\subsection}{0pt}{10pt}{4pt}
+
+% ---------- Comandos del examen ----------
+\newcounter{qnum}
+\newcommand{\q}[1]{%
+  \needspace{8\baselineskip}%
+  \par\medskip\refstepcounter{qnum}%
+  \noindent\textbf{\theqnum.}\ #1\par\nopagebreak[4]
+}
+\newenvironment{opts}
+  {\begin{enumerate}[label=\Alph*),leftmargin=2.0em,itemsep=1pt,topsep=2pt,parsep=0pt,partopsep=0pt]}
+  {\end{enumerate}}
+\makeatletter
+\@itempenalty=10000
+\makeatother
+\newcommand{\sol}[3]{\par\noindent\textbf{#1. #2.}\ #3\par\smallskip}
+
+\begin{document}
+
+% ============================================================
+% PORTADA
+% ============================================================
+\begin{titlepage}
+\thispagestyle{empty}
+\centering
+\vspace*{1.2cm}
+
+{\Large\bfseries BANCO DE PREGUNTAS}\\[0.35cm]
+{\large EXAMEN DE ADMISIÓN}\\[0.15cm]
+{\large PROGRAMA DE EXTENSIÓN UNIVERSITARIA (PEU)}\\[0.15cm]
+{\large SUPERINTENDENCIA NACIONAL DE SERVICIOS DE SANEAMIENTO}\\[0.05cm]
+{\large SUNASS}\\[1.0cm]
+
+\rule{\linewidth}{0.9pt}\\[0.55cm]
+{\LARGE\bfseries MÓDULO X: FINANZAS CORPORATIVAS Y EVALUACIÓN DE PROYECTOS}\\[0.35cm]
+{\large Especialidad: Economía}\\[0.55cm]
+\rule{\linewidth}{0.9pt}\\[1.0cm]
+
+\begin{tabular}{ll}
+\toprule
+Número de preguntas: & 90 \\
+Bloque A: & 30 preguntas \\
+Bloque B: & 35 preguntas \\
+Bloque C: & 25 preguntas \\
+Duración sugerida: & 150 minutos \\
+Nivel: & Finanzas intermedias--avanzadas \\
+Formato: & Opción múltiple (A, B, C, D) \\
+\bottomrule
+\end{tabular}
+
+\vfill
+{\small Material de preparación académica. Uso interno.}\\[0.15cm]
+{\small Edición 2026}
+\end{titlepage}
+
+% ============================================================
+% INSTRUCCIONES
+% ============================================================
+\section*{Instrucciones generales}
+
+\begin{enumerate}[label=\arabic*.,leftmargin=1.6em,itemsep=3pt]
+  \item El presente banco contiene \textbf{90 preguntas de opción múltiple}. Cada pregunta tiene una sola respuesta correcta.
+  \item No se descuenta por respuesta incorrecta; se recomienda responder todas las preguntas.
+  \item El tiempo sugerido de resolución es de \textbf{150 minutos}. Use calculadora financiera o científica no programable.
+  \item Las preguntas están organizadas en tres bloques: fundamentos teóricos, aplicaciones cuantitativas y casos regulatorios del sector saneamiento.
+  \item El \textbf{solucionario completo} y la \textbf{tabla de claves rápidas} se encuentran al final. Se recomienda resolver el examen antes de consultarlos.
+\end{enumerate}
+
+\section*{Estructura del banco}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{@{}p{1.4cm}>{\raggedright\arraybackslash}p{7.6cm}cc@{}}
+\toprule
+\textbf{Bloque} & \textbf{Contenido} & \textbf{Preguntas} & \textbf{Peso} \\
+\midrule
+A & Fundamentos teóricos: valor del dinero en el tiempo, tasas nominales y efectivas (TEA), ecuación de Fisher, anualidades, estados financieros, ratios de liquidez, solvencia, rentabilidad (DuPont), criterios VAN, TIR, TIRM, Payback y WACC. & 1--30 & 33.3\% \\
+B & Aplicaciones cuantitativas: cálculo de anualidades y perpetuidades, análisis de estados financieros, flujo de caja libre (FCFF), VAN, TIR, tasa de Fisher, Costo Anual Equivalente (CAE), modelo CAPM, betas apalancadas y tablas de amortización. & 31--65 & 38.9\% \\
+C & Casos con implicancias regulatorias: WACC regulatorio de SUNASS, Base de Activos Regulatorios (BAR), Valor Nuevo de Reemplazo (VNR), evaluación social en Invierte.pe, Tasa Social de Descuento (8\%), contratos APP en PTAR y sostenibilidad de EPS. & 66--90 & 27.8\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{Competencias evaluadas}
+
+\noindent El banco evalúa la capacidad de dominar la matemática financiera y el valor del dinero en el tiempo, interpretar con rigor balances y estados de resultados mediante ratios de liquidez, apalancamiento y rentabilidad, formular flujos de caja libres de proyectos, aplicar criterios de decisión de inversiones (VAN, TIR, TIRM, B/C y CAE), calcular el costo de capital propio mediante el CAPM y determinar el Costo Promedio Ponderado de Capital (WACC) regulatorio para remunerar inversiones en infraestructura de agua y saneamiento bajo el marco de SUNASS e Invierte.pe.
+
+\section*{Notación principal}
+
+{\small
+\renewcommand{\arraystretch}{1.0}
+\begin{center}
+\begin{tabular}{@{}ll@{\hspace{1.0cm}}ll@{}}
+\toprule
+$VP, VF$ & Valor Presente y Valor Futuro & $TEA, TNA$ & Tasa Efectiva y Tasa Nominal Anual \\
+$VAN / NPV$ & Valor Actual Neto & $TIR / IRR$ & Tasa Interna de Retorno \\
+$WACC$ & Costo Promedio Ponderado de Capital & $K_e, K_d$ & Costo de capital propio y costo de la deuda \\
+$ROA, ROE$ & Rentabilidad sobre activos y patrimonio & $FCLP / FCFF$ & Flujo de caja libre del proyecto \\
+$CAE / EAC$ & Costo Anual Equivalente & $VNR$ & Valor Nuevo de Reemplazo \\
+$BAR / RAB$ & Base de Activos Regulatorios & $TSD$ & Tasa Social de Descuento \\
+\bottomrule
+\end{tabular}
+\end{center}
+}
+
+\newpage
+\setcounter{qnum}{0}
+
+\input{m10_bloque_a.tex}
+\input{m10_bloque_b.tex}
+\input{m10_bloque_c.tex}
+\input{m10_claves.tex}
+\input{m10_solucionario.tex}
+
+\end{document}

@@ -1,0 +1,132 @@
+% ==============================================================================
+% Estilo Beamer PEU SUNASS - Economía (Basado en plantilla 16:9 UNT / Grupo D)
+% ==============================================================================
+\ProvidesPackage{sunass_estilo}
+
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage[spanish]{babel}
+\RequirePackage{amsmath, amssymb}
+\RequirePackage{tikz}
+\RequirePackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{arrows.meta, calc, positioning, shadows, shapes.geometric, patterns}
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{booktabs}
+\RequirePackage{multicol}
+
+% Tipografía limpia sans-serif
+\renewcommand{\familydefault}{\sfdefault}
+
+% Paleta de colores exacta de la plantilla
+\definecolor{azulPrincipal}{RGB}{43, 45, 162}
+\definecolor{azulOscuro}{RGB}{24, 26, 98}
+\definecolor{azulClaroFondo}{RGB}{238, 241, 247}
+\definecolor{naranjaAcento}{RGB}{217, 95, 40}
+\definecolor{verdeAcento}{RGB}{21, 132, 103}
+\definecolor{rojoAcento}{RGB}{192, 41, 66}
+\definecolor{aceroAcento}{RGB}{28, 78, 120}
+\definecolor{grisTexto}{RGB}{85, 85, 95}
+
+% Configuración Beamer base
+\usetheme{default}
+\setbeamertemplate{navigation symbols}{}
+\setbeamercolor{background canvas}{bg=white}
+\setbeamercolor{normal text}{fg=black!88}
+
+% Barra superior de título en cada diapositiva
+\setbeamertemplate{frametitle}{%
+  \nointerlineskip%
+  \begin{beamercolorbox}[wd=\paperwidth, ht=0.95cm, dp=0.25cm, leftskip=0.6cm]{frametitle}
+    \usebeamerfont{frametitle}\color{white}\Large\textbf{\insertframetitle}
+  \end{beamercolorbox}%
+}
+\setbeamercolor{frametitle}{bg=azulPrincipal, fg=white}
+
+% Pie de página de 3 bloques (Estilo exacto de la plantilla)
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.4ex,dp=1ex,center]{author in head/foot}%
+      \usebeamerfont{author in head/foot}\color{white}\insertshortauthor
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.333334\paperwidth,ht=2.4ex,dp=1ex,center]{title in head/foot}%
+      \usebeamerfont{title in head/foot}\color{white}\insertshorttitle
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.4ex,dp=1ex,right,rightskip=0.4cm]{date in head/foot}%
+      \usebeamerfont{date in head/foot}\color{white}\insertshortdate \hspace{1.2cm} \insertframenumber{} / \inserttotalframenumber
+    \end{beamercolorbox}%
+  }%
+  \vskip0pt%
+}
+\setbeamercolor{author in head/foot}{bg=azulOscuro, fg=white}
+\setbeamercolor{title in head/foot}{bg=azulPrincipal, fg=white}
+\setbeamercolor{date in head/foot}{bg=azulOscuro, fg=white}
+
+% Portada personalizada con caja azul redondeada y sombra
+\setbeamertemplate{title page}{%
+  \vspace*{0.4cm}
+  \begin{tcolorbox}[
+    colback=azulPrincipal,
+    colframe=azulPrincipal,
+    arc=6pt,
+    boxrule=0pt,
+    enhanced,
+    drop shadow={opacity=0.28, shadow xshift=1.5pt, shadow yshift=-2pt},
+    top=0.55cm, bottom=0.55cm, left=0.8cm, right=0.8cm
+  ]
+    \centering
+    {\color{white}\LARGE\textbf{\inserttitle}\par}
+    \vspace{0.25cm}
+    {\color{white!90}\large\insertsubtitle\par}
+  \end{tcolorbox}
+  \vfill
+  \begin{center}
+    {\large\textbf{\insertauthor}\par}
+    \vspace{0.25cm}
+    {\small\color{grisTexto}\insertinstitute\par}
+    \vspace{0.35cm}
+    {\large\insertdate\par}
+  \end{center}
+  \vfill
+}
+
+% Tarjeta con barra lateral vertical de color (Estilo Slide 2 y Slide 4)
+\newcommand{\tarjeta}[3]{%
+  \begin{tcolorbox}[
+    blanker,
+    borderline west={3pt}{0pt}{#1},
+    left=8pt, right=4pt, top=1pt, bottom=1pt,
+    before skip=2pt, after skip=2pt
+  ]
+    {\color{#1}\normalsize\textbf{#2}}\\[2pt]
+    {\footnotesize #3}
+  \end{tcolorbox}%
+}
+
+% Recuadro destacado horizontal gris-azulado (Estilo Slide 2 y Slide 4)
+\newcommand{\recuadroclave}[1]{%
+  \begin{tcolorbox}[
+    colback=azulClaroFondo,
+    colframe=azulClaroFondo,
+    arc=0pt,
+    boxrule=0pt,
+    left=10pt, right=10pt, top=4pt, bottom=4pt,
+    before skip=3pt, after skip=3pt
+  ]
+    \centering #1
+  \end{tcolorbox}%
+}
+
+% Mensaje principal de una línea al pie del contenido (Estilo Slide 2 y Slide 3)
+\newcommand{\mensajefinal}[1]{%
+  \vspace{0.05cm}
+  \noindent{\color{azulPrincipal}\small\textbf{#1}}
+}
+
+% Bloque de indicador/fórmula destacada para columna derecha (Estilo Slide 3)
+\newcommand{\indicador}[3]{%
+  \vspace{2pt}
+  {\scriptsize\color{grisTexto}#1}\\[1pt]
+  {\color{#2}\Large\textbf{#3}}\\[6pt]
+}
