@@ -4,241 +4,241 @@
 
 \q{En teoría de juegos, una estrategia de un jugador se define como estrictamente dominante si:}
 \begin{opts}
-  \item proporciona un pago estrictamente mayor que cualquier otra de sus estrategias, independientemente de las acciones que elijan los rivales.
-  \item iguala el pago esperado de todas las estrategias puras disponibles del rival.
-  \item proporciona el pago más alto posible solo cuando todos los demás jugadores cooperan.
-  \item minimiza la pérdida máxima que el jugador puede sufrir en el peor de los escenarios.
+    \item minimiza la pérdida máxima esperada que el jugador sufre en el peor escenario posible.
+    \item proporciona un pago estrictamente mayor que cualquier otra estrategia ante toda acción rival.
+    \item proporciona el pago máximo posible únicamente cuando todos los demás jugadores cooperan.
+    \item iguala el pago esperado de todas las estrategias puras disponibles de los competidores.
 \end{opts}
 
 \q{Un perfil de estrategias en un juego estático con información completa constituye un Equilibrio de Nash si:}
 \begin{opts}
-  \item todos los jugadores obtienen el mismo nivel de utilidad o beneficio.
-  \item ningún jugador tiene incentivos para desviar unilateralmente su estrategia dada la estrategia de los demás.
-  \item cada jugador está jugando una estrategia estrictamente dominante.
-  \item maximiza la suma agregada de los pagos de todos los jugadores participantes.
+    \item ningún jugador tiene incentivos para desviarse unilateralmente dadas las estrategias rivales.
+    \item maximiza la suma agregada de los pagos conjuntos de todos los jugadores del mercado.
+    \item todos los jugadores participantes obtienen exactamente el mismo nivel de pago esperado.
+    \item cada jugador elige necesariamente una estrategia estrictamente dominante en estrategias puras.
 \end{opts}
 
 \q{En el juego clásico del Dilema del Prisionero en una sola etapa, el equilibrio de Nash:}
 \begin{opts}
-  \item se alcanza cuando ambos jugadores eligen no confesar o cooperar.
-  \item no existe en estrategias puras, existiendo únicamente en estrategias mixtas.
-  \item es único, en estrategias dominantes, pero es ineficiente en el sentido de Pareto.
-  \item es eficiente en el sentido de Pareto, pues maximiza el bienestar social conjunto.
+    \item se alcanza cuando ambos jugadores eligen no confesar o cooperar.
+    \item no existe en estrategias puras, existiendo únicamente en estrategias mixtas.
+    \item es eficiente en el sentido de Pareto, pues maximiza el bienestar social conjunto.
+    \item es único, en estrategias dominantes, pero es ineficiente en el sentido de Pareto.
 \end{opts}
 
 \q{En un juego secuencial o dinámico representado en forma extensiva con información perfecta:}
 \begin{opts}
-  \item existen nodos de decisión que pertenecen a varios jugadores a la vez.
-  \item los jugadores desconocen las decisiones tomadas en etapas previas por los rivales.
-  \item los jugadores eligen sus acciones de forma simultánea e independiente.
-  \item cada conjunto de información consta de un único nodo de decisión.
+    \item los jugadores desconocen las decisiones tomadas en etapas previas por los rivales.
+    \item cada conjunto de información consta de un único nodo de decisión.
+    \item los jugadores eligen sus acciones de forma simultánea e independiente.
+    \item existen nodos de decisión que pertenecen a varios jugadores a la vez.
 \end{opts}
 
 \q{El método de inducción hacia atrás (backward induction) permite resolver juegos dinámicos finitos:}
 \begin{opts}
-  \item analizando primero los subjuegos en los nodos terminales y retrocediendo hacia la raíz del árbol.
-  \item eliminando recursivamente estrategias débilmente dominadas desde el nodo raíz.
-  \item partiendo de las decisiones iniciales y proyectando probabilidades hacia el futuro.
-  \item maximizando el pago conjunto de los jugadores en la primera etapa.
+    \item analizando primero los subjuegos en nodos terminales y retrocediendo hacia la raíz.
+    \item maximizando la suma cooperativa de los pagos de todos los jugadores en la etapa inicial.
+    \item eliminando de forma iterativa estrategias débilmente dominadas desde el nodo raíz.
+    \item partiendo de las decisiones iniciales y proyectando pagos esperados hacia el futuro.
 \end{opts}
 
 \q{Un refinamiento fundamental del Equilibrio de Nash en juegos dinámicos es el Equilibrio de Nash Perfecto en Subjuegos (SPNE) propuesto por Reinhard Selten, el cual se caracteriza por:}
 \begin{opts}
-  \item admitir que los jugadores adopten amenazas inverosímiles para inducir cooperación.
-  \item eliminar las amenazas o promesas que no son creíbles a lo largo de todo el árbol del juego.
-  \item aplicarse únicamente a juegos que no tienen ningún subjuego propio.
-  \item garantizar que la solución sea idéntica al resultado de colusión perfecta.
+    \item admitir que los jugadores adopten amenazas inverosímiles para inducir cooperación tácita.
+    \item descartar estrategias basadas en amenazas o promesas no creíbles en cualquier subjuego.
+    \item aplicarse exclusivamente a juegos simultáneos finitos sin subjuegos propios relevantes.
+    \item garantizar que el resultado coincida siempre con el equilibrio de colusión cooperativa.
 \end{opts}
 
 \q{En un juego estático finito donde un jugador adopta una estrategia mixta en equilibrio de Nash:}
 \begin{opts}
-  \item obtiene un pago esperado estrictamente mayor que el de cualquiera de sus estrategias puras.
-  \item elige siempre una distribución uniforme sobre todo el conjunto de acciones.
-  \item debe ser indiferente entre todas las estrategias puras a las que asigna probabilidad estrictamente positiva.
-  \item asigna una probabilidad de 1 a la estrategia con mayor pago esperado.
+    \item es indiferente entre todas las estrategias puras a las que asigna probabilidad positiva.
+    \item obtiene un pago esperado estrictamente superior al de cualquiera de sus estrategias puras.
+    \item asigna exactamente la misma probabilidad uniforme a todo el conjunto de acciones puras.
+    \item asigna probabilidad igual a la unidad a la acción con menor varianza de pago esperado.
 \end{opts}
 
 \q{El Teorema Popular (Folk Theorem) para juegos repetidos infinitamente establece que:}
 \begin{opts}
-  \item la única solución posible en repetición infinita es repetir el equilibrio de Nash del juego de una etapa.
-  \item la colusión colapsa inevitablemente tras un número finito de periodos conocidos.
-  \item ningún resultado cooperativo es sostenible si los jugadores descuentan el futuro.
-  \item si los jugadores son suficientemente pacientes, cualquier resultado factible y estrictamente individualmente racional puede sostenerse como un SPNE.
+    \item cualquier acuerdo colusorio colapsa inevitablemente tras un número finito de periodos dados.
+    \item si los jugadores son suficientemente pacientes, todo pago factible e individualmente racional es SPNE.
+    \item la única solución posible en repetición infinita es repetir el equilibrio estático de una etapa.
+    \item ningún resultado cooperativo puede sostenerse cuando los jugadores descuentan flujos futuros.
 \end{opts}
 
 \q{En el modelo clásico de oligopolio de Cournot, se asume que las empresas:}
 \begin{opts}
-  \item eligen simultáneamente sus niveles de producción (cantidades) tomando como dada la producción de las rivales.
-  \item eligen secuencialmente sus niveles de inversión en capacidad.
-  \item forman un cártel vinculante y dividen el mercado mediante cuotas geográficas.
-  \item eligen simultáneamente los precios y la demanda determina las cantidades.
+    \item forman un cártel vinculante de precios y reparten el mercado mediante cuotas geográficas.
+    \item eligen simultáneamente sus cantidades de producción tomando como dada la producción rival.
+    \item compiten simultáneamente en precios homogéneos y la demanda residual ajusta las cantidades.
+    \item eligen secuencialmente sus niveles de inversión en capacidad antes de fijar precios finales.
 \end{opts}
 
 \q{En el modelo de Cournot, la función de mejor respuesta (o función de reacción) de una empresa:}
 \begin{opts}
-  \item tiene pendiente positiva cuando las cantidades de las empresas son sustitutos estratégicos.
-  \item muestra la cantidad que maximiza su beneficio para cada nivel de producción anticipado de los competidores.
-  \item indica el precio óptimo a fijar ante cualquier precio anunciado por el rival.
-  \item es independiente de los costos marginales de producción de la propia empresa.
+    \item determina el precio óptimo de monopolio a cobrar ante cualquier tarifa anunciada por el rival.
+    \item resulta independiente de los costos marginales propios si la curva de demanda es lineal.
+    \item tiene pendiente positiva cuando las cantidades producidas actúan como sustitutos estratégicos.
+    \item indica la cantidad que maximiza su beneficio para cada producción esperada de las rivales.
 \end{opts}
 
 \q{El modelo de oligopolio de Bertrand con bienes homogéneos y costos marginales constantes e idénticos asume que:}
 \begin{opts}
-  \item las empresas compiten fijando cantidades simultáneamente.
-  \item las empresas fijan precios escalonados en función de la capacidad instalada.
-  \item la empresa que fije el precio más bajo captura la totalidad de la demanda de mercado.
-  \item el producto posee diferenciación horizontal de marca.
+    \item las empresas fijan precios escalonados según su capacidad instalada previa.
+    \item los bienes presentan diferenciación horizontal espacial o de marca.
+    \item la firma con menor precio captura la totalidad de la demanda del mercado.
+    \item las empresas compiten fijando simultáneamente sus volúmenes de producción.
 \end{opts}
 
 \q{La denominada 'Paradoja de Bertrand' se refiere al resultado teórico según el cual:}
 \begin{opts}
-  \item la colusión es más fácil de sostener cuando el número de firmas tiende a infinito.
-  \item un cártel maximiza beneficios cuando los costos de transporte son infinitos.
-  \item un monopolista que discrimina precios genera el mismo bienestar que la competencia perfecta.
-  \item la competencia entre dos empresas en precios conduce al precio competitivo igual al costo marginal y beneficios económicos nulos.
+    \item un monopolista discriminador de precios genera exactamente el bienestar de competencia perfecta.
+    \item la colusión perfecta resulta más estable conforme el número de competidores tiende a infinito.
+    \item competir en precios con bien homogéneo lleva el precio al costo marginal y beneficio nulo.
+    \item un cártel maximiza beneficios conjuntos cuando los costos unitarios de transporte son infinitos.
 \end{opts}
 
 \q{La solución propuesta por Francis Edgeworth para superar la paradoja de Bertrand se basa en incorporar:}
 \begin{opts}
-  \item restricciones rígidas de capacidad de producción en las empresas competidoras.
-  \item bienes perfectamente sustitutos producidos con costos fijos nulos.
-  \item diferenciación vertical basada en inversión publicitaria.
-  \item asimetría de información sobre la calidad del bien.
+    \item asimetría de información bilateral sobre el costo fijo de entrada.
+    \item restricciones rígidas de capacidad productiva en las empresas rivales.
+    \item bienes perfectamente sustitutos producidos con costos marginales nulos.
+    \item diferenciación vertical de calidad basada en inversión publicitaria.
 \end{opts}
 
 \q{Cuando dos empresas compiten en precios ofreciendo productos diferenciados (sustitutos imperfectos), sus funciones de mejor respuesta:}
 \begin{opts}
-  \item son líneas perfectamente verticales e independientes de los precios rivales.
-  \item tienen pendiente positiva, lo que denota complementariedad estratégica en precios.
-  \item son idénticas a las funciones de reacción del modelo de Cournot.
-  \item tienen pendiente negativa, lo que denota sustituibilidad estratégica.
+    \item tienen pendiente negativa e idéntica magnitud que en el modelo de Cournot.
+    \item son líneas perfectamente verticales e independientes de las decisiones rivales.
+    \item presentan pendiente nula siempre que los costos marginales sean constantes.
+    \item tienen pendiente positiva, reflejando complementariedad estratégica en precios.
 \end{opts}
 
 \q{Según la clasificación de Bulow, Geanakoplos y Klemperer (1985), las variables de decisión en oligopolio son 'sustitutos estratégicos' cuando:}
 \begin{opts}
-  \item un incremento en la acción de la empresa 1 induce a la empresa 2 a incrementar también su acción.
-  \item las empresas fijan precios iguales a los costos medios mínimos de largo plazo.
-  \item un incremento en la acción de la empresa 1 reduce la respuesta óptima o acción de la empresa 2.
-  \item el producto carece de sustitutos cercanos en el mercado relevante.
+    \item un incremento en la acción de la empresa 1 reduce la respuesta óptima o acción de la empresa 2.
+    \item un incremento en la acción de la empresa 1 induce a la empresa 2 a incrementar también su acción.
+    \item las empresas fijan precios iguales a los costos medios mínimos de largo plazo.
+    \item el producto carece de sustitutos cercanos en el mercado relevante.
 \end{opts}
 
 \q{En el modelo de liderazgo en cantidades de Stackelberg con una empresa líder y una seguidora:}
 \begin{opts}
-  \item ambas empresas eligen su nivel de producción de forma simultánea e independiente.
-  \item ambas empresas obtienen beneficios idénticos a los del equilibrio de Cournot simétrico.
-  \item la empresa seguidora actúa primero y el líder toma su producción como un dato exógeno.
-  \item la empresa líder elige su producción anticipando la función de reacción de la seguidora.
+    \item el líder elige primero su volumen anticipando la función de reacción seguidora.
+    \item ambas firmas obtienen exactamente los mismos beneficios que en Cournot simétrico.
+    \item ambas empresas eligen su nivel de producción simultáneamente sin observarse.
+    \item la seguidora actúa primero y el líder toma esa producción como un dato exógeno.
 \end{opts}
 
 \q{La ventaja del primer jugador (first-mover advantage) en el modelo de Stackelberg en cantidades requiere fundamentalmente:}
 \begin{opts}
-  \item que la empresa líder sea capaz de comprometerse de manera creíble e irreversible con su nivel de producción.
-  \item que la empresa seguidora ignore por completo la decisión tomada por el líder.
-  \item que el mercado opere bajo un esquema de subastas a sobre cerrado de primer precio.
-  \item que los costos marginales de la empresa líder sean estrictamente mayores que los de la seguidora.
+    \item que el mercado opere mediante una subasta simultánea a sobre cerrado de primer precio.
+    \item que la empresa seguidora desconozca completamente el volumen elegido por la líder.
+    \item que los costos marginales de la empresa líder superen estrictamente a los de su rival.
+    \item que la empresa líder pueda comprometerse de manera creíble con su nivel de producción.
 \end{opts}
 
 \q{Considere una industria con demanda lineal y costos marginales constantes idénticos. El orden correcto de menor a mayor producción agregada ($Q$) es:}
 \begin{opts}
-  \item $Q_{Stackelberg} < Q_{Cournot} < Q_{Monopolio} < Q_{Competencia\ Perfecta}$
-  \item $Q_{Monopolio} < Q_{Cournot} < Q_{Stackelberg} < Q_{Competencia\ Perfecta}$
-  \item $Q_{Cournot} < Q_{Monopolio} < Q_{Stackelberg} < Q_{Competencia\ Perfecta}$
-  \item $Q_{Monopolio} < Q_{Stackelberg} < Q_{Cournot} < Q_{Competencia\ Perfecta}$
+    \item $Q_{Stackelberg} < Q_{Cournot} < Q_{Monopolio} < Q_{Competencia\ Perfecta}$
+    \item $Q_{Monopolio} < Q_{Stackelberg} < Q_{Cournot} < Q_{Competencia\ Perfecta}$
+    \item $Q_{Monopolio} < Q_{Cournot} < Q_{Stackelberg} < Q_{Competencia\ Perfecta}$
+    \item $Q_{Cournot} < Q_{Monopolio} < Q_{Stackelberg} < Q_{Competencia\ Perfecta}$
 \end{opts}
 
 \q{Siguiendo el mismo mercado del caso anterior, el orden correcto de menor a mayor precio de mercado ($P$) es:}
 \begin{opts}
-  \item $P_{Competencia\ Perfecta} < P_{Monopolio} < P_{Cournot} < P_{Stackelberg}$
-  \item $P_{Cournot} < P_{Stackelberg} < P_{Monopolio} < P_{Competencia\ Perfecta}$
-  \item $P_{Competencia\ Perfecta} < P_{Stackelberg} < P_{Cournot} < P_{Monopolio}$
-  \item $P_{Monopolio} < P_{Cournot} < P_{Stackelberg} < P_{Competencia\ Perfecta}$
+    \item $P_{Competencia\ Perfecta} < P_{Monopolio} < P_{Cournot} < P_{Stackelberg}$
+    \item $P_{Competencia\ Perfecta} < P_{Stackelberg} < P_{Cournot} < P_{Monopolio}$
+    \item $P_{Monopolio} < P_{Cournot} < P_{Stackelberg} < P_{Competencia\ Perfecta}$
+    \item $P_{Cournot} < P_{Stackelberg} < P_{Monopolio} < P_{Competencia\ Perfecta}$
 \end{opts}
 
 \q{La inestabilidad inherente de los acuerdos colusorios o cárteles en oligopolio se debe a que:}
 \begin{opts}
-  \item la legislación de competencia premia a las empresas que forman cárteles formales.
-  \item la colusión incrementa la elasticidad precio de la demanda del mercado.
-  \item el beneficio agregado del cártel es menor que la suma de beneficios de Cournot.
-  \item cada empresa miembro enfrenta un incentivo unilateral a expandir su producción si las demás respetan sus cuotas.
+    \item el beneficio conjunto del cártel resulta menor que la suma de beneficios de Cournot.
+    \item el acuerdo colusorio incrementa sistemáticamente la elasticidad precio de la demanda.
+    \item cada firma tiene incentivo unilateral a producir sobre su cuota si las demás cooperan.
+    \item la normativa de defensa de la competencia incentiva la estabilidad de cárteles formales.
 \end{opts}
 
 \q{Bajo la estrategia del gatillo (grim trigger) en un juego repetido infinitamente, las empresas sostienen la colusión si:}
 \begin{opts}
-  \item el valor presente de cooperar indefinidamente supera o iguala la ganancia inmediata de desviarse más el valor presente del castigo perpetuo.
-  \item el factor de descuento intertemporal $\delta$ es menor que una tasa de interés crítica de mercado.
-  \item el número de empresas coludidas tiende a infinito.
-  \item el castigo por desviarse consiste en fijar el precio de monopolio durante los siguientes tres periodos.
+    \item la sanción por incumplimiento consiste en cobrar el precio monopólico por tres periodos.
+    \item el número de competidores simétricos participantes dentro del acuerdo tiende a infinito.
+    \item el valor presente de cooperar supera o iguala el desvío inmediato más el castigo perpetuo.
+    \item el factor de descuento intertemporal $\delta$ cae por debajo de la tasa libre de riesgo.
 \end{opts}
 
 \q{En un oligopolio de Cournot simétrico con $n$ empresas que intentan coludir, a medida que el número de empresas $n$ aumenta:}
 \begin{opts}
-  \item la cuota de mercado individual asignada en el cártel se incrementa.
-  \item el factor de descuento crítico $\delta^*$ aumenta, haciendo más difícil sostener el acuerdo colusorio.
-  \item el beneficio que obtiene una empresa por desviarse se reduce a cero.
-  \item el factor de descuento crítico $\delta^*$ disminuye, facilitando enormemente la colusión.
+    \item el factor de descuento crítico $\delta^*$ sube, dificultando sostener el acuerdo colusorio.
+    \item la ganancia inmediata de desviarse unilateralmente del acuerdo se reduce exactamente a cero.
+    \item la cuota individual de mercado asignada dentro del cártel se expande proporcionalmente.
+    \item el factor de descuento crítico $\delta^*$ disminuye, facilitando la estabilidad del cártel.
 \end{opts}
 
 \q{Uno de los supuestos esenciales del modelo de Competencia Monopolística formulado por Edward Chamberlin es:}
 \begin{opts}
-  \item la homogeneidad absoluta de los productos ofrecidos por las distintas empresas.
-  \item la existencia de elevadas barreras de entrada tecnológicas y legales.
-  \item la diferenciación de productos combinada con la libre entrada y salida de empresas en el largo plazo.
-  \item la interacción estratégica explícita entre un número muy reducido de competidores.
+    \item la diferenciación de productos junto con libre entrada y salida a largo plazo.
+    \item la interdependencia estratégica explícita entre un número reducido de oligopolistas.
+    \item la presencia de elevadas barreras legales y tecnológicas a la entrada de rivales.
+    \item la homogeneidad estricta de los bienes ofrecidos por todas las firmas competidoras.
 \end{opts}
 
 \q{El modelo de localización espacial de Hotelling formaliza el concepto de:}
 \begin{opts}
-  \item discriminación perfecta de precios de primer grado.
-  \item diferenciación vertical, donde todos los consumidores prefieren la misma cualidad objetiva.
-  \item monopolio natural con costos marginales decrecientes.
-  \item diferenciación horizontal, donde los consumidores eligen según sus preferencias subjetivas o cercanía geográfica.
+    \item discriminación perfecta de precios de primer grado según disposición a pagar.
+    \item diferenciación horizontal donde influye la preferencia o cercanía geográfica.
+    \item monopolio natural multiproducto con funciones de costos subaditivas crecientes.
+    \item diferenciación vertical donde todos coinciden en preferir mayor calidad objetiva.
 \end{opts}
 
 \q{A diferencia de la diferenciación horizontal, en un modelo de diferenciación vertical de productos:}
 \begin{opts}
-  \item a precios idénticos, todos los consumidores coinciden en preferir la variedad de mayor calidad.
-  \item todos los consumidores tienen la misma valoración por cada variedad disponible.
-  \item las empresas compiten exclusivamente mediante cantidades a la Cournot.
-  \item los costos fijos de entrada son necesariamente iguales a cero.
+    \item las firmas compiten exclusivamente eligiendo cantidades simultáneas a la Cournot.
+    \item a igual precio, todos los consumidores prefieren la variedad de mayor calidad.
+    \item los costos fijos hundidos de entrada al mercado son necesariamente nulos.
+    \item todos los consumidores poseen exactamente la misma disposición marginal a pagar.
 \end{opts}
 
 \q{En el equilibrio de largo plazo de una industria bajo competencia monopolística:}
 \begin{opts}
-  \item el precio iguala al costo marginal y las empresas operan con beneficios positivos.
-  \item la curva de demanda percibida por la empresa es tangente a la curva de costo medio, obteniendo beneficios económicos nulos.
-  \item las empresas alcanzan la escala mínima eficiente de producción minimizando el costo medio.
-  \item la producción agregada coincide exactamente con la que generaría un cártel monopólico.
+    \item la demanda percibida es tangente al costo medio, resultando beneficio económico nulo.
+    \item todas las firmas operan en el mínimo de su curva de costo total medio de largo plazo.
+    \item el precio iguala exactamente al costo marginal y existen beneficios extraordinarios.
+    \item el volumen agregado de mercado coincide con el equilibrio colusorio de monopolio.
 \end{opts}
 
 \q{El 'teorema del exceso de capacidad' en competencia monopolística establece que en el equilibrio de largo plazo:}
 \begin{opts}
-  \item la capacidad de planta instalada es exactamente la requerida para minimizar el costo total medio.
-  \item las empresas operan sobrepasando su capacidad óptima, generando deseconomías de escala.
-  \item las empresas producen a un nivel inferior al de la escala mínima eficiente, operando con capacidad ociosa.
-  \item el costo marginal de producción supera al precio cobrado en el mercado.
+    \item las firmas producen por debajo de su escala mínima eficiente, con capacidad ociosa.
+    \item el costo marginal de producción supera sistemáticamente al precio de equilibrio vigente.
+    \item las firmas operan exactamente en la escala mínima eficiente minimizando su costo medio.
+    \item las empresas producen por encima de su escala óptima, generando deseconomías de escala.
 \end{opts}
 
 \q{La evaluación del bienestar social en competencia monopolística frente a la competencia perfecta refleja una disyuntiva (trade-off) entre:}
 \begin{opts}
-  \item discriminación de precios de tercer grado y estabilidad macroeconómica.
-  \item maximización de rentas monopólicas y recaudación fiscal por impuestos pigouvianos.
-  \item la reducción de costos laborales y la eliminación de la asimetría de información.
-  \item eficiencia estática de costos mínimos y el valor derivado de la diversidad o variedad de productos.
+    \item discriminación de precios de tercer grado y estabilidad macroeconómica sectorial.
+    \item maximización de rentas monopólicas y recaudación por impuestos correctivos pigouvianos.
+    \item reducción de costos salariales unitarios y eliminación de información asimétrica.
+    \item eficiencia productiva de costo mínimo y valor social de mayor variedad de bienes.
 \end{opts}
 
 \q{En los mercados con competencia imperfecta, la publicidad informativa se diferencia de la publicidad persuasiva en que:}
 \begin{opts}
-  \item reduce los costos de búsqueda y amplía la información disponible sobre precios y atributos objetivos.
-  \item disminuye la elasticidad precio de la demanda para permitir mayores márgenes de ganancia.
-  \item es estrictamente prohibida por los organismos de defensa de la competencia.
-  \item incrementa artificialmente el poder de monopolio al manipular las preferencias del consumidor.
+    \item reduce costos de búsqueda difundiendo información objetiva sobre precios y atributos.
+    \item disminuye la elasticidad precio de la demanda permitiendo márgenes más elevados.
+    \item se encuentra prohibida por las agencias de competencia por inducir colusión tácita.
+    \item incrementa las barreras estratégicas manipulando subjetivamente las preferencias.
 \end{opts}
 
 \q{En un duopolio de Cournot, la condición matemática que asegura la estabilidad dinámica del equilibrio de Nash es que:}
 \begin{opts}
-  \item el determinante de la matriz jacobiana de demandas sea estrictamente negativo.
-  \item el valor absoluto de la pendiente de cada función de reacción sea estrictamente menor que 1.
-  \item la suma de los costos marginales de ambas empresas sea igual a cero.
-  \item las funciones de reacción se intersecten sobre el eje horizontal de cantidades.
+    \item el valor absoluto de la pendiente de cada función de reacción sea menor que la unidad.
+    \item la suma de los costos marginales de todas las firmas participantes sea exactamente cero.
+    \item las funciones de mejor respuesta se crucen necesariamente sobre el eje horizontal.
+    \item el determinante de la matriz jacobiana de demandas inversas sea estrictamente negativo.
 \end{opts}
 
