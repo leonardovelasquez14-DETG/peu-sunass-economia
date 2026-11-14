@@ -4,241 +4,241 @@
 
 \q{En la representación matricial del Modelo Lineal General $Y = X\beta + u$, el estimador de Mínimos Cuadrados Ordinarios (MCO) $\hat{\beta}$ se obtiene minimizando la suma de residuos al cuadrado y su expresión cerrada es:}
 \begin{opts}
-  \item $\hat{\beta} = (X'X)^{-1} X'Y$
-  \item $\hat{\beta} = X'(XX')^{-1} Y$
-  \item $\hat{\beta} = (X'X) X'Y$
-  \item $\hat{\beta} = (X'Y)^{-1} X'X$
+    \item $\hat{\beta} = (X'X) X'Y$
+    \item $\hat{\beta} = (X'X)^{-1} X'Y$
+    \item $\hat{\beta} = (X'Y)^{-1} X'X$
+    \item $\hat{\beta} = X'(XX')^{-1} Y$
 \end{opts}
 
 \q{El supuesto de 'Exogeneidad Estricta' en el modelo de regresión lineal establece formalmente que $E[u|X] = 0$. La consecuencia teórica directa más importante de este supuesto es que:}
 \begin{opts}
-  \item los errores estándar de los estimadores convergen a cero cuando el tamaño de muestra es finito.
-  \item el estimador MCO es un estimador insesgado del vector de parámetros poblacionales ($E[\hat{\beta}|X] = \beta$).
-  \item el coeficiente de determinación $R^2$ es igual a 1.
-  \item el estimador MCO es asintóticamente eficiente pero sesgado en muestras pequeñas.
+    \item el estimador MCO es asintóticamente eficiente pero presenta sesgo en muestras finitas.
+    \item los errores estándar de los estimadores convergen a cero cuando el tamaño de muestra es finito.
+    \item el coeficiente de determinación $R^2$ alcanza siempre un valor unitario en muestras finitas.
+    \item el estimador MCO es insesgado respecto al vector de parámetros poblacionales ($E[\hat{\beta}|X] = \beta$).
 \end{opts}
 
 \q{Para que la matriz $(X'X)^{-1}$ exista y el estimador MCO pueda calcularse unívocamente, se requiere el supuesto de:}
 \begin{opts}
-  \item normalidad estricta de la variable dependiente $Y$.
-  \item independencia temporal de las perturbaciones estocásticas.
-  \item rango de columna completo de la matriz $X$, lo que descarta la existencia de multicolinealidad perfecta entre los regresores.
-  \item homocedasticidad estricta en todas las observaciones.
+    \item normalidad estricta de la variable dependiente $Y$ en las observaciones.
+    \item homocedasticidad estricta y ausencia de autocorrelación serial en los errores.
+    \item rango de columna completo de la matriz $X$, descartando multicolinealidad perfecta.
+    \item independencia temporal completa entre las perturbaciones estocásticas.
 \end{opts}
 
 \q{El supuesto de perturbaciones esféricas en el modelo clásico de Gauss-Markov abarca dos condiciones fundamentales sobre la matriz de varianzas-covarianzas condicional del error $Var(u|X) = \sigma^2 I_n$:}
 \begin{opts}
-  \item independencia estocástica entre los regresores y la variable dependiente.
-  \item estacionariedad en sentido estricto y ergodicidad.
-  \item normalidad y asimetría nula de los errores.
-  \item homocedasticidad (varianza constante $\sigma^2$) y ausencia de autocorrelación serial ($Cov(u_i, u_j|X) = 0$ para $i \neq j$).
+    \item estacionariedad en sentido estricto y ergodicidad asintótica del término de error.
+    \item normalidad bivariada, asimetría nula y curtosis exacta igual a tres en los residuos.
+    \item homocedasticidad (varianza constante $\sigma^2$) y ausencia de autocorrelación serial.
+    \item independencia estocástica lineal entre los regresores y la variable dependiente medida.
 \end{opts}
 
 \q{El célebre Teorema de Gauss-Markov demuestra que, bajo los supuestos clásicos de regresión lineal, el estimador MCO:}
 \begin{opts}
-  \item es el Mejor Estimador Lineal Insesgado (MELI / BLUE), teniendo la menor varianza (máxima eficiencia) dentro de la clase de todos los estimadores lineales e insesgados.
-  \item alcanza siempre un coeficiente $R^2$ superior al de cualquier estimador no lineal.
-  \item es el estimador de máxima verosimilitud únicamente si los errores siguen una distribución uniforme.
-  \item es invariante frente a cualquier cambio en la escala de medición de las variables.
+    \item coincide con el estimador de máxima verosimilitud siempre que los errores sigan distribución uniforme.
+    \item alcanza un coeficiente $R^2$ superior al de cualquier estimador no lineal bajo errores esféricos.
+    \item es invariante en magnitud frente a cualquier transformación no lineal en la escala de las variables.
+    \item es el Mejor Estimador Lineal Insesgado (MELI), con varianza mínima entre estimadores lineales insesgados.
 \end{opts}
 
 \q{El estimador insesgado de la varianza poblacional de las perturbaciones estocásticas ($\sigma^2$) en una regresión múltiple con $n$ observaciones y $k$ parámetros (incluyendo la constante) es:}
 \begin{opts}
-  \item $s^2 = \frac{\sum e_i^2}{n}$
-  \item $s^2 = \frac{e'e}{n - k} = \frac{SCR}{n - k}$
-  \item $s^2 = \frac{STC}{n - 1}$
-  \item $s^2 = \frac{\sum e_i}{n - k}$
+    \item $s^2 = \frac{\sum_{i=1}^n e_i^2}{n - 1}$
+    \item $s^2 = \frac{\sum_{i=1}^n e_i}{n - k}$
+    \item $s^2 = \frac{e'e}{n - k}$
+    \item $s^2 = \frac{\sum_{i=1}^n e_i^2}{n}$
 \end{opts}
 
 \q{El coeficiente de determinación $R^2$ mide la proporción de la variación total de la variable dependiente explicada por el modelo de regresión. Una propiedad matemática intrínseca del $R^2$ es que:}
 \begin{opts}
-  \item su valor siempre oscila entre $-1$ y $+1$ en modelos con constante.
-  \item es igual a cero si y solo si todos los coeficientes estimados son estrictamente positivos.
-  \item nunca disminuye (aumenta o permanece constante) cuando se agregan variables explicativas adicionales, aun cuando estas no sean estadísticamente significativas.
-  \item disminuye necesariamente cada vez que se añade una nueva variable explicativa al modelo.
+    \item disminuye necesariamente al introducir cualquier regresor adicional irrelevante.
+    \item su valor siempre oscila entre $-1$ y $+1$ cuando el modelo incluye constante.
+    \item nunca disminuye al agregar variables explicativas adicionales, aunque no sean significativas.
+    \item es igual a cero solo cuando todos los coeficientes estimados son negativos.
 \end{opts}
 
 \q{Para penalizar la inclusión innecesaria de regresores que no aportan poder explicativo genuino, se utiliza el coeficiente $R^2$ ajustado ($\bar{R}^2$), el cual se define como:}
 \begin{opts}
-  \item $\bar{R}^2 = 1 - \frac{n - 1}{n - k} (1 + R^2)$
-  \item $\bar{R}^2 = \sqrt{R^2}$
-  \item $\bar{R}^2 = R^2 \times \frac{n - k}{n - 1}$
-  \item $\bar{R}^2 = 1 - \frac{SCR / (n - k)}{STC / (n - 1)}$
+    \item $\bar{R}^2 = 1 - \frac{SCR}{STC} \sqrt{n - k}$
+    \item $\bar{R}^2 = 1 - \frac{n - k}{n - 1} (1 - R^2)$
+    \item $\bar{R}^2 = 1 - \frac{SEC / (n - k)}{STC / (n - 1)}$
+    \item $\bar{R}^2 = 1 - \frac{SCR / (n - k)}{STC / (n - 1)}$
 \end{opts}
 
 \q{Si además de los supuestos de Gauss-Markov se añade el supuesto de Normalidad de los errores ($u|X \sim N(0, \sigma^2 I_n)$), la distribución muestral exacta del estimador MCO es:}
 \begin{opts}
-  \item $\hat{\beta}|X \sim N(\beta, \sigma^2 (X'X)^{-1})$
-  \item $\hat{\beta}|X \sim \chi^2_{n-k}$
-  \item $\hat{\beta}|X \sim F_{k, n-k}$
-  \item $\hat{\beta}|X \sim t_{n-k}(\beta, \sigma^2 I_n)$
+    \item $\hat{\beta}|X \sim N(\beta, \sigma^2 (X'X)^{-1})$
+    \item $\hat{\beta}|X \sim t_{n-k}(\beta, \sigma^2 I_n)$
+    \item $\hat{\beta}|X \sim F_{k, n-k}(0, \sigma^2 I_n)$
+    \item $\hat{\beta}|X \sim \chi^2_{n-k}(\beta, \sigma^2 X'X)$
 \end{opts}
 
 \q{Para contrastar la hipótesis nula de significancia individual $H_0: \beta_j = 0$ contra $H_1: \beta_j \neq 0$, se utiliza el estadístico $t$ de Student definido como:}
 \begin{opts}
-  \item $t = \frac{\hat{\beta}_j - 1}{EE(\hat{\beta}_j)}$, con distribución normal estándar para cualquier tamaño de muestra.
-  \item $t = \frac{\hat{\beta}_j}{EE(\hat{\beta}_j)}$, el cual bajo $H_0$ sigue una distribución $t$ con $n - k$ grados de libertad.
-  \item $t = \frac{\hat{\beta}_j}{s^2}$
-  \item $t = \frac{SCR}{SEC}$
+    \item $t = \frac{SCR}{SEC}$, que bajo $H_0$ sigue una distribución normal estándar en muestras finitas.
+    \item $t = \frac{\hat{\beta}_j - 1}{EE(\hat{\beta}_j)}$, con distribución normal estándar para cualquier tamaño de muestra.
+    \item $t = \frac{\hat{\beta}_j}{EE(\hat{\beta}_j)}$, que bajo $H_0$ sigue una $t$ con $n - k$ grados de libertad.
+    \item $t = \frac{\hat{\beta}_j}{s^2}$, que bajo $H_0$ sigue una distribución $\chi^2$ con $n - k$ grados de libertad.
 \end{opts}
 
 \q{La prueba $F$ de significancia conjunta del modelo contrasta la hipótesis nula $H_0: \beta_2 = \beta_3 = \dots = \beta_k = 0$ (todos los coeficientes de las pendientes son cero simultáneamente) frente a la alternativa de que al menos uno es distinto de cero. Su fórmula a partir del $R^2$ es:}
 \begin{opts}
-  \item $F = \frac{R^2 / (n - k)}{(1 - R^2) / (k - 1)}$
-  \item $F = \frac{1 - R^2}{R^2} (n - k)$
-  \item $F = \frac{R^2 / (k - 1)}{(1 - R^2) / (n - k)}$, con distribución $F_{k-1, n-k}$ bajo $H_0$.
-  \item $F = t^2 \times (n - k)$
+    \item $F = t^2 \times \frac{n - k}{k - 1}$, con distribución $t_{n-k}$ bajo $H_0$.
+    \item $F = \frac{1 - R^2}{R^2} (n - k)$, con distribución $F_{n-k, k-1}$ bajo $H_0$.
+    \item $F = \frac{R^2 / (k - 1)}{(1 - R^2) / (n - k)}$, con distribución $F_{k-1, n-k}$ bajo $H_0$.
+    \item $F = \frac{R^2 / (n - k)}{(1 - R^2) / (k - 1)}$, con distribución $\chi^2_{k-1}$ bajo $H_0$.
 \end{opts}
 
 \q{En un modelo econométrico con especificación doble logarítmica (log-log) $\ln(Y_i) = \beta_0 + \beta_1 \ln(X_i) + u_i$, el coeficiente de la pendiente $\beta_1$ se interpreta directamente como:}
 \begin{opts}
-  \item la tasa de crecimiento porcentual instantánea de la constante.
-  \item la semielasticidad de $Y$ ante un cambio discreto en $X$.
-  \item la variación absoluta de $Y$ ante una variación unitaria en $X$.
-  \item la elasticidad constante de $Y$ respecto a $X$: un incremento del $1\%$ en $X$ se asocia con una variación de aproximadamente $\beta_1\%$ en $Y$.
+    \item la tasa de crecimiento porcentual instantánea de la constante ante variaciones unitarias en $X$.
+    \item la elasticidad constante de $Y$ respecto a $X$ (variación porcentual de $Y$ por $1\%$ en $X$).
+    \item la variación absoluta en niveles de $Y$ ante una variación unitaria en el logaritmo de $X$.
+    \item la semielasticidad de $Y$ ante un cambio discreto de una unidad física en el regresor $X$.
 \end{opts}
 
 \q{En un modelo semilogarítmico del tipo log-lineal $\ln(Y_i) = \beta_0 + \beta_1 X_i + u_i$ (como la ecuación de ingresos de Mincer), el parámetro $\beta_1$ se interpreta como:}
 \begin{opts}
-  \item una semielasticidad: ante un aumento de una unidad física en $X$, la variable dependiente $Y$ varía en aproximadamente $100 \times \beta_1$ por ciento.
-  \item una elasticidad unitaria.
-  \item el cambio absoluto en $Y$ dividido por el logaritmo de $X$.
-  \item la correlación lineal simple entre $Y$ y $X$.
+    \item una semielasticidad: un aumento unitario en $X$ cambia $Y$ en aproximadamente $100 \times \beta_1\%$.
+    \item el cambio absoluto promedio en $Y$ dividido por el logaritmo neperiano de la media de $X$.
+    \item el coeficiente de correlación lineal simple ajustado entre las variables originales $Y$ y $X$.
+    \item una elasticidad constante unitaria: ante un cambio de $1\%$ en $X$, $Y$ cambia en $\beta_1$ unidades.
 \end{opts}
 
 \q{La presencia de 'Multicolinealidad Imperfecta' o severa en una regresión múltiple tiene como consecuencia econométrica que:}
 \begin{opts}
-  \item el coeficiente de determinación $R^2$ cae automáticamente a valores negativos.
-  \item los estimadores MCO siguen siendo insesgados y consistentes, pero las varianzas y errores estándar de los coeficientes aumentan considerablemente, reduciendo los estadísticos $t$ y dificultando rechazar $H_0$.
-  \item la matriz $X'X$ deja de ser invertible.
-  \item los estimadores MCO se vuelven sesgados e inconsistentes.
+    \item los estimadores MCO pierden insesgadez y consistencia en muestras grandes.
+    \item MCO sigue siendo insesgado, pero las varianzas de los estimadores aumentan, reduciendo los estadísticos $t$.
+    \item la matriz $X'X$ deja de ser invertible para calcular el vector $\hat{\beta}$.
+    \item el coeficiente de determinación $R^2$ cae automáticamente a valores negativos.
 \end{opts}
 
 \q{El problema de 'Heterocedasticidad' se define formalmente cuando la varianza condicional de los errores no es constante entre observaciones:}
 \begin{opts}
-  \item $E[u_i|X] \neq 0$
-  \item $Cov(u_i, u_j|X) \neq 0$ para todo $i \neq j$.
-  \item $Var(u_i|X) = \sigma_i^2$, donde la varianza depende de las observaciones o de variables explicativas.
-  \item $X'u = 0$ en muestras pequeñas.
+    \item $X'u \neq 0$ en muestras pequeñas con constante incluida.
+    \item $E[u_i|X] \neq 0$, variando según la media de cada regresor.
+    \item $Cov(u_i, u_j|X) \neq 0$ para todo par de observaciones $i \neq j$.
+    \item $Var(u_i|X) = \sigma_i^2$, variando entre observaciones.
 \end{opts}
 
 \q{Cuando existe heterocedasticidad en los errores pero se aplica MCO convencional:}
 \begin{opts}
-  \item los estimadores $\hat{\beta}$ pierden la insesgadez y la consistencia.
-  \item la prueba de Durbin-Watson rechaza siempre la hipótesis nula.
-  \item el estimador de la varianza residual $s^2$ se vuelve exactamente igual a cero.
-  \item los estimadores $\hat{\beta}$ permanecen insesgados y consistentes, pero pierden la propiedad de mínima varianza (eficiencia) y los errores estándar convencionales de MCO están sesgados, invalidando la inferencia $t$ y $F$.
+    \item la prueba de Durbin-Watson rechaza sistemáticamente la hipótesis nula de perturbaciones esféricas.
+    \item el estimador de la varianza residual $s^2$ converge a cero a medida que aumenta el número de variables explicativas.
+    \item $\hat{\beta}$ sigue siendo insesgado, pero pierde eficiencia y los errores estándar están sesgados, invalidando los tests $t$ y $F$.
+    \item los estimadores $\hat{\beta}$ pierden la insesgadez y la consistencia asintótica incluso bajo exogeneidad estricta.
 \end{opts}
 
 \q{La prueba general de White para detectar heterocedasticidad consiste en regresar los residuos al cuadrado $e_i^2$ sobre:}
 \begin{opts}
-  \item todos los regresores originales, sus cuadrados y sus productos cruzados no redundantes, contrastando el estadístico $n R^2 \sim \chi^2_p$.
-  \item el logaritmo de los errores estandarizados.
-  \item las diferencias de primer orden de las variables explicativas.
-  \item la variable dependiente rezagada un periodo.
+    \item el logaritmo de los errores estandarizados y los valores ajustados al cubo.
+    \item todos los regresores originales, sus cuadrados y sus productos cruzados no redundantes ($n R^2 \sim \chi^2_p$).
+    \item la variable dependiente rezagada un periodo junto con las variables ficticias.
+    \item las diferencias de primer orden de las variables explicativas sin constante.
 \end{opts}
 
 \q{La prueba de Breusch-Pagan para heterocedasticidad asume que la varianza del error es una función lineal de un conjunto de variables explicativas $Z_1, \dots, Z_m$. Su hipótesis nula $H_0$ es:}
 \begin{opts}
-  \item $H_0$: el término constante de la regresión original es cero.
-  \item $H_0: \sigma_1^2 = \dots = \sigma_n^2$ (homocedasticidad, es decir, los coeficientes de las variables $Z$ en la regresión auxiliar de residuos al cuadrado son conjuntamente iguales a cero).
-  \item $H_0$: los residuos siguen una distribución exponencial negativa.
-  \item $H_0$: no existe multicolinealidad entre los regresores.
+    \item $H_0: \sigma_1^2 = \dots = \sigma_n^2$ (los coeficientes de los regresores $Z$ en la auxiliar de $e_i^2$ son nulos).
+    \item $H_0$: los residuos siguen una distribución exponencial negativa con varianza estrictamente decreciente.
+    \item $H_0$: el término constante de la regresión original es cero y la media de los residuos supera la varianza.
+    \item $H_0$: no existe multicolinealidad severa ni autocorrelación de primer orden entre los regresores $X$.
 \end{opts}
 
 \q{El método de Mínimos Cuadrados Ponderados (WLS / MCG) para corregir la heterocedasticidad cuando se conoce la estructura de la varianza $Var(u_i|X) = \sigma^2 h_i$ consiste en:}
 \begin{opts}
-  \item aplicar primeras diferencias logarítmicas a la variable dependiente.
-  \item elevar al cuadrado todas las variables explicativas.
-  \item dividir todas las variables de la ecuación original (incluyendo la constante) entre $\sqrt{h_i}$ para que la perturbación transformada tenga varianza constante igual a $\sigma^2$.
-  \item eliminar el 10\% de las observaciones con mayores residuos.
+    \item eliminar el $10\%$ de las observaciones con mayores residuos al cuadrado para evitar apalancamiento extremo.
+    \item elevar al cuadrado todas las variables explicativas y estimar la regresión auxiliar sin término constante.
+    \item dividir cada observación de todas las variables (incluida la constante) entre $\sqrt{h_i}$ y aplicar MCO.
+    \item aplicar primeras diferencias logarítmicas a la variable dependiente para estabilizar la escala residual.
 \end{opts}
 
 \q{Los errores estándar robustos a la heterocedasticidad propuestos por White (estimador 'Sandwich' o HC0):}
 \begin{opts}
-  \item requieren que las perturbaciones sigan obligatoriamente una distribución Student.
-  \item exigen que el tamaño de muestra sea menor a 30 observaciones.
-  \item modifican las estimaciones puntuales de los coeficientes $\hat{\beta}$.
-  \item mantienen inalterados los coeficientes puntuales MCO $\hat{\beta}$, pero corrigen la matriz de covarianzas calculando $(X'X)^{-1} (X' \hat{\Sigma} X) (X'X)^{-1}$, permitiendo inferencia asintóticamente válida sin conocer la forma de la heterocedasticidad.
+    \item exigen que el tamaño de muestra sea menor a 30 observaciones y corrigen la media de la variable dependiente.
+    \item mantienen intactos los $\hat{\beta}$ de MCO pero corrigen la matriz de covarianzas mediante el estimador tipo sándwich.
+    \item requieren que las perturbaciones sigan obligatoriamente una distribución $t$ de Student con varianza conocida.
+    \item modifican las estimaciones puntuales de los coeficientes $\hat{\beta}$ mediante mínimos cuadrados ponderados en dos etapas.
 \end{opts}
 
 \q{El fenómeno de 'Autocorrelación Serial' de primer orden $AR(1)$ en modelos de series de tiempo implica que la perturbación en el periodo $t$ sigue el proceso:}
 \begin{opts}
-  \item $u_t = \rho u_{t-1} + \varepsilon_t$, donde $|\rho| < 1$ y $\varepsilon_t$ es ruido blanco con media cero y varianza constante.
-  \item $u_t = \alpha Y_t + \varepsilon_t$
-  \item $u_t = \sum_{i=1}^t X_i$
-  \item $u_t = u_t^2 + \varepsilon_t$
+    \item $u_t = \sum_{i=1}^t X_i$, sin término de innovación aleatorio ni memoria.
+    \item $u_t = \rho u_{t-1} + \varepsilon_t$, con $|\rho| < 1$ y $\varepsilon_t$ ruido blanco.
+    \item $u_t = u_t^2 + \varepsilon_t$, donde la varianza depende linealmente del intercepto.
+    \item $u_t = \alpha Y_t + \varepsilon_t$, con $\alpha > 1$ y $\varepsilon_t$ tendencia determinística.
 \end{opts}
 
 \q{Cuando existe autocorrelación serial positiva ($\rho > 0$) en los errores de un modelo de series de tiempo estimado por MCO:}
 \begin{opts}
-  \item las variables se vuelven perfectamente colineales.
-  \item los estimadores MCO permanecen insesgados si los regresores son estrictamente exógenos, pero los errores estándar convencionales subestiman fuertemente la verdadera varianza, inflando artificialmente los estadísticos $t$ y el $R^2$ (falsa significancia).
-  \item el estimador de Durbin-Watson arroja un valor cercano a 4.
-  \item los estimadores de los coeficientes $\hat{\beta}$ se vuelven sesgados de forma irreversible.
+    \item el estadístico de Durbin-Watson converge sistemáticamente hacia un valor cercano a 4 en muestras grandes.
+    \item los regresores se vuelven perfectamente colineales con sus rezagos, haciendo singular la matriz $(X'X)$.
+    \item los estimadores de los coeficientes $\hat{\beta}$ se vuelven sesgados e inconsistentes aun con regresores estrictamente exógenos.
+    \item $\hat{\beta}$ sigue insesgado bajo exogeneidad estricta, pero los errores estándar subestiman la varianza, inflando los tests $t$.
 \end{opts}
 
 \q{El estadístico $d$ de Durbin-Watson para contrastar autocorrelación serial de primer orden se aproxima algebraicamente a la fórmula $d \approx 2(1 - \hat{\rho})$. Por ende, en ausencia total de autocorrelación ($\hat{\rho} = 0$), el valor del estadístico es:}
 \begin{opts}
-  \item $d \approx 4$
-  \item $d \approx 0$
-  \item $d \approx 2$
-  \item $d \approx -1$
+    \item $d \approx 2$
+    \item $d \approx 0$
+    \item $d \approx -1$
+    \item $d \approx 4$
 \end{opts}
 
 \q{Una limitación crucial del estadístico $d$ de Durbin-Watson es que queda estrictamente invalidado si:}
 \begin{opts}
-  \item los datos provienen de encuestas de corte transversal.
-  \item el modelo contiene un término constante.
-  \item el número de observaciones es mayor a 100.
-  \item el modelo incluye la variable dependiente rezagada ($Y_{t-1}$) como uno de los regresores explicativos, requiriendo en su lugar la prueba $h$ de Durbin o Breusch-Godfrey.
+    \item los datos provienen de encuestas de corte transversal ordenadas de forma estrictamente aleatoria.
+    \item el modelo contiene un término constante junto con más de dos regresores continuos exógenos.
+    \item el número de observaciones de la serie supera el umbral de 100 periodos trimestrales.
+    \item el modelo incluye la variable dependiente rezagada ($Y_{t-1}$) entre los regresores explicativos.
 \end{opts}
 
 \q{La prueba de Breusch-Godfrey (o prueba del Multiplicador de Lagrange - LM) para autocorrelación es superior a la de Durbin-Watson porque:}
 \begin{opts}
-  \item permite contrastar autocorrelación de orden superior $AR(p)$ o $MA(p)$ y sigue siendo perfectamente válida si el modelo incluye variables dependientes rezagadas.
-  \item no requiere calcular los residuos de MCO.
-  \item se aplica únicamente a modelos con coeficientes estandarizados.
-  \item elimina automáticamente los valores atípicos.
+    \item contrasta autocorrelación de orden superior $AR(p)$ y es válida aun cuando existan rezagos de $Y_t$.
+    \item no requiere calcular los residuos de MCO ni estimar una regresión auxiliar sobre los regresores.
+    \item se aplica únicamente a modelos con coeficientes estandarizados sin intercepto ni tendencias.
+    \item elimina automáticamente los valores atípicos mediante ponderación iterativa de Cochrane-Orcutt.
 \end{opts}
 
 \q{Para realizar inferencia estadística válida en series de tiempo en presencia conjunta de heterocedasticidad y autocorrelación de forma desconocida, se utilizan:}
 \begin{opts}
-  \item los errores estándar de Mínimos Cuadrados Ordinarios clásicos.
-  \item los errores estándar consistentes con heterocedasticidad y autocorrelación (HAC) de Newey y West (1987).
-  \item los contrastes de raíz unitaria de Dickey-Fuller aumentado.
-  \item el filtro de Hodrick-Prescott sobre los regresores.
+    \item los errores estándar HAC consistentes de Newey y West (1987).
+    \item los contrastes de raíz unitaria aumentados de Dickey-Fuller (ADF).
+    \item el filtro cíclico de Hodrick-Prescott aplicado sobre los regresores.
+    \item los errores estándar clásicos de MCO ajustados por grados de libertad.
 \end{opts}
 
 \q{El problema de 'Endogeneidad' se produce cuando uno o más regresores están correlacionados con la perturbación estocástica ($Cov(X, u) \neq 0$). Sus tres causas más comunes en economía son:}
 \begin{opts}
-  \item ausencia de constante, colinealidad exacta y exceso de observaciones.
-  \item homocedasticidad, normalidad y estacionariedad.
-  \item sesgo de variable omitida, error de medición en las variables explicativas y simultaneidad (causalidad inversa).
-  \item uso de logaritmos neperianos en la variable dependiente.
+    \item transformación logarítmica de la variable dependiente $Y$.
+    \item homocedasticidad condicional, normalidad y estacionariedad.
+    \item sesgo de variable omitida, error de medición en $X$ y simultaneidad.
+    \item ausencia de constante, colinealidad exacta y exceso de muestra.
 \end{opts}
 
 \q{La consecuencia econométrica más grave de la endogeneidad en el estimador de MCO es que:}
 \begin{opts}
-  \item el coeficiente de correlación de Pearson entre los regresores se vuelve igual a 1.
-  \item los errores estándar calculados se reducen a cero en muestras finitas.
-  \item el estimador MCO sigue siendo consistente pero ineficiente.
-  \item el estimador $\hat{\beta}$ es sesgado e inconsistente ($plim \, \hat{\beta} \neq \beta$), no convergiendo al verdadero parámetro poblacional aun cuando el tamaño de muestra tienda a infinito.
+    \item el estimador $\hat{\beta}$ es sesgado e inconsistente ($plim \, \hat{\beta} \neq \beta$).
+    \item el coeficiente de correlación de Pearson entre los regresores se vuelve exactamente igual a 1.
+    \item el estimador MCO conserva su consistencia asintótica pero pierde eficiencia en muestras grandes.
+    \item los errores estándar calculados convergen a cero provocando un sobreajuste de los residuos.
 \end{opts}
 
 \q{Para resolver la endogeneidad mediante el método de Variables Instrumentales (VI / IV), una variable instrumental válida $Z$ debe satisfacer dos condiciones indispensables:}
 \begin{opts}
-  \item relevancia del instrumento ($Cov(Z, X) \neq 0$) y exogeneidad / restricción de exclusión ($Cov(Z, u) = 0$, afectando a $Y$ únicamente a través de $X$).
-  \item ser idéntica al cuadrado de la variable dependiente.
-  \item estar distribuida uniformemente en el intervalo $[0, 1]$.
-  \item estar altamente correlacionada con la perturbación $u$ y no correlacionada con $X$.
+    \item estar altamente correlacionada con la perturbación $u$ y no correlacionada con $X$.
+    \item relevancia del instrumento ($Cov(Z, X) \neq 0$) y exogeneidad ($Cov(Z, u) = 0$).
+    \item seguir una distribución uniforme continua y ser ortogonal a la variable explicativa $X$.
+    \item ser una transformación cuadrática exacta de la variable dependiente observada en el modelo.
 \end{opts}
 
 \q{El estimador de Mínimos Cuadrados en Dos Etapas (MC2E / 2SLS) resuelve la endogeneidad siguiendo el procedimiento:}
 \begin{opts}
-  \item Etapa 1: Diferenciar las series temporales; Etapa 2: Aplicar mínimos cuadrados ponderados.
-  \item Etapa 1: Regresar la variable endógena $X$ sobre todos los instrumentos exógenos $Z$ y calcular los valores predichos $\hat{X}$; Etapa 2: Regresar $Y$ sobre los valores predichos $\hat{X}$ mediante MCO.
-  \item Etapa 1: Regresar $Y$ sobre los instrumentos; Etapa 2: Regresar $X$ sobre los residuos.
-  \item Etapa 1: Calcular la matriz de correlaciones; Etapa 2: Eliminar las variables no significativas.
+    \item Etapa 1: Diferenciar las series temporales; Etapa 2: Aplicar mínimos cuadrados ponderados sobre los residuos.
+    \item Etapa 1: Regresar $Y$ sobre los instrumentos $Z$; Etapa 2: Regresar la variable endógena $X$ sobre los residuos.
+    \item Etapa 1: Regresar $X$ sobre los instrumentos $Z$ para obtener $\hat{X}$; Etapa 2: Regresar $Y$ sobre $\hat{X}$ por MCO.
+    \item Etapa 1: Calcular la matriz de correlaciones parciales; Etapa 2: Eliminar las variables con menor estadístico $t$.
 \end{opts}
 

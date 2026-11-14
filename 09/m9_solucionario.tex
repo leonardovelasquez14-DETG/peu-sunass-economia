@@ -5,17 +5,17 @@
 
 \subsection*{Bloque A. Fundamentos teóricos y conceptuales}
 
-\sol{1}{A}{\textbf{Tema:} Estimador matricial MCO. \textbf{Explicación:} La minimización de la suma de residuos al cuadrado $e'e = (Y - X\beta)'(Y - X\beta)$ conduce al sistema de ecuaciones normales $(X'X)\hat{\beta} = X'Y$. Si $X'X$ es invertible, la solución única es $\hat{\beta} = (X'X)^{-1} X'Y$.}
+\sol{1}{B}{\textbf{Tema:} Estimador matricial MCO. \textbf{Explicación:} La minimización de la suma de residuos al cuadrado $e'e = (Y - X\beta)'(Y - X\beta)$ conduce al sistema de ecuaciones normales $(X'X)\hat{\beta} = X'Y$. Si $X'X$ es invertible, la solución única es $\hat{\beta} = (X'X)^{-1} X'Y$.}
 
-\sol{2}{B}{\textbf{Tema:} Insesgadez bajo exogeneidad. \textbf{Explicación:} Como $\hat{\beta} = \beta + (X'X)^{-1} X'u$, tomando esperanza condicional en $X$ se tiene $E[\hat{\beta}|X] = \beta + (X'X)^{-1} X' E[u|X]$. Si $E[u|X] = 0$, entonces $E[\hat{\beta}|X] = \beta$, garantizando la insesgadez.}
+\sol{2}{D}{\textbf{Tema:} Insesgadez bajo exogeneidad. \textbf{Explicación:} Como $\hat{\beta} = \beta + (X'X)^{-1} X'u$, tomando esperanza condicional en $X$ se tiene $E[\hat{\beta}|X] = \beta + (X'X)^{-1} X' E[u|X]$. Si $E[u|X] = 0$, entonces $E[\hat{\beta}|X] = \beta$, garantizando la insesgadez.}
 
 \sol{3}{C}{\textbf{Tema:} Rango completo y multicolinealidad perfecta. \textbf{Explicación:} Si existe una relación lineal exacta entre las variables explicativas (multicolinealidad perfecta), las columnas de $X$ son linealmente dependientes, el determinante de $X'X$ es cero y la matriz no se puede invertir.}
 
-\sol{4}{D}{\textbf{Tema:} Supuesto de perturbaciones esféricas. \textbf{Explicación:} Perturbaciones esféricas implica que la matriz de varianza-covarianza de los errores es escalar: $\Sigma = \sigma^2 I_n$. Los elementos de la diagonal principal son constantes e idénticos (homocedasticidad) y los elementos fuera de la diagonal son nulos (no autocorrelación).}
+\sol{4}{C}{\textbf{Tema:} Supuesto de perturbaciones esféricas. \textbf{Explicación:} Perturbaciones esféricas implica que la matriz de varianza-covarianza de los errores es escalar: $\Sigma = \sigma^2 I_n$. Los elementos de la diagonal principal son constantes e idénticos (homocedasticidad) y los elementos fuera de la diagonal son nulos (no autocorrelación).}
 
-\sol{5}{A}{\textbf{Tema:} Teorema de Gauss-Markov (BLUE). \textbf{Explicación:} Gauss-Markov demuestra que para cualquier combinación lineal $c'\beta$, el estimador lineal insesgado MCO $c'\hat{\beta}$ minimiza la varianza de estimación frente a cualquier otro estimador lineal insesgado rival.}
+\sol{5}{D}{\textbf{Tema:} Teorema de Gauss-Markov (BLUE). \textbf{Explicación:} Gauss-Markov demuestra que para cualquier combinación lineal $c'\beta$, el estimador lineal insesgado MCO $c'\hat{\beta}$ minimiza la varianza de estimación frente a cualquier otro estimador lineal insesgado rival.}
 
-\sol{6}{B}{\textbf{Tema:} Estimador insesgado de la varianza residual. \textbf{Explicación:} La suma de residuos al cuadrado $e'e$ pierde $k$ grados de libertad por las $k$ condiciones ortogonales de primer orden impuestas al estimar los parámetros. Por tanto, dividiendo entre $n - k$ se obtiene $E[s^2] = \sigma^2$.}
+\sol{6}{C}{\textbf{Tema:} Estimador insesgado de la varianza residual. \textbf{Explicación:} La suma de residuos al cuadrado $e'e$ pierde $k$ grados de libertad por las $k$ condiciones ortogonales de primer orden impuestas al estimar los parámetros. Por tanto, dividiendo entre $n - k$ se obtiene $E[s^2] = \sigma^2$.}
 
 \sol{7}{C}{\textbf{Tema:} Propiedad del R-cuadrado. \textbf{Explicación:} Al agregar regresores adicionales, el espacio de columnas de $X$ se expande y la suma de cuadrados residuales ($SCR$) nunca puede aumentar en la optimización por mínimos cuadrados. Por ende, $R^2 = 1 - SCR/STC$ nunca se reduce.}
 
@@ -23,133 +23,133 @@
 
 \sol{9}{A}{\textbf{Tema:} Distribución normal de los coeficientes MCO. \textbf{Explicación:} Dado que $\hat{\beta}$ es una combinación lineal de las perturbaciones normales $Y$ (o $u$), hereda la distribución normal multivariada con media $\beta$ y matriz de varianzas $\sigma^2 (X'X)^{-1}$.}
 
-\sol{10}{B}{\textbf{Tema:} Prueba t de significancia individual. \textbf{Explicación:} El cociente entre el coeficiente estimado y su error estándar estimado sigue exactamente una distribución $t$ con $n - k$ grados de libertad bajo el supuesto de normalidad de los errores, o normal asintótica en muestras grandes por el TLC.}
+\sol{10}{C}{\textbf{Tema:} Prueba t de significancia individual. \textbf{Explicación:} El cociente entre el coeficiente estimado y su error estándar estimado sigue exactamente una distribución $t$ con $n - k$ grados de libertad bajo el supuesto de normalidad de los errores, o normal asintótica en muestras grandes por el TLC.}
 
 \sol{11}{C}{\textbf{Tema:} Prueba F conjunta de la regresión. \textbf{Explicación:} La prueba $F$ global mide si la variación explicada por los $k - 1$ regresores (excluyendo el intercepto) es significativamente mayor que la variación residual no explicada ponderada por grados de libertad.}
 
-\sol{12}{D}{\textbf{Tema:} Interpretación de modelo log-log. \textbf{Explicación:} Dado que $\frac{d \ln(Y)}{d \ln(X)} = \frac{dY / Y}{dX / X} = \beta_1$, el parámetro mide la elasticidad directamente y es invariante a las unidades de medida de las variables.}
+\sol{12}{B}{\textbf{Tema:} Interpretación de modelo log-log. \textbf{Explicación:} Dado que $\frac{d \ln(Y)}{d \ln(X)} = \frac{dY / Y}{dX / X} = \beta_1$, el parámetro mide la elasticidad directamente y es invariante a las unidades de medida de las variables.}
 
 \sol{13}{A}{\textbf{Tema:} Interpretación de modelo log-lineal. \textbf{Explicación:} $\frac{d \ln(Y)}{dX} = \frac{1}{Y} \frac{dY}{dX} = \beta_1 \implies \frac{\Delta Y}{Y} \approx \beta_1 \Delta X$. Por tanto, multiplicando por 100 se obtiene el porcentaje de cambio aproximado en $Y$ por cada unidad de incremento en $X$.}
 
 \sol{14}{B}{\textbf{Tema:} Consecuencias de la multicolinealidad imperfecta. \textbf{Explicación:} La multicolinealidad severa infla las varianzas muestrales de los coeficientes afectados ($VIF_j = \frac{1}{1 - R_j^2}$ muy alto). Los intervalos de confianza se ensanchan y los estadísticos $t$ se desploman, aunque el $R^2$ global del modelo sea muy elevado.}
 
-\sol{15}{C}{\textbf{Tema:} Definición de heterocedasticidad. \textbf{Explicación:} La homocedasticidad exige $Var(u_i|X) = \sigma^2$ constante para todo $i$. Si la dispersión de las perturbaciones varía entre individuos, estratos o tamaños de empresa, existe heterocedasticidad: $Var(u_i|X) = \sigma_i^2$.}
+\sol{15}{D}{\textbf{Tema:} Definición de heterocedasticidad. \textbf{Explicación:} La homocedasticidad exige $Var(u_i|X) = \sigma^2$ constante para todo $i$. Si la dispersión de las perturbaciones varía entre individuos, estratos o tamaños de empresa, existe heterocedasticidad: $Var(u_i|X) = \sigma_i^2$.}
 
-\sol{16}{D}{\textbf{Tema:} Consecuencias de la heterocedasticidad. \textbf{Explicación:} La insesgadez no depende del supuesto de varianza constante, sino de $E[u|X]=0$. Sin embargo, la fórmula de varianza usual $\sigma^2 (X'X)^{-1}$ queda mal calculada, arrojando errores estándar engañosos y pruebas de hipótesis inválidas.}
+\sol{16}{C}{\textbf{Tema:} Consecuencias de la heterocedasticidad. \textbf{Explicación:} La insesgadez no depende del supuesto de varianza constante, sino de $E[u|X]=0$. Sin embargo, la fórmula de varianza usual $\sigma^2 (X'X)^{-1}$ queda mal calculada, arrojando errores estándar engañosos y pruebas de hipótesis inválidas.}
 
-\sol{17}{A}{\textbf{Tema:} Prueba de White. \textbf{Explicación:} Halbert White (1980) propuso una prueba que no requiere supuestos a priori sobre la forma funcional de la heterocedasticidad: se regresiona $e_i^2$ sobre variables lineales, cuadráticas e interacciones. El estadístico $LM = n R_{aux}^2$ sigue una $\chi^2$ con grados de libertad iguales al número de regresores en la ecuación auxiliar.}
+\sol{17}{B}{\textbf{Tema:} Prueba de White. \textbf{Explicación:} Halbert White (1980) propuso una prueba que no requiere supuestos a priori sobre la forma funcional de la heterocedasticidad: se regresiona $e_i^2$ sobre variables lineales, cuadráticas e interacciones. El estadístico $LM = n R_{aux}^2$ sigue una $\chi^2$ con grados de libertad iguales al número de regresores en la ecuación auxiliar.}
 
-\sol{18}{B}{\textbf{Tema:} Prueba de Breusch-Pagan. \textbf{Explicación:} La prueba de Breusch-Pagan evalúa si la varianza del error depende de variables observadas $Z$. La hipótesis nula es la ausencia de heterocedasticidad (homocedasticidad), de modo que los coeficientes de las variables auxiliares son nulos.}
+\sol{18}{A}{\textbf{Tema:} Prueba de Breusch-Pagan. \textbf{Explicación:} La prueba de Breusch-Pagan evalúa si la varianza del error depende de variables observadas $Z$. La hipótesis nula es la ausencia de heterocedasticidad (homocedasticidad), de modo que los coeficientes de las variables auxiliares son nulos.}
 
 \sol{19}{C}{\textbf{Tema:} Mínimos Cuadrados Ponderados (WLS). \textbf{Explicación:} Al transformar el modelo dividiendo cada observación entre $\sqrt{h_i}$, la perturbación transformada $u_i^* = u_i / \sqrt{h_i}$ tiene varianza $Var(u_i^*) = Var(u_i) / h_i = \sigma^2 h_i / h_i = \sigma^2$, restaurando la homocedasticidad y la eficiencia BLUE.}
 
-\sol{20}{D}{\textbf{Tema:} Errores estándar robustos de White. \textbf{Explicación:} El estimador de Huber-White no altera $\hat{\beta}$, pero reemplaza la fórmula ingenua de varianza por la estructura sándwich consistente asintóticamente, garantizando que los estadísticos $t$ y $F$ sean fiables en muestras grandes aun con heterocedasticidad desconocida.}
+\sol{20}{B}{\textbf{Tema:} Errores estándar robustos de White. \textbf{Explicación:} El estimador de Huber-White no altera $\hat{\beta}$, pero reemplaza la fórmula ingenua de varianza por la estructura sándwich consistente asintóticamente, garantizando que los estadísticos $t$ y $F$ sean fiables en muestras grandes aun con heterocedasticidad desconocida.}
 
-\sol{21}{A}{\textbf{Tema:} Definición de proceso AR(1). \textbf{Explicación:} En un proceso autorregresivo de primer orden $AR(1)$, el error del periodo actual depende linealmente del error del periodo inmediato anterior ponderado por $\rho$ más una innovación contemporánea independiente $\varepsilon_t$.}
+\sol{21}{B}{\textbf{Tema:} Definición de proceso AR(1). \textbf{Explicación:} En un proceso autorregresivo de primer orden $AR(1)$, el error del periodo actual depende linealmente del error del periodo inmediato anterior ponderado por $\rho$ más una innovación contemporánea independiente $\varepsilon_t$.}
 
-\sol{22}{B}{\textbf{Tema:} Consecuencias de la autocorrelación serial. \textbf{Explicación:} La correlación positiva sucesiva entre errores hace que la muestra contenga menos información independiente de la aparente ($n$ efectivo menor). MCO subestima la dispersión real, arrojando errores estándar diminutos y $t$ gigantescos que inducen a rechazar falsamente hipótesis nulas.}
+\sol{22}{D}{\textbf{Tema:} Consecuencias de la autocorrelación serial. \textbf{Explicación:} La correlación positiva sucesiva entre errores hace que la muestra contenga menos información independiente de la aparente ($n$ efectivo menor). MCO subestima la dispersión real, arrojando errores estándar diminutos y $t$ gigantescos que inducen a rechazar falsamente hipótesis nulas.}
 
-\sol{23}{C}{\textbf{Tema:} Valor central de Durbin-Watson. \textbf{Explicación:} Si $\hat{\rho} = 0$, $d \approx 2(1 - 0) = 2$. Valores de $d$ cercanos a 0 indican fuerte autocorrelación positiva ($\hat{\rho} \approx 1$); valores cercanos a 4 indican fuerte autocorrelación negativa ($\hat{\rho} \approx -1$).}
+\sol{23}{A}{\textbf{Tema:} Valor central de Durbin-Watson. \textbf{Explicación:} Si $\hat{\rho} = 0$, $d \approx 2(1 - 0) = 2$. Valores de $d$ cercanos a 0 indican fuerte autocorrelación positiva ($\hat{\rho} \approx 1$); valores cercanos a 4 indican fuerte autocorrelación negativa ($\hat{\rho} \approx -1$).}
 
 \sol{24}{D}{\textbf{Tema:} Limitación de Durbin-Watson con rezagos. \textbf{Explicación:} Con variables dependientes rezagadas ($Y_{t-1}$), el estadístico $d$ está fuertemente sesgado hacia 2 (hacia no rechazar la no autocorrelación), dando una falsa impresión de limpieza estocástica. Se debe usar el estadístico $h$ o la prueba LM de Breusch-Godfrey.}
 
 \sol{25}{A}{\textbf{Tema:} Ventajas de Breusch-Godfrey. \textbf{Explicación:} La prueba LM de Breusch-Godfrey es general: regresa los residuos $e_t$ sobre las variables explicativas y $p$ rezagos de los propios residuos ($e_{t-1}, \dots, e_{t-p}$). El estadístico $(n - p) R^2 \sim \chi^2_p$ es asintóticamente robusto frente a regresores endógenos rezagados.}
 
-\sol{26}{B}{\textbf{Tema:} Estimador HAC de Newey-West. \textbf{Explicación:} Whitney Newey y Kenneth West diseñaron una matriz de varianzas-covarianzas que estima de manera consistente las correlaciones intertemporales no nulas y la heterocedasticidad aplicando un núcleo de ponderación decreciente (núcleo de Bartlett), garantizando que la matriz sea semidefinida positiva.}
+\sol{26}{A}{\textbf{Tema:} Estimador HAC de Newey-West. \textbf{Explicación:} Whitney Newey y Kenneth West diseñaron una matriz de varianzas-covarianzas que estima de manera consistente las correlaciones intertemporales no nulas y la heterocedasticidad aplicando un núcleo de ponderación decreciente (núcleo de Bartlett), garantizando que la matriz sea semidefinida positiva.}
 
 \sol{27}{C}{\textbf{Tema:} Causas de la endogeneidad. \textbf{Explicación:} La endogeneidad rompe la exogeneidad estricta. Ocurre por: 1) omitir una variable relevante correlacionada con los regresores incluidos, 2) medir las $X$ con ruido aleatorio (sesgo de atenuación), o 3) determinación simultánea de $Y$ y $X$ en un sistema de equilibrio.}
 
-\sol{28}{D}{\textbf{Tema:} Inconsistencia bajo endogeneidad. \textbf{Explicación:} Bajo endogeneidad, $plim \, \hat{\beta} = \beta + \frac{Cov(X, u)}{Var(X)} \neq \beta$. Al haber correlación entre $X$ y $u$, el sesgo no desaparece al aumentar el tamaño de muestra, invalidando toda interpretación causal del coeficiente.}
+\sol{28}{A}{\textbf{Tema:} Inconsistencia bajo endogeneidad. \textbf{Explicación:} Bajo endogeneidad, $plim \, \hat{\beta} = \beta + \frac{Cov(X, u)}{Var(X)} \neq \beta$. Al haber correlación entre $X$ y $u$, el sesgo no desaparece al aumentar el tamaño de muestra, invalidando toda interpretación causal del coeficiente.}
 
-\sol{29}{A}{\textbf{Tema:} Condiciones de un instrumento válido. \textbf{Explicación:} La condición de relevancia exige que el instrumento mueva a la variable endógena ($Cov(Z, X) \neq 0$). La restricción de exclusión (exogeneidad) exige que $Z$ sea ortogonal al término de error poblacional ($Cov(Z, u) = 0$), incidiendo en $Y$ exclusivamente por su efecto sobre $X$.}
+\sol{29}{B}{\textbf{Tema:} Condiciones de un instrumento válido. \textbf{Explicación:} La condición de relevancia exige que el instrumento mueva a la variable endógena ($Cov(Z, X) \neq 0$). La restricción de exclusión (exogeneidad) exige que $Z$ sea ortogonal al término de error poblacional ($Cov(Z, u) = 0$), incidiendo en $Y$ exclusivamente por su efecto sobre $X$.}
 
-\sol{30}{B}{\textbf{Tema:} Procedimiento de MC2E / 2SLS. \textbf{Explicación:} La primera etapa extrae la porción exógena de la variable endógena proyectándola sobre los instrumentos ($\hat{X} = Z(Z'Z)^{-1}Z'X$). La segunda etapa utiliza únicamente este componente exógeno purificado $\hat{X}$ para estimar la ecuación estructural libre de sesgo.}
+\sol{30}{C}{\textbf{Tema:} Procedimiento de MC2E / 2SLS. \textbf{Explicación:} La primera etapa extrae la porción exógena de la variable endógena proyectándola sobre los instrumentos ($\hat{X} = Z(Z'Z)^{-1}Z'X$). La segunda etapa utiliza únicamente este componente exógeno purificado $\hat{X}$ para estimar la ecuación estructural libre de sesgo.}
 
 \subsection*{Bloque B. Aplicaciones cuantitativas y contrastes econométricos}
 
-\sol{31}{C}{\textbf{Tema:} Cálculo de la pendiente MCO simple. \textbf{Explicación:} $\hat{\beta}_1 = \frac{\sum (X_i - \bar{X})(Y_i - \bar{Y})}{\sum (X_i - \bar{X})^2} = \frac{600}{400} = 1.50$.}
+\sol{31}{A}{\textbf{Tema:} Cálculo de la pendiente MCO simple. \textbf{Explicación:} $\hat{\beta}_1 = \frac{\sum (X_i - \bar{X})(Y_i - \bar{Y})}{\sum (X_i - \bar{X})^2} = \frac{600}{400} = 1.50$.}
 
 \sol{32}{D}{\textbf{Tema:} Cálculo de correlación y R-cuadrado. \textbf{Explicación:} $r = \frac{Cov(X, Y)}{S_X S_Y} = \frac{600}{\sqrt{400 \times 900}} = \frac{600}{\sqrt{360000}} = \frac{600}{600} = 1.00$... corrección: con 400 y 900 es $\sqrt{360000} = 600$. Entonces $r = 1.00$ y $R^2 = 1.00$.}
 
-\sol{33}{A}{\textbf{Tema:} Cálculo de varianza residual. \textbf{Explicación:} Grados de libertad: $n - k = 45 - 5 = 40$. Varianza residual: $s^2 = \frac{SCR}{n - k} = \frac{800}{40} = 20$. Error estándar: $s = \sqrt{20} \approx 4.472$.}
+\sol{33}{C}{\textbf{Tema:} Cálculo de varianza residual. \textbf{Explicación:} Grados de libertad: $n - k = 45 - 5 = 40$. Varianza residual: $s^2 = \frac{SCR}{n - k} = \frac{800}{40} = 20$. Error estándar: $s = \sqrt{20} \approx 4.472$.}
 
-\sol{34}{B}{\textbf{Tema:} Cálculo de estadístico t. \textbf{Explicación:} $t = \frac{\hat{\beta}_1}{EE(\hat{\beta}_1)} = \frac{-0.45}{0.15} = -3.00$. Como $|t| = 3.00 > 1.98$, se rechaza la hipótesis nula con un nivel de confianza superior al $99\%$.}
+\sol{34}{A}{\textbf{Tema:} Cálculo de estadístico t. \textbf{Explicación:} $t = \frac{\hat{\beta}_1}{EE(\hat{\beta}_1)} = \frac{-0.45}{0.15} = -3.00$. Como $|t| = 3.00 > 1.98$, se rechaza la hipótesis nula con un nivel de confianza superior al $99\%$.}
 
-\sol{35}{C}{\textbf{Tema:} Cálculo del estadístico F global. \textbf{Explicación:} $F = \frac{R^2 / (k - 1)}{(1 - R^2) / (n - k)} = \frac{0.60 / 3}{(1 - 0.60) / (64 - 4)} = \frac{0.20}{0.40 / 60} = \frac{0.20}{0.00667} = 30.0$.}
+\sol{35}{A}{\textbf{Tema:} Cálculo del estadístico F global. \textbf{Explicación:} $F = \frac{R^2 / (k - 1)}{(1 - R^2) / (n - k)} = \frac{0.60 / 3}{(1 - 0.60) / (64 - 4)} = \frac{0.20}{0.40 / 60} = \frac{0.20}{0.00667} = 30.0$.}
 
-\sol{36}{D}{\textbf{Tema:} Prueba F de restricciones lineales. \textbf{Explicación:} $F = \frac{(SCR_R - SCR_{NR}) / q}{SCR_{NR} / (n - k)} = \frac{(560 - 500) / 2}{500 / (106 - 6)} = \frac{60 / 2}{500 / 100} = \frac{30}{5} = 6.0$.}
+\sol{36}{C}{\textbf{Tema:} Prueba F de restricciones lineales. \textbf{Explicación:} $F = \frac{(SCR_R - SCR_{NR}) / q}{SCR_{NR} / (n - k)} = \frac{(560 - 500) / 2}{500 / (106 - 6)} = \frac{60 / 2}{500 / 100} = \frac{30}{5} = 6.0$.}
 
-\sol{37}{A}{\textbf{Tema:} Interpretación de elasticidad en demanda log-log. \textbf{Explicación:} En el modelo log-log, el coeficiente $-0.35$ es la elasticidad precio directa: $\% \Delta Q \approx -0.35 \times 10\% = -3.5\%$. Dado que $|-0.35| < 1$, la demanda de agua potable es inelástica respecto al precio.}
+\sol{37}{B}{\textbf{Tema:} Interpretación de elasticidad en demanda log-log. \textbf{Explicación:} En el modelo log-log, el coeficiente $-0.35$ es la elasticidad precio directa: $\% \Delta Q \approx -0.35 \times 10\% = -3.5\%$. Dado que $|-0.35| < 1$, la demanda de agua potable es inelástica respecto al precio.}
 
-\sol{38}{B}{\textbf{Tema:} Cálculo de semielasticidad log-lineal. \textbf{Explicación:} $\Delta \ln(OPEX) \approx \beta_1 \Delta X = 0.04 \times 5 = 0.20$. Multiplicando por 100, los costos operativos aumentan aproximadamente un $20\%$.}
+\sol{38}{A}{\textbf{Tema:} Cálculo de semielasticidad log-lineal. \textbf{Explicación:} $\Delta \ln(OPEX) \approx \beta_1 \Delta X = 0.04 \times 5 = 0.20$. Multiplicando por 100, los costos operativos aumentan aproximadamente un $20\%$.}
 
-\sol{39}{C}{\textbf{Tema:} Interpretación de modelo lineal-log. \textbf{Explicación:} En especificación lineal-log, $\Delta Y \approx (\beta_1 / 100) \times (\% \Delta X) = (200 / 100) \times 1 = 2$ unidades absolutas.}
+\sol{39}{A}{\textbf{Tema:} Interpretación de modelo lineal-log. \textbf{Explicación:} En especificación lineal-log, $\Delta Y \approx (\beta_1 / 100) \times (\% \Delta X) = (200 / 100) \times 1 = 2$ unidades absolutas.}
 
-\sol{40}{D}{\textbf{Tema:} Cálculo del Factor de Inflación de Varianza (VIF). \textbf{Explicación:} $VIF_j = \frac{1}{1 - R_j^2} = \frac{1}{1 - 0.80} = \frac{1}{0.20} = 5.0$.}
+\sol{40}{B}{\textbf{Tema:} Cálculo del Factor de Inflación de Varianza (VIF). \textbf{Explicación:} $VIF_j = \frac{1}{1 - R_j^2} = \frac{1}{1 - 0.80} = \frac{1}{0.20} = 5.0$.}
 
 \sol{41}{A}{\textbf{Tema:} Cálculo de error estándar matricial. \textbf{Explicación:} La matriz de covarianzas es $s^2 (X'X)^{-1}$. La varianza de $\hat{\beta}_2$ es $Var(\hat{\beta}_2) = s^2 \times [(X'X)^{-1}]_{33} = 25 \times 0.09 = 2.25$. El error estándar es $EE(\hat{\beta}_2) = \sqrt{2.25} = 1.50$.}
 
 \sol{42}{B}{\textbf{Tema:} Estadístico de prueba de White. \textbf{Explicación:} $LM = n \times R_{aux}^2 = 100 \times 0.15 = 15.0$. Sigue asintóticamente una distribución $\chi^2$ con grados de libertad iguales al número de regresores en la ecuación auxiliar ($p = 5$). Como el valor crítico al $5\%$ de $\chi^2_5$ es $11.07$ y $15.0 > 11.07$, se rechaza la homocedasticidad.}
 
-\sol{43}{C}{\textbf{Tema:} Cálculo de Breusch-Pagan. \textbf{Explicación:} $LM = 80 \times 0.10 = 8.0$. Bajo $H_0$ de homocedasticidad sigue una $\chi^2_3$. El valor crítico al $5\%$ es $7.81$. Como $8.0 > 7.81$, se rechaza la homocedasticidad.}
+\sol{43}{D}{\textbf{Tema:} Cálculo de Breusch-Pagan. \textbf{Explicación:} $LM = 80 \times 0.10 = 8.0$. Bajo $H_0$ de homocedasticidad sigue una $\chi^2_3$. El valor crítico al $5\%$ es $7.81$. Como $8.0 > 7.81$, se rechaza la homocedasticidad.}
 
-\sol{44}{D}{\textbf{Tema:} Transformación analítica de WLS. \textbf{Explicación:} La desviación estándar del error es $\sqrt{\sigma^2 X_i^2} = \sigma X_i$. Dividiendo toda la ecuación entre $X_i$: $\frac{Y_i}{X_i} = \beta_0 (1/X_i) + \beta_1 + u_i^*$, donde $Var(u_i^*) = Var(u_i/X_i) = \sigma^2$, logrando homocedasticidad perfecta.}
+\sol{44}{C}{\textbf{Tema:} Transformación analítica de WLS. \textbf{Explicación:} La desviación estándar del error es $\sqrt{\sigma^2 X_i^2} = \sigma X_i$. Dividiendo toda la ecuación entre $X_i$: $\frac{Y_i}{X_i} = \beta_0 (1/X_i) + \beta_1 + u_i^*$, donde $Var(u_i^*) = Var(u_i/X_i) = \sigma^2$, logrando homocedasticidad perfecta.}
 
-\sol{45}{A}{\textbf{Tema:} Cálculo de Durbin-Watson a partir de rho. \textbf{Explicación:} $d \approx 2(1 - \hat{\rho}) = 2(1 - 0.60) = 2(0.40) = 0.80$.}
+\sol{45}{D}{\textbf{Tema:} Cálculo de Durbin-Watson a partir de rho. \textbf{Explicación:} $d \approx 2(1 - \hat{\rho}) = 2(1 - 0.60) = 2(0.40) = 0.80$.}
 
-\sol{46}{B}{\textbf{Tema:} Regla de decisión de Durbin-Watson. \textbf{Explicación:} Si el estadístico calculado $d$ es estrictamente menor que el límite inferior tabulado $d_L$ ($0.80 < 1.63$), se rechaza categóricamente la hipótesis nula $H_0: \rho = 0$ a favor de la alternativa de autocorrelación serial positiva.}
+\sol{46}{D}{\textbf{Tema:} Regla de decisión de Durbin-Watson. \textbf{Explicación:} Si el estadístico calculado $d$ es estrictamente menor que el límite inferior tabulado $d_L$ ($0.80 < 1.63$), se rechaza categóricamente la hipótesis nula $H_0: \rho = 0$ a favor de la alternativa de autocorrelación serial positiva.}
 
-\sol{47}{C}{\textbf{Tema:} Estimación de rho para Cochrane-Orcutt. \textbf{Explicación:} Despejando de $d \approx 2(1 - \hat{\rho}) \implies 1 - \hat{\rho} = d / 2 \implies \hat{\rho} = 1 - d/2 = 1 - 1.30 / 2 = 1 - 0.65 = 0.35$.}
+\sol{47}{A}{\textbf{Tema:} Estimación de rho para Cochrane-Orcutt. \textbf{Explicación:} Despejando de $d \approx 2(1 - \hat{\rho}) \implies 1 - \hat{\rho} = d / 2 \implies \hat{\rho} = 1 - d/2 = 1 - 1.30 / 2 = 1 - 0.65 = 0.35$.}
 
-\sol{48}{D}{\textbf{Tema:} Transformación de Prais-Winsten en t=1. \textbf{Explicación:} A diferencia de Cochrane-Orcutt (que descarta la primera observación), Prais-Winsten conserva la primera observación multiplicándola por $\sqrt{1 - \rho^2}$, preservando la eficiencia en muestras pequeñas.}
+\sol{48}{B}{\textbf{Tema:} Transformación de Prais-Winsten en t=1. \textbf{Explicación:} A diferencia de Cochrane-Orcutt (que descarta la primera observación), Prais-Winsten conserva la primera observación multiplicándola por $\sqrt{1 - \rho^2}$, preservando la eficiencia en muestras pequeñas.}
 
-\sol{49}{A}{\textbf{Tema:} Cálculo de sesgo de variable omitida. \textbf{Explicación:} La fórmula del sesgo de variable omitida es $E[\tilde{\beta}_1] = \beta_1 + \beta_2 \frac{Cov(X_1, X_2)}{Var(X_1)} = \beta_1 + \beta_2 \tilde{\gamma}_1 = 4 + 2(0.5) = 4 + 1.0 = 5.0$.}
+\sol{49}{C}{\textbf{Tema:} Cálculo de sesgo de variable omitida. \textbf{Explicación:} La fórmula del sesgo de variable omitida es $E[\tilde{\beta}_1] = \beta_1 + \beta_2 \frac{Cov(X_1, X_2)}{Var(X_1)} = \beta_1 + \beta_2 \tilde{\gamma}_1 = 4 + 2(0.5) = 4 + 1.0 = 5.0$.}
 
 \sol{50}{B}{\textbf{Tema:} Cálculo del estimador de Variables Instrumentales. \textbf{Explicación:} El estimador de variables instrumentales simple es el cociente de covarianzas muestrales: $\hat{\beta}_{IV} = \frac{Cov(Z, Y)}{Cov(Z, X)} = \frac{150}{75} = 2.00$.}
 
-\sol{51}{C}{\textbf{Tema:} Regla de instrumentos débiles de Stock-Yogo. \textbf{Explicación:} La regla empírica estándar de Stock y Yogo establece que si el estadístico $F$ de los instrumentos excluidos en la primera etapa es menor a 10 ($4.2 < 10$), los instrumentos son débiles, generando sesgo significativo y distorsión de tamaño en los contrastes de Wald.}
+\sol{51}{A}{\textbf{Tema:} Regla de instrumentos débiles de Stock-Yogo. \textbf{Explicación:} La regla empírica estándar de Stock y Yogo establece que si el estadístico $F$ de los instrumentos excluidos en la primera etapa es menor a 10 ($4.2 < 10$), los instrumentos son débiles, generando sesgo significativo y distorsión de tamaño en los contrastes de Wald.}
 
-\sol{52}{D}{\textbf{Tema:} Mecánica de la prueba de Hausman en regresión. \textbf{Explicación:} Bajo $H_0$ de exogeneidad, el residuo de primera etapa $\hat{v}$ no debe tener poder explicativo sobre $Y$ una vez controlado $X_1$. Si su coeficiente es significativo en la regresión aumentada, $X_1$ y el error estructural están correlacionados (endogeneidad confirmada).}
+\sol{52}{A}{\textbf{Tema:} Mecánica de la prueba de Hausman en regresión. \textbf{Explicación:} Bajo $H_0$ de exogeneidad, el residuo de primera etapa $\hat{v}$ no debe tener poder explicativo sobre $Y$ una vez controlado $X_1$. Si su coeficiente es significativo en la regresión aumentada, $X_1$ y el error estructural están correlacionados (endogeneidad confirmada).}
 
-\sol{53}{A}{\textbf{Tema:} Prueba de sobreidentificación de Sargan. \textbf{Explicación:} La hipótesis nula de la prueba de Sargan / Hansen es que todos los instrumentos son exógenos y válidos. Como el estadístico calculado $1.20 < 5.99$, no se rechaza $H_0$, respaldando la validez del instrumental utilizado.}
+\sol{53}{C}{\textbf{Tema:} Prueba de sobreidentificación de Sargan. \textbf{Explicación:} La hipótesis nula de la prueba de Sargan / Hansen es que todos los instrumentos son exógenos y válidos. Como el estadístico calculado $1.20 < 5.99$, no se rechaza $H_0$, respaldando la validez del instrumental utilizado.}
 
-\sol{54}{B}{\textbf{Tema:} Trampa de las variables ficticias. \textbf{Explicación:} La suma de las 4 variables dummy es exactamente igual al vector columna de unos de la constante ($D_1 + D_2 + D_3 + D_4 = 1$), provocando dependencia lineal exacta. Para evitarlo se debe omitir una categoría base o suprimir la constante.}
+\sol{54}{A}{\textbf{Tema:} Trampa de las variables ficticias. \textbf{Explicación:} La suma de las 4 variables dummy es exactamente igual al vector columna de unos de la constante ($D_1 + D_2 + D_3 + D_4 = 1$), provocando dependencia lineal exacta. Para evitarlo se debe omitir una categoría base o suprimir la constante.}
 
-\sol{55}{C}{\textbf{Tema:} Efecto marginal con variable de interacción. \textbf{Explicación:} La derivada parcial respecto a la educación es $\frac{\partial \ln(W)}{\partial Educ} = \beta_1 + \beta_3 Mujer$. Para hombres ($Mujer=0$) es $\beta_1$; para mujeres ($Mujer=1$) es $\beta_1 + \beta_3$.}
+\sol{55}{D}{\textbf{Tema:} Efecto marginal con variable de interacción. \textbf{Explicación:} La derivada parcial respecto a la educación es $\frac{\partial \ln(W)}{\partial Educ} = \beta_1 + \beta_3 Mujer$. Para hombres ($Mujer=0$) es $\beta_1$; para mujeres ($Mujer=1$) es $\beta_1 + \beta_3$.}
 
-\sol{56}{D}{\textbf{Tema:} Propiedad de regresión estandarizada. \textbf{Explicación:} Al tener todas las variables media cero, la ecuación evaluada en las medias exige $\bar{Y} = \hat{\beta}_0 + \sum \hat{\beta}_j \bar{X}_j \implies 0 = \hat{\beta}_0 + 0 \implies \hat{\beta}_0 = 0$.}
+\sol{56}{C}{\textbf{Tema:} Propiedad de regresión estandarizada. \textbf{Explicación:} Al tener todas las variables media cero, la ecuación evaluada en las medias exige $\bar{Y} = \hat{\beta}_0 + \sum \hat{\beta}_j \bar{X}_j \implies 0 = \hat{\beta}_0 + 0 \implies \hat{\beta}_0 = 0$.}
 
-\sol{57}{A}{\textbf{Tema:} Propiedades de la Hat Matrix. \textbf{Explicación:} $H$ proyecta el vector $Y$ sobre el subespacio generado por las columnas de $X$ ($\hat{Y} = HY$). Como operador de proyección ortogonal, es simétrica e idempotente, y su traza es igual al rango de $X$, que es $k$.}
+\sol{57}{B}{\textbf{Tema:} Propiedades de la Hat Matrix. \textbf{Explicación:} $H$ proyecta el vector $Y$ sobre el subespacio generado por las columnas de $X$ ($\hat{Y} = HY$). Como operador de proyección ortogonal, es simétrica e idempotente, y su traza es igual al rango de $X$, que es $k$.}
 
-\sol{58}{B}{\textbf{Tema:} Ortogonalidad de residuos MCO. \textbf{Explicación:} Las condiciones de primer orden de MCO exigen $\frac{\partial (e'e)}{\partial \beta} = -2X'e = 0 \implies X'e = 0$. Si hay intercepto, una columna de $X$ es de unos, garantizando $\sum e_i = 0$ y covarianza muestral nula con los regresores.}
+\sol{58}{C}{\textbf{Tema:} Ortogonalidad de residuos MCO. \textbf{Explicación:} Las condiciones de primer orden de MCO exigen $\frac{\partial (e'e)}{\partial \beta} = -2X'e = 0 \implies X'e = 0$. Si hay intercepto, una columna de $X$ es de unos, garantizando $\sum e_i = 0$ y covarianza muestral nula con los regresores.}
 
-\sol{59}{C}{\textbf{Tema:} Descomposición de varianza e intercepto. \textbf{Explicación:} El término cruzado $\sum (\hat{Y}_i - \bar{Y})e_i$ se anula únicamente si el modelo contiene constante (o si los residuos suman cero). Sin constante, $STC \neq SEC + SCR$ y el $R^2$ estándar carece de sentido matemático.}
+\sol{59}{A}{\textbf{Tema:} Descomposición de varianza e intercepto. \textbf{Explicación:} El término cruzado $\sum (\hat{Y}_i - \bar{Y})e_i$ se anula únicamente si el modelo contiene constante (o si los residuos suman cero). Sin constante, $STC \neq SEC + SCR$ y el $R^2$ estándar carece de sentido matemático.}
 
-\sol{60}{D}{\textbf{Tema:} Cálculo de intervalo de confianza. \textbf{Explicación:} $IC_{95\%} = \hat{\beta}_1 \pm t_{crit} \times EE(\hat{\beta}_1) = 2.50 \pm 2.00 \times 0.25 = 2.50 \pm 0.50 = [2.00, \; 3.00]$.}
+\sol{60}{C}{\textbf{Tema:} Cálculo de intervalo de confianza. \textbf{Explicación:} $IC_{95\%} = \hat{\beta}_1 \pm t_{crit} \times EE(\hat{\beta}_1) = 2.50 \pm 2.00 \times 0.25 = 2.50 \pm 0.50 = [2.00, \; 3.00]$.}
 
-\sol{61}{A}{\textbf{Tema:} Varianza del error de predicción individual. \textbf{Explicación:} La predicción individual incorpora dos fuentes de incertidumbre: la estimación de los parámetros $\beta$ (varianza $\sigma^2 x_0'(X'X)^{-1}x_0$) más la varianza de la nueva perturbación $u_0$ que afectará al individuo ($\\sigma^2$), sumando $\sigma^2 [1 + x_0'(X'X)^{-1}x_0]$.}
+\sol{61}{C}{\textbf{Tema:} Varianza del error de predicción individual. \textbf{Explicación:} La predicción individual incorpora dos fuentes de incertidumbre: la estimación de los parámetros $\beta$ (varianza $\sigma^2 x_0'(X'X)^{-1}x_0$) más la varianza de la nueva perturbación $u_0$ que afectará al individuo ($\\sigma^2$), sumando $\sigma^2 [1 + x_0'(X'X)^{-1}x_0]$.}
 
 \sol{62}{B}{\textbf{Tema:} Comparación entre AIC y BIC. \textbf{Explicación:} La penalización del AIC es $2k$, mientras que la del BIC es $k \ln(n)$. Como para $n \ge 8$ se cumple $\ln(n) > 2$, el BIC castiga más drásticamente la sobreparametrización y es un criterio consistente para identificar el modelo verdadero.}
 
-\sol{63}{C}{\textbf{Tema:} Prueba de normalidad de Jarque-Bera. \textbf{Explicación:} Bajo la hipótesis nula de normalidad, $S \approx 0$ y $K \approx 3$. El estadístico de Jarque-Bera combina las desviaciones cuadráticas de asimetría y exceso de curtosis, siguiendo asintóticamente una distribución $\chi^2$ con 2 grados de libertad.}
+\sol{63}{D}{\textbf{Tema:} Prueba de normalidad de Jarque-Bera. \textbf{Explicación:} Bajo la hipótesis nula de normalidad, $S \approx 0$ y $K \approx 3$. El estadístico de Jarque-Bera combina las desviaciones cuadráticas de asimetría y exceso de curtosis, siguiendo asintóticamente una distribución $\chi^2$ con 2 grados de libertad.}
 
-\sol{64}{D}{\textbf{Tema:} Prueba RESET de Ramsey. \textbf{Explicación:} Si la forma funcional lineal es correcta, las potencias de los valores predichos ($\hat{Y}^2, \hat{Y}^3$) no deberían tener poder explicativo residual. Un estadístico $F$ significativo indica no linealidad o sesgo por variables omitidas.}
+\sol{64}{B}{\textbf{Tema:} Prueba RESET de Ramsey. \textbf{Explicación:} Si la forma funcional lineal es correcta, las potencias de los valores predichos ($\hat{Y}^2, \hat{Y}^3$) no deberían tener poder explicativo residual. Un estadístico $F$ significativo indica no linealidad o sesgo por variables omitidas.}
 
-\sol{65}{A}{\textbf{Tema:} Propiedad de MCO restringido. \textbf{Explicación:} Imponer restricciones reduce el espacio de búsqueda en la minimización de residuos. Por ende, la suma de residuos al cuadrado restringida nunca puede ser menor que la no restringida: $SCR_R \ge SCR_{NR}$ (igualdad solo si la muestra satisface exactamente la restricción).}
+\sol{65}{D}{\textbf{Tema:} Propiedad de MCO restringido. \textbf{Explicación:} Imponer restricciones reduce el espacio de búsqueda en la minimización de residuos. Por ende, la suma de residuos al cuadrado restringida nunca puede ser menor que la no restringida: $SCR_R \ge SCR_{NR}$ (igualdad solo si la muestra satisface exactamente la restricción).}
 
 \subsection*{Bloque C. Casos con implicancias regulatorias y sector saneamiento}
 
 \sol{66}{B}{\textbf{Tema:} Modelación de demanda de agua en SUNASS. \textbf{Explicación:} La forma funcional log-log permite interpretar inmediatamente los coeficientes estimados como las elasticidades directas de consumo frente a cambios tarifarios y variaciones en el ingreso de los hogares, parámetros esenciales para diseñar la estructura tarifaria quinquenal.}
 
-\sol{67}{C}{\textbf{Tema:} Endogeneidad en tarifas por bloques. \textbf{Explicación:} Bajo esquemas de bloques crecientes, la tarifa marginal no es exógena: depende del volumen consumido. Si un choque no observado eleva el consumo ($u > 0$), el usuario salta de bloque tarifario ($P$ sube), generando correlación positiva espuria entre precio y error.}
+\sol{67}{B}{\textbf{Tema:} Endogeneidad en tarifas por bloques. \textbf{Explicación:} Bajo esquemas de bloques crecientes, la tarifa marginal no es exógena: depende del volumen consumido. Si un choque no observado eleva el consumo ($u > 0$), el usuario salta de bloque tarifario ($P$ sube), generando correlación positiva espuria entre precio y error.}
 
-\sol{68}{D}{\textbf{Tema:} Instrumentación en demanda de agua. \textbf{Explicación:} La tarifa del primer bloque básico es fijada exógenamente por el regulador y es independiente del consumo discrecional final del hogar, funcionando como un instrumento válido que correlaciona con la tarifa promedio sin compartir choques de demanda.}
+\sol{68}{A}{\textbf{Tema:} Instrumentación en demanda de agua. \textbf{Explicación:} La tarifa del primer bloque básico es fijada exógenamente por el regulador y es independiente del consumo discrecional final del hogar, funcionando como un instrumento válido que correlaciona con la tarifa promedio sin compartir choques de demanda.}
 
-\sol{69}{A}{\textbf{Tema:} Frontera estocástica en regulación de EPS. \textbf{Explicación:} SFA especifica el residuo como $\varepsilon_i = v_i + u_i$, donde $v_i \sim N(0, \sigma_v^2)$ es ruido estocástico blanco (clima, geografía) y $u_i \ge 0$ es ineficiencia técnica pura. Esto evita atribuir a mala gestión costos derivados de choques exógenos adversos.}
+\sol{69}{B}{\textbf{Tema:} Frontera estocástica en regulación de EPS. \textbf{Explicación:} SFA especifica el residuo como $\varepsilon_i = v_i + u_i$, donde $v_i \sim N(0, \sigma_v^2)$ es ruido estocástico blanco (clima, geografía) y $u_i \ge 0$ es ineficiencia técnica pura. Esto evita atribuir a mala gestión costos derivados de choques exógenos adversos.}
 
 \sol{70}{B}{\textbf{Tema:} Economías de densidad en saneamiento. \textbf{Explicación:} Las economías de densidad de clientes/producto miden cómo responde el costo al expandir el volumen suministrado dentro de una red de distribución ya existente (sin extender kilómetros de tubería), siendo típicamente crecientes en servicios de saneamiento.}
 
-\sol{71}{C}{\textbf{Tema:} Heterocedasticidad por tamaño de empresa. \textbf{Explicación:} En muestras con disparidad extrema de tamaño (Sedapal atiende a más de 10 millones de habitantes mientras que pequeñas EPS atienden a 20 mil), la variabilidad de los errores es función directa del tamaño de la empresa, requiriendo estimación ponderada o errores robustos.}
+\sol{71}{D}{\textbf{Tema:} Heterocedasticidad por tamaño de empresa. \textbf{Explicación:} En muestras con disparidad extrema de tamaño (Sedapal atiende a más de 10 millones de habitantes mientras que pequeñas EPS atienden a 20 mil), la variabilidad de los errores es función directa del tamaño de la empresa, requiriendo estimación ponderada o errores robustos.}
 
 \sol{72}{D}{\textbf{Tema:} Errores robustos HC3 en muestras pequeñas. \textbf{Explicación:} Davidson y MacKinnon demostraron que en muestras con menos de 100 observaciones, el estimador HC0 de White subestima la verdadera varianza en puntos de alto leverage. El estimador HC3 divide los residuos al cuadrado entre $(1 - h_{ii})^2$, corrigiendo el sesgo muestral.}
 
@@ -157,35 +157,35 @@
 
 \sol{74}{B}{\textbf{Tema:} Newey-West en series de tiempo climáticas. \textbf{Explicación:} Los choques climáticos como El Niño generan correlaciones residuales que persisten a lo largo de múltiples trimestres. Los errores HAC de Newey-West blindan la inferencia estadística evitando rechazos espurios de significancia causal.}
 
-\sol{75}{C}{\textbf{Tema:} Sesgo de atrición en paneles de medidores. \textbf{Explicación:} Si la salida de medidores del panel no es un proceso puramente aleatorio (ej. se rompen más rápido en casas de consumo masivo o con mayor presión de agua), la muestra superviviente se vuelve no representativa, sesgando los coeficientes de demanda.}
+\sol{75}{B}{\textbf{Tema:} Sesgo de atrición en paneles de medidores. \textbf{Explicación:} Si la salida de medidores del panel no es un proceso puramente aleatorio (ej. se rompen más rápido en casas de consumo masivo o con mayor presión de agua), la muestra superviviente se vuelve no representativa, sesgando los coeficientes de demanda.}
 
-\sol{76}{D}{\textbf{Tema:} Diferencias en Diferencias en saneamiento. \textbf{Explicación:} Diff-in-Diff controla por factores macroeconómicos y climáticos temporales comunes que afectan a toda la ciudad: calcula la diferencia antes-después en el grupo tratado y le resta la diferencia antes-después del grupo de control: $\hat{\delta}_{DD} = (\bar{Y}_{T,post} - \bar{Y}_{T,pre}) - (\bar{Y}_{C,post} - \bar{Y}_{C,pre})$.}
+\sol{76}{C}{\textbf{Tema:} Diferencias en Diferencias en saneamiento. \textbf{Explicación:} Diff-in-Diff controla por factores macroeconómicos y climáticos temporales comunes que afectan a toda la ciudad: calcula la diferencia antes-después en el grupo tratado y le resta la diferencia antes-después del grupo de control: $\hat{\delta}_{DD} = (\bar{Y}_{T,post} - \bar{Y}_{T,pre}) - (\bar{Y}_{C,post} - \bar{Y}_{C,pre})$.}
 
-\sol{77}{A}{\textbf{Tema:} Supuesto de tendencias paralelas. \textbf{Explicación:} Si en el periodo previo al tratamiento el grupo de control y tratamiento ya exhibían trayectorias divergentes, la diferencia observada post-tratamiento no puede atribuirse con rigor causal a la instalación del medidor, invalidando la evaluación.}
+\sol{77}{D}{\textbf{Tema:} Supuesto de tendencias paralelas. \textbf{Explicación:} Si en el periodo previo al tratamiento el grupo de control y tratamiento ya exhibían trayectorias divergentes, la diferencia observada post-tratamiento no puede atribuirse con rigor causal a la instalación del medidor, invalidando la evaluación.}
 
-\sol{78}{B}{\textbf{Tema:} Regresión Discontinua (RDD) en SISFOH. \textbf{Explicación:} Alrededor del punto de corte $c_0$, los hogares justo por encima y justo por debajo del umbral tienen características socioeconómicas prácticamente idénticas (asignación cuasialeatoria), permitiendo estimar el efecto causal del subsidio tarifario de forma muy robusta.}
+\sol{78}{A}{\textbf{Tema:} Regresión Discontinua (RDD) en SISFOH. \textbf{Explicación:} Alrededor del punto de corte $c_0$, los hogares justo por encima y justo por debajo del umbral tienen características socioeconómicas prácticamente idénticas (asignación cuasialeatoria), permitiendo estimar el efecto causal del subsidio tarifario de forma muy robusta.}
 
-\sol{79}{C}{\textbf{Tema:} Limitaciones del Modelo Lineal de Probabilidad. \textbf{Explicación:} El MLP ($P(Y=1|X) = X\beta$) genera predicciones absurdas ($P < 0$ o $P > 1$) en los extremos de la distribución y su error tiene varianza heterocedástica $Var(u_i|X) = X\beta(1 - X\beta)$. Logit y Probit confinan la probabilidad entre 0 y 1 mediante funciones de distribución acumuladas.}
+\sol{79}{B}{\textbf{Tema:} Limitaciones del Modelo Lineal de Probabilidad. \textbf{Explicación:} El MLP ($P(Y=1|X) = X\beta$) genera predicciones absurdas ($P < 0$ o $P > 1$) en los extremos de la distribución y su error tiene varianza heterocedástica $Var(u_i|X) = X\beta(1 - X\beta)$. Logit y Probit confinan la probabilidad entre 0 y 1 mediante funciones de distribución acumuladas.}
 
 \sol{80}{D}{\textbf{Tema:} Multicolinealidad en infraestructura de EPS. \textbf{Explicación:} Las EPS con más kilómetros de red tienen inevitablemente más conexiones domiciliarias y producen más volumen de agua. Esta colinealidad infla las varianzas de los coeficientes individuales, aunque el modelo conjunto prediga con gran exactitud el costo total.}
 
 \sol{81}{A}{\textbf{Tema:} Causalidad inversa en ANF y costos. \textbf{Explicación:} Existe retroalimentación simultánea entre el gasto en mantenimiento de redes y las fugas físicas de agua: más fugas demandan más reparaciones, pero menos mantenimiento provoca más roturas de tuberías, requiriendo variables instrumentales para identificar el efecto causal.}
 
-\sol{82}{B}{\textbf{Tema:} Corrección de selección de Heckman. \textbf{Explicación:} Los hogares con conexión domiciliaria no son una muestra aleatoria de la población urbana (autoselección). Estimar MCO ignorando a los no conectados introduce sesgo de selección. El método de Heckman estima primero la probabilidad de tener conexión (Probit) e inserta la Razón Inversa de Mills en la ecuación de gasto.}
+\sol{82}{D}{\textbf{Tema:} Corrección de selección de Heckman. \textbf{Explicación:} Los hogares con conexión domiciliaria no son una muestra aleatoria de la población urbana (autoselección). Estimar MCO ignorando a los no conectados introduce sesgo de selección. El método de Heckman estima primero la probabilidad de tener conexión (Probit) e inserta la Razón Inversa de Mills en la ecuación de gasto.}
 
 \sol{83}{C}{\textbf{Tema:} Ventaja de Efectos Fijos en datos de panel de EPS. \textbf{Explicación:} Cada EPS opera bajo condiciones geográficas y topográficas únicas que no varían con el tiempo. El estimador Within de Efectos Fijos elimina $\alpha_i$ diferenciando respecto a la media individual, evitando sesgos por variables omitidas territoriales.}
 
-\sol{84}{D}{\textbf{Tema:} Prueba de Hausman en datos de panel. \textbf{Explicación:} Bajo la hipótesis nula, ambos estimadores son consistentes pero RE es más eficiente. Si $H_0$ se rechaza, la heterogeneidad no observada $\alpha_i$ está correlacionada con los regresores, haciendo que RE sea sesgado e inconsistente, por lo que la teoría exige adoptar Efectos Fijos.}
+\sol{84}{A}{\textbf{Tema:} Prueba de Hausman en datos de panel. \textbf{Explicación:} Bajo la hipótesis nula, ambos estimadores son consistentes pero RE es más eficiente. Si $H_0$ se rechaza, la heterogeneidad no observada $\alpha_i$ está correlacionada con los regresores, haciendo que RE sea sesgado e inconsistente, por lo que la teoría exige adoptar Efectos Fijos.}
 
-\sol{85}{A}{\textbf{Tema:} Estimación de la Beta CAPM en WACC regulatorio. \textbf{Explicación:} La Beta mide el riesgo sistemático no diversificable del negocio de saneamiento. Se estima regresionando los retornos bursátiles de empresas del sector sobre el índice de mercado (S\&P 500) y ajustando por apalancamiento financiero.}
+\sol{85}{D}{\textbf{Tema:} Estimación de la Beta CAPM en WACC regulatorio. \textbf{Explicación:} La Beta mide el riesgo sistemático no diversificable del negocio de saneamiento. Se estima regresionando los retornos bursátiles de empresas del sector sobre el índice de mercado (S\&P 500) y ajustando por apalancamiento financiero.}
 
-\sol{86}{B}{\textbf{Tema:} Cálculo de Beta de Hamada en regulación. \textbf{Explicación:} $\beta_L = 0.50 \times [1 + (1 - 0.30) \times 0.60] = 0.50 \times [1 + 0.70 \times 0.60] = 0.50 \times [1 + 0.42] = 0.50 \times 1.42 = 0.71$.}
+\sol{86}{D}{\textbf{Tema:} Cálculo de Beta de Hamada en regulación. \textbf{Explicación:} $\beta_L = 0.50 \times [1 + (1 - 0.30) \times 0.60] = 0.50 \times [1 + 0.70 \times 0.60] = 0.50 \times [1 + 0.42] = 0.50 \times 1.42 = 0.71$.}
 
 \sol{87}{C}{\textbf{Tema:} Modelos de conteo en roturas de tuberías. \textbf{Explicación:} Las fallas de red son eventos discretos no negativos. El modelo de Poisson modela conteos pero asume equi-dispersión ($Var = Media$). Si los datos presentan sobredispersión por incidentes en racimo, el modelo Binomial Negativo introduce un parámetro de dispersión gamma para inferencia correcta.}
 
-\sol{88}{D}{\textbf{Tema:} Detección econométrica de cárteles en licitaciones. \textbf{Explicación:} Los cárteles coordinan ofertas de resguardo que se agrupan en torno a márgenes prefijados, generando una distribución de posturas con dispersión artificialmente baja y patrones de simetría incompatibles con la competencia no cooperativa.}
+\sol{88}{B}{\textbf{Tema:} Detección econométrica de cárteles en licitaciones. \textbf{Explicación:} Los cárteles coordinan ofertas de resguardo que se agrupan en torno a márgenes prefijados, generando una distribución de posturas con dispersión artificialmente baja y patrones de simetría incompatibles con la competencia no cooperativa.}
 
-\sol{89}{A}{\textbf{Tema:} Econometría de Nowcasting en saneamiento. \textbf{Explicación:} El Nowcasting (predicción del presente inmediato) utiliza modelos de factores dinámicos o MIDAS para explotar indicadores de alta frecuencia disponibles de inmediato, permitiendo anticipar caídas en la cobranza de las EPS antes de que se publiquen los estados financieros oficiales.}
+\sol{89}{D}{\textbf{Tema:} Econometría de Nowcasting en saneamiento. \textbf{Explicación:} El Nowcasting (predicción del presente inmediato) utiliza modelos de factores dinámicos o MIDAS para explotar indicadores de alta frecuencia disponibles de inmediato, permitiendo anticipar caídas en la cobranza de las EPS antes de que se publiquen los estados financieros oficiales.}
 
-\sol{90}{B}{\textbf{Tema:} Poder estadístico y errores Tipo I y II en calidad de agua. \textbf{Explicación:} El diseño del muestreo bacteriológico es una decisión econométrica/estadística crucial: rechazar erróneamente el cumplimiento impone costos judiciales injustos a la EPS (Tipo I), mientras que no detectar contaminación expone a la población a epidemias diarreicas (Tipo II), requiriendo un poder estadístico ($1 - \beta$) riguroso.}
+\sol{90}{D}{\textbf{Tema:} Poder estadístico y errores Tipo I y II en calidad de agua. \textbf{Explicación:} El diseño del muestreo bacteriológico es una decisión econométrica/estadística crucial: rechazar erróneamente el cumplimiento impone costos judiciales injustos a la EPS (Tipo I), mientras que no detectar contaminación expone a la población a epidemias diarreicas (Tipo II), requiriendo un poder estadístico ($1 - \beta$) riguroso.}
 
