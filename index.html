@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simulador PEU SUNASS · Economía | BackBone Academy</title>
+  <style>
+    :root {
+      --azul: #2B2DA2;
+      --azul-oscuro: #181A62;
+      --fondo-suave: #EEF1F7;
+      --gris-borde: #D6DCE8;
+      --texto: #1F2430;
+      --texto-sec: #55555F;
+      --verde: #158467;
+      --verde-bg: #EAF6F2;
+      --rojo: #C02942;
+      --rojo-bg: #FCEEEF;
+      --naranja: #D95F28;
+      --naranja-bg: #FDF3EC;
+      --blanco: #FFFFFF;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: #F6F8FC;
+      color: var(--texto);
+      line-height: 1.5;
+    }
+
+    /* Encabezado */
+    .topbar-brand {
+      background: var(--blanco);
+      border-bottom: 1px solid var(--gris-borde);
+      padding: 10px 16px;
+    }
+    .topbar-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .brand-logo {
+      height: 30px;
+      width: auto;
+      display: block;
+    }
+    .socials {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .socials a {
+      color: var(--azul);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .socials a:hover { text-decoration: underline; }
+
+    .hero-bar {
+      background: var(--azul);
+      color: var(--blanco);
+      padding: 14px 16px;
+    }
+    .hero-bar-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .hero-bar h1 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .hero-bar span {
+      font-size: 13px;
+      opacity: 0.9;
+    }
+
+    /* Contenedor */
+    main {
+      max-width: 900px;
+      margin: 20px auto 40px;
+      padding: 0 16px;
+    }
+
+    .card {
+      background: var(--blanco);
+      border: 1px solid var(--gris-borde);
+      border-radius: 8px;
+      padding: 18px 20px;
+      margin-bottom: 16px;
+    }
+
+    .notice {
+      background: var(--fondo-suave);
+      border-left: 4px solid var(--azul);
+      padding: 10px 14px;
+      border-radius: 4px;
+      font-size: 13px;
+      color: var(--texto-sec);
+      margin-bottom: 16px;
+    }
+    .notice strong { color: var(--texto); }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: 17px;
+      color: var(--azul-oscuro);
+    }
+    h3 {
+      margin: 0 0 10px;
+      font-size: 15px;
+      color: var(--azul-oscuro);
+    }
+
+    /* Botones y grillas */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .menu-btn {
+      text-align: left;
+      background: var(--blanco);
+      border: 1px solid var(--gris-borde);
+      border-left: 4px solid var(--azul);
+      border-radius: 6px;
+      padding: 14px;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+      font-family: inherit;
+    }
+    .menu-btn:hover { background: var(--fondo-suave); border-color: var(--azul); }
+    .menu-btn.green { border-left-color: var(--verde); }
+    .menu-btn.orange { border-left-color: var(--naranja); }
+    .menu-btn.dark { border-left-color: var(--azul-oscuro); }
+    .menu-btn .title {
+      display: block;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--texto);
+      margin-bottom: 4px;
+    }
+    .menu-btn .desc {
+      display: block;
+      font-size: 13px;
+      color: var(--texto-sec);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 9px 15px;
+      border-radius: 6px;
+      border: 1px solid var(--gris-borde);
+      background: var(--blanco);
+      color: var(--texto);
+      font-size: 14px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+    }
+    .btn:hover { background: var(--fondo-suave); }
+    .btn-primary {
+      background: var(--azul);
+      border-color: var(--azul);
+      color: var(--blanco);
+    }
+    .btn-primary:hover { background: var(--azul-oscuro); }
+    .btn-warn {
+      background: var(--naranja-bg);
+      border-color: var(--naranja);
+      color: #9A3F14;
+    }
+    .btn-danger {
+      background: var(--rojo-bg);
+      border-color: var(--rojo);
+      color: var(--rojo);
+    }
+    .btn-sm { padding: 6px 11px; font-size: 13px; }
+    .btn-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+
+    /* Formularios */
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    label.field {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--texto-sec);
+    }
+    label.field select, label.field input {
+      display: block;
+      width: 100%;
+      margin-top: 5px;
+      padding: 8px 10px;
+      font-size: 14px;
+      font-family: inherit;
+      border: 1px solid var(--gris-borde);
+      border-radius: 6px;
+      background: var(--blanco);
+    }
+
+    /* Vista de pregunta */
+    .quiz-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      font-size: 13px;
+      color: var(--texto-sec);
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--gris-borde);
+      margin-bottom: 14px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      background: var(--fondo-suave);
+      color: var(--azul-oscuro);
+    }
+    .badge.green { background: var(--verde-bg); color: var(--verde); }
+    .badge.orange { background: var(--naranja-bg); color: #9A3F14; }
+    .badge.red { background: var(--rojo-bg); color: var(--rojo); }
+
+    .premise-box {
+      background: var(--naranja-bg);
+      border-left: 4px solid var(--naranja);
+      padding: 10px 14px;
+      border-radius: 4px;
+      margin-bottom: 14px;
+      font-size: 14px;
+    }
+    .premise-box .premise-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: #9A3F14;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+    }
+
+    .question-text {
+      font-size: 16px;
+      font-weight: 600;
+      margin: 0 0 16px;
+    }
+
+    .options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+    .opt-btn {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      width: 100%;
+      text-align: left;
+      padding: 11px 13px;
+      border: 1px solid var(--gris-borde);
+      border-radius: 6px;
+      background: var(--blanco);
+      font-family: inherit;
+      font-size: 14px;
+      color: var(--texto);
+      cursor: pointer;
+    }
+    .opt-btn:hover:not(:disabled) {
+      background: var(--fondo-suave);
+      border-color: var(--azul);
+    }
+    .opt-btn:disabled { cursor: default; }
+    .opt-key {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 4px;
+      background: var(--fondo-suave);
+      color: var(--azul-oscuro);
+      font-weight: 700;
+      font-size: 13px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .opt-btn.selected { border-color: var(--azul); background: var(--fondo-suave); }
+    .opt-btn.selected .opt-key { background: var(--azul); color: var(--blanco); }
+    .opt-btn.correct { border-color: var(--verde); background: var(--verde-bg); }
+    .opt-btn.correct .opt-key { background: var(--verde); color: var(--blanco); }
+    .opt-btn.wrong { border-color: var(--rojo); background: var(--rojo-bg); }
+    .opt-btn.wrong .opt-key { background: var(--rojo); color: var(--blanco); }
+
+    .feedback-box {
+      margin-top: 16px;
+      padding: 13px 15px;
+      border-radius: 6px;
+      border: 1px solid var(--gris-borde);
+      background: var(--fondo-suave);
+      font-size: 14px;
+    }
+    .feedback-box.ok { border-color: var(--verde); background: var(--verde-bg); }
+    .feedback-box.bad { border-color: var(--rojo); background: var(--rojo-bg); }
+    .feedback-box.skip { border-color: var(--naranja); background: var(--naranja-bg); }
+    .feedback-title { font-weight: 700; margin-bottom: 6px; }
+
+    /* Tablas */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+    }
+    th, td {
+      text-align: left;
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--gris-borde);
+    }
+    th { background: var(--fondo-suave); color: var(--azul-oscuro); font-weight: 700; }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .stat-box {
+      background: var(--fondo-suave);
+      border-radius: 6px;
+      padding: 12px;
+      text-align: center;
+    }
+    .stat-box .val { font-size: 20px; font-weight: 700; color: var(--azul-oscuro); }
+    .stat-box .lbl { font-size: 12px; color: var(--texto-sec); }
+
+    .hidden { display: none !important; }
+    .muted { color: var(--texto-sec); font-size: 13px; }
+    .kbd-hint { font-size: 12px; color: var(--texto-sec); margin-top: 10px; }
+
+    footer {
+      max-width: 900px;
+      margin: 24px auto 32px;
+      padding: 0 16px;
+      font-size: 12.5px;
+      color: var(--texto-sec);
+      text-align: center;
+    }
+    footer a { color: var(--azul); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topbar-brand">
+      <div class="topbar-inner">
+        <img src="teoria/backbone_logo_azul.png" alt="BackBone Academy" class="brand-logo" />
+        <div class="socials">
+          <a href="https://www.instagram.com/backbone.academy" target="_blank" rel="noopener">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+              <circle cx="12" cy="12" r="4.5"></circle>
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor"></circle>
+            </svg>
+            Instagram
+          </a>
+          <a href="https://www.tiktok.com/@backbone.academy" target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+            </svg>
+            TikTok (@backbone.academy)
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-bar">
+      <div class="hero-bar-inner">
+        <h1>Simulador de Admisión PEU SUNASS · Economía</h1>
+        <span>900 preguntas · 10 módulos · Clusters intactos</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Cargando / Fallback file:// -->
+    <section id="view-loading" class="card">
+      <h2>Cargando banco de preguntas...</h2>
+      <p id="load-status" class="muted">Obteniendo las 900 preguntas desde <code>banco_preguntas_consolidado.json</code>.</p>
+      <div id="load-fallback" class="hidden">
+        <p class="muted">
+          Si abriste este HTML directamente como archivo local (<code>file://</code>), el navegador bloquea la carga automática del JSON por seguridad.
+          Puedes usar la versión publicada en GitHub Pages, ejecutar <code>iniciar_simulador.bat</code> / <code>iniciar_simulador.sh</code>, o seleccionar manualmente el archivo <code>banco_preguntas_consolidado.json</code>:
+        </p>
+        <input type="file" id="json-file-input" accept=".json" />
+      </div>
+    </section>
+
+    <!-- Menú Principal -->
+    <section id="view-home" class="hidden">
+      <div class="notice">
+        <strong>Nota sobre el guardado:</strong> tu cuaderno de errores e historial se guardan únicamente en este navegador (<code>localStorage</code>) y <strong>no se sincronizan entre dispositivos</strong> ni en la nube. Si borras los datos del navegador o cambias de equipo, se reinician (puedes respaldarlos con <em>Exportar progreso</em> o usar la versión local en Python).
+      </div>
+
+      <div class="card">
+        <h2>Modalidades de Entrenamiento</h2>
+        <div class="menu-grid">
+          <button class="menu-btn green" onclick="showView('view-general')">
+            <span class="title">1. Simulacro General</span>
+            <span class="desc">30, 50 o 90 preguntas aleatorias manteniendo cadenas dependientes en orden.</span>
+          </button>
+          <button class="menu-btn" onclick="showView('view-modulo')">
+            <span class="title">2. Estudio por Módulo</span>
+            <span class="desc">Módulos I–X en orden secuencial, por bloques (A, B, C), rango o aleatorio.</span>
+          </button>
+          <button class="menu-btn orange" onclick="openNotebook()">
+            <span class="title">3. Cuaderno de Estudio <span id="home-pending-badge" class="badge">0 pendientes</span></span>
+            <span class="desc">Repasa las preguntas falladas y saltadas; al acertarlas salen de pendientes.</span>
+          </button>
+          <button class="menu-btn dark" onclick="openStats()">
+            <span class="title">4. Estadísticas y PDFs</span>
+            <span class="desc">Historial de simulacros, respaldo JSON y descarga de guías en PDF.</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Configurar Simulacro General -->
+    <section id="view-general" class="card hidden">
+      <h2>Configurar Simulacro General</h2>
+      <p class="muted">Las preguntas encadenadas se mantienen juntas y en orden lógico.</p>
+      <div class="form-grid">
+        <label class="field">
+          Cantidad de preguntas
+          <select id="gen-count-select" onchange="toggleCustomCount()">
+            <option value="30">Express (30 preguntas)</option>
+            <option value="50">Estándar (50 preguntas)</option>
+            <option value="90" selected>Completo Oficial (90 preguntas)</option>
+            <option value="custom">Cantidad personalizada</option>
+          </select>
+        </label>
+        <label class="field hidden" id="gen-custom-wrap">
+          Número personalizado (1–900)
+          <input type="number" id="gen-custom-input" min="1" max="900" value="20" />
+        </label>
+        <label class="field">
+          Modalidad de retroalimentación
+          <select id="gen-mode">
+            <option value="tutor">Modo Tutor (solucionario tras cada pregunta)</option>
+            <option value="exam">Modo Examen (silencioso, resultados al final)</option>
+          </select>
+        </label>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-primary" onclick="startGeneral()">Comenzar simulacro</button>
+        <button class="btn" onclick="showView('view-home')">Volver</button>
+      </div>
+    </section>
+
+    <!-- Configurar Estudio por Módulo -->
+    <section id="view-modulo" class="card hidden">
+      <h2>Estudio por Módulo Temático</h2>
+      <div class="form-grid">
+        <label class="field">
+          Módulo (1–10)
+          <select id="mod-select"></select>
+        </label>
+        <label class="field">
+          Modalidad
+          <select id="mod-mode" onchange="toggleModExtras()">
+            <option value="all">Completo (Preguntas 1 a 90)</option>
+            <option value="A">Bloque A: Fundamentos Teóricos (1 a 30)</option>
+            <option value="B">Bloque B: Cálculo y Optimización (31 a 65)</option>
+            <option value="C">Bloque C: Regulación y Saneamiento (66 a 90)</option>
+            <option value="range">Rango personalizado (ej. 30 a 60)</option>
+            <option value="random">Aleatorio Clustered</option>
+          </select>
+        </label>
+        <label class="field">
+          Retroalimentación
+          <select id="mod-feedback">
+            <option value="tutor">Modo Tutor (inmediata)</option>
+            <option value="exam">Modo Examen (al final)</option>
+          </select>
+        </label>
+      </div>
+
+      <div id="mod-range-wrap" class="form-grid hidden">
+        <label class="field">
+          Pregunta inicial (1–90)
+          <input type="number" id="mod-range-start" min="1" max="90" value="1" />
+        </label>
+        <label class="field">
+          Pregunta final (1–90)
+          <input type="number" id="mod-range-end" min="1" max="90" value="30" />
+        </label>
+      </div>
+
+      <div id="mod-random-wrap" class="form-grid hidden">
+        <label class="field">
+          Cantidad aleatoria (1–90)
+          <input type="number" id="mod-random-count" min="1" max="90" value="20" />
+        </label>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-primary" onclick="startModule()">Iniciar módulo</button>
+        <button class="btn" onclick="showView('view-home')">Volver</button>
+      </div>
+    </section>
+
+    <!-- Cuaderno de Estudio -->
+    <section id="view-notebook" class="card hidden">
+      <h2>Cuaderno de Errores y Saltadas</h2>
+      <div id="nb-summary" class="stats-row"></div>
+      <div id="nb-actions" class="btn-row"></div>
+      <div class="btn-row">
+        <button class="btn" onclick="showView('view-home')">Volver al menú</button>
+      </div>
+    </section>
+
+    <!-- Quiz Activo -->
+    <section id="view-quiz" class="card hidden">
+      <div class="quiz-meta">
+        <div>
+          <strong id="q-progress">Pregunta 1 / 30</strong>
+          · <span id="q-module" class="badge">Módulo I</span>
+          <span id="q-id" class="muted"></span>
+        </div>
+        <div>
+          <span id="q-timer" class="badge">00:00</span>
+        </div>
+      </div>
+
+      <div id="q-topic" class="muted" style="margin-bottom: 10px;"></div>
+
+      <div id="q-premise" class="premise-box hidden">
+        <div id="q-premise-title" class="premise-title"></div>
+        <div id="q-premise-text"></div>
+      </div>
+
+      <p id="q-text" class="question-text"></p>
+      <div id="q-options" class="options-list"></div>
+
+      <div id="q-feedback" class="feedback-box hidden">
+        <div id="q-feedback-title" class="feedback-title"></div>
+        <div id="q-feedback-expl"></div>
+      </div>
+
+      <div class="btn-row">
+        <button id="btn-skip" class="btn btn-warn" onclick="answerQuestion('S')">Saltar [S]</button>
+        <button id="btn-next" class="btn btn-primary hidden" onclick="nextQuestion()">Siguiente →</button>
+        <button class="btn" onclick="finishQuizEarly()">Terminar sesión</button>
+      </div>
+      <div class="kbd-hint">Atajos de teclado: <strong>A / B / C / D</strong> para responder · <strong>S</strong> para saltar · <strong>Enter</strong> para continuar.</div>
+    </section>
+
+    <!-- Resultados -->
+    <section id="view-results" class="card hidden">
+      <h2 id="res-title">Resultados Finales</h2>
+      <div id="res-stats" class="stats-row"></div>
+      <h3>Desglose por Módulo</h3>
+      <div style="overflow-x: auto; margin-bottom: 14px;">
+        <table>
+          <thead>
+            <tr>
+              <th>Módulo</th>
+              <th>Aciertos</th>
+              <th>Saltadas</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody id="res-breakdown"></tbody>
+        </table>
+      </div>
+      <div id="res-notebook-msg" class="notice hidden"></div>
+
+      <div id="res-review-wrap" class="hidden" style="margin-top: 16px;">
+        <h3>Revisión de Solucionario (Errores y Saltadas)</h3>
+        <div id="res-review-list"></div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-primary" onclick="showView('view-home')">Volver al menú</button>
+        <button class="btn" onclick="openNotebook()">Ir al Cuaderno de Estudio</button>
+      </div>
+    </section>
+
+    <!-- Estadísticas, Respaldo y PDFs -->
+    <section id="view-stats" class="card hidden">
+      <h2>Estadísticas, Respaldo y Material PDF</h2>
+      <div id="stats-overview" class="stats-row"></div>
+
+      <h3>Historial reciente</h3>
+      <div style="overflow-x: auto; margin-bottom: 14px;">
+        <table>
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Modalidad</th>
+              <th>Puntaje</th>
+              <th>Tiempo</th>
+            </tr>
+          </thead>
+          <tbody id="stats-history-body"></tbody>
+        </table>
+      </div>
+
+      <h3>Respaldo de Progreso (Exportar / Importar)</h3>
+      <p class="muted">Como la web guarda el progreso localmente en este navegador, puedes descargar un respaldo JSON o cargarlo en otro dispositivo.</p>
+      <div class="btn-row" style="margin-bottom: 18px;">
+        <button class="btn btn-sm" onclick="exportProgress()">Exportar progreso (.json)</button>
+        <label class="btn btn-sm" style="cursor: pointer;">
+          Importar progreso (.json)
+          <input type="file" id="import-progress-input" accept=".json" style="display:none;" onchange="importProgress(event)" />
+        </label>
+      </div>
+
+      <h3>Bancos de Preguntas y Diapositivas en PDF</h3>
+      <div style="overflow-x: auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>Módulo</th>
+              <th>Banco (90 preg.)</th>
+              <th>Teoría (Beamer)</th>
+            </tr>
+          </thead>
+          <tbody id="pdf-links-body"></tbody>
+        </table>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn" onclick="showView('view-home')">Volver al menú</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    BackBone Academy ·
+    <a href="https://www.instagram.com/backbone.academy" target="_blank" rel="noopener">Instagram @backbone.academy</a> ·
+    <a href="https://www.tiktok.com/@backbone.academy" target="_blank" rel="noopener">TikTok @backbone.academy</a> ·
+    <a href="https://github.com/leonardovelasquez14-DETG/peu-sunass-economia" target="_blank" rel="noopener">Repositorio en GitHub</a>
+  </footer>
+
+  <script>
+    const MODULE_NAMES = {
+      1: "Módulo I: Teoría del Consumidor",
+      2: "Módulo II: Teoría del Productor",
+      3: "Módulo III: Competencia Perfecta",
+      4: "Módulo IV: Equilibrio General y Bienestar",
+      5: "Módulo V: Monopolio y Discriminación",
+      6: "Módulo VI: Mercados de Factores",
+      7: "Módulo VII: Competencia Imperfecta",
+      8: "Módulo VIII: Otras Fallas de Mercado",
+      9: "Módulo IX: Econometría",
+      10: "Módulo X: Finanzas Corporativas y Proyectos"
+    };
+
+    const PDF_ASSETS = [
+      { m: 1, bank: "01/Banco_Preguntas_PEU_SUNASS_Economia_Modulo_I.pdf", slides: "teoria/M01_Teoria_Consumidor.pdf" },
+      { m: 2, bank: "02/Banco_Preguntas_PEU_SUNASS_Economia_Modulo_II.pdf", slides: "teoria/M02_Teoria_Productor.pdf" },
+      { m: 3, bank: "03/Banco_Preguntas_PEU_SUNASS_Economia_Modulo_III.pdf", slides: "teoria/M03_Competencia_Perfecta.pdf" },
+      { m: 4, bank: "04/Banco_Preguntas_PEU_SUNASS_Economia_Modulo_IV.pdf", slides: "teoria/M04_Equilibrio_General_Bienestar.pdf" },
+      { m: 5, bank: "05/Banco_Preguntas_PEU_SUNASS_Economia_Modulo_V.pdf", slides: "teoria/M05_Monopolio_Regulacion.pdf" },
+      { m: 6, bank: "06/Banco_Preguntas_PEU_SUNASS_Economia_Modulo_VI.pdf", slides: "teoria/M06_Mercados_Factores.pdf" },
+      { m: 7, bank: "07/Banco_Preguntas_PEU_SUNASS_Economia_Modulo_VII.pdf", slides: "teoria/M07_Competencia_Imperfecta.pdf" },
+      { m: 8, bank: "08/Banco_Preguntas_PEU_SUNASS_Economia_Modulo_VIII.pdf", slides: "teoria/M08_Fallas_Mercado.pdf" },
+      { m: 9, bank: "09/Banco_Preguntas_PEU_SUNASS_Economia_Modulo_IX.pdf", slides: "teoria/M09_Econometria.pdf" },
+      { m: 10, bank: "10/Banco_Preguntas_PEU_SUNASS_Economia_Modulo_X.pdf", slides: "teoria/M10_Finanzas.pdf" }
+    ];
+
+    const LS_ERRORS = "sunass_peu_errors_v1";
+    const LS_HISTORY = "sunass_peu_history_v1";
+
+    let DB = [];
+    let session = null;
+    let timerInterval = null;
+
+    function loadJSON(key, fallback) {
+      try {
+        const raw = localStorage.getItem(key);
+        return raw ? JSON.parse(raw) : fallback;
+      } catch {
+        return fallback;
+      }
+    }
+
+    function saveJSON(key, val) {
+      try {
+        localStorage.setItem(key, JSON.stringify(val));
+      } catch (e) {
+        console.warn("No se pudo guardar en localStorage:", e);
+      }
+    }
+
+    function cleanText(s) {
+      if (!s) return "";
+      return String(s)
+        .replace(/\\text\{([^}]*)\}/g, "$1")
+        .replace(/\\frac\{([^}]*)\}\{([^}]*)\}/g, "($1 / $2)")
+        .replace(/Dacute\{imath\}as/g, "Días")
+        .replace(/acute\{([AaEeIiOoUu])\}/g, (_, ch) => ({A:"Á",a:"á",E:"É",e:"é",I:"Í",i:"í",O:"Ó",o:"ó",U:"Ú",u:"ú"}[ch] || ch))
+        .replace(/\\([{}])/g, "$1")
+        .replace(/\\ /g, " ");
+    }
+
+    function esc(s) {
+      return cleanText(s)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    function showView(id) {
+      if (id !== "view-quiz" && timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+      }
+      ["view-loading", "view-home", "view-general", "view-modulo", "view-notebook", "view-quiz", "view-results", "view-stats"]
+        .forEach(v => document.getElementById(v).classList.toggle("hidden", v !== id));
+      if (id === "view-home") updateHomeBadge();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function updateHomeBadge() {
+      const errs = loadJSON(LS_ERRORS, []);
+      document.getElementById("home-pending-badge").textContent = `${errs.length} pendientes`;
+    }
+
+    // Muestreo atómico por clusters (idéntico a simulador.py)
+    function sampleClustered(questions, targetN) {
+      const clusters = new Map();
+      for (const q of questions) {
+        const cid = q.cluster_id || q.id;
+        if (!clusters.has(cid)) clusters.set(cid, []);
+        clusters.get(cid).push(q);
+      }
+      const list = Array.from(clusters.values());
+      for (let i = list.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [list[i], list[j]] = [list[j], list[i]];
+      }
+      const selected = [];
+      for (const c of list) {
+        if (selected.length >= targetN && selected.length > 0) break;
+        selected.push(...c);
+      }
+      return selected;
+    }
+
+    function toggleCustomCount() {
+      const val = document.getElementById("gen-count-select").value;
+      document.getElementById("gen-custom-wrap").classList.toggle("hidden", val !== "custom");
+    }
+
+    function toggleModExtras() {
+      const mode = document.getElementById("mod-mode").value;
+      document.getElementById("mod-range-wrap").classList.toggle("hidden", mode !== "range");
+      document.getElementById("mod-random-wrap").classList.toggle("hidden", mode !== "random");
+    }
+
+    function startGeneral() {
+      const sel = document.getElementById("gen-count-select").value;
+      let n = sel === "custom" ? parseInt(document.getElementById("gen-custom-input").value, 10) || 20 : parseInt(sel, 10);
+      n = Math.max(1, Math.min(DB.length, n));
+      const tutor = document.getElementById("gen-mode").value === "tutor";
+      const sampled = sampleClustered(DB, n);
+      startQuiz(sampled, `Simulacro General (${sampled.length} preg.)`, tutor, false);
+    }
+
+    function startModule() {
+      const modNum = parseInt(document.getElementById("mod-select").value, 10);
+      const mode = document.getElementById("mod-mode").value;
+      const tutor = document.getElementById("mod-feedback").value === "tutor";
+      const modQs = DB.filter(q => q.module_num === modNum).sort((a, b) => a.q_num - b.q_num);
+      let chosen = modQs;
+      let title = `${MODULE_NAMES[modNum]} (1–90)`;
+
+      if (mode === "A") {
+        chosen = modQs.slice(0, 30);
+        title = `${MODULE_NAMES[modNum]} · Bloque A`;
+      } else if (mode === "B") {
+        chosen = modQs.slice(30, 65);
+        title = `${MODULE_NAMES[modNum]} · Bloque B`;
+      } else if (mode === "C") {
+        chosen = modQs.slice(65, 90);
+        title = `${MODULE_NAMES[modNum]} · Bloque C`;
+      } else if (mode === "range") {
+        let ini = parseInt(document.getElementById("mod-range-start").value, 10) || 1;
+        let fin = parseInt(document.getElementById("mod-range-end").value, 10) || 90;
+        ini = Math.max(1, Math.min(90, ini));
+        fin = Math.max(ini, Math.min(90, fin));
+        chosen = modQs.slice(ini - 1, fin);
+        title = `${MODULE_NAMES[modNum]} (Pregs. ${ini}–${fin})`;
+      } else if (mode === "random") {
+        let n = parseInt(document.getElementById("mod-random-count").value, 10) || 20;
+        n = Math.max(1, Math.min(modQs.length, n));
+        chosen = sampleClustered(modQs, n);
+        title = `${MODULE_NAMES[modNum]} · Aleatorio (${chosen.length})`;
+      }
+      startQuiz(chosen, title, tutor, false);
+    }
+
+    function openNotebook() {
+      const errs = loadJSON(LS_ERRORS, []);
+      const falladas = errs.filter(e => e.error_type === "fallada");
+      const saltadas = errs.filter(e => e.error_type === "saltada");
+
+      document.getElementById("nb-summary").innerHTML = `
+        <div class="stat-box"><div class="val">${errs.length}</div><div class="lbl">Pendientes totales</div></div>
+        <div class="stat-box"><div class="val" style="color:var(--rojo)">${falladas.length}</div><div class="lbl">Falladas</div></div>
+        <div class="stat-box"><div class="val" style="color:var(--naranja)">${saltadas.length}</div><div class="lbl">Saltadas [S]</div></div>
+      `;
+
+      const act = document.getElementById("nb-actions");
+      if (!errs.length) {
+        act.innerHTML = `<p class="muted">Tu Cuaderno de Estudio está al día (0 preguntas pendientes).</p>`;
+      } else {
+        act.innerHTML = `
+          <button class="btn btn-primary" onclick="startNotebook('all')">Repasar todas (${errs.length})</button>
+          ${falladas.length ? `<button class="btn" onclick="startNotebook('fallada')">Solo falladas (${falladas.length})</button>` : ""}
+          ${saltadas.length ? `<button class="btn" onclick="startNotebook('saltada')">Solo saltadas (${saltadas.length})</button>` : ""}
+          <button class="btn" onclick="startNotebook('sample15')">Muestra aleatoria (15)</button>
+          <button class="btn btn-danger" onclick="clearNotebook()">Vaciar cuaderno</button>
+        `;
+      }
+      showView("view-notebook");
+    }
+
+    function startNotebook(kind) {
+      const errs = loadJSON(LS_ERRORS, []);
+      let qs = [];
+      let title = "Repaso de Cuaderno";
+      if (kind === "all") { qs = [...errs]; title = "Repaso Completo de Errores y Saltadas"; }
+      else if (kind === "fallada") { qs = errs.filter(e => e.error_type === "fallada"); title = "Repaso de Falladas"; }
+      else if (kind === "saltada") { qs = errs.filter(e => e.error_type === "saltada"); title = "Repaso de Saltadas"; }
+      else if (kind === "sample15") {
+        const copy = [...errs];
+        for (let i = copy.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [copy[i], copy[j]] = [copy[j], copy[i]];
+        }
+        qs = copy.slice(0, Math.min(15, copy.length));
+        title = `Muestra Rápida (${qs.length} preg.)`;
+      }
+      if (!qs.length) return;
+      startQuiz(qs, title, true, true);
+    }
+
+    function clearNotebook() {
+      if (confirm("¿Seguro que deseas vaciar todo el cuaderno de estudio?")) {
+        saveJSON(LS_ERRORS, []);
+        openNotebook();
+      }
+    }
+
+    function startQuiz(questions, title, tutorMode, isNotebook) {
+      session = {
+        questions,
+        title,
+        tutorMode,
+        isNotebook,
+        idx: 0,
+        results: [],
+        answeredCurrent: false,
+        startedAt: Date.now(),
+        qStartedAt: Date.now()
+      };
+      showView("view-quiz");
+      renderQuestion();
+      timerInterval = setInterval(updateTimer, 500);
+      updateTimer();
+    }
+
+    function updateTimer() {
+      if (!session) return;
+      const secs = Math.floor((Date.now() - session.startedAt) / 1000);
+      const m = String(Math.floor(secs / 60)).padStart(2, "0");
+      const s = String(secs % 60).padStart(2, "0");
+      document.getElementById("q-timer").textContent = `${m}:${s}`;
+    }
+
+    function renderQuestion() {
+      const q = session.questions[session.idx];
+      session.answeredCurrent = false;
+      session.qStartedAt = Date.now();
+
+      document.getElementById("q-progress").textContent = `Pregunta ${session.idx + 1} / ${session.questions.length}`;
+      document.getElementById("q-module").textContent = MODULE_NAMES[q.module_num] || q.module_name;
+      document.getElementById("q-id").textContent = `(${q.id})`;
+      document.getElementById("q-topic").textContent = q.topic ? `Tema: ${cleanText(q.topic)}` : "";
+
+      const premWrap = document.getElementById("q-premise");
+      if (q.context_premise) {
+        const ref = q.parent_id || q.depends_on || "Pregunta anterior";
+        document.getElementById("q-premise-title").textContent = `Premisa vinculada (${ref})`;
+        document.getElementById("q-premise-text").textContent = cleanText(q.context_premise);
+        premWrap.classList.remove("hidden");
+      } else {
+        premWrap.classList.add("hidden");
+      }
+
+      document.getElementById("q-text").textContent = cleanText(q.question);
+
+      const letters = ["A", "B", "C", "D"];
+      document.getElementById("q-options").innerHTML = q.options.map((opt, i) => `
+        <button class="opt-btn" id="opt-${letters[i]}" onclick="answerQuestion('${letters[i]}')">
+          <span class="opt-key">${letters[i]}</span>
+          <span>${esc(opt)}</span>
+        </button>
+      `).join("");
+
+      document.getElementById("q-feedback").classList.add("hidden");
+      document.getElementById("btn-next").classList.add("hidden");
+      document.getElementById("btn-skip").classList.remove("hidden");
+    }
+
+    function answerQuestion(choice) {
+      if (!session || session.answeredCurrent) return;
+      session.answeredCurrent = true;
+
+      const q = session.questions[session.idx];
+      const elapsed = (Date.now() - session.qStartedAt) / 1000;
+      const isSkipped = choice === "S";
+      const isCorrect = choice === q.correct_key;
+
+      session.results.push({
+        item: q,
+        userChoice: choice,
+        correctKey: q.correct_key,
+        isCorrect,
+        isSkipped,
+        time: elapsed
+      });
+
+      if (!session.tutorMode) {
+        nextQuestion();
+        return;
+      }
+
+      // Modo Tutor: bloquear opciones y mostrar solucionario
+      ["A", "B", "C", "D"].forEach(l => {
+        const btn = document.getElementById(`opt-${l}`);
+        if (!btn) return;
+        btn.disabled = true;
+        if (l === q.correct_key) btn.classList.add("correct");
+        else if (l === choice && !isCorrect) btn.classList.add("wrong");
+      });
+
+      const fb = document.getElementById("q-feedback");
+      const fbTitle = document.getElementById("q-feedback-title");
+      fb.classList.remove("hidden", "ok", "bad", "skip");
+
+      if (isSkipped) {
+        fb.classList.add("skip");
+        fbTitle.textContent = `↷ Pregunta saltada (se enviará a tu cuaderno). Clave correcta: [${q.correct_key}]`;
+      } else if (isCorrect) {
+        fb.classList.add("ok");
+        fbTitle.textContent = `✔ ¡Correcto! Marcaste [${choice}] en ${elapsed.toFixed(1)} s.`;
+      } else {
+        fb.classList.add("bad");
+        fbTitle.textContent = `✘ Incorrecto. Marcaste [${choice}], la clave correcta es [${q.correct_key}].`;
+      }
+
+      document.getElementById("q-feedback-expl").textContent = cleanText(q.explanation);
+      document.getElementById("btn-skip").classList.add("hidden");
+      const nextBtn = document.getElementById("btn-next");
+      nextBtn.textContent = session.idx + 1 >= session.questions.length ? "Ver resultados →" : "Siguiente →";
+      nextBtn.classList.remove("hidden");
+    }
+
+    function nextQuestion() {
+      if (!session) return;
+      session.idx += 1;
+      if (session.idx >= session.questions.length) {
+        finishQuiz();
+      } else {
+        renderQuestion();
+      }
+    }
+
+    function finishQuizEarly() {
+      if (!session) return;
+      if (!session.results.length) {
+        session = null;
+        showView("view-home");
+        return;
+      }
+      finishQuiz();
+    }
+
+    function finishQuiz() {
+      const results = session.results;
+      const totalTime = results.reduce((acc, r) => acc + r.time, 0);
+      const correctCount = results.filter(r => r.isCorrect).length;
+      const skippedCount = results.filter(r => r.isSkipped).length;
+      const wrongCount = results.length - correctCount - skippedCount;
+      const pct = results.length ? (correctCount / results.length) * 100 : 0;
+
+      // Actualizar cuaderno de errores
+      let errs = loadJSON(LS_ERRORS, []);
+      if (session.isNotebook) {
+        const resolvedIds = new Set(results.filter(r => r.isCorrect).map(r => r.item.id));
+        errs = errs.filter(e => !resolvedIds.has(e.id));
+      }
+      const errMap = new Map(errs.map((e, i) => [e.id, i]));
+      const nowStr = new Date().toISOString().slice(0, 19).replace("T", " ");
+      let added = 0, updated = 0;
+
+      for (const r of results) {
+        if (!r.isCorrect) {
+          const copy = {
+            ...r.item,
+            error_type: r.isSkipped ? "saltada" : "fallada",
+            logged_at: nowStr
+          };
+          if (errMap.has(copy.id)) {
+            errs[errMap.get(copy.id)] = copy;
+            updated++;
+          } else {
+            errMap.set(copy.id, errs.length);
+            errs.push(copy);
+            added++;
+          }
+        }
+      }
+      saveJSON(LS_ERRORS, errs);
+
+      // Guardar historial
+      const history = loadJSON(LS_HISTORY, []);
+      history.push({
+        timestamp: nowStr,
+        title: session.title,
+        total: results.length,
+        correct: correctCount,
+        skipped: skippedCount,
+        pct: Math.round(pct * 10) / 10,
+        time_seconds: Math.round(totalTime * 10) / 10
+      });
+      saveJSON(LS_HISTORY, history);
+
+      // Render resultados
+      document.getElementById("res-title").textContent = `Resultados: ${session.title}`;
+      document.getElementById("res-stats").innerHTML = `
+        <div class="stat-box"><div class="val">${correctCount} / ${results.length}</div><div class="lbl">Aciertos (${pct.toFixed(1)}%)</div></div>
+        <div class="stat-box"><div class="val" style="color:var(--rojo)">${wrongCount}</div><div class="lbl">Errores</div></div>
+        <div class="stat-box"><div class="val" style="color:var(--naranja)">${skippedCount}</div><div class="lbl">Saltadas</div></div>
+        <div class="stat-box"><div class="val">${(totalTime / 60).toFixed(1)} min</div><div class="lbl">${(totalTime / results.length).toFixed(1)} s/preg.</div></div>
+      `;
+
+      const byMod = new Map();
+      for (const r of results) {
+        const m = r.item.module_num;
+        if (!byMod.has(m)) byMod.set(m, { name: MODULE_NAMES[m] || r.item.module_name, ok: 0, skip: 0, total: 0 });
+        const st = byMod.get(m);
+        st.total++;
+        if (r.isCorrect) st.ok++;
+        else if (r.isSkipped) st.skip++;
+      }
+
+      document.getElementById("res-breakdown").innerHTML = Array.from(byMod.keys())
+        .sort((a, b) => a - b)
+        .map(m => {
+          const st = byMod.get(m);
+          const mp = (st.ok / st.total) * 100;
+          const cls = mp >= 70 ? "green" : (mp >= 50 ? "orange" : "red");
+          const tag = mp >= 70 ? "DOMINADO" : (mp >= 50 ? "REGULAR" : "REFORZAR");
+          return `
+            <tr>
+              <td>${esc(st.name)}</td>
+              <td>${st.ok}/${st.total} (${mp.toFixed(1)}%)</td>
+              <td>${st.skip}</td>
+              <td><span class="badge ${cls}">${tag}</span></td>
+            </tr>
+          `;
+        }).join("");
+
+      const nbMsg = document.getElementById("res-notebook-msg");
+      if (added || updated) {
+        nbMsg.textContent = `Se registraron ${added} preguntas nuevas y ${updated} actualizadas en tu Cuaderno de Estudio (${errs.length} pendientes en este navegador).`;
+        nbMsg.classList.remove("hidden");
+      } else {
+        nbMsg.classList.add("hidden");
+      }
+
+      const toReview = results.filter(r => !r.isCorrect);
+      const revWrap = document.getElementById("res-review-wrap");
+      if (!session.tutorMode && toReview.length) {
+        document.getElementById("res-review-list").innerHTML = toReview.map(r => `
+          <div class="feedback-box ${r.isSkipped ? "skip" : "bad"}" style="margin-bottom:10px;">
+            <div class="feedback-title">${esc(r.item.id)} · ${r.isSkipped ? "Saltada" : `Marcaste [${r.userChoice}]`} · Correcta: [${r.correctKey}]</div>
+            <div style="margin-bottom:6px;"><strong>${esc(r.item.question)}</strong></div>
+            <div class="muted">${esc(r.item.explanation)}</div>
+          </div>
+        `).join("");
+        revWrap.classList.remove("hidden");
+      } else {
+        revWrap.classList.add("hidden");
+      }
+
+      session = null;
+      showView("view-results");
+    }
+
+    function openStats() {
+      const history = loadJSON(LS_HISTORY, []);
+      const errs = loadJSON(LS_ERRORS, []);
+      const falladas = errs.filter(e => e.error_type === "fallada").length;
+      const saltadas = errs.filter(e => e.error_type === "saltada").length;
+
+      document.getElementById("stats-overview").innerHTML = `
+        <div class="stat-box"><div class="val">${DB.length}</div><div class="lbl">Banco total</div></div>
+        <div class="stat-box"><div class="val">${errs.length}</div><div class="lbl">${falladas} falladas · ${saltadas} saltadas</div></div>
+        <div class="stat-box"><div class="val">${history.length}</div><div class="lbl">Sesiones completadas</div></div>
+      `;
+
+      const tbody = document.getElementById("stats-history-body");
+      if (!history.length) {
+        tbody.innerHTML = `<tr><td colspan="4" class="muted">Aún no has completado sesiones en este navegador.</td></tr>`;
+      } else {
+        tbody.innerHTML = history.slice(-10).reverse().map(h => {
+          const cls = h.pct >= 70 ? "green" : (h.pct >= 50 ? "orange" : "red");
+          return `
+            <tr>
+              <td>${esc(h.timestamp)}</td>
+              <td>${esc(h.title)}</td>
+              <td><span class="badge ${cls}">${h.correct}/${h.total} (${h.pct}%)</span></td>
+              <td>${(h.time_seconds / 60).toFixed(1)} min</td>
+            </tr>
+          `;
+        }).join("");
+      }
+
+      document.getElementById("pdf-links-body").innerHTML = PDF_ASSETS.map(a => `
+        <tr>
+          <td>${esc(MODULE_NAMES[a.m])}</td>
+          <td><a href="${a.bank}" target="_blank" rel="noopener">Abrir Banco PDF</a></td>
+          <td><a href="${a.slides}" target="_blank" rel="noopener">Abrir Diapositivas</a></td>
+        </tr>
+      `).join("");
+
+      showView("view-stats");
+    }
+
+    function exportProgress() {
+      const payload = {
+        exported_at: new Date().toISOString(),
+        cuaderno_errores: loadJSON(LS_ERRORS, []),
+        historial_simulacros: loadJSON(LS_HISTORY, [])
+      };
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "progreso_simulador_sunass.json";
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function importProgress(ev) {
+      const file = ev.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        try {
+          const data = JSON.parse(reader.result);
+          if (Array.isArray(data)) {
+            saveJSON(LS_ERRORS, data);
+          } else {
+            if (Array.isArray(data.cuaderno_errores)) saveJSON(LS_ERRORS, data.cuaderno_errores);
+            if (Array.isArray(data.historial_simulacros)) saveJSON(LS_HISTORY, data.historial_simulacros);
+          }
+          alert("Progreso importado correctamente en este navegador.");
+          openStats();
+        } catch {
+          alert("El archivo JSON no tiene un formato válido.");
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    function initApp(data) {
+      DB = data;
+      const modSel = document.getElementById("mod-select");
+      modSel.innerHTML = Object.entries(MODULE_NAMES)
+        .map(([k, v]) => `<option value="${k}">${esc(v)}</option>`)
+        .join("");
+      showView("view-home");
+    }
+
+    // Atajos de teclado en quiz
+    document.addEventListener("keydown", e => {
+      if (!session || ["INPUT", "SELECT", "TEXTAREA"].includes(document.activeElement.tagName)) return;
+      const key = e.key.toUpperCase();
+      if (!session.answeredCurrent && ["A", "B", "C", "D", "S"].includes(key)) {
+        answerQuestion(key);
+      } else if (session.answeredCurrent && e.key === "Enter") {
+        nextQuestion();
+      }
+    });
+
+    // Carga inicial desde banco_preguntas_consolidado.json
+    fetch("banco_preguntas_consolidado.json")
+      .then(r => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return r.json();
+      })
+      .then(initApp)
+      .catch(() => {
+        document.getElementById("load-status").textContent = "No se pudo cargar automáticamente banco_preguntas_consolidado.json.";
+        document.getElementById("load-fallback").classList.remove("hidden");
+      });
+
+    document.getElementById("json-file-input").addEventListener("change", ev => {
+      const file = ev.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        try {
+          initApp(JSON.parse(reader.result));
+        } catch {
+          alert("Archivo JSON inválido.");
+        }
+      };
+      reader.readAsText(file);
+    });
+  </script>
+</body>
+</html>

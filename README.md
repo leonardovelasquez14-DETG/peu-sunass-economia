@@ -74,7 +74,9 @@ BANCO DE PREGUNTAS SUNASS/
 ├── cuaderno_errores.json                   # Registro persistente de falladas y saltadas [S]
 ├── historial_simulacros.json               # Historial cronológico de notas y tiempos
 ├── simulador.py                            # Motor de ejecución del simulador CLI en Python
-├── iniciar_simulador.sh                    # Acceso rápido en terminal (./iniciar_simulador.sh)
+├── iniciar_simulador.bat                   # Acceso rápido en Windows (doble clic)
+├── iniciar_simulador.sh                    # Acceso rápido en Linux/macOS (./iniciar_simulador.sh)
+├── index.html                              # Simulador web estático (GitHub Pages)
 └── README.md                               # Este manual y documentación integral
 ```
 
@@ -127,12 +129,22 @@ Para optimizar el tiempo de cara a la fecha de examen:
 
 ### 🚀 Guía de Uso del Simulador Interactivo
 
-#### 1. Iniciar el simulador
-Abra una terminal en esta carpeta y ejecute:
+#### Opción A — Versión Web (sin instalar nada)
+Puedes usar el simulador directamente desde el navegador (celular o PC) entrando al sitio publicado en **GitHub Pages**:
+- 🌐 **Simulador Web:** https://leonardovelasquez14-detg.github.io/peu-sunass-economia/
+
+> **⚠️ Importante sobre el guardado en la versión Web:**  
+> La versión web funciona de forma estática (sin servidor ni cuentas de usuario). Tu cuaderno de errores e historial de simulacros se guardan únicamente en la memoria local del navegador (`localStorage`) del dispositivo actual y **no se sincronizan en la nube ni entre dispositivos**. Si limpias los datos del navegador o entras desde otro equipo/navegador, tu progreso no aparecerá allí (puedes respaldarlo manualmente usando el botón **Exportar / Importar progreso (.json)** dentro de *Estadísticas*).
+
+#### Opción B — Versión Local en PC (progreso persistente en archivos JSON)
+Si prefieres guardar tu progreso en archivos locales (`cuaderno_errores.json` e `historial_simulacros.json`):
+1. Descarga el repositorio desde GitHub (**Code → Download ZIP**) y descomprime la carpeta (o clónalo con `git`).
+2. **En Windows:** haz **doble clic en `iniciar_simulador.bat`** (requiere Python 3 instalado).
+3. **En Linux / macOS:** abre una terminal en la carpeta y ejecuta:
 ```bash
 ./iniciar_simulador.sh
 ```
-O directamente con Python:
+O directamente con Python en cualquier sistema:
 ```bash
 python3 simulador.py
 ```

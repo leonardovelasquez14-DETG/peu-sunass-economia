@@ -20,6 +20,12 @@ import random
 import time
 import textwrap
 
+if os.name == "nt":
+    os.system("")
+    for _stream in (sys.stdout, sys.stderr):
+        if hasattr(_stream, "reconfigure"):
+            _stream.reconfigure(encoding="utf-8", errors="replace")
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DB_FILE = os.path.join(BASE_DIR, "banco_preguntas_consolidado.json")
 ERRORS_FILE = os.path.join(BASE_DIR, "cuaderno_errores.json")
