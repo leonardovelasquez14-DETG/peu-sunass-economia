@@ -1,6 +1,8 @@
 # 🏛️ BANCO DE PREGUNTAS Y SIMULADOR DE ADMISIÓN PEU SUNASS 2026
 ## Especialidad: Economía | 900 Preguntas con Solucionario Detallado y Motor Inteligente de Dependencias
 
+**Por BackBone Academy** · Instagram: [@backbone.academy](https://www.instagram.com/backbone.academy) · TikTok: [@backbone.academy](https://www.tiktok.com/@backbone.academy)
+
 ---
 
 ### 📌 Tabla de Contenidos
@@ -32,18 +34,18 @@ Cada pregunta cuenta con:
 
 El banco está distribuido en los **10 módulos oficiales** del examen (90 preguntas por módulo):
 
-| Módulo | Nombre Oficial del Temario | Preguntas | PDF Compilado |
-| :---: | :--- | :---: | :--- |
-| **01** | Microeconomía: Teoría del Consumidor, Producción y Costos | 90 | `01/Banco_Preguntas_PEU_SUNASS_Economia_Modulo_I.pdf` |
-| **02** | Microeconomía y Regulación: Bienestar, Monopolio Natural | 90 | `02/Banco_Preguntas_PEU_SUNASS_Economia_Modulo_II.pdf` |
-| **03** | Microeconomía Aplicada: Elasticidades e Impuestos | 90 | `03/Banco_Preguntas_PEU_SUNASS_Economia_Modulo_III.pdf` |
-| **04** | Macroeconomía: Modelos IS-LM, Oferta y Demanda Agregada | 90 | `04/Banco_Preguntas_PEU_SUNASS_Economia_Modulo_IV.pdf` |
-| **05** | Macroeconomía Avanzada: Políticas Monetaria y Fiscal | 90 | `05/Banco_Preguntas_PEU_SUNASS_Economia_Modulo_V.pdf` |
-| **06** | Macroeconomía Abierta: Tipo de Cambio y Sector Externo | 90 | `06/Banco_Preguntas_PEU_SUNASS_Economia_Modulo_VI.pdf` |
-| **07** | Competencia Imperfecta, Oligopolio y Teoría de Juegos | 90 | `07/Banco_Preguntas_PEU_SUNASS_Economia_Modulo_VII.pdf` |
-| **08** | Otras Fallas de Mercado: Externalidades, Bienes Públicos, Asimetrías | 90 | `08/Banco_Preguntas_PEU_SUNASS_Economia_Modulo_VIII.pdf` |
-| **09** | Econometría: MCO, Inferencia, Series de Tiempo y Microeconometría | 90 | `09/Banco_Preguntas_PEU_SUNASS_Economia_Modulo_IX.pdf` |
-| **10** | Finanzas: Evaluación de Proyectos, WACC, Riesgo y Regulación | 90 | `10/Banco_Preguntas_PEU_SUNASS_Economia_Modulo_X.pdf` |
+| Módulo | Nombre del Módulo | Preguntas | Banco PDF | Teoría (Beamer) |
+| :---: | :--- | :---: | :--- | :--- |
+| **01** | Teoría del Consumidor | 90 | `01/Banco_Preguntas_PEU_SUNASS_Economia_Modulo_I.pdf` | `teoria/M01_Teoria_Consumidor.pdf` |
+| **02** | Teoría del Productor | 90 | `02/Banco_Preguntas_PEU_SUNASS_Economia_Modulo_II.pdf` | `teoria/M02_Teoria_Productor.pdf` |
+| **03** | Competencia Perfecta | 90 | `03/Banco_Preguntas_PEU_SUNASS_Economia_Modulo_III.pdf` | `teoria/M03_Competencia_Perfecta.pdf` |
+| **04** | Equilibrio General y Bienestar | 90 | `04/Banco_Preguntas_PEU_SUNASS_Economia_Modulo_IV.pdf` | `teoria/M04_Equilibrio_General_Bienestar.pdf` |
+| **05** | Monopolio, Discriminación y Regulación | 90 | `05/Banco_Preguntas_PEU_SUNASS_Economia_Modulo_V.pdf` | `teoria/M05_Monopolio_Regulacion.pdf` |
+| **06** | Mercados de Factores | 90 | `06/Banco_Preguntas_PEU_SUNASS_Economia_Modulo_VI.pdf` | `teoria/M06_Mercados_Factores.pdf` |
+| **07** | Competencia Imperfecta | 90 | `07/Banco_Preguntas_PEU_SUNASS_Economia_Modulo_VII.pdf` | `teoria/M07_Competencia_Imperfecta.pdf` |
+| **08** | Otras Fallas de Mercado | 90 | `08/Banco_Preguntas_PEU_SUNASS_Economia_Modulo_VIII.pdf` | `teoria/M08_Fallas_Mercado.pdf` |
+| **09** | Econometría | 90 | `09/Banco_Preguntas_PEU_SUNASS_Economia_Modulo_IX.pdf` | `teoria/M09_Econometria.pdf` |
+| **10** | Finanzas Corporativas y Proyectos | 90 | `10/Banco_Preguntas_PEU_SUNASS_Economia_Modulo_X.pdf` | `teoria/M10_Finanzas.pdf` |
 
 #### Distribución interna de cada módulo (90 preguntas):
 - **Bloque A (Preguntas 1 a 30):** Fundamentos conceptuales, deducción teórica e intuición económica (30%).
@@ -57,12 +59,14 @@ El banco está distribuido en los **10 módulos oficiales** del examen (90 pregu
 ```text
 BANCO DE PREGUNTAS SUNASS/
 ├── 01/ ... 10/                             # Carpetas por módulo temático (900 preguntas)
-│   ├── m[X]_preguntas.tex                  # Enunciados de las preguntas en LaTeX
-│   ├── m[X]_solucionario.tex               # Solucionarios desarrollados
-│   ├── Banco_Preguntas_..._Modulo_[X].tex  # Documento principal compilable
+│   ├── [mX_]bloque_{a,b,c}.tex             # Enunciados de las preguntas por bloque en LaTeX
+│   ├── [mX_]claves.tex                     # Tabla de claves de respuestas
+│   ├── [mX_]solucionario.tex               # Solucionarios desarrollados
+│   ├── banco_peu_sunass[_modulo_X].tex     # Documento principal compilable
 │   └── Banco_Preguntas_..._Modulo_[X].pdf  # Versión PDF lista para estudio/impresión
 ├── teoria/                                 # Guías teóricas Beamer 16:9 (10 módulos, 96 págs.)
-│   ├── sunass_estilo.sty                   # Plantilla gráfica institucional reutilizable
+│   ├── sunass_estilo.sty                   # Plantilla gráfica BackBone Academy + PEU SUNASS
+│   ├── backbone_logo*.png                  # Logotipos de BackBone Academy
 │   ├── M01_... hasta M10_...tex            # Fuente LaTeX + TikZ/pgfplots
 │   └── M01_... hasta M10_...pdf            # Diapositivas teóricas compiladas por módulo
 ├── 8699730-temario-peu.pdf                 # Temario oficial de SUNASS
@@ -156,7 +160,7 @@ python3 simulador.py
 ### 🎯 Metodología de Estudio Recomendada (Rumbo al PEU)
 
 1. **Fase 1: Módulos Nucleares de SUNASS (Mayor Ponderación)**
-   - Priorizar **Módulo 02** (Microeconomía y Regulación), **Módulo 07** (Competencia Imperfecta) y **Módulo 08** (Otras Fallas de Mercado).
+   - Priorizar **Módulo 05** (Monopolio y Regulación), **Módulo 02** (Teoría del Productor: escala y subaditividad), **Módulo 07** (Competencia Imperfecta) y **Módulo 08** (Otras Fallas de Mercado).
    - Resolver el **Bloque C** de cada módulo en modo secuencial para dominar el marco regulatorio de saneamiento y la terminología técnica de SUNASS.
 2. **Fase 2: Agilidad Cuantitativa (Bloques B)**
    - Entrenar los Bloques B de los 10 módulos (problemas de optimización de Lagrange, equilibrios de Cournot/Stackelberg, MCO, contraste de hipótesis, WACC y VAN).
@@ -165,4 +169,4 @@ python3 simulador.py
    - Revisar al final del día el **Cuaderno de Estudio** para pulir las preguntas falladas y saltadas.
 
 ---
-*Edición preparada con los más altos estándares pedagógicos y técnicos para el postulante de Economía - PEU SUNASS 2026.*
+*Edición preparada por **BackBone Academy** ([@backbone.academy](https://www.instagram.com/backbone.academy) en Instagram y [@backbone.academy](https://www.tiktok.com/@backbone.academy) en TikTok) para el postulante de Economía - PEU SUNASS 2026.*

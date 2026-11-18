@@ -14,6 +14,7 @@
 \RequirePackage[most]{tcolorbox}
 \RequirePackage{booktabs}
 \RequirePackage{multicol}
+\RequirePackage{graphicx}
 
 % Tipografía limpia sans-serif
 \renewcommand{\familydefault}{\sfdefault}
@@ -34,11 +35,63 @@
 \setbeamercolor{background canvas}{bg=white}
 \setbeamercolor{normal text}{fg=black!88}
 
-% Barra superior de título en cada diapositiva
+% Icono discreto de Instagram en TikZ para la marca
+\newcommand{\igicon}[1][white!88]{%
+  \tikz[baseline=-0.25ex]{%
+    \draw[#1, line width=0.65pt, rounded corners=1.1pt] (0,0) rectangle (0.23cm,0.23cm);
+    \draw[#1, line width=0.6pt] (0.115cm,0.115cm) circle (0.055cm);
+    \fill[#1] (0.18cm,0.18cm) circle (0.014cm);
+  }%
+}
+
+% Icono discreto de TikTok en TikZ (nota musical estilizada)
+\newcommand{\tiktokicon}[1][white!88]{%
+  \tikz[baseline=-0.25ex]{%
+    \draw[#1, line width=0.82pt, line cap=round, line join=round]
+      (0.11cm,0.06cm) -- (0.11cm,0.22cm)
+      .. controls (0.12cm,0.16cm) and (0.16cm,0.145cm) .. (0.20cm,0.145cm);
+    \draw[#1, line width=0.82pt, line cap=round]
+      (0.11cm,0.065cm) arc[start angle=0, end angle=295, radius=0.048cm];
+  }%
+}
+
+% Cajas auxiliares para ajustar el título en una sola línea sin descuadrar la barra
+\newsavebox{\sunassTitleBox}
+\newsavebox{\sunassBrandBox}
+\newlength{\sunassTitleMaxW}
+
+% Barra superior de título en cada diapositiva (altura fija, sin saltos de línea)
 \setbeamertemplate{frametitle}{%
   \nointerlineskip%
-  \begin{beamercolorbox}[wd=\paperwidth, ht=0.95cm, dp=0.25cm, leftskip=0.6cm]{frametitle}
-    \usebeamerfont{frametitle}\color{white}\Large\textbf{\insertframetitle}
+  \sbox{\sunassBrandBox}{%
+    \normalfont\scriptsize\color{white!88}%
+    \href{https://www.instagram.com/backbone.academy}{\igicon[white!88]}%
+    \hspace{3.5pt}%
+    \href{https://www.tiktok.com/@backbone.academy}{\tiktokicon[white!88]}%
+    \hspace{4pt}%
+    \href{https://www.instagram.com/backbone.academy}{\textbf{@backbone.academy}}%
+  }%
+  \setlength{\sunassTitleMaxW}{\paperwidth}%
+  \addtolength{\sunassTitleMaxW}{-1.5cm}%
+  \addtolength{\sunassTitleMaxW}{-\wd\sunassBrandBox}%
+  \sbox{\sunassTitleBox}{\usebeamerfont{frametitle}\color{white}\Large\textbf{\insertframetitle}}%
+  \ifdim\wd\sunassTitleBox>\sunassTitleMaxW
+    \sbox{\sunassTitleBox}{\usebeamerfont{frametitle}\color{white}\large\textbf{\insertframetitle}}%
+  \fi
+  \ifdim\wd\sunassTitleBox>\sunassTitleMaxW
+    \sbox{\sunassTitleBox}{\usebeamerfont{frametitle}\color{white}\normalsize\textbf{\insertframetitle}}%
+  \fi
+  \ifdim\wd\sunassTitleBox>\sunassTitleMaxW
+    \sbox{\sunassTitleBox}{\resizebox{\sunassTitleMaxW}{!}{\usebox{\sunassTitleBox}}}%
+  \fi
+  \begin{beamercolorbox}[wd=\paperwidth, ht=0.82cm, dp=0.33cm]{frametitle}%
+    \hbox to \paperwidth{%
+      \hspace{0.55cm}%
+      \usebox{\sunassTitleBox}%
+      \hfill%
+      \raisebox{0.18ex}{\usebox{\sunassBrandBox}}%
+      \hspace{0.50cm}%
+    }%
   \end{beamercolorbox}%
 }
 \setbeamercolor{frametitle}{bg=azulPrincipal, fg=white}
@@ -63,9 +116,21 @@
 \setbeamercolor{title in head/foot}{bg=azulPrincipal, fg=white}
 \setbeamercolor{date in head/foot}{bg=azulOscuro, fg=white}
 
-% Portada personalizada con caja azul redondeada y sombra
+% Portada personalizada con encabezado limpio BackBone Academy y caja azul redondeada
 \setbeamertemplate{title page}{%
-  \vspace*{0.4cm}
+  \vspace*{0.15cm}
+  \noindent\includegraphics[height=0.62cm]{backbone_logo_azul.png}%
+  \hfill%
+  \raisebox{0.21cm}{%
+    \footnotesize\color{azulPrincipal}%
+    \href{https://www.instagram.com/backbone.academy}{\igicon[azulPrincipal]}%
+    \hspace{3.5pt}%
+    \href{https://www.tiktok.com/@backbone.academy}{\tiktokicon[azulPrincipal]}%
+    \hspace{4.5pt}%
+    \href{https://www.instagram.com/backbone.academy}{\textbf{@backbone.academy}}%
+  }%
+  \par
+  \vspace{0.38cm}
   \begin{tcolorbox}[
     colback=azulPrincipal,
     colframe=azulPrincipal,
