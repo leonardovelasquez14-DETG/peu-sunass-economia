@@ -3,6 +3,11 @@
 
 **Por BackBone Academy** · Instagram: [@backbone.academy](https://www.instagram.com/backbone.academy) · TikTok: [@backbone.academy](https://www.tiktok.com/@backbone.academy)
 
+> [!TIP]
+> **🌐 USA EL SIMULADOR WEB DIRECTAMENTE (sin instalar nada, desde celular o PC):**  
+> 👉 **[https://leonardovelasquez14-detg.github.io/peu-sunass-economia/](https://leonardovelasquez14-detg.github.io/peu-sunass-economia/)**  
+> *(Nota: en la versión web el progreso se guarda solo localmente en tu navegador y no se sincroniza entre dispositivos; ver detalles en la [Guía de Uso](#-guía-de-uso-del-simulador-interactivo)).*
+
 ---
 
 ### 📌 Tabla de Contenidos
