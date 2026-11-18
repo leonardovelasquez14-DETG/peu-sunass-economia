@@ -1,0 +1,31 @@
+% ==============================================================================
+% Configuración BackBone Academy para los Bancos de Preguntas (Módulos 01-10)
+% ==============================================================================
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage[hidelinks]{hyperref}
+
+\input{../teoria/backbone_marca.tex}
+
+% Pie de página institucional en todas las páginas interiores
+\lfoot{\scriptsize\color{azulOscuro}\textbf{BackBone Academy}\ \color{grisTexto}· \href{\backboneIgUrl}{\igicon[azulPrincipal]\ \textbf{@backbone.academy}} · \href{\backboneTtUrl}{\tiktokicon[azulPrincipal]\ \textbf{TikTok}} · \href{\backboneWebUrl}{Simulador Web}}
+\cfoot{}
+\rfoot{\small\thepage}
+\renewcommand{\footrulewidth}{0.3pt}
+
+% Encabezado superior para la portada de cada banco
+\newcommand{\backboneportadaheader}{%
+  \vspace*{0.1cm}
+  \noindent\includegraphics[height=0.72cm]{../teoria/backbone_logo_azul.png}%
+  \hfill%
+  \raisebox{0.22cm}{\backboneSocials{azulPrincipal}{\small}}%
+  \par\vspace{0.9cm}%
+}
+
+% Pie institucional para la portada de cada banco
+\newcommand{\backboneportadafooter}{%
+  {\small\color{azulOscuro}\textbf{BackBone Academy} \color{black}· Material de preparación académica.}\\[0.18cm]
+  {\small\color{azulPrincipal}\href{\backboneIgUrl}{\igicon[azulPrincipal]\ \textbf{Instagram}} \quad·\quad \href{\backboneTtUrl}{\tiktokicon[azulPrincipal]\ \textbf{TikTok}} \textbf{(@backbone.academy)} \quad·\quad \href{\backboneWebUrl}{\textbf{Simulador Web Interactivo}}}\\[0.18cm]
+  {\small Edición 2026}%
+}

@@ -1,0 +1,40 @@
+% ==============================================================================
+% Identidad de marca BackBone Academy compartida (Beamer y Bancos de Preguntas)
+% ==============================================================================
+\definecolor{azulPrincipal}{RGB}{43, 45, 162}
+\definecolor{azulOscuro}{RGB}{24, 26, 98}
+\definecolor{grisTexto}{RGB}{85, 85, 95}
+
+\newcommand{\backboneIgUrl}{https://www.instagram.com/backbone.academy}
+\newcommand{\backboneTtUrl}{https://www.tiktok.com/@backbone.academy}
+\newcommand{\backboneWebUrl}{https://leonardovelasquez14-detg.github.io/peu-sunass-economia/}
+
+% Icono discreto de Instagram en TikZ
+\newcommand{\igicon}[1][white!88]{%
+  \tikz[baseline=-0.25ex]{%
+    \draw[#1, line width=0.65pt, rounded corners=1.1pt] (0,0) rectangle (0.23cm,0.23cm);
+    \draw[#1, line width=0.6pt] (0.115cm,0.115cm) circle (0.055cm);
+    \fill[#1] (0.18cm,0.18cm) circle (0.014cm);
+  }%
+}
+
+% Icono discreto de TikTok en TikZ (nota musical estilizada)
+\newcommand{\tiktokicon}[1][white!88]{%
+  \tikz[baseline=-0.25ex]{%
+    \draw[#1, line width=0.82pt, line cap=round, line join=round]
+      (0.11cm,0.06cm) -- (0.11cm,0.22cm)
+      .. controls (0.12cm,0.16cm) and (0.16cm,0.145cm) .. (0.20cm,0.145cm);
+    \draw[#1, line width=0.82pt, line cap=round]
+      (0.11cm,0.065cm) arc[start angle=0, end angle=295, radius=0.048cm];
+  }%
+}
+
+% Enlaces compactos de redes sociales: \backboneSocials{color}{tamaño}
+\newcommand{\backboneSocials}[2]{%
+  #2\color{#1}%
+  \href{\backboneIgUrl}{\igicon[#1]}%
+  \hspace{3.5pt}%
+  \href{\backboneTtUrl}{\tiktokicon[#1]}%
+  \hspace{4pt}%
+  \href{\backboneIgUrl}{\textbf{@backbone.academy}}%
+}

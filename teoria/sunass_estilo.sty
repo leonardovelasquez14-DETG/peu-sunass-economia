@@ -19,41 +19,19 @@
 % Tipografía limpia sans-serif
 \renewcommand{\familydefault}{\sfdefault}
 
-% Paleta de colores exacta de la plantilla
-\definecolor{azulPrincipal}{RGB}{43, 45, 162}
-\definecolor{azulOscuro}{RGB}{24, 26, 98}
+% Paleta de colores e identidad de marca compartida
+\input{backbone_marca.tex}
 \definecolor{azulClaroFondo}{RGB}{238, 241, 247}
 \definecolor{naranjaAcento}{RGB}{217, 95, 40}
 \definecolor{verdeAcento}{RGB}{21, 132, 103}
 \definecolor{rojoAcento}{RGB}{192, 41, 66}
 \definecolor{aceroAcento}{RGB}{28, 78, 120}
-\definecolor{grisTexto}{RGB}{85, 85, 95}
 
 % Configuración Beamer base
 \usetheme{default}
 \setbeamertemplate{navigation symbols}{}
 \setbeamercolor{background canvas}{bg=white}
 \setbeamercolor{normal text}{fg=black!88}
-
-% Icono discreto de Instagram en TikZ para la marca
-\newcommand{\igicon}[1][white!88]{%
-  \tikz[baseline=-0.25ex]{%
-    \draw[#1, line width=0.65pt, rounded corners=1.1pt] (0,0) rectangle (0.23cm,0.23cm);
-    \draw[#1, line width=0.6pt] (0.115cm,0.115cm) circle (0.055cm);
-    \fill[#1] (0.18cm,0.18cm) circle (0.014cm);
-  }%
-}
-
-% Icono discreto de TikTok en TikZ (nota musical estilizada)
-\newcommand{\tiktokicon}[1][white!88]{%
-  \tikz[baseline=-0.25ex]{%
-    \draw[#1, line width=0.82pt, line cap=round, line join=round]
-      (0.11cm,0.06cm) -- (0.11cm,0.22cm)
-      .. controls (0.12cm,0.16cm) and (0.16cm,0.145cm) .. (0.20cm,0.145cm);
-    \draw[#1, line width=0.82pt, line cap=round]
-      (0.11cm,0.065cm) arc[start angle=0, end angle=295, radius=0.048cm];
-  }%
-}
 
 % Cajas auxiliares para ajustar el título en una sola línea sin descuadrar la barra
 \newsavebox{\sunassTitleBox}
@@ -63,14 +41,7 @@
 % Barra superior de título en cada diapositiva (altura fija, sin saltos de línea)
 \setbeamertemplate{frametitle}{%
   \nointerlineskip%
-  \sbox{\sunassBrandBox}{%
-    \normalfont\scriptsize\color{white!88}%
-    \href{https://www.instagram.com/backbone.academy}{\igicon[white!88]}%
-    \hspace{3.5pt}%
-    \href{https://www.tiktok.com/@backbone.academy}{\tiktokicon[white!88]}%
-    \hspace{4pt}%
-    \href{https://www.instagram.com/backbone.academy}{\textbf{@backbone.academy}}%
-  }%
+  \sbox{\sunassBrandBox}{\normalfont\backboneSocials{white!88}{\scriptsize}}%
   \setlength{\sunassTitleMaxW}{\paperwidth}%
   \addtolength{\sunassTitleMaxW}{-1.5cm}%
   \addtolength{\sunassTitleMaxW}{-\wd\sunassBrandBox}%
@@ -121,14 +92,7 @@
   \vspace*{0.15cm}
   \noindent\includegraphics[height=0.62cm]{backbone_logo_azul.png}%
   \hfill%
-  \raisebox{0.21cm}{%
-    \footnotesize\color{azulPrincipal}%
-    \href{https://www.instagram.com/backbone.academy}{\igicon[azulPrincipal]}%
-    \hspace{3.5pt}%
-    \href{https://www.tiktok.com/@backbone.academy}{\tiktokicon[azulPrincipal]}%
-    \hspace{4.5pt}%
-    \href{https://www.instagram.com/backbone.academy}{\textbf{@backbone.academy}}%
-  }%
+  \raisebox{0.21cm}{\backboneSocials{azulPrincipal}{\footnotesize}}%
   \par
   \vspace{0.38cm}
   \begin{tcolorbox}[
