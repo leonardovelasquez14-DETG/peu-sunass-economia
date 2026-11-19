@@ -76,7 +76,7 @@
           % Area sombreada
           \addplot[fill=azulClaroFondo, opacity=0.45, draw=none] coordinates {(0,0) (0,7) (6,0)} \closedcycle;
         \end{axis}
-      \end{tikzpicture}
+      \end{tikzpicture}\\[2pt]
       {\scriptsize\color{grisTexto}\textit{Nota: Si todos los precios y el ingreso se multiplican por \(\lambda > 0\), la recta no cambia.}}
     \end{column}
 
@@ -92,7 +92,7 @@
     \end{column}
   \end{columns}
 
-  \mensajefinal{Un aumento proporcional de todos los precios equivalente a una caída del ingreso real mantiene intacto el poder de compra relativo.}
+  \mensajefinal{Un alza proporcional de todos los precios equivale a una caída del ingreso real: reduce el poder de compra sin cambiar \(p_1/p_2\).}
 \end{frame}
 
 % ==============================================================================
@@ -272,7 +272,10 @@
           % Recta compensada Slutsky (pasa por A con nueva pendiente)
           \addplot[naranjaAcento, thick, dashed, domain=0:8.5] {5.8 - 0.68*x};
 
-          % Puntos A, S, B
+          % Puntos A, S, B y guías verticales
+          \draw[grisTexto!65, densely dotted] (axis cs:2.5, 0) -- (axis cs:2.5, 4.1);
+          \draw[grisTexto!65, densely dotted] (axis cs:4.8, 0) -- (axis cs:4.8, 2.53);
+          \draw[grisTexto!65, densely dotted] (axis cs:7.2, 0) -- (axis cs:7.2, 2.6);
           \addplot[only marks, mark=*, mark size=2.5pt, aceroAcento] coordinates {(2.5, 4.1)};
           \node[aceroAcento, font=\scriptsize, anchor=south west] at (axis cs:2.4,4.2) {$A$};
           \addplot[only marks, mark=*, mark size=2.5pt, naranjaAcento] coordinates {(4.8, 2.53)};
@@ -288,7 +291,8 @@
     \end{column}
 
     \begin{column}{0.44\textwidth}
-      \indicador{Ecuación de Slutsky}{azulPrincipal}{\(\frac{\partial x_1}{\partial p_1} = \frac{\partial x_1^h}{\partial p_1} - x_1 \frac{\partial x_1}{\partial m}\)}
+      {\scriptsize\color{grisTexto}Ecuación de Slutsky}\\[1pt]
+      {\large\color{azulPrincipal}\textbf{\(\frac{\partial x_1}{\partial p_1} = \frac{\partial x_1^h}{\partial p_1} - x_1 \frac{\partial x_1}{\partial m}\)}}\\[6pt]
       {\scriptsize
         \textbf{Signos Invariantes (Ley de la Demanda):}\\
         • \textbf{Efecto Sustitución (ES):} Siempre negativo (\(\le 0\)). Si baja \(p_1\), siempre sube \(x_1\) compensado.\\
@@ -553,34 +557,41 @@
         \begin{axis}[
           axis lines=left,
           xlabel={$x_1$}, ylabel={$p_1$},
-          xmin=0, xmax=10, ymin=0, ymax=8,
+          xmin=0, xmax=10.2, ymin=0, ymax=8.2,
           xtick=\empty,
           ytick={2.5, 5.5}, yticklabels={$p_1^0$, $p_1^1$},
-          width=8.0cm, height=5.2cm
+          width=8.0cm, height=5.2cm,
+          clip=false
         ]
-          % Demanda Hicksiana U1 (izquierda)
-          \addplot[verdeAcento, very thick, dashed, domain=1.5:7.5] {8.5 - 0.9*x};
-          \node[verdeAcento, font=\tiny, anchor=south] at (axis cs:6.4, 2.7) {$h(U^1)$};
-          % Demanda Marshalliana (centro)
-          \addplot[azulPrincipal, very thick, domain=1.5:8.5] {9.2 - 0.85*x};
-          \node[azulPrincipal, font=\tiny, anchor=south] at (axis cs:7.6, 2.8) {$x(p,m)$};
-          % Demanda Hicksiana U0 (derecha)
-          \addplot[rojoAcento, very thick, dotted, domain=2.5:9.5] {10.2 - 0.85*x};
-          \node[rojoAcento, font=\tiny, anchor=south] at (axis cs:8.8, 2.8) {$h(U^0)$};
+          % Demanda Marshalliana (menos empinada): pasa por (7.88, 2.5) y (4.35, 5.5)
+          \addplot[azulPrincipal, very thick, domain=1.4:9.4] {9.2 - 0.85*x};
+          \node[azulPrincipal, font=\tiny\bfseries, anchor=west] at (axis cs:8.8, 1.8) {$x(p,m)$};
 
-          % Lineas de precios
-          \draw[grisTexto, dashed] (axis cs:0, 2.5) -- (axis cs:9.1, 2.5);
-          \draw[grisTexto, dashed] (axis cs:0, 5.5) -- (axis cs:5.6, 5.5);
+          % Demanda Hicksiana U^0 (más empinada, cruza x(p,m) exactamente en p1^0=2.5, x=7.88)
+          \addplot[rojoAcento, very thick, dotted, domain=4.6:8.9] {14.714 - 1.55*x};
+          \node[rojoAcento, font=\tiny\bfseries, anchor=south west] at (axis cs:5.2, 6.7) {$h(U^0)$};
+
+          % Demanda Hicksiana U^1 (más empinada, cruza x(p,m) exactamente en p1^1=5.5, x=4.35)
+          \addplot[verdeAcento, very thick, dashed, domain=3.1:7.2] {12.243 - 1.55*x};
+          \node[verdeAcento, font=\tiny\bfseries, anchor=east] at (axis cs:3.4, 6.9) {$h(U^1)$};
+
+          % Líneas de precios y puntos de cruce exactos
+          \draw[grisTexto, dashed] (axis cs:0, 2.5) -- (axis cs:7.88, 2.5);
+          \draw[grisTexto, dashed] (axis cs:0, 5.5) -- (axis cs:5.94, 5.5);
+          \fill[rojoAcento] (axis cs:7.88, 2.5) circle (2.3pt);
+          \fill[verdeAcento] (axis cs:4.35, 5.5) circle (2.3pt);
         \end{axis}
       \end{tikzpicture}
     \end{column}
 
     \begin{column}{0.45\textwidth}
-      \indicador{Variación Compensatoria (\(VC\))}{rojoAcento}{\(VC = e(p^1, U^0) - e(p^0, U^0)\)}
+      {\scriptsize\color{grisTexto}Variación Compensatoria (\(VC\))}\\[1pt]
+      {\normalsize\color{rojoAcento}\textbf{\(VC = e(p^1, U^0) - e(p^0, U^0)\)}}\\[2pt]
       {\scriptsize
-        Dinero necesario tras el cambio para volver a la utilidad \textbf{inicial \(U^0\)}.\\[4pt]
+        Dinero necesario tras el cambio para volver a la utilidad \textbf{inicial \(U^0\)}.\\[5pt]
       }
-      \indicador{Variación Equivalente (\(VE\))}{verdeAcento}{\(VE = e(p^1, U^1) - e(p^0, U^1)\)}
+      {\scriptsize\color{grisTexto}Variación Equivalente (\(VE\))}\\[1pt]
+      {\normalsize\color{verdeAcento}\textbf{\(VE = e(p^1, U^1) - e(p^0, U^1)\)}}\\[2pt]
       {\scriptsize
         Dinero que habría que quitar antes del cambio para dejarlo en la utilidad \textbf{final \(U^1\)}.\\[5pt]
       }
@@ -789,7 +800,7 @@
 
   \vspace{0.08cm}
   \recuadroclave{
-    \small\textbf{Preferencia Revelada Intertemporal:} Un agente que sigue siendo prestamista tras una subida de \(r\) nunca puede pasar a ser prestatario (violación de WARP); pero un prestatario sí puede volverse prestamista si sube \(r\).
+    \small\textbf{Preferencia Revelada Intertemporal:} Un agente que era prestamista antes de una subida de \(r\) nunca puede pasar a ser prestatario (violaría WARP); pero un prestatario sí puede volverse prestamista si sube \(r\).
   }
   \mensajefinal{Cuando la riqueza depende de los precios (dotaciones iniciales), un alza del precio del bien vendido puede incrementar el bienestar del agente.}
 \end{frame}

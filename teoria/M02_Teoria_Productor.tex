@@ -86,12 +86,14 @@
     \end{column}
 
     \begin{column}{0.44\textwidth}
-      \indicador{Relación \(PMg_L\) y \(PMe_L\)}{azulPrincipal}{\(\frac{d\,PMe_L}{dL} = \frac{1}{L}(PMg_L - PMe_L)\)}
+      {\scriptsize\color{grisTexto}Relación \(PMg_L\) y \(PMe_L\)}\\[1pt]
+      {\large\color{azulPrincipal}\textbf{\(\frac{d\,PMe_L}{dL} = \frac{1}{L}(PMg_L - PMe_L)\)}}\\[5pt]
       {\scriptsize
         • Si \(PMg_L > PMe_L\), el \(PMe_L\) es creciente.\\
         • \(PMg_L\) corta al \(PMe_L\) exactamente en su \textbf{máximo} (\(L_1\)).\\[5pt]
       }
-      \indicador{Etapa Racional de Producción}{verdeAcento}{\(\text{Etapa II: } PMe_L \ge PMg_L \ge 0\)}
+      {\scriptsize\color{grisTexto}Etapa Racional de Producción}\\[1pt]
+      {\large\color{verdeAcento}\textbf{Etapa II: \(PMe_L \ge PMg_L \ge 0\)}}\\[5pt]
       {\scriptsize
         • \textbf{Etapa I:} \(PMg_K < 0\) (exceso de \(K\) respecto a \(L\)).\\
         • \textbf{Etapa II:} ambos factores tienen \(PMg \ge 0\).\\
@@ -139,20 +141,23 @@
           \node[font=\tiny, grisTexto] at (1.8, 1.7) {$\sigma = \infty$};
         \end{scope}
 
-        % CES general
+        % CES general (rho = 0.5, sigma = 2: (sqrt(L) + sqrt(K))^2 = c)
         \begin{scope}[xshift=4.0cm, yshift=-3.3cm]
           \draw[->, thick] (0,0) -- (3.1,0) node[right, font=\scriptsize] {$L$};
           \draw[->, thick] (0,0) -- (0,2.5) node[above, font=\scriptsize] {$K$};
-          \draw[rojoAcento, very thick, domain=0.35:2.7, samples=40] plot (\x, {0.9/\x + 0.25});
-          \node[font=\scriptsize, rojoAcento] at (1.8, 2.1) {\textbf{CES General}};
-          \node[font=\tiny, grisTexto] at (1.8, 1.7) {$\sigma = \frac{1}{1-\rho}$};
+          \draw[rojoAcento, very thick, domain=0.08:2.1, samples=40] plot (\x, {(1.48 - sqrt(\x))*(1.48 - sqrt(\x))});
+          \draw[rojoAcento, thick, dashed, domain=0.08:2.65, samples=40] plot (\x, {(1.72 - sqrt(\x))*(1.72 - sqrt(\x))});
+          \node[font=\scriptsize, rojoAcento] at (1.85, 2.15) {\textbf{CES General}};
+          \node[font=\tiny, grisTexto] at (1.85, 1.75) {$\sigma = \frac{1}{1-\rho}$};
         \end{scope}
       \end{tikzpicture}
     \end{column}
 
     \begin{column}{0.45\textwidth}
-      \indicador{Tasa Marginal de Sustitución Técnica}{azulPrincipal}{\(TMST_{L,K} = -\frac{dK}{dL}\Big|_{dq=0} = \frac{PMg_L}{PMg_K}\)}
-      \indicador{Elasticidad de Sustitución (\(\sigma\))}{rojoAcento}{\(\sigma = \frac{\%\Delta(K/L)}{\%\Delta(TMST)} = \frac{d\ln(K/L)}{d\ln(TMST)}\)}
+      {\scriptsize\color{grisTexto}Tasa Marginal de Sustitución Técnica}\\[1pt]
+      {\large\color{azulPrincipal}\textbf{\(TMST_{L,K} = -\frac{dK}{dL}\Big|_{dq=0} = \frac{PMg_L}{PMg_K}\)}}\\[6pt]
+      {\scriptsize\color{grisTexto}Elasticidad de Sustitución (\(\sigma\))}\\[1pt]
+      {\large\color{rojoAcento}\textbf{\(\sigma = \frac{\%\Delta(K/L)}{\%\Delta(TMST)} = \frac{d\ln(K/L)}{d\ln(TMST)}\)}}\\[6pt]
       {\scriptsize
         • \textbf{Función CES:} \(q = A\left[\alpha K^\rho + (1-\alpha)L^\rho\right]^{\frac{\nu}{\rho}}\)\\
         • Si \(\rho \to 1 \implies \sigma \to \infty\) (Sustitutos perfectos).\\
@@ -216,7 +221,8 @@
           xmin=0, xmax=10, ymin=0, ymax=9,
           xtick={3, 5}, xticklabels={$L_1^*$, $L_2^*$},
           ytick={3, 5}, yticklabels={$K_1^*$, $K_2^*$},
-          width=8.0cm, height=5.2cm
+          width=8.0cm, height=5.2cm,
+          clip=false
         ]
           % Isocostos
           \addplot[grisTexto, thick, domain=0:6] {6 - x};
@@ -226,7 +232,7 @@
           \addplot[azulPrincipal, very thick, domain=2.8:9.2, samples=40] {25/x};
           % Senda de expansión
           \addplot[naranjaAcento, very thick, dashed, domain=0:7.5] {x};
-          \node[naranjaAcento, font=\scriptsize, anchor=west] at (axis cs:6.3, 6.6) {\textbf{Senda de Expansión}};
+          \node[naranjaAcento, font=\scriptsize, anchor=south east] at (axis cs:7.5, 7.6) {\textbf{Senda de Expansión}};
           % Puntos óptimos
           \addplot[only marks, mark=*, mark size=2.5pt, verdeAcento] coordinates {(3,3) (5,5)};
         \end{axis}
@@ -299,36 +305,36 @@
           axis lines=left,
           xlabel={Producción ($q$)}, ylabel={Costos (\$)},
           xmin=0, xmax=9, ymin=0, ymax=14,
-          xtick={3, 4.5}, xticklabels={$q_{\min}^{CVMe}$, $q_{\min}^{CMe}$},
+          xtick={3, 3.67}, xticklabels={$q_{\min}^{CVMe}$, $q_{\min}^{CMe}$},
           ytick=\empty,
           width=8.2cm, height=5.2cm
         ]
-          % C(q) = 12 + 6q - 1.5q^2 + 0.1667 q^3 ->
-          % CVMe = 6 - 1.5q + 0.1667 q^2 -> min en q = 4.5? 1.5 / 0.333 = 4.5.
-          % Hagamos CVMe = 7 - 2q + 0.333 q^2 -> min en q=3 (val=4)
-          % Entonces CMg = 7 - 4q + q^2 -> en q=3 es 7-12+9 = 4! (min de CMg en q=2, val=3)
-          % CMe = 9/q + 7 - 2q + 0.333 q^2 -> en q=4.5: 2 + 7 - 9 + 6.75 = 6.75; CMg(4.5) = 7 - 18 + 20.25 = 9.25 (cortan en q=4.1 aprox)
-          % Pongamos CF = 6: CMe = 6/q + 7 - 2q + 0.333 q^2 -> CMg = CMe => 6/q = 2q - 0.667 q^2 => q=3.85 aprox.
+          % CVMe = 7 - 2q + 0.333 q^2 -> min en q=3 (val=4)
+          % CMg = 7 - 4q + q^2 -> corta CVMe en (3,4) y CMe en (3.67, 5.78)
           \addplot[azulPrincipal, very thick, domain=0.6:7.5, samples=50] {6/x + 7 - 2*x + 0.333*x^2};
           \node[azulPrincipal, font=\scriptsize, anchor=west] at (axis cs:6.8, 10.5) {$CMe$};
           \addplot[verdeAcento, very thick, domain=0.2:7.5, samples=50] {7 - 2*x + 0.333*x^2};
           \node[verdeAcento, font=\scriptsize, anchor=west] at (axis cs:7.0, 7.6) {$CVMe$};
-          \addplot[rojoAcento, very thick, domain=0.2:5.8, samples=50] {7 - 4*x + x^2};
-          \node[rojoAcento, font=\scriptsize, anchor=south east] at (axis cs:5.5, 13.0) {$CMg$};
+          \addplot[rojoAcento, very thick, domain=0.2:5.3, samples=50] {7 - 4*x + x^2};
+          \node[rojoAcento, font=\scriptsize, anchor=east] at (axis cs:5.05, 13.0) {$CMg$};
           \addplot[grisTexto, dashed, thick, domain=0.6:8.0, samples=40] {6/x};
           \node[grisTexto, font=\scriptsize, anchor=south] at (axis cs:7.2, 1.0) {$CFMe$};
+          \draw[dotted, grisTexto] (axis cs:3, 0) -- (axis cs:3, 4);
+          \draw[dotted, grisTexto] (axis cs:3.67, 0) -- (axis cs:3.67, 5.78);
         \end{axis}
       \end{tikzpicture}
     \end{column}
 
     \begin{column}{0.44\textwidth}
-      \indicador{Vínculo Producción-Costos}{azulPrincipal}{\(CMg = \frac{w}{PMg_L} \ \mid \ CVMe = \frac{w}{PMe_L}\)}
+      {\scriptsize\color{grisTexto}Vínculo Producción-Costos}\\[1pt]
+      {\large\color{azulPrincipal}\textbf{\(CMg = \frac{w}{PMg_L} \ \mid \ CVMe = \frac{w}{PMe_L}\)}}\\[5pt]
       {\scriptsize
         • Donde \(PMg_L\) es máximo, el \(CMg\) es mínimo.\\
         • \(CMg\) corta al \(CVMe\) y al \(CMe\) en sus \textbf{mínimos}.\\
         • \(CMe - CVMe = CFMe \to 0\) cuando \(q \to \infty\).\\[3pt]
       }
-      \indicador{Costos Hundidos vs. Fijos}{rojoAcento}{\(\text{Costo Hundido} \neq \text{Evitable}\)}
+      {\scriptsize\color{grisTexto}Costos Hundidos vs. Fijos}\\[1pt]
+      {\large\color{rojoAcento}\textbf{Costo Hundido \(\neq\) Evitable}}\\[4pt]
       {\scriptsize
         • \textbf{Costo hundido:} irrecuperable (ej. redes enterradas); \textbf{no influye} en decisiones marginales.\\
         • \textbf{Costo de oportunidad:} explícitos + implícitos.
@@ -352,8 +358,8 @@
           axis lines=left,
           xlabel={Producción ($q$)}, ylabel={Precio / Costo},
           xmin=0, xmax=7.5, ymin=0, ymax=14,
-          xtick={3, 3.85}, xticklabels={$q_c$, $q_b$},
-          ytick={4, 6.2, 10}, yticklabels={$\min CVMe$, $\min CMe$, $P_1$},
+          xtick={3, 3.67}, xticklabels={$q_c$, $q_b$},
+          ytick={4, 5.78, 10}, yticklabels={$\min CVMe$, $\min CMe$, $P_1$},
           width=8.2cm, height=5.2cm
         ]
           % CMe y CVMe
@@ -364,27 +370,30 @@
           % CMg tramo inactivo (debajo de min CVMe)
           \addplot[grisTexto, dashed, thick, domain=0.2:3.0, samples=30] {7 - 4*x + x^2};
           % Oferta CP (CMg encima de min CVMe)
-          \addplot[rojoAcento, ultra thick, domain=3.0:5.8, samples=40] {7 - 4*x + x^2};
-          \node[rojoAcento, font=\scriptsize, anchor=south east] at (axis cs:5.5, 13.0) {\textbf{Oferta CP (\(CMg\))}};
-          % Punto de cierre
+          \addplot[rojoAcento, ultra thick, domain=3.0:5.3, samples=40] {7 - 4*x + x^2};
+          \node[rojoAcento, font=\scriptsize, anchor=east] at (axis cs:5.05, 13.0) {\textbf{Oferta CP (\(CMg\))}};
+          % Puntos clave exactos: cierre (3,4), nivelación (3.67, 5.78), P1=10 en (4.65, 10)
           \addplot[only marks, mark=*, mark size=2.5pt, rojoAcento] coordinates {(3, 4)};
+          \addplot[only marks, mark=*, mark size=2.2pt, azulPrincipal] coordinates {(3.67, 5.78)};
           \draw[rojoAcento, ultra thick] (axis cs:0.05, 0) -- (axis cs:0.05, 4);
-          % Lineas de referencia
+          % Lineas de referencia exactas
           \draw[dotted, grisTexto] (axis cs:0, 4) -- (axis cs:3, 4);
-          \draw[dotted, grisTexto] (axis cs:0, 6.2) -- (axis cs:3.85, 6.2);
-          \draw[dotted, grisTexto] (axis cs:0, 10) -- (axis cs:5.0, 10);
+          \draw[dotted, grisTexto] (axis cs:0, 5.78) -- (axis cs:3.67, 5.78) -- (axis cs:3.67, 0);
+          \draw[dotted, grisTexto] (axis cs:0, 10) -- (axis cs:4.65, 10);
         \end{axis}
       \end{tikzpicture}
     \end{column}
 
     \begin{column}{0.44\textwidth}
-      \indicador{Corto Plazo: Regla de Cierre}{rojoAcento}{\(P < \min CVMe \implies q^* = 0\)}
+      {\scriptsize\color{grisTexto}Corto Plazo: Regla de Cierre}\\[1pt]
+      {\large\color{rojoAcento}\textbf{\(P < \min CVMe \implies q^* = 0\)}}\\[4pt]
       {\scriptsize
         • \textbf{Si \(P > \min CMe\):} Produce con beneficios (\(\pi > 0\)).\\
         • \textbf{Si \(\min CVMe \le P < \min CMe\):} \textbf{Produce con pérdidas} (\(\pi < 0\)), pero cubre todo el \(CV\) y parte del \(CF\) (pierde menos que cerrando).\\
         • \textbf{Si \(P < \min CVMe\):} \textbf{Cierra temporalmente} y pierde solo \(-CF\).\\[4pt]
       }
-      \indicador{Largo Plazo y Excedente}{azulPrincipal}{\(P < \min CMe_{LP} \implies \text{Sale del mercado}\)}
+      {\scriptsize\color{grisTexto}Largo Plazo y Excedente}\\[1pt]
+      {\normalsize\color{azulPrincipal}\textbf{\(P < \min CMe_{LP} \implies\) Sale del mercado}}\\[4pt]
       {\scriptsize
         • A LP todos los costos son evitables (\(CF=0\)).\\
         • \textbf{Excedente del Productor:} \(EP = IT - CV = \pi + CF\).
@@ -451,16 +460,18 @@
         ]
           % CMe_LP: 3 + 0.25*(x-5.5)^2
           \addplot[azulPrincipal, ultra thick, domain=1.2:9.8, samples=60] {3 + 0.25*(x-5.5)^2};
-          \node[azulPrincipal, font=\scriptsize, anchor=north] at (axis cs:5.5, 2.7) {\textbf{\(CMe_{LP}\) (Envolvente)}};
-          % Planta 1 (izquierda)
-          \addplot[naranjaAcento, thick, dashed, domain=0.5:4.5, samples=40] {4.5 + 0.65*(x-2.0)^2};
-          \node[naranjaAcento, font=\tiny] at (axis cs:2.0, 8.2) {$CMe_{CP1}$};
-          % Planta 2 (óptima en EME)
+          \node[azulPrincipal, font=\scriptsize, anchor=north] at (axis cs:5.5, 2.65) {\textbf{\(CMe_{LP}\) (Envolvente)}};
+          % Planta 1 (tangente exacta a CMe_LP en q=2.5, siempre por encima: diff = 0.40*(x-2.5)^2 >= 0)
+          \addplot[naranjaAcento, thick, dashed, domain=1.0:6.2, samples=40] {4.385 + 0.65*(x-3.654)^2};
+          \node[naranjaAcento, font=\tiny, anchor=south] at (axis cs:3.4, 8.6) {$CMe_{CP1}$};
+          % Planta 2 (óptima en EME: tangente en q=5.5)
           \addplot[verdeAcento, thick, dashed, domain=3.2:7.8, samples=40] {3.0 + 0.7*(x-5.5)^2};
-          \node[verdeAcento, font=\tiny] at (axis cs:5.5, 8.2) {$CMe_{CP2}$};
-          % Planta 3 (derecha)
-          \addplot[rojoAcento, thick, dashed, domain=6.5:10.5, samples=40] {4.5 + 0.65*(x-9.0)^2};
-          \node[rojoAcento, font=\tiny] at (axis cs:9.0, 8.2) {$CMe_{CP3}$};
+          \node[verdeAcento, font=\tiny, anchor=south] at (axis cs:5.5, 8.6) {$CMe_{CP2}$};
+          % Planta 3 (tangente exacta a CMe_LP en q=8.5, siempre por encima: diff = 0.40*(x-8.5)^2 >= 0)
+          \addplot[rojoAcento, thick, dashed, domain=4.8:10.0, samples=40] {4.385 + 0.65*(x-7.346)^2};
+          \node[rojoAcento, font=\tiny, anchor=south] at (axis cs:7.6, 8.6) {$CMe_{CP3}$};
+          % Puntos de tangencia exactos
+          \addplot[only marks, mark=*, mark size=2.2pt, azulPrincipal] coordinates {(2.5, 5.25) (5.5, 3.0) (8.5, 5.25)};
         \end{axis}
       \end{tikzpicture}
     \end{column}
@@ -524,11 +535,10 @@
 % SLIDE 13: FUNCIONES DE COSTOS CERRADAS Y PROGRESO TECNOLÓGICO
 % ==============================================================================
 \begin{frame}{9. Funciones de Costos Clásicas y Progreso Tecnológico}
-  \vspace{0.05cm}
   \begin{columns}[T]
     \begin{column}{0.32\textwidth}
       \tarjeta{azulPrincipal}{Cobb-Douglas: \(q = A L^\alpha K^\beta\)}{
-        Sea \(\nu = \alpha + \beta\):\\[2pt]
+        \scriptsize Sea \(\nu = \alpha + \beta\):\\[2pt]
         \(C(w,r,q) = \nu \left(\frac{q}{A}\right)^{\frac{1}{\nu}} \left(\frac{w}{\alpha}\right)^{\frac{\alpha}{\nu}} \left(\frac{r}{\beta}\right)^{\frac{\beta}{\nu}}\)\\[3pt]
         • Elasticidad costo-producto: \(\varepsilon_{C,q} = \frac{1}{\nu}\).\\
         • Si \(\alpha+\beta=1\), \(C(w,r,q)\) es lineal en \(q\) (\(CMg = CMe\)).
@@ -536,6 +546,7 @@
     \end{column}
     \begin{column}{0.32\textwidth}
       \tarjeta{verdeAcento}{Leontief y Lineal}{
+        \scriptsize
         • \textbf{Leontief} \(q = \min\{aL, bK\}\):\\
         \(\quad C(w,r,q) = q \left(\frac{w}{a} + \frac{r}{b}\right)\)\\[3pt]
         • \textbf{Sustitutos perfectos} \(q = aL + bK\):\\
@@ -545,17 +556,17 @@
     \end{column}
     \begin{column}{0.32\textwidth}
       \tarjeta{naranjaAcento}{Progreso Tecnológico}{
-        Desplaza la isocuanta hacia el origen:\\
-        • \textbf{Neutral de Hicks:} \(q = A(t)f(K,L)\) (deja inalterada la \(TMST\) para igual \(K/L\)).\\
-        • \textbf{Neutral de Harrod:} \(q = f(K, A(t)L)\) (\textit{ahorrador de trabajo}).\\
-        • \textbf{Neutral de Solow:} \(q = f(A(t)K, L)\) (\textit{ahorrador de capital}).
+        \scriptsize Desplaza la isocuanta hacia el origen:\\
+        • \textbf{Hicks:} \(q = A(t)f(K,L)\) (deja intacta la \(TMST\) para igual \(K/L\)).\\
+        • \textbf{Harrod:} \(q = f(K, A(t)L)\) (\textit{ahorrador de trabajo}).\\
+        • \textbf{Solow:} \(q = f(A(t)K, L)\) (\textit{ahorrador de capital}).
       }
     \end{column}
   \end{columns}
 
-  \vspace{0.08cm}
+  \vspace{0.06cm}
   \recuadroclave{
-    \small\textbf{Fórmula de Elasticidad de Costos:} \quad \(\varepsilon_{C,q} = \frac{CMg}{CMe} = \frac{1}{S} = \frac{1}{\nu}\) \quad (para funciones homogéneas de grado \(\nu\)).
+    \scriptsize\textbf{Fórmula de Elasticidad de Costos:} \quad \(\varepsilon_{C,q} = \frac{CMg}{CMe} = \frac{1}{S} = \frac{1}{\nu}\) \quad (para funciones homogéneas de grado \(\nu\)).
   }
   \mensajefinal{Si una función de producción es homogénea de grado \(\nu > 1\) (REC), su función de costos es homogénea en \(q\) de grado \(1/\nu < 1\).}
 \end{frame}

@@ -63,27 +63,27 @@
           xlabel={Cantidad ($Q$)}, ylabel={Costo / Beneficio},
           xmin=0, xmax=9, ymin=0, ymax=10,
           xtick={4.0, 5.5}, xticklabels={$Q^*_{\text{soc}}$, $Q_M$},
-          ytick={4.8, 6.2}, yticklabels={$P_M$, $P^*$},
+          ytick={4.8, 6.3}, yticklabels={$P_M$, $P^*$},
           width=8.2cm, height=5.2cm
         ]
-          % PIE
-          \addplot[fill=rojoAcento!25, draw=none] coordinates {(4.0,6.2) (5.5,4.8) (5.5,7.4)} \closedcycle;
+          % PIE exacto: D=10.3-x, CMP=1.5+0.6x (cruce 5.5, 4.8), CMS=1.5+1.2x (cruce 4.0, 6.3; CMS(5.5)=8.1)
+          \addplot[fill=rojoAcento!25, draw=none] coordinates {(4.0,6.3) (5.5,4.8) (5.5,8.1)} \closedcycle;
           % Demanda BMP = 10.3 - Q
           \addplot[azulPrincipal, very thick, domain=0.5:8.5] {10.3 - x};
           \node[azulPrincipal, font=\scriptsize, anchor=west] at (axis cs:6.8, 3.6) {$D = BMS$};
           % CMP = 1.5 + 0.6Q
           \addplot[verdeAcento, very thick, domain=0:8.0] {1.5 + 0.6*x};
           \node[verdeAcento, font=\scriptsize, anchor=west] at (axis cs:6.8, 5.8) {$CMP$};
-          % CMS = 1.5 + 1.15Q
-          \addplot[rojoAcento, very thick, domain=0:6.8] {1.5 + 1.15*x};
-          \node[rojoAcento, font=\scriptsize, anchor=south east] at (axis cs:6.4, 8.9) {$CMS$};
-          % Lineas
-          \draw[dotted, grisTexto] (axis cs:4.0, 0) -- (axis cs:4.0, 6.2) -- (axis cs:0, 6.2);
-          \draw[dotted, grisTexto] (axis cs:5.5, 0) -- (axis cs:5.5, 7.4);
+          % CMS = 1.5 + 1.2Q
+          \addplot[rojoAcento, very thick, domain=0:6.8] {1.5 + 1.2*x};
+          \node[rojoAcento, font=\scriptsize, anchor=south east] at (axis cs:6.4, 9.2) {$CMS$};
+          % Lineas exactas
+          \draw[dotted, grisTexto] (axis cs:4.0, 0) -- (axis cs:4.0, 6.3) -- (axis cs:0, 6.3);
+          \draw[dotted, grisTexto] (axis cs:5.5, 0) -- (axis cs:5.5, 8.1);
           \draw[dotted, grisTexto] (axis cs:0, 4.8) -- (axis cs:5.5, 4.8);
-          \node[rojoAcento, font=\tiny] at (axis cs:4.95, 6.1) {\textbf{PIE}};
-          % Pigou t*
-          \draw[<->, thick, naranjaAcento] (axis cs:4.0, 3.9) -- (axis cs:4.0, 6.1) node[midway, left, font=\tiny] {$t^*$};
+          \node[rojoAcento, font=\tiny] at (axis cs:4.98, 6.35) {\textbf{PIE}};
+          % Pigou t* = CMS(4) - CMP(4) = 6.3 - 3.9 = 2.4
+          \draw[<->, thick, naranjaAcento] (axis cs:4.0, 3.9) -- (axis cs:4.0, 6.25) node[midway, left, font=\tiny] {$t^*$};
         \end{axis}
       \end{tikzpicture}
     \end{column}
@@ -94,7 +94,8 @@
         • Grava con \(t^*\) igual al \textbf{costo marginal externo} evaluado en el óptimo social (no en \(Q_M\)).\\
         • Si es externalidad \textbf{positiva}, se da un subsidio \(s^* = BME(Q^*_{\text{soc}})\).\\[4pt]
       }
-      \indicador{Teorema de Coase}{azulPrincipal}{\text{Derechos claros + Cero costos de transacción}}
+      {\scriptsize\color{grisTexto}Teorema de Coase}\\[1pt]
+      {\normalsize\color{azulPrincipal}\textbf{Derechos claros + Cero costos de transacción}}\\[4pt]
       {\scriptsize
         • Las partes negocian y alcanzan el \textbf{mismo nivel eficiente \(Q^*_{\text{soc}}\)} sin importar quién posea el derecho de propiedad inicial (aunque la riqueza/distribución sí cambia).\\
         • \textbf{Permisos negociables (Cap-and-Trade):} fijan \(Q^*\) y el mercado halla el precio del permiso (minimiza costos de abatimiento).
@@ -135,12 +136,14 @@
     \end{column}
 
     \begin{column}{0.45\textwidth}
-      \indicador{Condición de Samuelson}{azulPrincipal}{\(\sum_{i=1}^n TMS_i(G) = CMg(G) = TMT\)}
+      {\scriptsize\color{grisTexto}Condición de Samuelson}\\[1pt]
+      {\large\color{azulPrincipal}\textbf{\(\sum_{i=1}^n TMS_i(G) = CMg(G) = TMT\)}}\\[4pt]
       {\scriptsize
         • A diferencia de un bien privado (suma \textbf{horizontal}), la demanda social de un bien público es la \textbf{suma vertical} de las disponibilidades marginales a pagar (\(DAP_i\)).\\
         • \textbf{No rivalidad:} \(CMg\) de servir a un usuario adicional es cero (\(P^*=0\) una vez provisto).\\[4pt]
       }
-      \indicador{Problema del Polizón (Free Rider)}{rojoAcento}{\text{Subprovisión privada de } G}
+      {\scriptsize\color{grisTexto}Problema del Polizón (Free Rider)}\\[1pt]
+      {\large\color{rojoAcento}\textbf{Subprovisión privada de \(G\)}}\\[4pt]
       {\scriptsize
         • Al no poder excluir a quien no paga, cada individuo oculta su verdadera valoración (\(DAP\)) esperando que otros paguen.
       }
@@ -202,13 +205,13 @@
           \addplot[fill=verdeAcento!25, draw=none] coordinates {(3.5,4.5) (5.2,6.2) (3.5,7.67)} \closedcycle;
           % BMP = 8 - x
           \addplot[azulPrincipal, very thick, domain=0.5:7.5] {8 - x};
-          \node[azulPrincipal, font=\scriptsize, anchor=north east] at (axis cs:6.8, 1.5) {$BMP$};
+          \node[azulPrincipal, font=\scriptsize, anchor=south west] at (axis cs:6.4, 1.75) {$BMP$};
           % BMS = 10.7 - 0.865 x -> en 5.2 es 6.2, en 3.5 es 7.67
           \addplot[verdeAcento, very thick, domain=0.5:8.5] {10.7 - 0.865*x};
           \node[verdeAcento, font=\scriptsize, anchor=west] at (axis cs:6.4, 5.4) {$BMS$};
           % CMP = CMg = 1 + x -> en 3.5 es 4.5, en 5.2 es 6.2
           \addplot[rojoAcento, very thick, domain=0.2:7.8] {1 + x};
-          \node[rojoAcento, font=\scriptsize, anchor=west] at (axis cs:6.8, 7.9) {$CMg$};
+          \node[rojoAcento, font=\scriptsize, anchor=east] at (axis cs:6.6, 8.0) {$CMg$};
           % Lineas
           \draw[dotted, grisTexto] (axis cs:3.5, 0) -- (axis cs:3.5, 7.67);
           \draw[dotted, grisTexto] (axis cs:5.2, 0) -- (axis cs:5.2, 6.2) -- (axis cs:0, 6.2);
@@ -224,7 +227,8 @@
       {\scriptsize
         • El mercado subproduce (\(Q_M < Q^*_{\text{soc}}\)). Ejemplo: conexiones domiciliarias de agua potable y alcantarillado (reduce enfermedades hídricas).\\[4pt]
       }
-      \indicador{Mecanismos en Bienes Públicos}{azulPrincipal}{\text{Lindahl vs. Clarke-Groves (VCG)}}
+      {\scriptsize\color{grisTexto}Mecanismos en Bienes Públicos}\\[1pt]
+      {\large\color{azulPrincipal}\textbf{Lindahl vs. Clarke-Groves (VCG)}}\\[4pt]
       {\scriptsize
         • \textbf{Equilibrio de Lindahl:} precios personalizados \(\tau_i = TMS_i\) tales que todos demandan la misma cantidad \(G^*\) (\(\sum \tau_i = CMg\)), aunque persiste el incentivo a mentir si no es anónimo.\\
         • \textbf{Mecanismo VCG (Clarke-Groves):} cobra a cada agente el costo externo que su voto impone a los demás \(\implies\) decir la verdad es \textbf{estrategia dominante}.

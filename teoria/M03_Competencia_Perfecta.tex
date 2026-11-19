@@ -69,11 +69,12 @@
           width=4.2cm, height=5.0cm,
           name=firma
         ]
-          \addplot[azulPrincipal, very thick, domain=1.5:4.5, samples=30] {2.5 + 0.4*(x-1.5)^2};
-          \addplot[grisTexto, dashed, domain=0.2:1.5, samples=20] {2.5 + 0.4*(x-1.5)^2};
+          \addplot[azulPrincipal, very thick, domain=1.5:4.1, samples=30] {2.5 + 0.875*(x-1.5)^2};
+          \addplot[grisTexto, dashed, domain=0.3:1.5, samples=20] {2.5 + 0.875*(x-1.5)^2};
           \draw[rojoAcento, very thick] (axis cs:0, 6) -- (axis cs:5.0, 6);
           \draw[dotted, grisTexto] (axis cs:3.5, 0) -- (axis cs:3.5, 6);
-          \node[azulPrincipal, font=\tiny] at (axis cs:4.2, 7.6) {$CMg_i$};
+          \addplot[only marks, mark=*, mark size=2pt, rojoAcento] coordinates {(3.5, 6)};
+          \node[azulPrincipal, font=\tiny, anchor=east] at (axis cs:3.9, 8.2) {$CMg_i$};
         \end{axis}
 
         % Panel Der: Industria (N firmas)
@@ -86,17 +87,19 @@
           ytick={2.5, 6}, yticklabels={$\min CVMe$, $P^*$},
           width=4.4cm, height=5.0cm
         ]
-          \addplot[verdeAcento, very thick, domain=1.5:6.5, samples=30] {2.5 + 0.14*(x-1.5)^2};
-          \addplot[naranjaAcento, very thick, domain=1.0:7.2] {9.2 - 0.71*x};
+          \addplot[verdeAcento, very thick, domain=1.5:5.5, samples=30] {2.5 + 0.3889*(x-1.5)^2};
+          \addplot[naranjaAcento, very thick, domain=0.8:7.4] {9.2 - 0.7111*x};
           \draw[dotted, grisTexto] (axis cs:0, 6) -- (axis cs:4.5, 6) -- (axis cs:4.5, 0);
-          \node[verdeAcento, font=\tiny] at (axis cs:5.8, 7.8) {$S_{CP}$};
-          \node[naranjaAcento, font=\tiny] at (axis cs:6.4, 3.8) {$D$};
+          \addplot[only marks, mark=*, mark size=2pt, verdeAcento] coordinates {(4.5, 6)};
+          \node[verdeAcento, font=\tiny, anchor=east] at (axis cs:5.3, 8.2) {$S_{CP}$};
+          \node[naranjaAcento, font=\tiny] at (axis cs:6.8, 3.8) {$D$};
         \end{axis}
       \end{tikzpicture}
     \end{column}
 
     \begin{column}{0.44\textwidth}
-      \indicador{Condición de Primer y Segundo Orden}{azulPrincipal}{\(P = CMg(q_i) \quad \text{y} \quad \frac{d\,CMg}{dq_i} > 0\)}
+      {\scriptsize\color{grisTexto}Condición de Primer y Segundo Orden}\\[1pt]
+      {\large\color{azulPrincipal}\textbf{\(P = CMg(q_i) \quad \text{y} \quad \frac{d\,CMg}{dq_i} > 0\)}}\\[5pt]
       {\scriptsize
         • La firma produce en el tramo \textbf{creciente} del \(CMg\) por encima de \(\min CVMe\).\\
         • Si \(P = CMg\) se cumple en el tramo decreciente, es un mínimo de beneficio.\\[5pt]
@@ -118,8 +121,7 @@
 \begin{frame}{2. Equilibrio Competitivo a Largo Plazo (\(\pi = 0\))}
   \begin{columns}[T]
     \begin{column}{0.53\textwidth}
-      {\small\textbf{Ajuste de Entrada/Salida hasta Beneficio Económico Nulo}}
-      \vspace{0.05cm}
+      {\small\textbf{Ajuste de Entrada/Salida hasta Beneficio Nulo}}\\[3pt]
       \begin{tikzpicture}[scale=0.78]
         \begin{axis}[
           axis lines=left,
@@ -129,12 +131,12 @@
           ytick={3.5}, yticklabels={$P_{LP}^*$},
           width=8.2cm, height=5.2cm
         ]
-          % CMe_LP
-          \addplot[azulPrincipal, very thick, domain=1.2:6.8, samples=50] {3.5 + 0.5*(x-4)^2};
-          \node[azulPrincipal, font=\scriptsize, anchor=west] at (axis cs:6.1, 6.2) {$CMe_{LP}$};
-          % CMg_LP
-          \addplot[rojoAcento, very thick, domain=2.0:5.8, samples=40] {3.5 + 1.5*(x-4)^2};
-          \node[rojoAcento, font=\scriptsize, anchor=south east] at (axis cs:5.6, 8.2) {$CMg_{LP}$};
+          % CMe_LP: 3.5 + 0.35*(x-4)^2
+          \addplot[azulPrincipal, very thick, domain=1.0:7.0, samples=50] {3.5 + 0.35*(x-4)^2};
+          \node[azulPrincipal, font=\scriptsize, anchor=west] at (axis cs:6.4, 6.0) {$CMe_{LP}$};
+          % CMg_LP exacto: d[x*CMe]/dx = 3.5 + 0.35*(x-4)^2 + 0.7*x*(x-4) -> corta desde abajo en (4, 3.5)
+          \addplot[rojoAcento, very thick, domain=2.1:5.3, samples=40] {3.5 + 0.35*(x-4)^2 + 0.7*x*(x-4)};
+          \node[rojoAcento, font=\scriptsize, anchor=east] at (axis cs:5.15, 8.6) {$CMg_{LP}$};
           % Precio LP = min CMe_LP
           \draw[verdeAcento, very thick] (axis cs:0, 3.5) -- (axis cs:7.5, 3.5);
           \node[verdeAcento, font=\scriptsize, anchor=south west] at (axis cs:0.3, 3.6) {\(P = IMg\)};
@@ -231,8 +233,10 @@
     \end{column}
 
     \begin{column}{0.44\textwidth}
-      \indicador{Excedente del Consumidor (\(EC\))}{azulPrincipal}{\(EC = \int_0^{Q^*} P^d(Q)\,dQ - P^* Q^*\)}
-      \indicador{Excedente del Productor (\(EP\))}{verdeAcento}{\(EP = P^* Q^* - \int_0^{Q^*} CMg(Q)\,dQ = \pi + CF\)}
+      {\scriptsize\color{grisTexto}Excedente del Consumidor (\(EC\))}\\[1pt]
+      {\large\color{azulPrincipal}\textbf{\(EC = \int_0^{Q^*} P^d(Q)\,dQ - P^* Q^*\)}}\\[6pt]
+      {\scriptsize\color{grisTexto}Excedente del Productor (\(EP\))}\\[1pt]
+      {\normalsize\color{verdeAcento}\textbf{\(EP = P^* Q^* - \int_0^{Q^*} CMg(Q)\,dQ = \pi + CF\)}}\\[6pt]
       {\scriptsize
         • En \(Q^*\), la disposición marginal a pagar (\(P^d\)) iguala al costo marginal de producir (\(CMg\)).\\
         • Cualquier desviación \(Q \neq Q^*\) destruye bienestar y genera una \textbf{Pérdida Irrecuperable de Eficiencia (PIE)}.\\
@@ -285,7 +289,8 @@
         • La \textbf{incidencia legal} (quién paga en ventanilla) es irrelevante.\\
         • \textbf{Regla de oro:} El lado \textbf{más inelástico} del mercado absorbe la mayor parte del impuesto.\\[4pt]
       }
-      \indicador{Pérdida Irrecuperable (Triángulo de Harberger)}{rojoAcento}{\(PIE = \frac{1}{2} t (Q^* - Q_t) \approx \frac{1}{2} t^2 Q^* \frac{\varepsilon_s |\varepsilon_d|}{\varepsilon_s + |\varepsilon_d|}\)}
+      {\scriptsize\color{grisTexto}Pérdida Irrecuperable (Triángulo de Harberger)}\\[1pt]
+      {\normalsize\color{rojoAcento}\textbf{\(PIE = \frac{1}{2} t (Q^* - Q_t) \approx \frac{1}{2}\frac{t^2 Q^*}{P^*} \frac{\varepsilon_s |\varepsilon_d|}{\varepsilon_s + |\varepsilon_d|}\)}}\\[5pt]
       {\scriptsize
         • La \(PIE\) crece con el \textbf{cuadrado} de la tasa impositiva (\(t^2\)) y es mayor cuanto más \textbf{elásticas} son \(D\) y \(S\).\\
         • Un subsidio \(s\) también genera \(PIE = \frac{1}{2} s \Delta Q\).
@@ -306,7 +311,7 @@
       \tarjeta{rojoAcento}{Precio Máximo (Tope)}{
         Efectivo solo si \(P_{\max} < P^*\).\\[4pt]
         • Genera \textbf{escasez} (\(Q^d > Q^s\)) y racionamiento/colas.\\
-        • Puede bajar o subir el \(EP\), pero siempre reduce el bienestar total (\(PIE > 0\)).
+        • \textbf{Siempre reduce el \(EP\)}; puede subir o bajar el \(EC\), y siempre reduce el bienestar total (\(PIE > 0\)).
       }
     \end{column}
     \begin{column}{0.32\textwidth}

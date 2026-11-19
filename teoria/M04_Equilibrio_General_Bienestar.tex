@@ -64,23 +64,25 @@
         \node[font=\tiny, grisTexto] at (3.4, -0.3) {Total $x_1 = \bar{x}_1^A + \bar{x}_1^B$};
         \node[font=\tiny, grisTexto, rotate=90] at (-0.35, 2.3) {Total $x_2$};
 
-        % Curva de contrato
-        \draw[verdeAcento, ultra thick] (0,0) .. controls (2.2, 1.0) and (4.6, 3.6) .. (6.8,4.6);
-        \node[verdeAcento, font=\scriptsize] at (4.9, 2.4) {\textbf{Curva de Contrato}};
+        % Curva de contrato (diagonal exacta para Cobb-Douglas simétricas)
+        \draw[verdeAcento, ultra thick] (0,0) -- (6.8,4.6);
+        \node[verdeAcento, font=\scriptsize, anchor=north west] at (4.35, 2.75) {\textbf{Curva de Contrato}};
 
-        % Dotación inicial W
-        \fill[naranjaAcento] (1.6, 3.3) circle (2.5pt) node[above, font=\scriptsize] {$W$};
+        % Dotación inicial W = (1.6, 3.52) sobre la recta presupuestaria
+        \fill[naranjaAcento] (1.6, 3.52) circle (2.5pt) node[above right, font=\scriptsize] {$W$};
 
-        % Curvas de indiferencia por W (lente de mejora paretiana)
-        \draw[azulPrincipal, thick] (0.5, 4.3) .. controls (1.2, 2.8) and (2.6, 1.5) .. (5.0, 0.8);
-        \draw[rojoAcento, thick] (1.0, 3.9) .. controls (2.6, 3.2) and (4.2, 2.0) .. (5.5, 0.9);
+        % Lente exacto de mejora paretiana pasando por W(1.6, 3.52) y (5.2, 1.09)
+        % U_A(W) = 5.632 => x2 = 5.632/x1 (convexa hacia O_A)
+        \draw[azulPrincipal, thick, domain=1.25:5.6, samples=40] plot (\x, {5.632/\x});
+        % U_B(W) = 5.616 => x2 = 4.6 - 5.616/(6.8 - x1) (convexa hacia O_B)
+        \draw[rojoAcento, thick, domain=1.2:5.55, samples=40] plot (\x, {4.6 - 5.616/(6.8 - \x)});
 
-        % Equilibrio E* sobre curva de contrato
-        \fill[azulPrincipal] (3.4, 2.3) circle (2.8pt) node[above left, font=\scriptsize] {$E^*$};
-        \draw[azulPrincipal, thick, dashed] (1.8, 3.9) .. controls (2.6, 2.8) and (3.8, 1.9) .. (5.2, 1.2);
-        \draw[rojoAcento, thick, dashed] (1.7, 3.6) .. controls (2.8, 2.7) and (3.9, 1.8) .. (5.0, 1.0);
-        % Recta presupuestaria
-        \draw[grisTexto, thick] (1.6, 3.3) -- (5.2, 1.3);
+        % Equilibrio E* = (3.4, 2.3) sobre curva de contrato (tangencia exacta con p1/p2 = 0.6765)
+        \draw[azulPrincipal, thick, dashed, domain=1.75:5.6, samples=40] plot (\x, {7.82/\x});
+        \draw[rojoAcento, thick, dashed, domain=1.2:5.05, samples=40] plot (\x, {4.6 - 7.82/(6.8 - \x)});
+        % Recta presupuestaria tangente en E*(3.4, 2.3) y pasando por W(1.6, 3.52)
+        \draw[grisTexto, thick] (0.6, 4.19) -- (6.2, 0.41);
+        \fill[azulPrincipal] (3.4, 2.3) circle (2.8pt) node[above right, font=\scriptsize] {$E^*$};
       \end{tikzpicture}
     \end{column}
 

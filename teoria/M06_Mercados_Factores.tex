@@ -67,10 +67,10 @@
         ]
           % VPMg_L
           \addplot[azulPrincipal, very thick, domain=0.5:8.2] {8.5 - 0.96*x};
-          \node[azulPrincipal, font=\scriptsize, anchor=west] at (axis cs:5.8, 3.2) {$VPMg_L = P \cdot PMg_L$};
+          \node[azulPrincipal, font=\scriptsize, anchor=south west] at (axis cs:5.8, 3.6) {$VPMg_L$};
           % IPMg_L
           \addplot[rojoAcento, very thick, domain=0.5:5.5] {8.5 - 1.56*x};
-          \node[rojoAcento, font=\scriptsize, anchor=east] at (axis cs:3.0, 4.0) {$IPMg_L$};
+          \node[rojoAcento, font=\scriptsize, anchor=east] at (axis cs:2.1, 4.4) {$IPMg_L$};
           % Salario w*
           \draw[verdeAcento, very thick] (axis cs:0, 3.5) -- (axis cs:8.2, 3.5);
           % Lineas punteadas
@@ -88,9 +88,10 @@
         • A \textbf{CP}, \(K\) es fijo: la demanda es el tramo decreciente de \(VPMg_L\).\\
         • A \textbf{LP}, \(K\) varía: si cae \(w\), la firma sustituye \(K\) por \(L\) y además expande \(q\) (demanda más elástica).\\[4pt]
       }
-      \indicador{Monopolio en el Producto}{rojoAcento}{\(IPMg_L = P\left(1 - \frac{1}{|\varepsilon_d|}\right)PMg_L < VPMg_L\)}
+      {\scriptsize\color{grisTexto}Monopolio en el Producto}\\[1pt]
+      {\normalsize\color{rojoAcento}\textbf{\(IPMg_L = IMg \cdot PMg_L < VPMg_L\)}}\\[3pt]
       {\scriptsize
-        • El monopolista contrata menos trabajo (\(L_M < L_C\)) porque vender más producto baja \(P\).\\
+        • Como \(IMg = P\left(1 - \frac{1}{|\varepsilon_d|}\right) < P\), el monopolista contrata menos trabajo (\(L_M < L_C\)).\\
         • La diferencia \(VPMg_L - w\) se llama \textbf{explotación monopolística}.
       }
     \end{column}
@@ -118,8 +119,8 @@
           % Curva backward-bending: L(w) = 3w - 0.3125 w^2 -> max en w=4.8, L=7.2
           \addplot[azulPrincipal, ultra thick, domain=0.2:7.8, samples=50] ({3*x - 0.3125*x^2}, {x});
           \draw[dashed, grisTexto] (axis cs:0, 4.8) -- (axis cs:7.2, 4.8);
-          \node[verdeAcento, font=\scriptsize, anchor=west] at (axis cs:4.5, 2.3) {$ES > |EI|$ (Sube $L$)};
-          \node[rojoAcento, font=\scriptsize, anchor=west] at (axis cs:5.8, 6.8) {$|EI| > ES$ (Cae $L$)};
+          \node[verdeAcento, font=\scriptsize, anchor=east] at (axis cs:4.7, 2.3) {$ES > |EI|$ (Sube $L$)};
+          \node[rojoAcento, font=\scriptsize, anchor=east] at (axis cs:5.3, 6.8) {$|EI| > ES$ (Cae $L$)};
         \end{axis}
       \end{tikzpicture}
     \end{column}
@@ -160,10 +161,10 @@
         ]
           % S = GMe = w(L) = L
           \addplot[azulPrincipal, very thick, domain=0:8] {x};
-          \node[azulPrincipal, font=\scriptsize, anchor=west] at (axis cs:6.8, 7.1) {$S = GMe_L$};
+          \node[azulPrincipal, font=\scriptsize, anchor=south east] at (axis cs:7.6, 7.8) {$S = GMe_L$};
           % GMg = 2L
           \addplot[rojoAcento, very thick, domain=0:4.8] {2*x};
-          \node[rojoAcento, font=\scriptsize, anchor=south east] at (axis cs:4.6, 8.8) {$GMg_L$};
+          \node[rojoAcento, font=\scriptsize, anchor=east] at (axis cs:4.1, 8.8) {$GMg_L$};
           % VPMg = 10.5 - L
           \addplot[verdeAcento, very thick, domain=0.5:8.5] {10.5 - x};
           \node[verdeAcento, font=\scriptsize, anchor=west] at (axis cs:7.0, 3.6) {$VPMg_L$};
@@ -178,13 +179,15 @@
     \end{column}
 
     \begin{column}{0.44\textwidth}
-      \indicador{Gasto Marginal del Monopsonista}{rojoAcento}{\(GMg_L = w(L) + L \frac{dw}{dL} > GMe_L\)}
+      {\scriptsize\color{grisTexto}Gasto Marginal del Monopsonista}\\[1pt]
+      {\normalsize\color{rojoAcento}\textbf{\(GMg_L = w(L) + L \frac{dw}{dL} > GMe_L\)}}\\[4pt]
       {\scriptsize
         • Para contratar un trabajador extra debe subir el salario a \textbf{todos} los anteriores: \(GMg_L\) tiene el doble de pendiente que la oferta lineal.\\
         • Contrata menos (\(L_M < L_C\)) y paga menos (\(w_M < w_C < VPMg_L\)).\\
         • \textbf{Explotación monopsónica:} \(VPMg_L - w_M\).\\[4pt]
       }
-      \indicador{Salario Mínimo en Monopsonio}{verdeAcento}{\(w_{\min} \in (w_M, VPMg(L_M)] \implies \uparrow L\)}
+      {\scriptsize\color{grisTexto}Salario Mínimo en Monopsonio}\\[1pt]
+      {\normalsize\color{verdeAcento}\textbf{\(w_{\min} \in (w_M, VPMg(L_M)) \implies \uparrow L\)}}\\[4pt]
       {\scriptsize
         • Un salario mínimo moderado aplana el \(GMg_L\) y \textbf{aumenta simultáneamente el salario y el empleo} (hasta \(L_C\)).
       }
@@ -198,33 +201,34 @@
 % SLIDE 6: CAPITAL, REGLA DE HOTELLING, RENTA PURA Y SINDICATOS
 % ==============================================================================
 \begin{frame}{4. Capital, Regla de Hotelling, Renta Pura y Sindicatos}
-  \vspace{0.05cm}
   \begin{columns}[T]
     \begin{column}{0.32\textwidth}
       \tarjeta{azulPrincipal}{Capital y Recursos Agotables}{
+        \scriptsize
         • \textbf{Costo de uso del capital:} \(P \cdot PMg_K = P_K(r + \delta)\).\\
-        • \textbf{Regla de Hotelling (no renovables):} En equilibrio competitivo, el precio neto (renta de escasez \(P_t - c\)) crece a la tasa de interés:\\
+        • \textbf{Regla de Hotelling (no renovables):} la renta de escasez (\(P_t - c\)) crece a la tasa de interés:\\
         \(\quad \frac{P_{t+1}-c}{P_t-c} = 1 + r\).
       }
     \end{column}
     \begin{column}{0.32\textwidth}
       \tarjeta{verdeAcento}{Renta Económica Pura (Tierra)}{
-        Pago por encima del mínimo necesario para mantener el factor en su uso actual.\\[2pt]
+        \scriptsize Pago por encima del mínimo necesario para mantener el factor en su uso actual.\\[2pt]
         • Si la oferta es \textbf{perfectamente inelástica} (tierra o acuífero fijo, \(\varepsilon_s=0\)), \textbf{100\% del pago es renta económica pura}.\\
         • Un impuesto sobre ella tiene \(PIE = 0\).
       }
     \end{column}
     \begin{column}{0.32\textwidth}
       \tarjeta{naranjaAcento}{Modelos de Sindicatos}{
+        \scriptsize
         • \textbf{Sindicato monopolista:} fija \(w > w_c\), firma elige \(L\) sobre su demanda (ineficiente).\\
-        • \textbf{Negociación eficiente:} negocian \((w, L)\) sobre la \textbf{curva de contrato} (igualando \(TMS_{w,L}^{sind} = \text{isobeneficio}\)).
+        • \textbf{Negociación eficiente:} negocian \((w, L)\) sobre la \textbf{curva de contrato} (\(TMS_{w,L}^{\text{sind}} = \text{pend. isobeneficio}\)).
       }
     \end{column}
   \end{columns}
 
-  \vspace{0.1cm}
+  \vspace{0.06cm}
   \recuadroclave{
-    \small\textbf{Discriminación Salarial en Monopsonio:} Si el monopsonista segmenta dos grupos de oferta laboral, iguala el \(GMg\) de cada grupo al \(VPMg_L\) y paga menor salario al grupo con \textbf{oferta más inelástica}.
+    \scriptsize\textbf{Discriminación Salarial en Monopsonio:} Si el monopsonista segmenta dos grupos de oferta laboral, iguala el \(GMg\) de cada grupo al \(VPMg_L\) y paga menor salario al grupo con \textbf{oferta más inelástica}.
   }
   \mensajefinal{Mientras más inelástica es la oferta de un factor productivo, mayor proporción de su remuneración constituye renta económica.}
 \end{frame}
