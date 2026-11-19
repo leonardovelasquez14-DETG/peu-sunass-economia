@@ -166,25 +166,34 @@
           \node[font=\tiny, grisTexto] at (2.1, 1.7) {$U = \min\{ax_1, bx_2\}$};
         \end{scope}
 
-        % Panel 4: Cuasilineal
+        % Panel 4: CES (Elasticidad de Sustitución Constante)
         \begin{scope}[xshift=4.0cm, yshift=-3.4cm]
           \draw[->, thick] (0,0) -- (3.2,0) node[right, font=\scriptsize] {$x_1$};
           \draw[->, thick] (0,0) -- (0,2.6) node[above, font=\scriptsize] {$x_2$};
-          \draw[rojoAcento, very thick, domain=0.2:2.6, samples=30] plot (\x, {2.0 - 0.8*sqrt(\x)});
-          \draw[rojoAcento, thick, dashed, domain=0.2:2.6, samples=30] plot (\x, {2.5 - 0.8*sqrt(\x)});
-          \node[font=\scriptsize, rojoAcento] at (1.9, 2.3) {\textbf{Cuasilineal}};
-          \node[font=\tiny, grisTexto] at (1.9, 1.9) {$U = v(x_1) + x_2$};
+          \draw[rojoAcento, very thick, domain=0.08:2.1, samples=40] plot (\x, {(1.5 - sqrt(\x))*(1.5 - sqrt(\x))});
+          \draw[rojoAcento, thick, dashed, domain=0.08:2.7, samples=40] plot (\x, {(1.8 - sqrt(\x))*(1.8 - sqrt(\x))});
+          \node[font=\scriptsize, rojoAcento] at (1.8, 2.3) {\textbf{CES ($\sigma = \frac{1}{1-\rho}$)}};
+          \node[font=\tiny, grisTexto] at (1.8, 1.9) {$U = [\alpha x_1^\rho + \beta x_2^\rho]^{1/\rho}$};
         \end{scope}
       \end{tikzpicture}
     \end{column}
 
-    \begin{column}{0.45\textwidth}
-      \indicador{Cobb-Douglas: Gasto Fijo}{azulPrincipal}{\(x_1^* = \frac{\alpha}{\alpha+\beta}\frac{m}{p_1}\)}
-      \indicador{Sustitutos Perfectos}{naranjaAcento}{Solución de Esquina si \(\frac{a}{b} \neq \frac{p_1}{p_2}\)}
-      \indicador{Complementos (Leontief)}{verdeAcento}{\(x_1^* = \frac{m}{p_1 + \frac{a}{b}p_2}\) \ (Vértice: \(ax_1 = bx_2\))}
-      {\scriptsize
-        \textbf{¡Ojo en la Cuasilineal!}\\
-        La demanda de \(x_1\) \textbf{no depende del ingreso} \(m\) en soluciones interiores (\(\text{Efecto Ingreso} = 0\)). Todo aumento de ingreso va a \(x_2\).
+    \begin{column}{0.46\textwidth}
+      \vspace{-0.1cm}
+      {\scriptsize\color{azulPrincipal}\textbf{1. Cobb-Douglas (\(\sigma = 1\))}}\\[0pt]
+      {\normalsize\color{azulPrincipal}\textbf{\(x_1^* = \frac{\alpha}{\alpha+\beta}\frac{m}{p_1}\)}} \hfill {\tiny\color{grisTexto}(Gasto constante \(\alpha/(\alpha+\beta)\))}\\[4pt]
+
+      {\scriptsize\color{naranjaAcento}\textbf{2. Sustitutos Perfectos (\(\sigma \to \infty\))}}\\[0pt]
+      {\small\color{naranjaAcento}\textbf{\(x_1^* = \begin{cases} \frac{m}{p_1} & \text{si } \frac{a}{p_1} > \frac{b}{p_2} \\[2pt] \left[0, \frac{m}{p_1}\right] & \text{si } \frac{a}{p_1} = \frac{b}{p_2} \\[2pt] 0 & \text{si } \frac{a}{p_1} < \frac{b}{p_2} \end{cases}\)}} \hfill {\tiny\color{grisTexto}(Solución de esquina)}\\[4pt]
+
+      {\scriptsize\color{verdeAcento}\textbf{3. Complementos / Leontief (\(\sigma \to 0\))}}\\[0pt]
+      {\normalsize\color{verdeAcento}\textbf{\(x_1^* = \frac{m}{p_1 + \frac{a}{b}p_2} = \frac{b\,m}{b p_1 + a p_2}\)}} \hfill {\tiny\color{grisTexto}(Vértice: \(ax_1 = bx_2\))}\\[4pt]
+
+      {\scriptsize\color{rojoAcento}\textbf{4. CES (\(\sigma = \frac{1}{1-\rho}\))}}\\[0pt]
+      {\normalsize\color{rojoAcento}\textbf{\(x_1^* = \frac{\alpha^\sigma p_1^{-\sigma}}{\alpha^\sigma p_1^{1-\sigma} + \beta^\sigma p_2^{1-\sigma}}\,m\)}} \hfill {\tiny\color{grisTexto}(Demanda general)}\\[2pt]
+
+      {\tiny\color{grisTexto}
+        \textbf{Relación óptima CES:} \(\frac{x_1^*}{x_2^*} = \left(\frac{\alpha p_2}{\beta p_1}\right)^\sigma\). Casos límite: \(\sigma=1\) (C-D), \(\sigma\to\infty\) (Sust.), \(\sigma\to 0\) (Leontief).
       }
     \end{column}
   \end{columns}
