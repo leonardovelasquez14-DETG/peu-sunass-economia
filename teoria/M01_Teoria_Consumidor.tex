@@ -478,53 +478,67 @@
 \end{frame}
 
 % ==============================================================================
-% SLIDE 10: PREFERENCIA REVELADA (WARP, SARP E ÍNDICES)
+% SLIDE 11: PREFERENCIA REVELADA (WARP, SARP E ÍNDICES)
 % ==============================================================================
 \begin{frame}{7. Preferencia Revelada (WARP / SARP) e Índices}
   \begin{columns}[T]
-    \begin{column}{0.52\textwidth}
-      {\small\textbf{Detección Gráfica del Axioma Débil (WARP)}}
-      \vspace{0.05cm}
+    \begin{column}{0.51\textwidth}
+      {\small\textbf{Detección Gráfica de Violación del WARP}}\\[3pt]
       \begin{tikzpicture}[scale=0.78]
         \begin{axis}[
           axis lines=left,
           xlabel={$x_1$}, ylabel={$x_2$},
-          xmin=0, xmax=10, ymin=0, ymax=9,
+          xmin=0, xmax=9.8, ymin=0, ymax=9.2,
           xtick=\empty, ytick=\empty,
-          width=8.0cm, height=5.2cm
+          width=8.1cm, height=5.1cm,
+          clip=false
         ]
-          % Recta en t=0
-          \addplot[aceroAcento, very thick, domain=0:9] {6.5 - 0.72*x};
-          % Recta en t=1
-          \addplot[rojoAcento, very thick, domain=0:6.5] {8.5 - 1.3*x};
-          % Cestas A y B dentro de la intersección -> Violación WARP
-          \addplot[only marks, mark=*, mark size=2.8pt, aceroAcento] coordinates {(3.5, 3.98)};
-          \node[aceroAcento, font=\scriptsize, anchor=south west] at (axis cs:3.6, 4.0) {\textbf{\(A\) (en \(t=0\))}};
-          \addplot[only marks, mark=*, mark size=2.8pt, rojoAcento] coordinates {(2.2, 5.64)};
-          \node[rojoAcento, font=\scriptsize, anchor=south west] at (axis cs:2.3, 5.6) {\textbf{\(B\) (en \(t=1\))}};
-          % Punto C consistente
-          \addplot[only marks, mark=square*, mark size=2.5pt, verdeAcento] coordinates {(7.0, 1.46)};
-          \node[verdeAcento, font=\scriptsize, anchor=south west] at (axis cs:7.0, 1.5) {\(C\)};
+          % Zona sombreada: intersección asequible en ambos periodos (t=0 y t=1)
+          % Cruce de 6.5 - 0.72x y 8.5 - 1.30x => x = 3.448, y = 4.017
+          \addplot[fill=azulClaroFondo, draw=none] coordinates {(0,0) (0,6.5) (3.448,4.017) (6.538,0)} \closedcycle;
+          \node[font=\tiny, grisTexto, align=center] at (axis cs:2.1, 1.55) {Asequible en\\[-1pt]$t=0$ y $t=1$};
+
+          % Recta en t=0 (azul): x2 = 6.5 - 0.72*x1 (intercepto x1 = 9.03)
+          \addplot[aceroAcento, very thick, domain=0:9.03] {6.5 - 0.72*x};
+          \node[aceroAcento, font=\tiny\bfseries, anchor=south west] at (axis cs:5.5, 2.75) {Recta $t=0$};
+
+          % Recta en t=1 (roja): x2 = 8.5 - 1.30*x1 (intercepto x1 = 6.54)
+          \addplot[rojoAcento, very thick, domain=0:6.54] {8.5 - 1.30*x};
+          \node[rojoAcento, font=\tiny\bfseries, anchor=west] at (axis cs:0.45, 8.2) {Recta $t=1$};
+
+          % Punto A elegido en t=0 DENTRO del conjunto de t=1: (2.0, 5.06)
+          \addplot[only marks, mark=*, mark size=2.8pt, aceroAcento] coordinates {(2.0, 5.06)};
+          \node[aceroAcento, font=\scriptsize, anchor=north east] at (axis cs:1.95, 4.95) {\textbf{\(A\)} {\tiny(\(t=0\))}};
+
+          % Punto B elegido en t=1 DENTRO del conjunto de t=0: (5.0, 2.00)
+          \addplot[only marks, mark=*, mark size=2.8pt, rojoAcento] coordinates {(5.0, 2.00)};
+          \node[rojoAcento, font=\scriptsize, anchor=north east] at (axis cs:4.95, 1.95) {\textbf{\(B\)} {\tiny(\(t=1\))}};
+
+          % Punto C consistente en t=0 (fuera del conjunto de t=1): (7.5, 1.10)
+          \addplot[only marks, mark=square*, mark size=2.5pt, verdeAcento] coordinates {(7.5, 1.10)};
+          \node[verdeAcento, font=\tiny\bfseries, anchor=south west] at (axis cs:7.6, 1.10) {\(C\) (ok)};
         \end{axis}
-      \end{tikzpicture}
-      {\scriptsize\color{grisTexto}\textit{\(A\) y \(B\) son asequibles en ambos periodos: elegir \(A\) y luego \(B\) viola WARP.}}
+      \end{tikzpicture}\\[2pt]
+      {\scriptsize\color{grisTexto}\textit{\(A\) (en \(t=0\)) y \(B\) (en \(t=1\)) están ambos en la zona común: elegir \(A\) y luego \(B\) viola WARP.}}
     \end{column}
 
-    \begin{column}{0.45\textwidth}
-      \indicador{Axioma Débil (WARP)}{rojoAcento}{\(p^0 x^0 \ge p^0 x^1 \implies p^1 x^1 < p^1 x^0\)}
+    \begin{column}{0.46\textwidth}
+      {\scriptsize\color{grisTexto}Axioma Débil de Preferencia Revelada (WARP)}\\[1pt]
+      {\normalsize\color{rojoAcento}\textbf{\(p^0 x^0 \ge p^0 x^1 \ \ (x^0 \neq x^1) \implies p^1 x^1 < p^1 x^0\)}}\\[4pt]
       {\scriptsize
-        • Si \(A\) fue elegida cuando \(B\) era asequible, entonces \(B\) \textbf{nunca} puede ser elegida cuando \(A\) es asequible.\\
-        • \textbf{SARP (Fuerte):} extiende WARP a cadenas transitivas (condición necesaria y suficiente para maximizar utilidad).\\[5pt]
+        • Si \(A\) (\(x^0\)) fue elegida cuando \(B\) (\(x^1\)) era asequible, entonces \(B\) \textbf{nunca} puede elegirse cuando \(A\) es asequible.\\
+        • \textbf{SARP (Fuerte):} extiende WARP a cadenas transitivas (condición necesaria y suficiente para maximizar utilidad).\\[6pt]
       }
-      \indicador{Índices de Bienestar}{verdeAcento}{\(L_q = \frac{p^1 x^1}{p^1 x^0} \quad \text{vs.} \quad P_q = \frac{p^0 x^1}{p^0 x^0}\)}
+      {\scriptsize\color{grisTexto}Índices de Cantidad (Bienestar)}\\[1pt]
+      {\small\color{verdeAcento}\textbf{\(L_q = \frac{p^0 x^1}{p^0 x^0}\) {\tiny(Laspeyres)} \quad \(P_q = \frac{p^1 x^1}{p^1 x^0}\) {\tiny(Paasche)}}}\\[4pt]
       {\scriptsize
-        • Si en \(t=1\) puede comprar \(x^0\) (\(p^1 x^1 > p^1 x^0\)), está \textbf{mejor}.\\
-        • Si en \(t=0\) podía comprar \(x^1\) (\(p^0 x^0 > p^0 x^1\)), está \textbf{peor}.
+        • Si \(P_q > 1\) (\(p^1 x^1 > p^1 x^0\)): en \(t=1\) puede comprar \(x^0\) y elige \(x^1\) \(\implies\) está \textbf{mejor}.\\
+        • Si \(L_q < 1\) (\(p^0 x^1 < p^0 x^0\)): en \(t=0\) ya podía comprar \(x^1\) y eligió \(x^0\) \(\implies\) está \textbf{peor}.
       }
     \end{column}
   \end{columns}
 
-  \mensajefinal{WARP permite contrastar la racionalidad del consumidor usando solo precios y cantidades observadas.}
+  \mensajefinal{WARP contrasta la racionalidad del consumidor usando solo precios y cantidades observadas.}
 \end{frame}
 
 % ==============================================================================
