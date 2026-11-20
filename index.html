@@ -749,6 +749,65 @@
       document.getElementById("home-pending-badge").textContent = `${errs.length} pendientes`;
     }
 
+    function sortByNaturalOrder(a, b) {
+      return (a.module_num - b.module_num) || (a.q_num - b.q_num);
+    }
+
+    function hydrateQuestions(questions, allDB) {
+      const dbMap = new Map((allDB || []).map(q => [q.id, q]));
+      return (questions || []).map(q => {
+        const fresh = dbMap.get(q.id);
+        return fresh && fresh !== q ? { ...q, ...fresh } : q;
+      });
+    }
+
+    function ensurePrerequisites(questions, allDB) {
+      const byId = new Map();
+      for (const q of (allDB || [])) byId.set(q.id, q);
+      for (const q of (questions || [])) {
+        if (!byId.has(q.id)) byId.set(q.id, q);
+      }
+
+      const hydrated = hydrateQuestions(questions, allDB);
+
+      const emitted = new Set();
+      const ordered = [];
+
+      function getMissingAncestors(q) {
+        const stack = [q];
+        const seen = new Set([q.id]);
+        const ancestors = [];
+        while (stack.length) {
+          const cur = stack.pop();
+          for (const refId of [cur.depends_on, cur.parent_id]) {
+            if (refId && !seen.has(refId) && !emitted.has(refId) && byId.has(refId)) {
+              seen.add(refId);
+              const parentQ = byId.get(refId);
+              ancestors.push(parentQ);
+              stack.push(parentQ);
+            }
+          }
+        }
+        ancestors.sort(sortByNaturalOrder);
+        return ancestors;
+      }
+
+      for (const q of hydrated) {
+        if (emitted.has(q.id)) continue;
+        for (const anc of getMissingAncestors(q)) {
+          if (!emitted.has(anc.id)) {
+            emitted.add(anc.id);
+            ordered.push(anc);
+          }
+        }
+        if (!emitted.has(q.id)) {
+          emitted.add(q.id);
+          ordered.push(q);
+        }
+      }
+      return ordered;
+    }
+
     // Muestreo atómico por clusters (idéntico a simulador.py)
     function sampleClustered(questions, targetN) {
       const clusters = new Map();
@@ -757,17 +816,40 @@
         if (!clusters.has(cid)) clusters.set(cid, []);
         clusters.get(cid).push(q);
       }
-      const list = Array.from(clusters.values());
+      const list = Array.from(clusters.values()).map(c => c.slice().sort(sortByNaturalOrder));
       for (let i = list.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [list[i], list[j]] = [list[j], list[i]];
       }
-      const selected = [];
+      const chosenClusters = [];
+      let totalCount = 0;
       for (const c of list) {
-        if (selected.length >= targetN && selected.length > 0) break;
-        selected.push(...c);
+        if (totalCount >= targetN && chosenClusters.length > 0) break;
+        chosenClusters.push(c);
+        totalCount += c.length;
       }
-      return selected;
+      // Si coinciden varios sub-clusters de un mismo escenario, ordenarlos cronológicamente en sus posiciones
+      const scenarioSlots = new Map();
+      chosenClusters.forEach((c, idx) => {
+        const sc = c[0] && c[0].scenario_id;
+        if (sc) {
+          if (!scenarioSlots.has(sc)) scenarioSlots.set(sc, []);
+          scenarioSlots.get(sc).push(idx);
+        }
+      });
+      for (const indices of scenarioSlots.values()) {
+        if (indices.length > 1) {
+          const sortedClusters = indices
+            .map(i => chosenClusters[i])
+            .sort((a, b) => sortByNaturalOrder(a[0], b[0]));
+          indices.forEach((slotIdx, k) => {
+            chosenClusters[slotIdx] = sortedClusters[k];
+          });
+        }
+      }
+      const selected = [];
+      for (const c of chosenClusters) selected.push(...c);
+      return ensurePrerequisites(selected, DB);
     }
 
     function toggleCustomCount() {
@@ -818,6 +900,9 @@
         let n = parseInt(document.getElementById("mod-random-count").value, 10) || 20;
         n = Math.max(1, Math.min(modQs.length, n));
         chosen = sampleClustered(modQs, n);
+      }
+      chosen = ensurePrerequisites(chosen, DB);
+      if (mode === "random") {
         title = `${MODULE_NAMES[modNum]} · Aleatorio (${chosen.length})`;
       }
       startQuiz(chosen, title, tutor, false);
@@ -850,21 +935,18 @@
     }
 
     function startNotebook(kind) {
-      const errs = loadJSON(LS_ERRORS, []);
+      const errs = hydrateQuestions(loadJSON(LS_ERRORS, []), DB);
       let qs = [];
       let title = "Repaso de Cuaderno";
       if (kind === "all") { qs = [...errs]; title = "Repaso Completo de Errores y Saltadas"; }
       else if (kind === "fallada") { qs = errs.filter(e => e.error_type === "fallada"); title = "Repaso de Falladas"; }
       else if (kind === "saltada") { qs = errs.filter(e => e.error_type === "saltada"); title = "Repaso de Saltadas"; }
       else if (kind === "sample15") {
-        const copy = [...errs];
-        for (let i = copy.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [copy[i], copy[j]] = [copy[j], copy[i]];
-        }
-        qs = copy.slice(0, Math.min(15, copy.length));
+        qs = sampleClustered(errs, Math.min(15, errs.length));
         title = `Muestra Rápida (${qs.length} preg.)`;
       }
+      qs = ensurePrerequisites(qs, DB);
+      if (kind === "sample15") title = `Muestra Rápida (${qs.length} preg.)`;
       if (!qs.length) return;
       startQuiz(qs, title, true, true);
     }
@@ -914,8 +996,10 @@
 
       const premWrap = document.getElementById("q-premise");
       if (q.context_premise) {
-        const ref = q.parent_id || q.depends_on || "Pregunta anterior";
-        document.getElementById("q-premise-title").textContent = `Premisa vinculada (${ref})`;
+        const ref = q.parent_id || q.depends_on;
+        document.getElementById("q-premise-title").textContent = ref
+          ? `Premisa vinculada (${ref})`
+          : `Contexto del caso (${q.cluster_id || q.id})`;
         document.getElementById("q-premise-text").textContent = cleanText(q.context_premise);
         premWrap.classList.remove("hidden");
       } else {

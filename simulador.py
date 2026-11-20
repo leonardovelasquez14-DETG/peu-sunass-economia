@@ -101,6 +101,57 @@ def print_banner():
 # -------------------------------------------------------------
 # Lógica de Agrupamiento y Preservación de Cadenas de Preguntas
 # -------------------------------------------------------------
+def _natural_sort_key(q):
+    return (q.get("module_num", 0), q.get("q_num", 0))
+
+def hydrate_questions(questions, all_db=None):
+    """Actualiza metadatos de preguntas guardadas usando el banco maestro."""
+    by_id = {q["id"]: q for q in (all_db or [])}
+    return [{**q, **by_id[q["id"]]} if q["id"] in by_id and by_id[q["id"]] is not q else q for q in (questions or [])]
+
+def ensure_prerequisites(questions, all_db=None):
+    """
+    Garantiza que toda pregunta dependiente vaya precedida por sus preguntas
+    previas obligatorias (depends_on / parent_id), hidratando metadatos desde
+    el banco actualizado y manteniendo orden estricto sin duplicados.
+    """
+    by_id = {q["id"]: q for q in (all_db or [])}
+    for q in (questions or []):
+        by_id.setdefault(q["id"], q)
+
+    hydrated = hydrate_questions(questions, all_db)
+
+    emitted = set()
+    ordered = []
+
+    def get_missing_ancestors(item):
+        stack = [item]
+        seen = {item["id"]}
+        ancestors = []
+        while stack:
+            cur = stack.pop()
+            for ref_id in (cur.get("depends_on"), cur.get("parent_id")):
+                if ref_id and ref_id not in seen and ref_id not in emitted and ref_id in by_id:
+                    seen.add(ref_id)
+                    parent_q = by_id[ref_id]
+                    ancestors.append(parent_q)
+                    stack.append(parent_q)
+        ancestors.sort(key=_natural_sort_key)
+        return ancestors
+
+    for q in hydrated:
+        if q["id"] in emitted:
+            continue
+        for anc in get_missing_ancestors(q):
+            if anc["id"] not in emitted:
+                emitted.add(anc["id"])
+                ordered.append(anc)
+        if q["id"] not in emitted:
+            emitted.add(q["id"])
+            ordered.append(q)
+
+    return ordered
+
 def get_clusters(questions):
     """
     Agrupa preguntas en clusters atómicos.
@@ -114,23 +165,39 @@ def get_clusters(questions):
             clusters[cid] = []
             order.append(cid)
         clusters[cid].append(q)
-    return [clusters[cid] for cid in order]
+    return [sorted(clusters[cid], key=_natural_sort_key) for cid in order]
 
-def sample_clustered(questions, target_n):
+def sample_clustered(questions, target_n, all_db=None):
     """
     Muestrea preguntas aleatorias respetando que ninguna cadena dependiente
     se desordene ni se corte por la mitad.
     """
     clusters = get_clusters(questions)
     random.shuffle(clusters)
-    selected = []
+    chosen_clusters = []
     count = 0
     for c in clusters:
-        if count >= target_n and len(selected) > 0:
+        if count >= target_n and len(chosen_clusters) > 0:
             break
-        selected.extend(c)
+        chosen_clusters.append(c)
         count += len(c)
-    return selected
+
+    # Si coinciden varios sub-clusters de un mismo escenario, ordenarlos cronológicamente
+    scenario_slots = {}
+    for idx, c in enumerate(chosen_clusters):
+        sc = c[0].get("scenario_id") if c else None
+        if sc:
+            scenario_slots.setdefault(sc, []).append(idx)
+    for indices in scenario_slots.values():
+        if len(indices) > 1:
+            sorted_clusters = sorted((chosen_clusters[i] for i in indices), key=lambda c: _natural_sort_key(c[0]))
+            for slot_idx, c in zip(indices, sorted_clusters):
+                chosen_clusters[slot_idx] = c
+
+    selected = []
+    for c in chosen_clusters:
+        selected.extend(c)
+    return ensure_prerequisites(selected, all_db if all_db is not None else questions)
 
 def ask_question(item, index, total, tutor_mode=True):
     print(f"\n{BOLD}{CYAN}------------------------------------------------------------------------------{RESET}")
@@ -139,10 +206,12 @@ def ask_question(item, index, total, tutor_mode=True):
         print(f"{DIM}Tema: {item['topic']}{RESET}")
     print(f"{BOLD}{CYAN}------------------------------------------------------------------------------{RESET}\n")
 
-    # Si la pregunta depende de una premisa anterior, mostrar el contexto visual
+    # Si la pregunta depende de una premisa anterior o caso base, mostrar el contexto visual
     if item.get("context_premise"):
-        parent_id = item.get("parent_id") or item.get("depends_on") or "Pregunta anterior"
-        print(f"  {YELLOW}{BOLD}┌─ 📌 PREMISA / CONTEXTO VINCULADO ({parent_id}) {'─'*28}┐{RESET}")
+        ref = item.get("parent_id") or item.get("depends_on")
+        header_label = f"PREMISA / CONTEXTO VINCULADO ({ref})" if ref else f"CONTEXTO DEL CASO ({item.get('cluster_id') or item['id']})"
+        pad = "─" * max(4, 52 - len(header_label))
+        print(f"  {YELLOW}{BOLD}┌─ 📌 {header_label} {pad}┐{RESET}")
         wrapped_premise = textwrap.fill(item["context_premise"], width=70, initial_indent="  │ ", subsequent_indent="  │ ")
         print(f"{DIM}{wrapped_premise}{RESET}")
         print(f"  {YELLOW}{BOLD}└{'─'*72}┘{RESET}\n")
@@ -343,7 +412,7 @@ def mode_simulacro_general(db):
     fb = input("Seleccione [1-2] (default: 1): ").strip()
     tutor_mode = (fb != "2")
 
-    sampled = sample_clustered(db, n)
+    sampled = sample_clustered(db, n, all_db=db)
     run_quiz(sampled, title=f"Simulacro General ({len(sampled)} Preguntas)", tutor_mode=tutor_mode)
 
 def mode_por_modulo(db):
@@ -388,7 +457,7 @@ def mode_por_modulo(db):
             n = max(1, min(len(mod_questions), n))
         except ValueError:
             n = 20
-        questions_to_run = sample_clustered(mod_questions, n)
+        questions_to_run = sample_clustered(mod_questions, n, all_db=db)
         title = f"{MODULE_NAMES[mod_num]} - Aleatorio ({len(questions_to_run)} preg)"
     elif sub == "6":
         return
@@ -413,10 +482,13 @@ def mode_por_modulo(db):
             questions_to_run = mod_questions
             title = f"{MODULE_NAMES[mod_num]} (Completo 1-90)"
 
+    questions_to_run = ensure_prerequisites(questions_to_run, db)
+    if sub == "5":
+        title = f"{MODULE_NAMES[mod_num]} - Aleatorio ({len(questions_to_run)} preg)"
     run_quiz(questions_to_run, title=title, tutor_mode=True)
 
 def mode_cuaderno_errores(db):
-    errors = load_errors()
+    errors = hydrate_questions(load_errors(), db)
     if not errors:
         print_banner()
         print(f"{GREEN}{BOLD}¡Felicidades! Tu Cuaderno de Estudio está al día (0 preguntas pendientes).{RESET}")
@@ -459,7 +531,7 @@ def mode_cuaderno_errores(db):
         sampled = list(saltadas)
         title = "Repaso de Preguntas Saltadas"
     elif choice == "4":
-        sampled = random.sample(errors, min(15, len(errors)))
+        sampled = sample_clustered(errors, min(15, len(errors)), all_db=db)
         title = f"Muestra Rápida ({len(sampled)} preg)"
     elif choice == "5":
         confirm = input(f"{RED}¿Seguro que desea vaciar todo el cuaderno de repaso? (s/N): {RESET}").strip().lower()
@@ -470,6 +542,10 @@ def mode_cuaderno_errores(db):
         return
     else:
         return
+
+    sampled = ensure_prerequisites(sampled, db)
+    if choice == "4":
+        title = f"Muestra Rápida ({len(sampled)} preg)"
 
     # Ejecutar preguntas de repaso con opción de desmarcar
     total = len(sampled)

@@ -622,7 +622,7 @@
     ],
     "correct_key": "B",
     "topic": "",
-    "explanation": "WARP: si x se revela preferida a y cuando ambas son asequibles, no puede ocurrir simultáneamente que y se revele preferida a x en otra situación en que ambas sean asequibles.} subsection*{Bloque B. Aplicaciones cuantitativas y optimización",
+    "explanation": "WARP: si x se revela preferida a y cuando ambas son asequibles, no puede ocurrir simultáneamente que y se revele preferida a x en otra situación en que ambas sean asequibles.",
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M01-Q30",
@@ -1063,7 +1063,7 @@
     ],
     "correct_key": "D",
     "topic": "",
-    "explanation": "Q=100-2(20)=60. Entonces ε=-2≤ft((20 / 60))=-0.667≈-0.67.",
+    "explanation": "Q=100-2(20)=60. Entonces ε=-2(20 / 60)=-0.667≈-0.67.",
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M01-Q51",
@@ -1357,7 +1357,7 @@
     ],
     "correct_key": "C",
     "topic": "",
-    "explanation": "x=I/(2p_x) e y=I/(2p_y); por tanto y/x=p_x/p_y es constante. La curva de ingreso-consumo es una recta que pasa por el origen.} subsection*{Bloque C. Casos con implicancias tarifarias y regulatorias",
+    "explanation": "x=I/(2p_x) e y=I/(2p_y); por tanto y/x=p_x/p_y es constante. La curva de ingreso-consumo es una recta que pasa por el origen.",
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M01-Q65",
@@ -1483,12 +1483,12 @@
     ],
     "correct_key": "D",
     "topic": "",
-    "explanation": "Q=20-0.5(10)=15. ε=-0.5≤ft((10 / 15))=-0.333≈-0.33.",
+    "explanation": "Q=20-0.5(10)=15. ε=-0.5(10 / 15)=-0.333≈-0.33.",
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M01-Q71",
     "context_premise": null,
-    "cluster_size": 1
+    "cluster_size": 2
   },
   {
     "id": "M01-Q72",
@@ -1505,11 +1505,11 @@
     "correct_key": "A",
     "topic": "",
     "explanation": "Ingreso inicial =10(15)=150. Con P=12, Q=14 e ingreso =12(14)=168. Aumenta en S/ 18.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M01-Q72",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M01-Q71",
+    "parent_id": "M01-Q71",
+    "cluster_id": "M01-Q71",
+    "context_premise": "La demanda mensual de agua de un usuario es Q = 20 - 0.5P (con Q en m^3 y P en S/ por m^3).",
+    "cluster_size": 2
   },
   {
     "id": "M01-Q73",
@@ -1593,7 +1593,7 @@
     "parent_id": null,
     "cluster_id": "M01-Q76",
     "context_premise": null,
-    "cluster_size": 1
+    "cluster_size": 2
   },
   {
     "id": "M01-Q77",
@@ -1610,11 +1610,11 @@
     "correct_key": "C",
     "topic": "",
     "explanation": "Con P=CMg<CMe, la empresa incurre en pérdidas. Para mantener la tarifa de primer mejor se requiere un subsidio o un cargo fijo que cubra la diferencia.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M01-Q77",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M01-Q76",
+    "parent_id": "M01-Q76",
+    "cluster_id": "M01-Q76",
+    "context_premise": "Considere un monopolio natural con costo medio decreciente.",
+    "cluster_size": 2
   },
   {
     "id": "M01-Q78",
@@ -2512,7 +2512,7 @@
     ],
     "correct_key": "B",
     "topic": "",
-    "explanation": "La elasticidad de sustitución mide la respuesta porcentual de la relación K/L ante un cambio porcentual de la RMST: σ=(%Δ(K/L) / %Δ RMST).} subsection*{Bloque B. Aplicaciones cuantitativas y optimización",
+    "explanation": "La elasticidad de sustitución mide la respuesta porcentual de la relación K/L ante un cambio porcentual de la RMST: σ=(%Δ(K/L) / %Δ RMST).",
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M02-Q30",
@@ -3247,7 +3247,7 @@
     ],
     "correct_key": "B",
     "topic": "",
-    "explanation": "Con K=16, Q=4√(L)=20, entonces √(L)=5 y L=25. El costo es 4(25)+1(16)=116.} subsection*{Bloque C. Casos con implicancias tarifarias y regulatorias",
+    "explanation": "Con K=16, Q=4√(L)=20, entonces √(L)=5 y L=25. El costo es 4(25)+1(16)=116.",
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M02-Q65",
@@ -3273,7 +3273,7 @@
     "parent_id": null,
     "cluster_id": "M02-Q66",
     "context_premise": null,
-    "cluster_size": 2
+    "cluster_size": 4
   },
   {
     "id": "M02-Q67",
@@ -3293,8 +3293,8 @@
     "depends_on": "M02-Q66",
     "parent_id": "M02-Q66",
     "cluster_id": "M02-Q66",
-    "context_premise": "Una EPS tiene una función de costo total C(Q)=1000+2Q+0.1Q^2, donde Q se mide en miles de m^3. Si Q=50, el costo medio es:",
-    "cluster_size": 2
+    "context_premise": "Una EPS tiene una función de costo total C(Q) = 1000 + 2Q + 0.1Q^2, donde Q se mide en miles de m^3.",
+    "cluster_size": 4
   },
   {
     "id": "M02-Q68",
@@ -3311,11 +3311,11 @@
     "correct_key": "C",
     "topic": "",
     "explanation": "CMe=1000/Q+2+0.1Q. Derivando: -1000/Q^2+0.1=0, de donde Q^2=10000 y Q=100.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M02-Q68",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M02-Q67",
+    "parent_id": "M02-Q66",
+    "cluster_id": "M02-Q66",
+    "context_premise": "Una EPS tiene una función de costo total C(Q) = 1000 + 2Q + 0.1Q^2, donde Q se mide en miles de m^3.",
+    "cluster_size": 4
   },
   {
     "id": "M02-Q69",
@@ -3332,11 +3332,11 @@
     "correct_key": "C",
     "topic": "",
     "explanation": "Con P=CMg=12 y Q=50, el ingreso es 12(50)=600 y el costo es 1350. La pérdida es 1350-600=750.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M02-Q69",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M02-Q68",
+    "parent_id": "M02-Q66",
+    "cluster_id": "M02-Q66",
+    "context_premise": "Una EPS tiene una función de costo total C(Q) = 1000 + 2Q + 0.1Q^2, donde Q se mide en miles de m^3.",
+    "cluster_size": 4
   },
   {
     "id": "M02-Q70",
@@ -4402,7 +4402,7 @@
     ],
     "correct_key": "A",
     "topic": "",
-    "explanation": "En el corto plazo, la empresa produce donde P=CMg, siempre que el precio cubra al menos el costo variable medio.} subsection*{Bloque B. Aplicaciones cuantitativas y optimización",
+    "explanation": "En el corto plazo, la empresa produce donde P=CMg, siempre que el precio cubra al menos el costo variable medio.",
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M03-Q30",
@@ -4575,7 +4575,7 @@
     "parent_id": null,
     "cluster_id": "M03-Q38",
     "context_premise": null,
-    "cluster_size": 1
+    "cluster_size": 4
   },
   {
     "id": "M03-Q39",
@@ -4592,11 +4592,11 @@
     "correct_key": "A",
     "topic": "",
     "explanation": "1000-50P=50P-500, entonces 1500=100P y P=15.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M03-Q39",
+    "depends_on": "M03-Q38",
+    "parent_id": "M03-Q38",
+    "cluster_id": "M03-Q38",
     "context_premise": null,
-    "cluster_size": 2
+    "cluster_size": 4
   },
   {
     "id": "M03-Q40",
@@ -4614,10 +4614,10 @@
     "topic": "",
     "explanation": "Sustituyendo P=15: Q=1000-50(15)=250.",
     "depends_on": "M03-Q39",
-    "parent_id": "M03-Q39",
-    "cluster_id": "M03-Q39",
-    "context_premise": "Si la demanda de mercado es Q=1000-50P y la oferta es Q=50P-500, el precio de equilibrio es:",
-    "cluster_size": 2
+    "parent_id": "M03-Q38",
+    "cluster_id": "M03-Q38",
+    "context_premise": "Demanda de mercado Q = 1000 - 50P y oferta agregada Q = 50P - 500.",
+    "cluster_size": 4
   },
   {
     "id": "M03-Q41",
@@ -4634,11 +4634,11 @@
     "correct_key": "B",
     "topic": "",
     "explanation": "q=(P-10)/2=(15-10)/2=2.5. También 250/100=2.5.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M03-Q41",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M03-Q40",
+    "parent_id": "M03-Q38",
+    "cluster_id": "M03-Q38",
+    "context_premise": "100 empresas idénticas con oferta individual q = (P - 10)/2; demanda de mercado Q = 1000 - 50P y oferta agregada Q = 50P - 500.",
+    "cluster_size": 4
   },
   {
     "id": "M03-Q42",
@@ -4659,7 +4659,7 @@
     "parent_id": null,
     "cluster_id": "M03-Q42",
     "context_premise": null,
-    "cluster_size": 2
+    "cluster_size": 4
   },
   {
     "id": "M03-Q43",
@@ -4679,8 +4679,8 @@
     "depends_on": "M03-Q42",
     "parent_id": "M03-Q42",
     "cluster_id": "M03-Q42",
-    "context_premise": "Si C(q)=q^2+4q+100, el precio de equilibrio de largo plazo es:",
-    "cluster_size": 2
+    "context_premise": "Industria competitiva en largo plazo donde cada empresa tiene costo total C(q) = q^2 + 4q + 100.",
+    "cluster_size": 4
   },
   {
     "id": "M03-Q44",
@@ -4697,11 +4697,11 @@
     "correct_key": "C",
     "topic": "",
     "explanation": "Con P=24: Q=500-10(24)=260. Si cada empresa produce 10, el número de empresas es 260/10=26.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M03-Q44",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M03-Q43",
+    "parent_id": "M03-Q42",
+    "cluster_id": "M03-Q42",
+    "context_premise": "Industria competitiva en largo plazo donde cada empresa tiene costo total C(q) = q^2 + 4q + 100.",
+    "cluster_size": 4
   },
   {
     "id": "M03-Q45",
@@ -4718,11 +4718,11 @@
     "correct_key": "B",
     "topic": "",
     "explanation": "La demanda inversa es P=50-0.1Q. EC=0.5(50-24)(260)=3380.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M03-Q45",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M03-Q44",
+    "parent_id": "M03-Q42",
+    "cluster_id": "M03-Q42",
+    "context_premise": "Industria competitiva en equilibrio de largo plazo con demanda de mercado Q = 500 - 10P, P = 24 y Q = 260.",
+    "cluster_size": 4
   },
   {
     "id": "M03-Q46",
@@ -4785,7 +4785,8 @@
     "parent_id": null,
     "cluster_id": "M03-Q48",
     "context_premise": null,
-    "cluster_size": 5
+    "cluster_size": 5,
+    "scenario_id": "M03-MERC1"
   },
   {
     "id": "M03-Q49",
@@ -4805,8 +4806,9 @@
     "depends_on": "M03-Q48",
     "parent_id": "M03-Q48",
     "cluster_id": "M03-Q48",
-    "context_premise": "Si la demanda es Q_d=120-2P y la oferta es Q_s=3P-30, el precio de equilibrio es:",
-    "cluster_size": 5
+    "context_premise": "Mercado competitivo con demanda Q_d = 120 - 2P y oferta Q_s = 3P - 30.",
+    "cluster_size": 5,
+    "scenario_id": "M03-MERC1"
   },
   {
     "id": "M03-Q50",
@@ -4826,8 +4828,9 @@
     "depends_on": "M03-Q49",
     "parent_id": "M03-Q48",
     "cluster_id": "M03-Q48",
-    "context_premise": "Si la demanda es Q_d=120-2P y la oferta es Q_s=3P-30, el precio de equilibrio es:",
-    "cluster_size": 5
+    "context_premise": "Mercado competitivo con demanda Q_d = 120 - 2P y oferta Q_s = 3P - 30.",
+    "cluster_size": 5,
+    "scenario_id": "M03-MERC1"
   },
   {
     "id": "M03-Q51",
@@ -4847,8 +4850,9 @@
     "depends_on": "M03-Q50",
     "parent_id": "M03-Q48",
     "cluster_id": "M03-Q48",
-    "context_premise": "Si la demanda es Q_d=120-2P y la oferta es Q_s=3P-30, el precio de equilibrio es:",
-    "cluster_size": 5
+    "context_premise": "Mercado competitivo con demanda Q_d = 120 - 2P y oferta Q_s = 3P - 30.",
+    "cluster_size": 5,
+    "scenario_id": "M03-MERC1"
   },
   {
     "id": "M03-Q52",
@@ -4868,8 +4872,9 @@
     "depends_on": "M03-Q51",
     "parent_id": "M03-Q48",
     "cluster_id": "M03-Q48",
-    "context_premise": "Si la demanda es Q_d=120-2P y la oferta es Q_s=3P-30, el precio de equilibrio es:",
-    "cluster_size": 5
+    "context_premise": "Mercado competitivo con demanda Q_d = 120 - 2P y oferta Q_s = 3P - 30.",
+    "cluster_size": 5,
+    "scenario_id": "M03-MERC1"
   },
   {
     "id": "M03-Q53",
@@ -4889,8 +4894,9 @@
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M03-Q53",
-    "context_premise": null,
-    "cluster_size": 1
+    "context_premise": "Mercado competitivo con demanda Q_d = 120 - 2P y oferta Q_s = 3P - 30.",
+    "cluster_size": 2,
+    "scenario_id": "M03-MERC1"
   },
   {
     "id": "M03-Q54",
@@ -4907,11 +4913,12 @@
     "correct_key": "A",
     "topic": "",
     "explanation": "En Q=30, el precio de demanda es (120-30)/2=45. La pérdida es 0.5(80-30)(45-20)=625.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M03-Q54",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M03-Q53",
+    "parent_id": "M03-Q53",
+    "cluster_id": "M03-Q53",
+    "context_premise": "Mercado competitivo con demanda Q_d = 120 - 2P y oferta Q_s = 3P - 30.",
+    "cluster_size": 2,
+    "scenario_id": "M03-MERC1"
   },
   {
     "id": "M03-Q55",
@@ -4931,8 +4938,9 @@
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M03-Q55",
-    "context_premise": null,
-    "cluster_size": 1
+    "context_premise": "Mercado competitivo con demanda Q_d = 120 - 2P y oferta Q_s = 3P - 30.",
+    "cluster_size": 6,
+    "scenario_id": "M03-MERC1"
   },
   {
     "id": "M03-Q56",
@@ -4949,11 +4957,12 @@
     "correct_key": "B",
     "topic": "",
     "explanation": "Con P=33: Q=120-2(33)=54.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M03-Q56",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M03-Q55",
+    "parent_id": "M03-Q55",
+    "cluster_id": "M03-Q55",
+    "context_premise": "Mercado competitivo con demanda Q_d = 120 - 2P y oferta Q_s = 3P - 30.",
+    "cluster_size": 6,
+    "scenario_id": "M03-MERC1"
   },
   {
     "id": "M03-Q57",
@@ -4970,11 +4979,12 @@
     "correct_key": "A",
     "topic": "",
     "explanation": "Recaudación =5(54)=270.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M03-Q57",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M03-Q56",
+    "parent_id": "M03-Q55",
+    "cluster_id": "M03-Q55",
+    "context_premise": "Mercado competitivo con demanda Q_d = 120 - 2P y oferta Q_s = 3P - 30.",
+    "cluster_size": 6,
+    "scenario_id": "M03-MERC1"
   },
   {
     "id": "M03-Q58",
@@ -4991,11 +5001,12 @@
     "correct_key": "D",
     "topic": "",
     "explanation": "PCP=0.5(5)(60-54)=15.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M03-Q58",
-    "context_premise": null,
-    "cluster_size": 2
+    "depends_on": "M03-Q57",
+    "parent_id": "M03-Q55",
+    "cluster_id": "M03-Q55",
+    "context_premise": "Mercado competitivo con demanda Q_d = 120 - 2P y oferta Q_s = 3P - 30.",
+    "cluster_size": 6,
+    "scenario_id": "M03-MERC1"
   },
   {
     "id": "M03-Q59",
@@ -5013,10 +5024,11 @@
     "topic": "",
     "explanation": "El precio sube de 30 a 33: los consumidores soportan 3 por unidad.",
     "depends_on": "M03-Q58",
-    "parent_id": "M03-Q58",
-    "cluster_id": "M03-Q58",
-    "context_premise": "Con el impuesto de 5, la pérdida de bienestar es:",
-    "cluster_size": 2
+    "parent_id": "M03-Q55",
+    "cluster_id": "M03-Q55",
+    "context_premise": "Mercado competitivo con demanda Q_d = 120 - 2P y oferta Q_s = 3P - 30.",
+    "cluster_size": 6,
+    "scenario_id": "M03-MERC1"
   },
   {
     "id": "M03-Q60",
@@ -5033,11 +5045,12 @@
     "correct_key": "B",
     "topic": "",
     "explanation": "El productor recibe 33-5=28, frente a 30 inicial: soporta 2 por unidad.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M03-Q60",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M03-Q59",
+    "parent_id": "M03-Q55",
+    "cluster_id": "M03-Q55",
+    "context_premise": "Mercado competitivo con demanda Q_d = 120 - 2P y oferta Q_s = 3P - 30.",
+    "cluster_size": 6,
+    "scenario_id": "M03-MERC1"
   },
   {
     "id": "M03-Q61",
@@ -5057,8 +5070,9 @@
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M03-Q61",
-    "context_premise": null,
-    "cluster_size": 1
+    "context_premise": "Mercado competitivo con demanda Q_d = 120 - 2P y oferta Q_s = 3P - 30.",
+    "cluster_size": 3,
+    "scenario_id": "M03-MERC1"
   },
   {
     "id": "M03-Q62",
@@ -5075,11 +5089,12 @@
     "correct_key": "A",
     "topic": "",
     "explanation": "Con P=27: Q=120-2(27)=66. Costo del subsidio =5(66)=330.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M03-Q62",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M03-Q61",
+    "parent_id": "M03-Q61",
+    "cluster_id": "M03-Q61",
+    "context_premise": "Mercado competitivo con demanda Q_d = 120 - 2P y oferta Q_s = 3P - 30.",
+    "cluster_size": 3,
+    "scenario_id": "M03-MERC1"
   },
   {
     "id": "M03-Q63",
@@ -5096,11 +5111,12 @@
     "correct_key": "C",
     "topic": "",
     "explanation": "PCP=0.5(5)(66-60)=15.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M03-Q63",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M03-Q62",
+    "parent_id": "M03-Q61",
+    "cluster_id": "M03-Q61",
+    "context_premise": "Mercado competitivo con demanda Q_d = 120 - 2P y oferta Q_s = 3P - 30.",
+    "cluster_size": 3,
+    "scenario_id": "M03-MERC1"
   },
   {
     "id": "M03-Q64",
@@ -5137,7 +5153,7 @@
     ],
     "correct_key": "C",
     "topic": "",
-    "explanation": "En una industria de costo creciente, la oferta de largo plazo es ascendente.} subsection*{Bloque C. Casos con implicancias tarifarias y regulatorias",
+    "explanation": "En una industria de costo creciente, la oferta de largo plazo es ascendente.",
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M03-Q65",
@@ -5163,7 +5179,8 @@
     "parent_id": null,
     "cluster_id": "M03-Q66",
     "context_premise": null,
-    "cluster_size": 4
+    "cluster_size": 4,
+    "scenario_id": "M03-MERC2"
   },
   {
     "id": "M03-Q67",
@@ -5183,8 +5200,9 @@
     "depends_on": "M03-Q66",
     "parent_id": "M03-Q66",
     "cluster_id": "M03-Q66",
-    "context_premise": "En un mercado competitivo de camiones cisterna, la demanda es Q_d=80-2P y la oferta es Q_s=2P-20. El precio de equilibrio es:",
-    "cluster_size": 4
+    "context_premise": "Mercado competitivo de camiones cisterna con demanda Q_d = 80 - 2P y oferta Q_s = 2P - 20.",
+    "cluster_size": 4,
+    "scenario_id": "M03-MERC2"
   },
   {
     "id": "M03-Q68",
@@ -5204,8 +5222,9 @@
     "depends_on": "M03-Q67",
     "parent_id": "M03-Q66",
     "cluster_id": "M03-Q66",
-    "context_premise": "En un mercado competitivo de camiones cisterna, la demanda es Q_d=80-2P y la oferta es Q_s=2P-20. El precio de equilibrio es:",
-    "cluster_size": 4
+    "context_premise": "Mercado competitivo de camiones cisterna con demanda Q_d = 80 - 2P y oferta Q_s = 2P - 20.",
+    "cluster_size": 4,
+    "scenario_id": "M03-MERC2"
   },
   {
     "id": "M03-Q69",
@@ -5225,8 +5244,9 @@
     "depends_on": "M03-Q68",
     "parent_id": "M03-Q66",
     "cluster_id": "M03-Q66",
-    "context_premise": "En un mercado competitivo de camiones cisterna, la demanda es Q_d=80-2P y la oferta es Q_s=2P-20. El precio de equilibrio es:",
-    "cluster_size": 4
+    "context_premise": "Mercado competitivo de camiones cisterna con demanda Q_d = 80 - 2P y oferta Q_s = 2P - 20.",
+    "cluster_size": 4,
+    "scenario_id": "M03-MERC2"
   },
   {
     "id": "M03-Q70",
@@ -5246,8 +5266,9 @@
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M03-Q70",
-    "context_premise": null,
-    "cluster_size": 1
+    "context_premise": "Mercado competitivo de camiones cisterna con demanda Q_d = 80 - 2P y oferta Q_s = 2P - 20.",
+    "cluster_size": 2,
+    "scenario_id": "M03-MERC2"
   },
   {
     "id": "M03-Q71",
@@ -5264,11 +5285,12 @@
     "correct_key": "D",
     "topic": "",
     "explanation": "En Q=20, el precio de demanda es (80-20)/2=30. PCP=0.5(40-20)(30-20)=100.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M03-Q71",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M03-Q70",
+    "parent_id": "M03-Q70",
+    "cluster_id": "M03-Q70",
+    "context_premise": "Mercado competitivo de camiones cisterna con demanda Q_d = 80 - 2P y oferta Q_s = 2P - 20.",
+    "cluster_size": 2,
+    "scenario_id": "M03-MERC2"
   },
   {
     "id": "M03-Q72",
@@ -5288,8 +5310,9 @@
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M03-Q72",
-    "context_premise": null,
-    "cluster_size": 1
+    "context_premise": "Mercado competitivo de camiones cisterna con demanda Q_d = 80 - 2P y oferta Q_s = 2P - 20.",
+    "cluster_size": 5,
+    "scenario_id": "M03-MERC2"
   },
   {
     "id": "M03-Q73",
@@ -5306,11 +5329,12 @@
     "correct_key": "D",
     "topic": "",
     "explanation": "Con P=27: Q=80-2(27)=26. Recaudación =4(26)=104.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M03-Q73",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M03-Q72",
+    "parent_id": "M03-Q72",
+    "cluster_id": "M03-Q72",
+    "context_premise": "Mercado competitivo de camiones cisterna con demanda Q_d = 80 - 2P y oferta Q_s = 2P - 20.",
+    "cluster_size": 5,
+    "scenario_id": "M03-MERC2"
   },
   {
     "id": "M03-Q74",
@@ -5327,11 +5351,12 @@
     "correct_key": "A",
     "topic": "",
     "explanation": "PCP=0.5(4)(30-26)=8.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M03-Q74",
-    "context_premise": null,
-    "cluster_size": 2
+    "depends_on": "M03-Q73",
+    "parent_id": "M03-Q72",
+    "cluster_id": "M03-Q72",
+    "context_premise": "Mercado competitivo de camiones cisterna con demanda Q_d = 80 - 2P y oferta Q_s = 2P - 20.",
+    "cluster_size": 5,
+    "scenario_id": "M03-MERC2"
   },
   {
     "id": "M03-Q75",
@@ -5349,10 +5374,11 @@
     "topic": "",
     "explanation": "El precio sube de 25 a 27: los consumidores soportan 2 por unidad.",
     "depends_on": "M03-Q74",
-    "parent_id": "M03-Q74",
-    "cluster_id": "M03-Q74",
-    "context_premise": "Con el impuesto de 4, la pérdida de bienestar es:",
-    "cluster_size": 2
+    "parent_id": "M03-Q72",
+    "cluster_id": "M03-Q72",
+    "context_premise": "Mercado competitivo de camiones cisterna con demanda Q_d = 80 - 2P y oferta Q_s = 2P - 20.",
+    "cluster_size": 5,
+    "scenario_id": "M03-MERC2"
   },
   {
     "id": "M03-Q76",
@@ -5369,11 +5395,12 @@
     "correct_key": "B",
     "topic": "",
     "explanation": "El productor recibe 27-4=23, frente a 25 inicial: soporta 2 por unidad.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M03-Q76",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M03-Q75",
+    "parent_id": "M03-Q72",
+    "cluster_id": "M03-Q72",
+    "context_premise": "Mercado competitivo de camiones cisterna con demanda Q_d = 80 - 2P y oferta Q_s = 2P - 20.",
+    "cluster_size": 5,
+    "scenario_id": "M03-MERC2"
   },
   {
     "id": "M03-Q77",
@@ -5393,8 +5420,9 @@
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M03-Q77",
-    "context_premise": null,
-    "cluster_size": 1
+    "context_premise": "Mercado competitivo de camiones cisterna con demanda Q_d = 80 - 2P y oferta Q_s = 2P - 20.",
+    "cluster_size": 3,
+    "scenario_id": "M03-MERC2"
   },
   {
     "id": "M03-Q78",
@@ -5411,11 +5439,12 @@
     "correct_key": "C",
     "topic": "",
     "explanation": "Con P=23: Q=80-2(23)=34. Costo del subsidio =4(34)=136.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M03-Q78",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M03-Q77",
+    "parent_id": "M03-Q77",
+    "cluster_id": "M03-Q77",
+    "context_premise": "Mercado competitivo de camiones cisterna con demanda Q_d = 80 - 2P y oferta Q_s = 2P - 20.",
+    "cluster_size": 3,
+    "scenario_id": "M03-MERC2"
   },
   {
     "id": "M03-Q79",
@@ -5432,11 +5461,12 @@
     "correct_key": "A",
     "topic": "",
     "explanation": "PCP=0.5(4)(34-30)=8.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M03-Q79",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M03-Q78",
+    "parent_id": "M03-Q77",
+    "cluster_id": "M03-Q77",
+    "context_premise": "Mercado competitivo de camiones cisterna con demanda Q_d = 80 - 2P y oferta Q_s = 2P - 20.",
+    "cluster_size": 3,
+    "scenario_id": "M03-MERC2"
   },
   {
     "id": "M03-Q80",
@@ -6292,7 +6322,7 @@
     ],
     "correct_key": "C",
     "topic": "",
-    "explanation": "Con mercados incompletos o información asimétrica, el equilibrio competitivo puede no ser Pareto eficiente; el Primer Teorema deja de aplicarse automáticamente.} subsection*{Bloque B. Aplicaciones cuantitativas y optimización",
+    "explanation": "Con mercados incompletos o información asimétrica, el equilibrio competitivo puede no ser Pareto eficiente; el Primer Teorema deja de aplicarse automáticamente.",
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M04-Q30",
@@ -6317,8 +6347,9 @@
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M04-Q31",
-    "context_premise": null,
-    "cluster_size": 1
+    "context_premise": "Economía de intercambio puro con dos consumidores A y B, dos bienes x e y, dotaciones totales X=10 y Y=10. Las preferencias son U_A = x_A y_A y U_B = x_B y_B. La dotación inicial es A=(8,2) y B=(2,8).",
+    "cluster_size": 3,
+    "scenario_id": "M04-EDGE1"
   },
   {
     "id": "M04-Q32",
@@ -6335,11 +6366,12 @@
     "correct_key": "D",
     "topic": "",
     "explanation": "La altura de la caja de Edgeworth es la dotación total del bien y: Y=10.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M04-Q32",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M04-Q31",
+    "parent_id": "M04-Q31",
+    "cluster_id": "M04-Q31",
+    "context_premise": "Economía de intercambio puro con dos consumidores A y B, dos bienes x e y, dotaciones totales X=10 y Y=10. Las preferencias son U_A = x_A y_A y U_B = x_B y_B. La dotación inicial es A=(8,2) y B=(2,8).",
+    "cluster_size": 3,
+    "scenario_id": "M04-EDGE1"
   },
   {
     "id": "M04-Q33",
@@ -6356,11 +6388,12 @@
     "correct_key": "B",
     "topic": "",
     "explanation": "La dotación inicial de A es la pareja (8,2). La de B es (2,8), que completa las dotaciones totales.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M04-Q33",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M04-Q32",
+    "parent_id": "M04-Q31",
+    "cluster_id": "M04-Q31",
+    "context_premise": "Economía de intercambio puro con dos consumidores A y B, dos bienes x e y, dotaciones totales X=10 y Y=10. Las preferencias son U_A = x_A y_A y U_B = x_B y_B. La dotación inicial es A=(8,2) y B=(2,8).",
+    "cluster_size": 3,
+    "scenario_id": "M04-EDGE1"
   },
   {
     "id": "M04-Q34",
@@ -6380,8 +6413,9 @@
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M04-Q34",
-    "context_premise": null,
-    "cluster_size": 1
+    "context_premise": "Economía de intercambio puro con dos consumidores A y B, dos bienes x e y, dotaciones totales X=10 y Y=10. Las preferencias son U_A = x_A y_A y U_B = x_B y_B. La dotación inicial es A=(8,2) y B=(2,8).",
+    "cluster_size": 3,
+    "scenario_id": "M04-EDGE1"
   },
   {
     "id": "M04-Q35",
@@ -6398,11 +6432,12 @@
     "correct_key": "D",
     "topic": "",
     "explanation": "Para B, MRS_B=y_B/x_B=8/2=4.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M04-Q35",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M04-Q34",
+    "parent_id": "M04-Q34",
+    "cluster_id": "M04-Q34",
+    "context_premise": "Economía de intercambio puro con dos consumidores A y B, dos bienes x e y, dotaciones totales X=10 y Y=10. Las preferencias son U_A = x_A y_A y U_B = x_B y_B. La dotación inicial es A=(8,2) y B=(2,8).",
+    "cluster_size": 3,
+    "scenario_id": "M04-EDGE1"
   },
   {
     "id": "M04-Q36",
@@ -6419,11 +6454,12 @@
     "correct_key": "B",
     "topic": "",
     "explanation": "En la dotación, MRS_A=0.25 y MRS_B=4. Como son distintas, existen ganancias de intercambio y la asignación no es Pareto eficiente.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M04-Q36",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M04-Q35",
+    "parent_id": "M04-Q34",
+    "cluster_id": "M04-Q34",
+    "context_premise": "Economía de intercambio puro con dos consumidores A y B, dos bienes x e y, dotaciones totales X=10 y Y=10. Las preferencias son U_A = x_A y_A y U_B = x_B y_B. La dotación inicial es A=(8,2) y B=(2,8).",
+    "cluster_size": 3,
+    "scenario_id": "M04-EDGE1"
   },
   {
     "id": "M04-Q37",
@@ -6443,8 +6479,9 @@
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M04-Q37",
-    "context_premise": null,
-    "cluster_size": 1
+    "context_premise": "Economía de intercambio puro con dos consumidores A y B, dos bienes x e y, dotaciones totales X=10 y Y=10. Las preferencias son U_A = x_A y_A y U_B = x_B y_B. La dotación inicial es A=(8,2) y B=(2,8).",
+    "cluster_size": 4,
+    "scenario_id": "M04-EDGE1"
   },
   {
     "id": "M04-Q38",
@@ -6461,11 +6498,12 @@
     "correct_key": "B",
     "topic": "",
     "explanation": "Con preferencias Cobb-Douglas idénticas y dotaciones simétricas, el precio relativo de equilibrio es p_x/p_y=1.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M04-Q38",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M04-Q37",
+    "parent_id": "M04-Q37",
+    "cluster_id": "M04-Q37",
+    "context_premise": "Economía de intercambio puro con dos consumidores A y B, dos bienes x e y, dotaciones totales X=10 y Y=10. Las preferencias son U_A = x_A y_A y U_B = x_B y_B. La dotación inicial es A=(8,2) y B=(2,8).",
+    "cluster_size": 4,
+    "scenario_id": "M04-EDGE1"
   },
   {
     "id": "M04-Q39",
@@ -6482,11 +6520,12 @@
     "correct_key": "C",
     "topic": "",
     "explanation": "Con p_x=p_y=1, el ingreso de A es 8+2=10. Gasta la mitad en x: x_A=5.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M04-Q39",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M04-Q38",
+    "parent_id": "M04-Q37",
+    "cluster_id": "M04-Q37",
+    "context_premise": "Economía de intercambio puro con dos consumidores A y B, dos bienes x e y, dotaciones totales X=10 y Y=10. Las preferencias son U_A = x_A y_A y U_B = x_B y_B. La dotación inicial es A=(8,2) y B=(2,8).",
+    "cluster_size": 4,
+    "scenario_id": "M04-EDGE1"
   },
   {
     "id": "M04-Q40",
@@ -6503,11 +6542,12 @@
     "correct_key": "C",
     "topic": "",
     "explanation": "Con el mismo ingreso y precios, A gasta la otra mitad en y: y_A=5. El equilibrio de A es (5,5).",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M04-Q40",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M04-Q39",
+    "parent_id": "M04-Q37",
+    "cluster_id": "M04-Q37",
+    "context_premise": "Economía de intercambio puro con dos consumidores A y B, dos bienes x e y, dotaciones totales X=10 y Y=10. Las preferencias son U_A = x_A y_A y U_B = x_B y_B. La dotación inicial es A=(8,2) y B=(2,8).",
+    "cluster_size": 4,
+    "scenario_id": "M04-EDGE1"
   },
   {
     "id": "M04-Q41",
@@ -6527,8 +6567,9 @@
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M04-Q41",
-    "context_premise": null,
-    "cluster_size": 1
+    "context_premise": "Economía de intercambio puro con dos consumidores A y B, dos bienes x e y, dotaciones totales X=10 y Y=10. Las preferencias son U_A = x_A y_A y U_B = x_B y_B. La dotación inicial es A=(8,2) y B=(2,8).",
+    "cluster_size": 4,
+    "scenario_id": "M04-EDGE1"
   },
   {
     "id": "M04-Q42",
@@ -6545,11 +6586,12 @@
     "correct_key": "C",
     "topic": "",
     "explanation": "Para B, U_B=2· 8=16 en la dotación y U_B=5· 5=25 en el equilibrio; la ganancia también es 9.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M04-Q42",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M04-Q41",
+    "parent_id": "M04-Q41",
+    "cluster_id": "M04-Q41",
+    "context_premise": "Economía de intercambio puro con dos consumidores A y B, dos bienes x e y, dotaciones totales X=10 y Y=10. Las preferencias son U_A = x_A y_A y U_B = x_B y_B. La dotación inicial es A=(8,2) y B=(2,8).",
+    "cluster_size": 4,
+    "scenario_id": "M04-EDGE1"
   },
   {
     "id": "M04-Q43",
@@ -6566,11 +6608,12 @@
     "correct_key": "C",
     "topic": "",
     "explanation": "En el equilibrio, A consume (5,5) y B consume (5,5). Entonces MRS_A=5/5=1 y MRS_B=5/5=1; la asignación es Pareto eficiente.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M04-Q43",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M04-Q42",
+    "parent_id": "M04-Q41",
+    "cluster_id": "M04-Q41",
+    "context_premise": "Economía de intercambio puro con dos consumidores A y B, dos bienes x e y, dotaciones totales X=10 y Y=10. Las preferencias son U_A = x_A y_A y U_B = x_B y_B. La dotación inicial es A=(8,2) y B=(2,8).",
+    "cluster_size": 4,
+    "scenario_id": "M04-EDGE1"
   },
   {
     "id": "M04-Q44",
@@ -6587,11 +6630,12 @@
     "correct_key": "A",
     "topic": "",
     "explanation": "Con p_x=p_y=1, la asignación A=(6,6) requiere un ingreso de 12. A tiene un ingreso inicial de 10, por lo que necesita una transferencia de 2 desde B.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M04-Q44",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M04-Q43",
+    "parent_id": "M04-Q41",
+    "cluster_id": "M04-Q41",
+    "context_premise": "Economía de intercambio puro con dos consumidores A y B, dos bienes x e y, dotaciones totales X=10 y Y=10. Las preferencias son U_A = x_A y_A y U_B = x_B y_B. La dotación inicial es A=(8,2) y B=(2,8).",
+    "cluster_size": 4,
+    "scenario_id": "M04-EDGE1"
   },
   {
     "id": "M04-Q45",
@@ -6611,8 +6655,9 @@
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M04-Q45",
-    "context_premise": null,
-    "cluster_size": 1
+    "context_premise": "Economía de intercambio puro con consumidores A y B, bienes x e y, dotaciones totales X=10 y Y=10 y preferencias U_A = x_A y_A, U_B = x_B y_B (considere p_x = p_y = 1 en el caso de transferencias).",
+    "cluster_size": 3,
+    "scenario_id": "M04-EDGE1"
   },
   {
     "id": "M04-Q46",
@@ -6629,11 +6674,12 @@
     "correct_key": "C",
     "topic": "",
     "explanation": "Con una transferencia de 2 desde B hacia A, el ingreso de A es 12 y el de B es 8. A consume x_A=6 e y_A=6.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M04-Q46",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M04-Q45",
+    "parent_id": "M04-Q45",
+    "cluster_id": "M04-Q45",
+    "context_premise": "Economía de intercambio puro con consumidores A y B, bienes x e y, dotaciones totales X=10 y Y=10 y preferencias U_A = x_A y_A, U_B = x_B y_B (considere p_x = p_y = 1 en el caso de transferencias).",
+    "cluster_size": 3,
+    "scenario_id": "M04-EDGE1"
   },
   {
     "id": "M04-Q47",
@@ -6650,11 +6696,12 @@
     "correct_key": "A",
     "topic": "",
     "explanation": "La asignación A=(6,6) y B=(4,4) cumple MRS_A=6/6=1 y MRS_B=4/4=1. Las MRS son iguales, por lo que es Pareto eficiente.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M04-Q47",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M04-Q46",
+    "parent_id": "M04-Q45",
+    "cluster_id": "M04-Q45",
+    "context_premise": "Economía de intercambio puro con consumidores A y B, bienes x e y, dotaciones totales X=10 y Y=10 y preferencias U_A = x_A y_A, U_B = x_B y_B (considere p_x = p_y = 1 en el caso de transferencias).",
+    "cluster_size": 3,
+    "scenario_id": "M04-EDGE1"
   },
   {
     "id": "M04-Q48",
@@ -6696,7 +6743,7 @@
     "parent_id": null,
     "cluster_id": "M04-Q49",
     "context_premise": null,
-    "cluster_size": 1
+    "cluster_size": 2
   },
   {
     "id": "M04-Q50",
@@ -6713,11 +6760,11 @@
     "correct_key": "B",
     "topic": "",
     "explanation": "Si el total de y es 10 y A tiene 4, entonces B tiene 10-4=6.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M04-Q50",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M04-Q49",
+    "parent_id": "M04-Q49",
+    "cluster_id": "M04-Q49",
+    "context_premise": "En una caja de Edgeworth con X = 20 e Y = 10, el consumidor A tiene (12, 4).",
+    "cluster_size": 2
   },
   {
     "id": "M04-Q51",
@@ -7027,7 +7074,7 @@
     ],
     "correct_key": "C",
     "topic": "",
-    "explanation": "En un monopolio, P>CMg y la cantidad producida es menor que la competitiva; esto genera pérdida de bienestar y una falla del Primer Teorema del Bienestar.} subsection*{Bloque C. Casos con implicancias regulatorias y de política",
+    "explanation": "En un monopolio, P>CMg y la cantidad producida es menor que la competitiva; esto genera pérdida de bienestar y una falla del Primer Teorema del Bienestar.",
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M04-Q65",
@@ -7052,8 +7099,8 @@
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M04-Q66",
-    "context_premise": null,
-    "cluster_size": 1
+    "context_premise": "Dos usuarios de agua, A y B, disponen de un total de 100 unidades. Los beneficios marginales son MBA = 100 - q_A y MBB = 80 - q_B, y los beneficios totales son las áreas bajo estas curvas.",
+    "cluster_size": 3
   },
   {
     "id": "M04-Q67",
@@ -7070,11 +7117,11 @@
     "correct_key": "B",
     "topic": "",
     "explanation": "Con q_A=60 y un total de 100, el usuario B recibe q_B=40.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M04-Q67",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M04-Q66",
+    "parent_id": "M04-Q66",
+    "cluster_id": "M04-Q66",
+    "context_premise": "Dos usuarios de agua, A y B, disponen de un total de 100 unidades. Los beneficios marginales son MBA = 100 - q_A y MBB = 80 - q_B, y los beneficios totales son las áreas bajo estas curvas.",
+    "cluster_size": 3
   },
   {
     "id": "M04-Q68",
@@ -7091,11 +7138,11 @@
     "correct_key": "C",
     "topic": "",
     "explanation": "El beneficio total inicial es 4550+1950=6500. En la asignación eficiente es 4200+2400=6600. La ganancia es 100.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M04-Q68",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M04-Q67",
+    "parent_id": "M04-Q66",
+    "cluster_id": "M04-Q66",
+    "context_premise": "Dos usuarios de agua, A y B, disponen de un total de 100 unidades. Los beneficios marginales son MBA = 100 - q_A y MBB = 80 - q_B, y los beneficios totales son las áreas bajo estas curvas.",
+    "cluster_size": 3
   },
   {
     "id": "M04-Q69",
@@ -7200,7 +7247,7 @@
     "parent_id": null,
     "cluster_id": "M04-Q73",
     "context_premise": null,
-    "cluster_size": 1
+    "cluster_size": 2
   },
   {
     "id": "M04-Q74",
@@ -7217,11 +7264,11 @@
     "correct_key": "A",
     "topic": "",
     "explanation": "La reasignación aumenta el beneficio total, pero A podría perder si no recibe compensación. Existen ganancias potenciales que permiten una mejora de Pareto con compensación.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M04-Q74",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M04-Q73",
+    "parent_id": "M04-Q73",
+    "cluster_id": "M04-Q73",
+    "context_premise": "Con asignación inicial A=80 y B=20 frente a la asignación eficiente A=60 y B=40, se transfieren 20 unidades de agua de A hacia B.",
+    "cluster_size": 2
   },
   {
     "id": "M04-Q75",
@@ -8182,7 +8229,7 @@
     ],
     "correct_key": "C",
     "topic": "",
-    "explanation": "Un precio máximo igual al costo medio permite recuperar costos y evitar el precio monopólico, aunque no alcanza la eficiencia de primer mejor asociada a P=CMg.} subsection*{Bloque B. Aplicaciones cuantitativas y optimización",
+    "explanation": "Un precio máximo igual al costo medio permite recuperar costos y evitar el precio monopólico, aunque no alcanza la eficiencia de primer mejor asociada a P=CMg.",
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M05-Q30",
@@ -8207,8 +8254,9 @@
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M05-Q31",
-    "context_premise": null,
-    "cluster_size": 1
+    "context_premise": "Caso base (Bloque B): Monopolio con demanda inversa P = 100 - Q y costo total C(Q) = 20Q, de modo que CMg = 20.",
+    "cluster_size": 4,
+    "scenario_id": "M05-MONO1"
   },
   {
     "id": "M05-Q32",
@@ -8225,11 +8273,12 @@
     "correct_key": "B",
     "topic": "",
     "explanation": "Sustituyendo Q=40 en la demanda: P=100-40=60.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M05-Q32",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M05-Q31",
+    "parent_id": "M05-Q31",
+    "cluster_id": "M05-Q31",
+    "context_premise": "Caso base (Bloque B): Monopolio con demanda inversa P = 100 - Q y costo total C(Q) = 20Q, de modo que CMg = 20.",
+    "cluster_size": 4,
+    "scenario_id": "M05-MONO1"
   },
   {
     "id": "M05-Q33",
@@ -8246,11 +8295,12 @@
     "correct_key": "C",
     "topic": "",
     "explanation": "El beneficio es (P-CMg)Q=(60-20)40=1600. También IT-CT=2400-800=1600.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M05-Q33",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M05-Q32",
+    "parent_id": "M05-Q31",
+    "cluster_id": "M05-Q31",
+    "context_premise": "Caso base (Bloque B): Monopolio con demanda inversa P = 100 - Q y costo total C(Q) = 20Q, de modo que CMg = 20.",
+    "cluster_size": 4,
+    "scenario_id": "M05-MONO1"
   },
   {
     "id": "M05-Q34",
@@ -8267,11 +8317,12 @@
     "correct_key": "B",
     "topic": "",
     "explanation": "En el óptimo, IMg=CMg=20.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M05-Q34",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M05-Q33",
+    "parent_id": "M05-Q31",
+    "cluster_id": "M05-Q31",
+    "context_premise": "Caso base (Bloque B): Monopolio con demanda inversa P = 100 - Q y costo total C(Q) = 20Q, de modo que CMg = 20.",
+    "cluster_size": 4,
+    "scenario_id": "M05-MONO1"
   },
   {
     "id": "M05-Q35",
@@ -8291,8 +8342,9 @@
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M05-Q35",
-    "context_premise": null,
-    "cluster_size": 1
+    "context_premise": "Caso base (Bloque B): Monopolio con demanda inversa P = 100 - Q y costo total C(Q) = 20Q, de modo que CMg = 20.",
+    "cluster_size": 4,
+    "scenario_id": "M05-MONO1"
   },
   {
     "id": "M05-Q36",
@@ -8309,11 +8361,12 @@
     "correct_key": "D",
     "topic": "",
     "explanation": "Con Q=100-P, la elasticidad es ε=-(P/Q)=-60/40=-1.5. En valor absoluto, 1.5.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M05-Q36",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M05-Q35",
+    "parent_id": "M05-Q35",
+    "cluster_id": "M05-Q35",
+    "context_premise": "Caso base (Bloque B): Monopolio con demanda inversa P = 100 - Q y costo total C(Q) = 20Q, de modo que CMg = 20.",
+    "cluster_size": 4,
+    "scenario_id": "M05-MONO1"
   },
   {
     "id": "M05-Q37",
@@ -8330,11 +8383,12 @@
     "correct_key": "B",
     "topic": "",
     "explanation": "EC=0.5(100-60)(40)=800.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M05-Q37",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M05-Q36",
+    "parent_id": "M05-Q35",
+    "cluster_id": "M05-Q35",
+    "context_premise": "Caso base (Bloque B): Monopolio con demanda inversa P = 100 - Q y costo total C(Q) = 20Q, de modo que CMg = 20.",
+    "cluster_size": 4,
+    "scenario_id": "M05-MONO1"
   },
   {
     "id": "M05-Q38",
@@ -8351,11 +8405,12 @@
     "correct_key": "D",
     "topic": "",
     "explanation": "La cantidad competitiva es 80. PCP=0.5(80-40)(60-20)=800.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M05-Q38",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M05-Q37",
+    "parent_id": "M05-Q35",
+    "cluster_id": "M05-Q35",
+    "context_premise": "Caso base (Bloque B): Monopolio con demanda inversa P = 100 - Q y costo total C(Q) = 20Q, de modo que CMg = 20.",
+    "cluster_size": 4,
+    "scenario_id": "M05-MONO1"
   },
   {
     "id": "M05-Q39",
@@ -8375,8 +8430,9 @@
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M05-Q39",
-    "context_premise": null,
-    "cluster_size": 1
+    "context_premise": "Caso base (Bloque B): Monopolio con demanda inversa P = 100 - Q y costo total C(Q) = 20Q, de modo que CMg = 20.",
+    "cluster_size": 4,
+    "scenario_id": "M05-MONO1"
   },
   {
     "id": "M05-Q40",
@@ -8393,11 +8449,12 @@
     "correct_key": "C",
     "topic": "",
     "explanation": "El precio competitivo es P=CMg=20.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M05-Q40",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M05-Q39",
+    "parent_id": "M05-Q39",
+    "cluster_id": "M05-Q39",
+    "context_premise": "Caso base (Bloque B): Monopolio con demanda inversa P = 100 - Q y costo total C(Q) = 20Q, de modo que CMg = 20.",
+    "cluster_size": 4,
+    "scenario_id": "M05-MONO1"
   },
   {
     "id": "M05-Q41",
@@ -8414,11 +8471,12 @@
     "correct_key": "D",
     "topic": "",
     "explanation": "El excedente total competitivo es 0.5(100-20)(80)=3200.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M05-Q41",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M05-Q40",
+    "parent_id": "M05-Q39",
+    "cluster_id": "M05-Q39",
+    "context_premise": "Caso base (Bloque B): Monopolio con demanda inversa P = 100 - Q y costo total C(Q) = 20Q, de modo que CMg = 20.",
+    "cluster_size": 4,
+    "scenario_id": "M05-MONO1"
   },
   {
     "id": "M05-Q42",
@@ -8435,11 +8493,12 @@
     "correct_key": "A",
     "topic": "",
     "explanation": "En el monopolio, ET=EC+π=800+1600=2400.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M05-Q42",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M05-Q41",
+    "parent_id": "M05-Q39",
+    "cluster_id": "M05-Q39",
+    "context_premise": "Caso base (Bloque B): Monopolio con demanda inversa P = 100 - Q y costo total C(Q) = 20Q, de modo que CMg = 20.",
+    "cluster_size": 4,
+    "scenario_id": "M05-MONO1"
   },
   {
     "id": "M05-Q43",
@@ -8459,8 +8518,9 @@
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M05-Q43",
-    "context_premise": null,
-    "cluster_size": 1
+    "context_premise": "Caso base (Bloque B): Monopolio con demanda inversa P = 100 - Q y costo total C(Q) = 20Q, de modo que CMg = 20.",
+    "cluster_size": 3,
+    "scenario_id": "M05-MONO1"
   },
   {
     "id": "M05-Q44",
@@ -8477,11 +8537,12 @@
     "correct_key": "A",
     "topic": "",
     "explanation": "El monopolista captura todo el excedente total, que con Q=80 es 0.5(100-20)(80)=3200.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M05-Q44",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M05-Q43",
+    "parent_id": "M05-Q43",
+    "cluster_id": "M05-Q43",
+    "context_premise": "Caso base (Bloque B): Monopolio con demanda inversa P = 100 - Q y costo total C(Q) = 20Q, de modo que CMg = 20.",
+    "cluster_size": 3,
+    "scenario_id": "M05-MONO1"
   },
   {
     "id": "M05-Q45",
@@ -8498,11 +8559,12 @@
     "correct_key": "B",
     "topic": "",
     "explanation": "Con discriminación perfecta, produce hasta que P=CMg en la última unidad: Q=80.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M05-Q45",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M05-Q44",
+    "parent_id": "M05-Q43",
+    "cluster_id": "M05-Q43",
+    "context_premise": "Caso base (Bloque B): Monopolio con demanda inversa P = 100 - Q y costo total C(Q) = 20Q, de modo que CMg = 20.",
+    "cluster_size": 3,
+    "scenario_id": "M05-MONO1"
   },
   {
     "id": "M05-Q46",
@@ -8523,7 +8585,7 @@
     "parent_id": null,
     "cluster_id": "M05-Q46",
     "context_premise": null,
-    "cluster_size": 2
+    "cluster_size": 3
   },
   {
     "id": "M05-Q47",
@@ -8543,8 +8605,8 @@
     "depends_on": "M05-Q46",
     "parent_id": "M05-Q46",
     "cluster_id": "M05-Q46",
-    "context_premise": "El monopolista aplica discriminación de tercer grado entre dos mercados: P_1=100-Q_1 y P_2=80-Q_2, con CMg=20. La cantidad óptima en el mercado 1 es:",
-    "cluster_size": 2
+    "context_premise": "El monopolista aplica discriminación de tercer grado entre dos mercados: P_1 = 100 - Q_1 y P_2 = 80 - Q_2, con CMg = 20.",
+    "cluster_size": 3
   },
   {
     "id": "M05-Q48",
@@ -8561,11 +8623,11 @@
     "correct_key": "D",
     "topic": "",
     "explanation": "El precio en el mercado 2 es P_2=80-30=50.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M05-Q48",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M05-Q47",
+    "parent_id": "M05-Q46",
+    "cluster_id": "M05-Q46",
+    "context_premise": "El monopolista aplica discriminación de tercer grado entre dos mercados: P_1 = 100 - Q_1 y P_2 = 80 - Q_2, con CMg = 20.",
+    "cluster_size": 3
   },
   {
     "id": "M05-Q49",
@@ -8712,7 +8774,8 @@
     "parent_id": null,
     "cluster_id": "M05-Q55",
     "context_premise": null,
-    "cluster_size": 4
+    "cluster_size": 4,
+    "scenario_id": "M05-MONONAT"
   },
   {
     "id": "M05-Q56",
@@ -8732,8 +8795,9 @@
     "depends_on": "M05-Q55",
     "parent_id": "M05-Q55",
     "cluster_id": "M05-Q55",
-    "context_premise": "Considere un monopolio natural con C(Q)=100+10Q y demanda P=50-Q. La cantidad que maximiza el beneficio es:",
-    "cluster_size": 4
+    "context_premise": "Monopolio natural con función de costos C(Q) = 100 + 10Q y demanda P = 50 - Q.",
+    "cluster_size": 4,
+    "scenario_id": "M05-MONONAT"
   },
   {
     "id": "M05-Q57",
@@ -8753,8 +8817,9 @@
     "depends_on": "M05-Q56",
     "parent_id": "M05-Q55",
     "cluster_id": "M05-Q55",
-    "context_premise": "Considere un monopolio natural con C(Q)=100+10Q y demanda P=50-Q. La cantidad que maximiza el beneficio es:",
-    "cluster_size": 4
+    "context_premise": "Monopolio natural con función de costos C(Q) = 100 + 10Q y demanda P = 50 - Q.",
+    "cluster_size": 4,
+    "scenario_id": "M05-MONONAT"
   },
   {
     "id": "M05-Q58",
@@ -8774,8 +8839,9 @@
     "depends_on": "M05-Q57",
     "parent_id": "M05-Q55",
     "cluster_id": "M05-Q55",
-    "context_premise": "Considere un monopolio natural con C(Q)=100+10Q y demanda P=50-Q. La cantidad que maximiza el beneficio es:",
-    "cluster_size": 4
+    "context_premise": "Monopolio natural con función de costos C(Q) = 100 + 10Q y demanda P = 50 - Q.",
+    "cluster_size": 4,
+    "scenario_id": "M05-MONONAT"
   },
   {
     "id": "M05-Q59",
@@ -8795,8 +8861,9 @@
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M05-Q59",
-    "context_premise": null,
-    "cluster_size": 1
+    "context_premise": "Monopolio natural con función de costos C(Q) = 100 + 10Q y demanda P = 50 - Q.",
+    "cluster_size": 3,
+    "scenario_id": "M05-MONONAT"
   },
   {
     "id": "M05-Q60",
@@ -8813,11 +8880,12 @@
     "correct_key": "C",
     "topic": "",
     "explanation": "En el monopolio natural no regulado, el precio de monopolio es 30 y el costo medio en Q=20 es 15; por tanto, P>CMe.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M05-Q60",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M05-Q59",
+    "parent_id": "M05-Q59",
+    "cluster_id": "M05-Q59",
+    "context_premise": "Monopolio natural con función de costos C(Q) = 100 + 10Q y demanda P = 50 - Q.",
+    "cluster_size": 3,
+    "scenario_id": "M05-MONONAT"
   },
   {
     "id": "M05-Q61",
@@ -8834,11 +8902,12 @@
     "correct_key": "A",
     "topic": "",
     "explanation": "Como P=CMg<CMe, la empresa pierde; se requiere un subsidio u otro mecanismo para cubrir la diferencia.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M05-Q61",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M05-Q60",
+    "parent_id": "M05-Q59",
+    "cluster_id": "M05-Q59",
+    "context_premise": "Monopolio natural con función de costos C(Q) = 100 + 10Q y demanda P = 50 - Q.",
+    "cluster_size": 3,
+    "scenario_id": "M05-MONONAT"
   },
   {
     "id": "M05-Q62",
@@ -8879,8 +8948,9 @@
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M05-Q63",
-    "context_premise": null,
-    "cluster_size": 1
+    "context_premise": "Caso base (Bloque B): Monopolio con demanda inversa P = 100 - Q y costo total C(Q) = 20Q, de modo que CMg = 20.",
+    "cluster_size": 2,
+    "scenario_id": "M05-MONO1"
   },
   {
     "id": "M05-Q64",
@@ -8897,11 +8967,12 @@
     "correct_key": "A",
     "topic": "",
     "explanation": "El beneficio del monopolista es (60-20)40=1600.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M05-Q64",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M05-Q63",
+    "parent_id": "M05-Q63",
+    "cluster_id": "M05-Q63",
+    "context_premise": "Caso base (Bloque B): Monopolio con demanda inversa P = 100 - Q y costo total C(Q) = 20Q, de modo que CMg = 20.",
+    "cluster_size": 2,
+    "scenario_id": "M05-MONO1"
   },
   {
     "id": "M05-Q65",
@@ -8917,7 +8988,7 @@
     ],
     "correct_key": "B",
     "topic": "",
-    "explanation": "Cuanto menos elástica es la demanda, mayor es el margen precio-costo y mayor tiende a ser la pérdida de eficiencia.} subsection*{Bloque C. Casos con implicancias regulatorias y tarifarias",
+    "explanation": "Cuanto menos elástica es la demanda, mayor es el margen precio-costo y mayor tiende a ser la pérdida de eficiencia.",
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M05-Q65",
@@ -10072,7 +10143,7 @@
     ],
     "correct_key": "B",
     "topic": "",
-    "explanation": "En un mercado competitivo, el equilibrio se alcanza cuando la cantidad de trabajo demandada iguala la cantidad ofrecida al salario vigente.} subsection*{Bloque B. Aplicaciones cuantitativas y optimización",
+    "explanation": "En un mercado competitivo, el equilibrio se alcanza cuando la cantidad de trabajo demandada iguala la cantidad ofrecida al salario vigente.",
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M06-Q30",
@@ -10097,8 +10168,9 @@
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M06-Q31",
-    "context_premise": null,
-    "cluster_size": 1
+    "context_premise": "Caso base (Bloque B): Mercado de trabajo con demanda w = 70 - 2L y oferta w = 10 + L (w en unidades monetarias y L en unidades de trabajo).",
+    "cluster_size": 2,
+    "scenario_id": "M06-LAB1"
   },
   {
     "id": "M06-Q32",
@@ -10115,11 +10187,12 @@
     "correct_key": "D",
     "topic": "",
     "explanation": "Sustituyendo L=20 en la oferta: w=10+20=30.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M06-Q32",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M06-Q31",
+    "parent_id": "M06-Q31",
+    "cluster_id": "M06-Q31",
+    "context_premise": "Caso base (Bloque B): Mercado de trabajo con demanda w = 70 - 2L y oferta w = 10 + L (w en unidades monetarias y L en unidades de trabajo).",
+    "cluster_size": 2,
+    "scenario_id": "M06-LAB1"
   },
   {
     "id": "M06-Q33",
@@ -10139,8 +10212,9 @@
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M06-Q33",
-    "context_premise": null,
-    "cluster_size": 1
+    "context_premise": "Caso base (Bloque B): Mercado de trabajo con demanda w = 70 - 2L y oferta w = 10 + L (w en unidades monetarias y L en unidades de trabajo).",
+    "cluster_size": 4,
+    "scenario_id": "M06-LAB1"
   },
   {
     "id": "M06-Q34",
@@ -10157,11 +10231,12 @@
     "correct_key": "D",
     "topic": "",
     "explanation": "El monopsonista paga el salario de la oferta para L=15: w=10+15=25.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M06-Q34",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M06-Q33",
+    "parent_id": "M06-Q33",
+    "cluster_id": "M06-Q33",
+    "context_premise": "Caso base (Bloque B): Mercado de trabajo con demanda w = 70 - 2L y oferta w = 10 + L (w en unidades monetarias y L en unidades de trabajo).",
+    "cluster_size": 4,
+    "scenario_id": "M06-LAB1"
   },
   {
     "id": "M06-Q35",
@@ -10178,11 +10253,12 @@
     "correct_key": "B",
     "topic": "",
     "explanation": "CMgF=10+2(15)=40.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M06-Q35",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M06-Q34",
+    "parent_id": "M06-Q33",
+    "cluster_id": "M06-Q33",
+    "context_premise": "Caso base (Bloque B): Mercado de trabajo con demanda w = 70 - 2L y oferta w = 10 + L (w en unidades monetarias y L en unidades de trabajo).",
+    "cluster_size": 4,
+    "scenario_id": "M06-LAB1"
   },
   {
     "id": "M06-Q36",
@@ -10199,11 +10275,12 @@
     "correct_key": "A",
     "topic": "",
     "explanation": "MRP=70-2(15)=40. En el óptimo del monopsonista, MRP=CMgF=40.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M06-Q36",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M06-Q35",
+    "parent_id": "M06-Q33",
+    "cluster_id": "M06-Q33",
+    "context_premise": "Caso base (Bloque B): Mercado de trabajo con demanda w = 70 - 2L y oferta w = 10 + L (w en unidades monetarias y L en unidades de trabajo).",
+    "cluster_size": 4,
+    "scenario_id": "M06-LAB1"
   },
   {
     "id": "M06-Q37",
@@ -10223,8 +10300,9 @@
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M06-Q37",
-    "context_premise": null,
-    "cluster_size": 1
+    "context_premise": "Caso base (Bloque B): Mercado de trabajo con demanda w = 70 - 2L y oferta w = 10 + L (w en unidades monetarias y L en unidades de trabajo).",
+    "cluster_size": 3,
+    "scenario_id": "M06-LAB1"
   },
   {
     "id": "M06-Q38",
@@ -10241,11 +10319,12 @@
     "correct_key": "B",
     "topic": "",
     "explanation": "El empleo competitivo es 20 y el de monopsonio es 15; la diferencia es 5.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M06-Q38",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M06-Q37",
+    "parent_id": "M06-Q37",
+    "cluster_id": "M06-Q37",
+    "context_premise": "Caso base (Bloque B): Mercado de trabajo con demanda w = 70 - 2L y oferta w = 10 + L (w en unidades monetarias y L en unidades de trabajo).",
+    "cluster_size": 3,
+    "scenario_id": "M06-LAB1"
   },
   {
     "id": "M06-Q39",
@@ -10262,11 +10341,12 @@
     "correct_key": "D",
     "topic": "",
     "explanation": "El salario competitivo es 30 y el de monopsonio es 25; la diferencia es 5.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M06-Q39",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M06-Q38",
+    "parent_id": "M06-Q37",
+    "cluster_id": "M06-Q37",
+    "context_premise": "Caso base (Bloque B): Mercado de trabajo con demanda w = 70 - 2L y oferta w = 10 + L (w en unidades monetarias y L en unidades de trabajo).",
+    "cluster_size": 3,
+    "scenario_id": "M06-LAB1"
   },
   {
     "id": "M06-Q40",
@@ -10286,8 +10366,9 @@
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M06-Q40",
-    "context_premise": null,
-    "cluster_size": 1
+    "context_premise": "Caso base (Bloque B): Mercado de trabajo con demanda w = 70 - 2L y oferta w = 10 + L (w en unidades monetarias y L en unidades de trabajo).",
+    "cluster_size": 3,
+    "scenario_id": "M06-LAB1"
   },
   {
     "id": "M06-Q41",
@@ -10304,11 +10385,12 @@
     "correct_key": "D",
     "topic": "",
     "explanation": "El salario mínimo que induce el empleo competitivo es el salario competitivo, 30. Por encima de ese nivel, el empleo empezaría a caer.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M06-Q41",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M06-Q40",
+    "parent_id": "M06-Q40",
+    "cluster_id": "M06-Q40",
+    "context_premise": "Caso base (Bloque B): Mercado de trabajo con demanda w = 70 - 2L y oferta w = 10 + L (w en unidades monetarias y L en unidades de trabajo).",
+    "cluster_size": 3,
+    "scenario_id": "M06-LAB1"
   },
   {
     "id": "M06-Q42",
@@ -10325,11 +10407,12 @@
     "correct_key": "C",
     "topic": "",
     "explanation": "CMgF=10+2L. Para L=20: 10+40=50.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M06-Q42",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M06-Q41",
+    "parent_id": "M06-Q40",
+    "cluster_id": "M06-Q40",
+    "context_premise": "Caso base (Bloque B): Mercado de trabajo con demanda w = 70 - 2L y oferta w = 10 + L (w en unidades monetarias y L en unidades de trabajo).",
+    "cluster_size": 3,
+    "scenario_id": "M06-LAB1"
   },
   {
     "id": "M06-Q43",
@@ -10349,8 +10432,9 @@
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M06-Q43",
-    "context_premise": null,
-    "cluster_size": 1
+    "context_premise": "Caso base (Bloque B): Mercado de trabajo con demanda w = 70 - 2L y oferta w = 10 + L (w en unidades monetarias y L en unidades de trabajo).",
+    "cluster_size": 3,
+    "scenario_id": "M06-LAB1"
   },
   {
     "id": "M06-Q44",
@@ -10367,11 +10451,12 @@
     "correct_key": "C",
     "topic": "",
     "explanation": "En monopsonio, el área es 0.5(25-10)(15)=112.5.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M06-Q44",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M06-Q43",
+    "parent_id": "M06-Q43",
+    "cluster_id": "M06-Q43",
+    "context_premise": "Caso base (Bloque B): Mercado de trabajo con demanda w = 70 - 2L y oferta w = 10 + L (w en unidades monetarias y L en unidades de trabajo).",
+    "cluster_size": 3,
+    "scenario_id": "M06-LAB1"
   },
   {
     "id": "M06-Q45",
@@ -10388,11 +10473,12 @@
     "correct_key": "B",
     "topic": "",
     "explanation": "La pérdida de eficiencia es el triángulo entre MRP y la oferta desde L=15 hasta L=20: 0.5(20-15)(40-30)=25.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M06-Q45",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M06-Q44",
+    "parent_id": "M06-Q43",
+    "cluster_id": "M06-Q43",
+    "context_premise": "Caso base (Bloque B): Mercado de trabajo con demanda w = 70 - 2L y oferta w = 10 + L (w en unidades monetarias y L en unidades de trabajo).",
+    "cluster_size": 3,
+    "scenario_id": "M06-LAB1"
   },
   {
     "id": "M06-Q46",
@@ -10602,7 +10688,7 @@
     "parent_id": null,
     "cluster_id": "M06-Q55",
     "context_premise": null,
-    "cluster_size": 2
+    "cluster_size": 5
   },
   {
     "id": "M06-Q56",
@@ -10622,8 +10708,8 @@
     "depends_on": "M06-Q55",
     "parent_id": "M06-Q55",
     "cluster_id": "M06-Q55",
-    "context_premise": "Si la demanda de trabajo es L=100-2w y la oferta es L=2w-20, el salario de equilibrio es:",
-    "cluster_size": 2
+    "context_premise": "Mercado de trabajo competitivo con demanda L = 100 - 2w y oferta L = 2w - 20.",
+    "cluster_size": 5
   },
   {
     "id": "M06-Q57",
@@ -10640,11 +10726,11 @@
     "correct_key": "C",
     "topic": "",
     "explanation": "Con salario mínimo 35, la demanda es 100-70=30 y la oferta es 70-20=50. El empleo efectivo es el mínimo: 30.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M06-Q57",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M06-Q56",
+    "parent_id": "M06-Q55",
+    "cluster_id": "M06-Q55",
+    "context_premise": "Mercado de trabajo competitivo con demanda L = 100 - 2w y oferta L = 2w - 20.",
+    "cluster_size": 5
   },
   {
     "id": "M06-Q58",
@@ -10661,11 +10747,11 @@
     "correct_key": "D",
     "topic": "",
     "explanation": "El desempleo es la diferencia entre oferta y demanda: 50-30=20.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M06-Q58",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M06-Q57",
+    "parent_id": "M06-Q55",
+    "cluster_id": "M06-Q55",
+    "context_premise": "Mercado de trabajo competitivo con demanda L = 100 - 2w y oferta L = 2w - 20.",
+    "cluster_size": 5
   },
   {
     "id": "M06-Q59",
@@ -10682,11 +10768,11 @@
     "correct_key": "D",
     "topic": "",
     "explanation": "Un salario mínimo de 20 está por debajo del salario de equilibrio de 30, por lo que no es vinculante. El mercado permanece en el equilibrio competitivo y el empleo efectivo es 40.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M06-Q59",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M06-Q58",
+    "parent_id": "M06-Q55",
+    "cluster_id": "M06-Q55",
+    "context_premise": "Mercado de trabajo competitivo con demanda L = 100 - 2w y oferta L = 2w - 20.",
+    "cluster_size": 5
   },
   {
     "id": "M06-Q60",
@@ -10807,7 +10893,7 @@
     ],
     "correct_key": "C",
     "topic": "",
-    "explanation": "La masa salarial es wL=w(100-2w)=100w-2w^2. Derivando e igualando a cero: 100-4w=0, de donde w=25.} subsection*{Bloque C. Casos con implicancias regulatorias y laborales",
+    "explanation": "La masa salarial es wL=w(100-2w)=100w-2w^2. Derivando e igualando a cero: 100-4w=0, de donde w=25.",
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M06-Q65",
@@ -11962,7 +12048,7 @@
     ],
     "correct_key": "A",
     "topic": "Estabilidad en Cournot",
-    "explanation": "Tema: Estabilidad en Cournot. Explicación: La condición de estabilidad estandar exige |partial BR_1 / partial q_2| · |partial BR_2 / partial q_1| < 1, lo que en el caso simétrico equivale a que la pendiente de la función de mejor respuesta en el espacio (q_1, q_2) tenga un valor absoluto menor a la unidad.} subsection*{Bloque B. Aplicaciones cuantitativas y optimización",
+    "explanation": "Tema: Estabilidad en Cournot. Explicación: La condición de estabilidad estandar exige |partial BR_1 / partial q_2| · |partial BR_2 / partial q_1| < 1, lo que en el caso simétrico equivale a que la pendiente de la función de mejor respuesta en el espacio (q_1, q_2) tenga un valor absoluto menor a la unidad.",
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M07-Q30",
@@ -12030,7 +12116,7 @@
     "parent_id": null,
     "cluster_id": "M07-Q33",
     "context_premise": null,
-    "cluster_size": 1
+    "cluster_size": 2
   },
   {
     "id": "M07-Q34",
@@ -12047,11 +12133,11 @@
     "correct_key": "B",
     "topic": "Precio en oligopolio de n firmas",
     "explanation": "Tema: Precio en oligopolio de n firmas. Explicación: q_i = (150 - 30)/(1 × (5+1)) = 120 / 6 = 20. Producción total: Q = 5 × 20 = 100. Precio: P = 150 - 100 = 50.",
-    "depends_on": null,
-    "parent_id": null,
-    "cluster_id": "M07-Q34",
-    "context_premise": null,
-    "cluster_size": 1
+    "depends_on": "M07-Q33",
+    "parent_id": "M07-Q33",
+    "cluster_id": "M07-Q33",
+    "context_premise": "En un oligopolio de Cournot con n empresas simétricas, demanda inversa P = a - bQ y costo marginal constante c (a > c).",
+    "cluster_size": 2
   },
   {
     "id": "M07-Q35",
@@ -12697,7 +12783,7 @@
     ],
     "correct_key": "B",
     "topic": "Paradoja de Salant, Switzer y Reynolds",
-    "explanation": "Tema: Paradoja de Salant, Switzer y Reynolds. Explicación: Al fusionarse dos firmas sin sinergias, la nueva entidad actúa como una sola firma de Cournot, reduciendo su producción combinada. Los rivales externos se expanden por ser sustitutos estratégicos, haciendo que la fusión sea no rentable salvo que involucre al menos al 80% de las empresas del mercado.} subsection*{Bloque C. Casos con implicancias regulatorias y sector saneamiento",
+    "explanation": "Tema: Paradoja de Salant, Switzer y Reynolds. Explicación: Al fusionarse dos firmas sin sinergias, la nueva entidad actúa como una sola firma de Cournot, reduciendo su producción combinada. Los rivales externos se expanden por ser sustitutos estratégicos, haciendo que la fusión sea no rentable salvo que involucre al menos al 80% de las empresas del mercado.",
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M07-Q65",
@@ -13852,7 +13938,7 @@
     ],
     "correct_key": "B",
     "topic": "Salarios de eficiencia de Shapiro-Stiglitz",
-    "explanation": "Tema: Salarios de eficiencia de Shapiro-Stiglitz. Explicación: Si el monitoreo es imperfecto, un salario igual al de reserva hace que ser despedido por holgazanear no represente ningún costo. Pagar una prima salarial sobre el mercado combinada con la amenaza de desempleo genera una penalización creíble que induce al esfuerzo óptimo.} subsection*{Bloque B. Aplicaciones cuantitativas y optimización",
+    "explanation": "Tema: Salarios de eficiencia de Shapiro-Stiglitz. Explicación: Si el monitoreo es imperfecto, un salario igual al de reserva hace que ser despedido por holgazanear no represente ningún costo. Pagar una prima salarial sobre el mercado combinada con la amenaza de desempleo genera una penalización creíble que induce al esfuerzo óptimo.",
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M08-Q30",
@@ -14587,7 +14673,7 @@
     ],
     "correct_key": "A",
     "topic": "Riesgo moral por ausencia de micromedición",
-    "explanation": "Tema: Riesgo moral por ausencia de micromedición. Explicación: Si la factura no varía con el volumen consumido, el costo marginal percibido por el usuario al abrir el grifo es 0. El consumidor racional expande su consumo hasta que BMgP = 0, generando un derroche masivo donde el costo social de potabilizar excede con creces la utilidad marginal del agua desperdiciada.} subsection*{Bloque C. Casos con implicancias regulatorias y sector saneamiento",
+    "explanation": "Tema: Riesgo moral por ausencia de micromedición. Explicación: Si la factura no varía con el volumen consumido, el costo marginal percibido por el usuario al abrir el grifo es 0. El consumidor racional expande su consumo hasta que BMgP = 0, generando un derroche masivo donde el costo social de potabilizar excede con creces la utilidad marginal del agua desperdiciada.",
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M08-Q65",
@@ -14865,7 +14951,7 @@
     "parent_id": null,
     "cluster_id": "M08-Q78",
     "context_premise": null,
-    "cluster_size": 2
+    "cluster_size": 1
   },
   {
     "id": "M08-Q79",
@@ -14882,11 +14968,11 @@
     "correct_key": "D",
     "topic": "Micromedición e incentivo marginal",
     "explanation": "Tema: Micromedición e incentivo marginal. Explicación: Sin medidor, el costo marginal de dejar un grifo goteando o lavar la vereda con manguera es 0. Con medidor, cada metro cúbico tiene un costo explícito, induciendo al usuario a reparar fugas internas y racionar su consumo hasta que BMgP = P.",
-    "depends_on": "M08-Q78",
-    "parent_id": "M08-Q78",
-    "cluster_id": "M08-Q78",
-    "context_premise": "La provisión de agua potable con desinfección mediante cloro residual genera una externalidad positiva masiva sobre el sistema público de salud porque:",
-    "cluster_size": 2
+    "depends_on": null,
+    "parent_id": null,
+    "cluster_id": "M08-Q79",
+    "context_premise": null,
+    "cluster_size": 1
   },
   {
     "id": "M08-Q80",
@@ -15231,10 +15317,10 @@
     "q_num": 6,
     "question": "El estimador insesgado de la varianza poblacional de las perturbaciones estocásticas (σ^2) en una regresión múltiple con n observaciones y k parámetros (incluyendo la constante) es:",
     "options": [
-      "s^2 = \\frac{∑_{i=1}^n e_i^2}{n - 1}",
-      "s^2 = \\frac{∑_{i=1}^n e_i}{n - k}",
+      "s^2 = (∑_{i=1}^n e_i^2) / (n - 1)",
+      "s^2 = (∑_{i=1}^n e_i) / (n - k)",
       "s^2 = (e'e / n - k)",
-      "s^2 = \\frac{∑_{i=1}^n e_i^2}{n}"
+      "s^2 = (∑_{i=1}^n e_i^2) / (n)"
     ],
     "correct_key": "C",
     "topic": "Estimador insesgado de la varianza residual",
@@ -15316,9 +15402,9 @@
     "question": "Para contrastar la hipótesis nula de significancia individual H_0: β_j = 0 contra H_1: β_j ≠ 0, se utiliza el estadístico t de Student definido como:",
     "options": [
       "t = (SCR / SEC), que bajo H_0 sigue una distribución normal estándar en muestras finitas.",
-      "t = \\frac{β^_j - 1}{EE(β^_j)}, con distribución normal estándar para cualquier tamaño de muestra.",
-      "t = \\frac{β^_j}{EE(β^_j)}, que bajo H_0 sigue una t con n - k grados de libertad.",
-      "t = \\frac{β^_j}{s^2}, que bajo H_0 sigue una distribución χ^2 con n - k grados de libertad."
+      "t = (β^_j - 1) / (EE(β^_j)), con distribución normal estándar para cualquier tamaño de muestra.",
+      "t = (β^_j) / (EE(β^_j)), que bajo H_0 sigue una t con n - k grados de libertad.",
+      "t = (β^_j) / (s^2), que bajo H_0 sigue una distribución χ^2 con n - k grados de libertad."
     ],
     "correct_key": "C",
     "topic": "Prueba t de significancia individual",
@@ -15742,7 +15828,7 @@
     ],
     "correct_key": "C",
     "topic": "Procedimiento de MC2E / 2SLS",
-    "explanation": "Tema: Procedimiento de MC2E / 2SLS. Explicación: La primera etapa extrae la porción exógena de la variable endógena proyectándola sobre los instrumentos (X^ = Z(Z'Z)^{-1}Z'X). La segunda etapa utiliza únicamente este componente exógeno purificado X^ para estimar la ecuación estructural libre de sesgo.} subsection*{Bloque B. Aplicaciones cuantitativas y contrastes econométricos",
+    "explanation": "Tema: Procedimiento de MC2E / 2SLS. Explicación: La primera etapa extrae la porción exógena de la variable endógena proyectándola sobre los instrumentos (X^ = Z(Z'Z)^{-1}Z'X). La segunda etapa utiliza únicamente este componente exógeno purificado X^ para estimar la ecuación estructural libre de sesgo.",
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M09-Q30",
@@ -16477,7 +16563,7 @@
     ],
     "correct_key": "D",
     "topic": "Propiedad de MCO restringido",
-    "explanation": "Tema: Propiedad de MCO restringido. Explicación: Imponer restricciones reduce el espacio de búsqueda en la minimización de residuos. Por ende, la suma de residuos al cuadrado restringida nunca puede ser menor que la no restringida: SCR_R ≥ SCR_{NR} (igualdad solo si la muestra satisface exactamente la restricción).} subsection*{Bloque C. Casos con implicancias regulatorias y sector saneamiento",
+    "explanation": "Tema: Propiedad de MCO restringido. Explicación: Imponer restricciones reduce el espacio de búsqueda en la minimización de residuos. Por ende, la suma de residuos al cuadrado restringida nunca puede ser menor que la no restringida: SCR_R ≥ SCR_{NR} (igualdad solo si la muestra satisface exactamente la restricción).",
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M09-Q65",
@@ -17632,7 +17718,7 @@
     ],
     "correct_key": "C",
     "topic": "Modigliani-Miller Proposición I (sin impuestos)",
-    "explanation": "Tema: Modigliani-Miller Proposición I (sin impuestos). Explicación: Bajo ausencia de impuestos y fricciones, el apalancamiento no genera valor: el mayor riesgo financiero de la deuda eleva el costo de los recursos propios (K_e) en la proporción exacta para mantener constante el WACC, dejando el valor de la firma inalterado.} subsection*{Bloque B. Aplicaciones cuantitativas y financieras",
+    "explanation": "Tema: Modigliani-Miller Proposición I (sin impuestos). Explicación: Bajo ausencia de impuestos y fricciones, el apalancamiento no genera valor: el mayor riesgo financiero de la deuda eleva el costo de los recursos propios (K_e) en la proporción exacta para mantener constante el WACC, dejando el valor de la firma inalterado.",
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M10-Q30",
@@ -17728,7 +17814,7 @@
     "module_num": 10,
     "module_name": "Finanzas Corporativas y Proyectos",
     "q_num": 35,
-    "question": "Una EPS adquiere un equipo de laboratorio mediante un préstamo de 100000 soles a amortizar en 5 cuotas anuales fijas vencidas iguales a una tasa de interés del 10% anual. El factor de recuperación del capital es ≤ft[(0.10(1.10)^5 / (1.10)^5 - 1)] ≈ 0.263797. La cuota fija anual (C) a pagar es:",
+    "question": "Una EPS adquiere un equipo de laboratorio mediante un préstamo de 100000 soles a amortizar en 5 cuotas anuales fijas vencidas iguales a una tasa de interés del 10% anual. El factor de recuperación del capital es [(0.10(1.10)^5) / ((1.10)^5 - 1)] ≈ 0.263797. La cuota fija anual (C) a pagar es:",
     "options": [
       "C = 24500.50 soles",
       "C = 26379.75 soles",
@@ -17737,7 +17823,7 @@
     ],
     "correct_key": "B",
     "topic": "Cálculo de cuota fija de anualidad",
-    "explanation": "Tema: Cálculo de cuota fija de anualidad. Explicación: C = P × ≤ft[ (r(1+r)^n / (1+r)^n - 1) ] = 100000 × 0.2637975 = 26379.75 soles anuales.",
+    "explanation": "Tema: Cálculo de cuota fija de anualidad. Explicación: C = P × [ (r(1+r)^n) / ((1+r)^n - 1) ] = 100000 × 0.2637975 = 26379.75 soles anuales.",
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M10-Q35",
@@ -18367,7 +18453,7 @@
     ],
     "correct_key": "A",
     "topic": "Cálculo de YTM de bono cupón cero",
-    "explanation": "Tema: Cálculo de YTM de bono cupón cero. Explicación: (1 + YTM)^3 = (1000 / 751.3146) = 1.331 implies 1 + YTM = sqrt[3]{1.331} = 1.10 implies YTM = 10.00% anual.} subsection*{Bloque C. Casos con implicancias regulatorias y sector saneamiento",
+    "explanation": "Tema: Cálculo de YTM de bono cupón cero. Explicación: (1 + YTM)^3 = (1000 / 751.3146) = 1.331 implies 1 + YTM = sqrt[3]{1.331} = 1.10 implies YTM = 10.00% anual.",
     "depends_on": null,
     "parent_id": null,
     "cluster_id": "M10-Q65",
