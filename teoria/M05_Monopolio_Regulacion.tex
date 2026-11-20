@@ -47,99 +47,300 @@
 \end{frame}
 
 % ==============================================================================
-% SLIDE 3: EQUILIBRIO DEL MONOPOLIO Y PÉRDIDA DE EFICIENCIA (PIE)
+% SLIDE 3: EQUILIBRIO DEL MONOPOLIO, MARK-UP, LERNER Y PÉRDIDA DE EFICIENCIA
 % ==============================================================================
-\begin{frame}{1. Equilibrio del Monopolista y Pérdida de Eficiencia}
+\begin{frame}{1. Equilibrio del Monopolista, Mark-Up y Eficiencia}
   \begin{columns}[T]
-    \begin{column}{0.53\textwidth}
-      {\small\textbf{Comparación Monopolio (\(Q_M, P_M\)) vs. Competencia (\(Q_C, P_C\))}}
+    \begin{column}{0.52\textwidth}
+      {\small\textbf{Equilibrio \((Q_M, P_M)\), Beneficios (\(BT\)) y \(PIE\)}}
       \vspace{0.05cm}
-      \begin{tikzpicture}[scale=0.78]
+      \begin{tikzpicture}[scale=0.77]
         \begin{axis}[
           axis lines=left,
           xlabel={Cantidad ($Q$)}, ylabel={Precio / Costo},
-          xmin=0, xmax=10, ymin=0, ymax=11,
-          xtick={3.5, 7.0}, xticklabels={$Q_M$, $Q_C$},
-          ytick={3.0, 6.5}, yticklabels={$P_C=CMg$, $P_M$},
-          width=8.2cm, height=5.2cm
+          xmin=0, xmax=10.5, ymin=0, ymax=12,
+          xtick={4, 5.5, 6.67, 11}, xticklabels={$Q_M$, $\frac{a}{2b}$, $Q_C$, $\frac{a}{b}$},
+          ytick={3, 4, 7, 11}, yticklabels={$CMg^*$, $CMe^*$, $P_M$, $a$},
+          width=8.2cm, height=5.3cm, clip=false
         ]
-          % PIE
-          \addplot[fill=rojoAcento!28, draw=none] coordinates {(3.5,3.0) (7.0,3.0) (3.5,6.5)} \closedcycle;
-          % Beneficio monopolio
-          \addplot[fill=azulClaroFondo, draw=none] coordinates {(0,3.0) (3.5,3.0) (3.5,6.5) (0,6.5)} \closedcycle;
-          % Demanda P = 10 - Q
-          \addplot[azulPrincipal, very thick, domain=0:9.5] {10 - x};
-          \node[azulPrincipal, font=\scriptsize, anchor=west] at (axis cs:7.8, 2.2) {$D$};
-          % IMg = 10 - 2Q
-          \addplot[naranjaAcento, very thick, domain=0:5.0] {10 - 2*x};
-          \node[naranjaAcento, font=\scriptsize, anchor=north] at (axis cs:4.7, 1.3) {$IMg$};
-          % CMg constante = 3
-          \addplot[verdeAcento, very thick, domain=0:9.5] {3};
-          \node[verdeAcento, font=\scriptsize, anchor=south] at (axis cs:8.3, 3.1) {$CMg$};
+          % Áreas: CT (azul claro), BT (verde), EC (azul suave), PIE (rojo)
+          \addplot[fill=grisTexto!12, draw=none] coordinates {(0,0) (4,0) (4,4) (0,4)} \closedcycle;
+          \addplot[fill=verdeAcento!22, draw=none] coordinates {(0,4) (4,4) (4,7) (0,7)} \closedcycle;
+          \addplot[fill=azulClaroFondo, draw=none] coordinates {(0,7) (4,7) (0,11)} \closedcycle;
+          \addplot[fill=rojoAcento!28, draw=none] coordinates {(4,3) (6.67,4.33) (4,7)} \closedcycle;
 
-          % Puntos y lineas
-          \draw[dotted, grisTexto] (axis cs:3.5, 0) -- (axis cs:3.5, 6.5) -- (axis cs:0, 6.5);
-          \draw[dotted, grisTexto] (axis cs:7.0, 0) -- (axis cs:7.0, 3.0);
-          \node[rojoAcento, font=\scriptsize] at (axis cs:4.6, 4.1) {\textbf{PIE}};
-          \node[azulPrincipal, font=\scriptsize] at (axis cs:1.7, 4.75) {\textbf{\(\pi_M\)}};
+          % Demanda P = 11 - Q -> (0,11) a (10,1)
+          \addplot[azulPrincipal, very thick, domain=0:10] {11 - x};
+          \node[azulPrincipal, font=\scriptsize, anchor=west] at (axis cs:8.3, 2.9) {$D = IMe$};
+          % IMg = 11 - 2Q
+          \addplot[naranjaAcento, very thick, domain=0:5.5] {11 - 2*x};
+          \node[naranjaAcento, font=\scriptsize, anchor=north east] at (axis cs:5.4, 1.4) {$IMg$};
+          % CMg = 1 + 0.5Q
+          \addplot[verdeAcento, very thick, domain=0:9.8] {1 + 0.5*x};
+          \node[verdeAcento, font=\scriptsize, anchor=west] at (axis cs:9.6, 5.9) {$CMg$};
+          % CMe = 8/Q + 1 + 0.25Q (mín en Q=5.66)
+          \addplot[aceroAcento, thick, dashed, domain=1.15:9.8, samples=50] {8/x + 1 + 0.25*x};
+          \node[aceroAcento, font=\scriptsize, anchor=south west] at (axis cs:8.4, 4.15) {$CMe$};
+
+          % Guías y puntos exactos (QM=4, PM=7, CMe=4, CMg=3, QC=6.67)
+          \draw[dotted, grisTexto] (axis cs:4, 0) -- (axis cs:4, 7) -- (axis cs:0, 7);
+          \draw[dotted, grisTexto] (axis cs:4, 4) -- (axis cs:0, 4);
+          \draw[dotted, grisTexto] (axis cs:4, 3) -- (axis cs:0, 3);
+          \draw[dotted, grisTexto] (axis cs:6.67, 0) -- (axis cs:6.67, 4.33);
+          \addplot[only marks, mark=*, mark size=2pt, azulPrincipal] coordinates {(4,7) (4,4) (4,3) (6.67,4.33)};
+
+          % Etiquetas de áreas
+          \node[azulPrincipal, font=\tiny\bfseries] at (axis cs:0.85, 8.85) {$EC$};
+          \node[verdeAcento!90!black, font=\tiny\bfseries] at (axis cs:2.05, 6.15) {$BT=\pi_M$};
+          \node[grisTexto, font=\tiny\bfseries] at (axis cs:1.8, 1.35) {$CT$};
+          \node[rojoAcento, font=\scriptsize\bfseries] at (axis cs:4.85, 4.75) {PIE};
         \end{axis}
       \end{tikzpicture}
     \end{column}
 
-    \begin{column}{0.44\textwidth}
-      {\scriptsize\color{grisTexto}No tiene Curva de Oferta}\\[1pt]
-      {\large\color{rojoAcento}\textbf{Sin relación única \(P \leftrightarrow Q\)}}\\[4pt]
+    \begin{column}{0.45\textwidth}
+      {\scriptsize\color{grisTexto}Demanda Lineal e Ingreso Marginal}\\[1pt]
+      {\small\color{azulPrincipal}\textbf{\(P = a - bQ \implies IMg = a - 2bQ\)}}\\[1pt]
       {\scriptsize
-        • La decisión \((Q_M, P_M)\) depende de la forma de la demanda (desplazamientos de \(D\) pueden cambiar \(P\) sin cambiar \(Q\) o viceversa).\\[4pt]
+        • Mismo intercepto vertical \(a\) y \textbf{doble pendiente} (\(-2b\)).\\
+        • Beneficio total: \(BT = (P_M - CMe^*)\,Q_M\).\\[3pt]
       }
-      {\scriptsize\color{grisTexto}Pérdida Irrecuperable y Costo Social}\\[1pt]
-      {\normalsize\color{azulPrincipal}\textbf{\(PIE = \frac{1}{2}(P_M - CMg)(Q_C - Q_M)\)}}\\[4pt]
+      {\scriptsize\color{grisTexto}Regla Óptima de Mark-Up e Índice de Lerner}\\[1pt]
+      {\small\color{naranjaAcento}\textbf{\(P = \frac{CMg}{1 - 1/|\varepsilon_d|} = \frac{CMg}{1 + 1/\varepsilon_d}\)}}\\[1pt]
       {\scriptsize
-        • En demanda lineal con \(CMg\) cte.: \(Q_M = \frac{1}{2}Q_C\).\\
-        • \textbf{Búsqueda de rentas (Rent-seeking):} gasto improductivo para obtener/mantener el monopolio puede disipar hasta toda \(\pi_M\).\\
-        • \textbf{Impuesto específico \(t\):} con demanda isoelástica (\(|\varepsilon|\) cte.), el monopolista traslada \textbf{más del 100\%} de \(t\) al precio (\(\frac{dP}{dt} = \frac{|\varepsilon|}{|\varepsilon|-1} > 1\)).
+        • De \(IMg = P(1 + 1/\varepsilon_d) = CMg\) (\(\varepsilon_d < 0\)).\\
+        • \textbf{Lerner:} \(L = \frac{P-CMg}{P} = \frac{1}{|\varepsilon_d|} = \frac{-1}{\varepsilon_d} \in [0, 1]\).\\[3pt]
+      }
+      {\scriptsize\color{grisTexto}Sin Curva de Oferta y Efectos de Bienestar}\\[1pt]
+      {\scriptsize
+        • Sin relación única \(P \leftrightarrow Q\) (depende de \(\varepsilon_d\)).\\
+        • \textbf{Rent-seeking:} gasto improductivo por capturar rentas.\\
+        • \textbf{Impuesto \(t\):} con \(\varepsilon_d\) cte., \(\frac{dP}{dt} = \frac{|\varepsilon|}{|\varepsilon|-1} > 1\) (\(>100\%\)).
       }
     \end{column}
   \end{columns}
 
-  \mensajefinal{El monopolio restringe la cantidad (\(Q_M < Q_C\)) y eleva el precio (\(P_M > CMg\)), destruyendo bienestar social.}
+  \mensajefinal{El monopolio restringe \(Q_M < Q_C\), eleva \(P_M > CMg\) y genera una pérdida irrecuperable (\(PIE\)).}
 \end{frame}
 
 % ==============================================================================
-% SLIDE 4: DISCRIMINACIÓN DE PRECIOS Y TARIFA EN DOS PARTES
+% SLIDE 4: PANORAMA DE DISCRIMINACIÓN DE PRECIOS Y TARIFA EN DOS PARTES
 % ==============================================================================
-\begin{frame}{2. Discriminación de Precios y Tarifa en Dos Partes}
-  \vspace{0.1cm}
+\begin{frame}{2. Discriminación de Precios: Panorama Comparativo}
+  \vspace{0.08cm}
   \begin{columns}[T]
     \begin{column}{0.32\textwidth}
       \tarjeta{verdeAcento}{1er Grado (Perfecta)}{
-        Cobra a cada unidad su máxima disposición a pagar.\\[4pt]
+        Cobra a cada consumidor/unidad su máxima disposición a pagar.\\[4pt]
         • Extrae \textbf{100\% del \(EC\)} (\(\pi = W\)).\\
-        • Produce la cantidad eficiente \(Q_C\) \(\implies \mathbf{PIE = 0}\).
+        • Produce el nivel eficiente \(Q_C\) \(\implies \mathbf{PIE = 0}\).
       }
     \end{column}
     \begin{column}{0.32\textwidth}
-      \tarjeta{naranjaAcento}{2do Grado (Bloques / Autoselección)}{
-        El precio varía según la cantidad consumida (ej. tarifas por bloques).\\[4pt]
-        • Requiere restricción de compatibilidad de incentivos (menús).\\
-        • \textit{Usado en EPS para separar consumo básico y suntuario.}
+      \tarjeta{naranjaAcento}{2do Grado (Autoselección)}{
+        Menús, tarifas por bloques o dos tramos \(T = A + P^*Q\):\\[4pt]
+        • El cliente revela su tipo al elegir.\\
+        • \textit{Usado en EPS (bloques crecientes IBT y cargo fijo + variable).}
       }
     \end{column}
     \begin{column}{0.32\textwidth}
       \tarjeta{azulPrincipal}{3er Grado (Segmentación)}{
-        Cobra precios distintos a grupos identificables (ej. doméstico vs. comercial):\\
-        \(IMg_1(Q_1) = IMg_2(Q_2) = CMg\)\\[3pt]
+        Precios distintos a grupos observables (doméstico vs. comercial):\\
+        \(IMg_1(q_1) = IMg_2(q_2) = CMg\)\\[3pt]
         \(\frac{P_1}{P_2} = \frac{1 - 1/|\varepsilon_2|}{1 - 1/|\varepsilon_1|}\).\\
-        \textbf{Precio más alto al grupo más inelástico.}
+        \textbf{Mayor precio al grupo más inelástico.}
       }
     \end{column}
   \end{columns}
 
-  \vspace{0.15cm}
+  \vspace{0.12cm}
   \recuadroclave{
-    \small\textbf{Tarifa en Dos Partes (\(T(Q) = F + pQ\)):} Con consumidores idénticos, el monopolista fija el cargo por uso en \(p^* = CMg\) (eficiencia) y el cargo fijo en \(F^* = EC(p^*)\) para capturar todo el excedente.
+    \small\textbf{Requisitos Esenciales para Discriminar:} \quad \textbf{1)} Poder de mercado (\(P > CMg\)) \quad•\quad \textbf{2)} Conocer o inducir disposición a pagar \quad•\quad \textbf{3)} \textbf{Impedir el arbitraje} (reventa entre clientes).
   }
-  \mensajefinal{La discriminación de 3er grado solo aumenta el bienestar respecto al precio único si incrementa el producto total vendido.}
+  \mensajefinal{La discriminación transforma excedente del consumidor en beneficio; la de 3er grado solo eleva el bienestar si expande \(Q\) total.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 5: DISCRIMINACIÓN DE PRIMER GRADO (PERFECTA)
+% ==============================================================================
+\begin{frame}{2a. Discriminación de 1er Grado (Perfecta)}
+  \begin{columns}[T]
+    \begin{column}{0.52\textwidth}
+      {\small\textbf{Extracción Completa del Excedente (\(EC = 0,\; PIE = 0\))}}
+      \vspace{0.05cm}
+      \begin{tikzpicture}[scale=0.77]
+        \begin{axis}[
+          axis lines=left,
+          xlabel={Cantidad ($Q$)}, ylabel={Precio / Costo},
+          xmin=0, xmax=10.5, ymin=0, ymax=11.5,
+          xtick={3.6, 6, 10}, xticklabels={$Q_M$, $Q^*=Q_C$, $\frac{a}{b}$},
+          ytick={4, 10}, yticklabels={$P^*=CMg^*$, $P_{\max}=a$},
+          width=8.2cm, height=5.2cm, clip=false
+        ]
+          % Área de beneficio bruto total capturado bajo IMe y sobre CMg
+          \addplot[fill=verdeAcento!24, draw=none] coordinates {(0,1) (6,4) (0,10)} \closedcycle;
+
+          % Curva de demanda (actúa como IMg efectivo)
+          \addplot[azulPrincipal, very thick, domain=0:9.6] {10 - x};
+          \node[azulPrincipal, font=\scriptsize, anchor=west] at (axis cs:6.8, 3.5) {$D = IMe = IMg_{1^\circ}$};
+          % IMg de precio único (referencia)
+          \addplot[naranjaAcento, thick, dashed, domain=0:5.0] {10 - 2*x};
+          \node[naranjaAcento, font=\scriptsize, anchor=south west] at (axis cs:3.95, 2.0) {$IMg_{\text{único}}$};
+          % CMg = 1 + 0.5Q
+          \addplot[verdeAcento, very thick, domain=0:9.6] {1 + 0.5*x};
+          \node[verdeAcento, font=\scriptsize, anchor=west] at (axis cs:8.7, 5.5) {$CMg$};
+
+          % Guías y puntos
+          \draw[dotted, grisTexto] (axis cs:6, 0) -- (axis cs:6, 4) -- (axis cs:0, 4);
+          \draw[dotted, grisTexto!75] (axis cs:3.6, 0) -- (axis cs:3.6, 6.4);
+          \addplot[only marks, mark=*, mark size=2.2pt, rojoAcento] coordinates {(6,4)};
+          \node[verdeAcento!85!black, font=\tiny\bfseries, align=center] at (axis cs:1.8, 5.5) {Beneficio extraído\\(\(\Delta BT\) sin \(PIE\))};
+        \end{axis}
+      \end{tikzpicture}
+    \end{column}
+
+    \begin{column}{0.45\textwidth}
+      {\scriptsize\color{grisTexto}Mecanismo de Precios Individualizados}\\[1pt]
+      {\small\color{azulPrincipal}\textbf{\(P^* \le P(q) \le P_{\max} = a\)}}\\[2pt]
+      {\scriptsize
+        • Cada unidad adicional \(dq\) se vende al precio de reserva del cliente.\\
+        • Como vender una unidad más no exige rebajar las anteriores, \textbf{la curva \(IMe\) actúa como \(IMg\) efectivo}.\\[4pt]
+      }
+      {\scriptsize\color{grisTexto}Optimización y Cálculo de Beneficios}\\[1pt]
+      {\small\color{verdeAcento}\textbf{Condición: \(IMe(Q^*) = CMg(Q^*)\)}}\\[2pt]
+      {\normalsize\color{azulOscuro}\textbf{\(BT = \int_0^{Q^*} \big[IMe(Q) - CMg(Q)\big]\,dQ - CF\)}}\\[3pt]
+      {\scriptsize
+        • \textbf{Eficiencia:} produce \(Q^* = Q_C \implies \mathbf{PIE = 0}\).\\
+        • \textbf{Equidad:} el productor captura 100\% del bienestar (\(EC = 0\)).\\
+        • \textbf{Límite práctico:} exige conocer cada disposición a pagar (asimetría de información).
+      }
+    \end{column}
+  \end{columns}
+
+  \mensajefinal{En 1er grado hay eficiencia plena (\(Q^* = Q_C,\; PIE = 0\)), pero el productor captura todo el excedente.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 6: DISCRIMINACIÓN DE SEGUNDO GRADO Y TARIFA EN DOS TRAMOS
+% ==============================================================================
+\begin{frame}{2b. Discriminación de 2do Grado: Tarifa en Dos Tramos}
+  \begin{columns}[T]
+    \begin{column}{0.52\textwidth}
+      {\small\textbf{Tarifa \(T(Q) = A + P^*Q\) con Dos Demandas Heterogéneas}}
+      \vspace{0.05cm}
+      \begin{tikzpicture}[scale=0.77]
+        \begin{axis}[
+          axis lines=left,
+          xlabel={Cantidad ($Q$)}, ylabel={Precio / Costo},
+          xmin=0, xmax=10.5, ymin=0, ymax=10.8,
+          xtick={3, 7}, xticklabels={$Q_2^*$, $Q_1^*$},
+          ytick={1, 3, 6, 10}, yticklabels={$CMg$, $P^*$, $B$, $A_{\max}$},
+          width=8.2cm, height=5.2cm, clip=false
+        ]
+          % Cuota de entrada A = EC de la demanda menos dispuesta (IMe_2)
+          \addplot[fill=rojoAcento!20, draw=none] coordinates {(0,3) (0,6) (3,3)} \closedcycle;
+          % Beneficio variable BV2 & BV1 sobre Q2 y BV1 sobre (Q1 - Q2)
+          \addplot[fill=azulPrincipal!20, draw=none] coordinates {(0,1) (3,1) (3,3) (0,3)} \closedcycle;
+          \addplot[fill=verdeAcento!22, draw=none] coordinates {(3,1) (7,1) (7,3) (3,3)} \closedcycle;
+
+          % Demanda Alta IMe1: P = 10 - Q
+          \addplot[azulPrincipal, very thick, domain=0:9.6] {10 - x};
+          \node[azulPrincipal, font=\scriptsize, anchor=west] at (axis cs:6.8, 3.5) {$IMe_1$ (Alta)};
+          % Demanda Baja IMe2: P = 6 - Q
+          \addplot[rojoAcento, very thick, domain=0:5.8] {6 - x};
+          \node[rojoAcento, font=\scriptsize, anchor=south west] at (axis cs:2.1, 4.05) {$IMe_2$ (Baja)};
+          % CMg = Cvme = 1 cte.
+          \addplot[verdeAcento, very thick, domain=0:9.8] {1};
+          \node[verdeAcento, font=\scriptsize, anchor=south west] at (axis cs:8.2, 1.05) {$CMg = C$};
+
+          % Guías y puntos óptimos (P*=3, Q2=3, Q1=7)
+          \draw[dotted, grisTexto] (axis cs:3, 0) -- (axis cs:3, 3) -- (axis cs:0, 3);
+          \draw[dotted, grisTexto] (axis cs:7, 0) -- (axis cs:7, 3) -- (axis cs:3, 3);
+          \addplot[only marks, mark=*, mark size=2pt, azulOscuro] coordinates {(3,3) (7,3)};
+
+          % Etiquetas de regiones
+          \node[rojoAcento, font=\scriptsize\bfseries] at (axis cs:0.95, 4.0) {$A$};
+          \node[azulPrincipal, font=\tiny\bfseries] at (axis cs:1.5, 2.0) {$BV_1 \land BV_2$};
+          \node[verdeAcento!85!black, font=\tiny\bfseries] at (axis cs:5.0, 2.0) {$BV_1$};
+        \end{axis}
+      \end{tikzpicture}
+    \end{column}
+
+    \begin{column}{0.45\textwidth}
+      {\scriptsize\color{grisTexto}Cuota de Entrada (\(A\)) y Tarifa de Uso (\(P^*\))}\\[1pt]
+      {\small\color{azulPrincipal}\textbf{\(T(Q) = A + P^*Q\)}}\\[2pt]
+      {\scriptsize
+        • \textbf{Cuota de entrada (\(A\)):} para no excluir al grupo de menor demanda (\(IMe_2\)), el cargo fijo máximo es su excedente:\\
+        \quad \(\displaystyle A = \frac{(B - P^*)\,Q_2(P^*)}{2} = EC_2(P^*)\)\\[3pt]
+        • \textbf{Beneficio conjunto (\(n = 2\) grupos):}\\
+        \quad \(BT = n\,A + (P - CMg)\,(Q_1 + Q_2) - CF\)\\[3pt]
+        • \textbf{Optimización (\(\partial BT / \partial P = 0\)):} con grupos heterogéneos conviene fijar \(\mathbf{P^* > CMg}\) (sacrifica parte de \(A\), pero extrae más a \(IMe_1\)).\\[3pt]
+        • \textbf{Caso idéntico (\(1\) tipo):} \(P^* = CMg\) y \(A^* = EC(CMg)\).
+      }
+    \end{column}
+  \end{columns}
+
+  \mensajefinal{En 2do grado el consumidor se autoselecciona con tarifas en dos tramos o bloques (IBT en EPS).}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 7: DISCRIMINACIÓN DE TERCER GRADO Y CASO MULTIPLANTA POR TRAMOS
+% ==============================================================================
+\begin{frame}{2c. Discriminación de 3er Grado y Multiplanta por Tramos}
+  \begin{columns}[T]
+    \begin{column}{0.52\textwidth}
+      {\small\textbf{Agregación Horizontal \(IMg^T(Q) = CMg^T(Q) = \lambda^*\)}}
+      \vspace{0.05cm}
+      \begin{tikzpicture}[scale=0.77]
+        \begin{axis}[
+          axis lines=left,
+          xlabel={Cantidad Total ($Q$)}, ylabel={$IMg,\; CMg$},
+          xmin=0, xmax=8.3, ymin=0, ymax=9.8,
+          xtick={1, 1.5, 3.5, 4.5, 7.5}, xticklabels={$K$, $Y$, $H$, $Q^T$, $L$},
+          ytick={3.0}, yticklabels={$\lambda^*$},
+          width=8.2cm, height=5.2cm, clip=false
+        ]
+          % IMg^T por tramos: I (0,9)-(1,7), II (1,7)-(3.5,4), III (3.5,4)-(7.5,0)
+          \addplot[verdeAcento, very thick] coordinates {(0,9) (1,7)};
+          \node[verdeAcento, font=\tiny\bfseries, anchor=south west] at (axis cs:0.45, 7.9) {Tramo I};
+          \addplot[rojoAcento, very thick] coordinates {(1,7) (3.5,4)};
+          \node[rojoAcento, font=\tiny\bfseries, anchor=south west] at (axis cs:2.1, 5.4) {Tramo II};
+          \addplot[azulPrincipal, very thick] coordinates {(3.5,4) (7.5,0)};
+          \node[azulPrincipal, font=\tiny\bfseries, anchor=south west] at (axis cs:5.25, 2.05) {Tramo III (\(IMg^T\))};
+
+          % CMg^T por tramos: I (0,1)-(1.5,2), II (1.5,2)-(3.5,2.8), III (3.5,2.8)-(7.5,3.6)
+          \addplot[aceroAcento!75, very thick] coordinates {(0,1) (1.5,2)};
+          \addplot[naranjaAcento, very thick] coordinates {(1.5,2) (3.5,2.8)};
+          \addplot[rojoAcento!85!black, very thick] coordinates {(3.5,2.8) (7.5,3.6)};
+          \node[rojoAcento!85!black, font=\tiny\bfseries, anchor=south] at (axis cs:6.7, 3.55) {\(CMg^T\)};
+
+          % Guías de quiebres y óptimo (Q^T=4.5, lambda*=3.0)
+          \draw[dashed, grisTexto!70] (axis cs:1, 0) -- (axis cs:1, 7);
+          \draw[dashed, grisTexto!70] (axis cs:1.5, 0) -- (axis cs:1.5, 2);
+          \draw[dashed, grisTexto!70] (axis cs:3.5, 0) -- (axis cs:3.5, 4);
+          \draw[dotted, azulOscuro, thick] (axis cs:4.5, 0) -- (axis cs:4.5, 3.0) -- (axis cs:0, 3.0);
+          \addplot[only marks, mark=*, mark size=2.3pt, azulOscuro] coordinates {(4.5, 3.0)};
+          \node[azulOscuro, font=\tiny\bfseries, anchor=south] at (axis cs:4.55, 3.35) {\(IMg^*=CMg^*\)};
+        \end{axis}
+      \end{tikzpicture}
+    \end{column}
+
+    \begin{column}{0.45\textwidth}
+      {\scriptsize\color{grisTexto}Algoritmo de Resolución (Segmentos y Plantas)}\\[2pt]
+      {\scriptsize
+        \textbf{1. Agregar \(IMg^T\):} invertir cada \(IMg_i(q_i)\) y sumar cantidades \(q_i(IMg)\) por tramos según precios de reserva (\(A > B > C\)).\\[2pt]
+        \textbf{2. Agregar \(CMg^T\):} invertir cada \(CMg_j(q_j)\) y sumar cantidades \(q_j(CMg)\) por tramos desde la planta más barata.\\[2pt]
+        \textbf{3. Óptimo conjunto:} igualar en el tramo activo:\\
+        \quad \(\displaystyle IMg^T(Q^T) = CMg^T(Q^T) = \lambda^*\)\\[2pt]
+        \textbf{4. Despejar precios y cuotas:} igualar \(\lambda^*\) en cada segmento (\(IMg_i = \lambda^* \Rightarrow q_i^*, P_i^*\)) y planta (\(CMg_j = \lambda^* \Rightarrow q_j^*\)), verificando \(\sum q_i^* = \sum q_j^* = Q^T\).\\[3pt]
+      }
+      \recuadroclave{
+        {\scriptsize\textbf{Regla inversa de elasticidad:} \(\frac{P_1}{P_2} = \frac{1 - 1/|\varepsilon_2|}{1 - 1/|\varepsilon_1|}\)}
+      }
+    \end{column}
+  \end{columns}
+
+  \mensajefinal{En asignación óptima entre segmentos y plantas, todo ingreso y costo marginal activo iguala a \(\lambda^*\).}
 \end{frame}
 
 % ==============================================================================
@@ -229,15 +430,15 @@
     \end{column}
   \end{columns}
 
-  \vspace{0.15cm}
+  \vspace{-0.04cm}
   \recuadroclave{
     \small\textbf{Competencia por Comparación (Yardstick Competition):} El regulador usa los costos de otras EPS comparables (``empresa modelo eficiente'') para fijar la tarifa, reduciendo la asimetría de información.
   }
-  \mensajefinal{La regulación por Price-Cap (\(RPI-X\)) y empresa modelo promueve la eficiencia productiva, mientras que la tasa de retorno protege el capital pero induce sobrecapitalización.}
+  \mensajefinal{Price-Cap (\(RPI-X\)) y empresa modelo impulsan eficiencia; la tasa de retorno protege el capital pero sobrecapitaliza.}
 \end{frame}
 
 % ==============================================================================
-% SLIDE 7: MONOPOLIO MULTIPLANTA, COASE Y DOBLE MARGINALIZACIÓN
+% SLIDE 10: MONOPOLIO MULTIPLANTA, COASE Y DOBLE MARGINALIZACIÓN
 % ==============================================================================
 \begin{frame}{5. Monopolio Multiplanta, Bien Duradero y Doble Marginalización}
   \vspace{0.01cm}
@@ -265,63 +466,64 @@
     \end{column}
   \end{columns}
 
-  \vspace{0.04cm}
+  \vspace{0.02cm}
   \recuadroclave{
     \small\textbf{Impuesto Ad-Valorem vs. Específico en Monopolio:} Para una misma recaudación fiscal, un impuesto \textbf{ad-valorem} (\(\tau\)) induce mayor producción \(Q\) y menor \(P\) que un impuesto específico (\(t\)), por lo que domina en bienestar.
   }
-  \mensajefinal{La integración vertical entre monopolios sucesivos beneficia tanto a las firmas como a los consumidores al eliminar la doble marginalización.}
+  \mensajefinal{La integración vertical entre monopolios sucesivos beneficia tanto a las firmas como a los consumidores.}
 \end{frame}
 
 % ==============================================================================
-% SLIDE 8: PEAK-LOAD, SUBSIDIOS CRUZADOS Y CAPTURA REGULATORIA
+% SLIDE 11: PEAK-LOAD, SUBSIDIOS CRUZADOS Y CAPTURA REGULATORIA
 % ==============================================================================
 \begin{frame}{6. Peak-Load Pricing, Subsidios Cruzados y Captura}
-  \vspace{0.05cm}
+  \vspace{0.01cm}
   \begin{columns}[T]
     \begin{column}{0.32\textwidth}
       \tarjeta{azulPrincipal}{Tarifas Peak-Load (Hora Punta)}{
-        Demanda fluctúa entre periodo valle (\(D_1\)) y punta (\(D_2\)) con capacidad rígida \(\bar{K}\):\\
-        • \textbf{Periodo valle:} \(P_1 = b\) (solo \(CMg\) operativo).\\
-        • \textbf{Periodo punta:} \(P_2 = b + \beta\) (cubre \(CMg\) operativo + costo marginal de capacidad \(\beta\)).
+        Demanda fluctúa entre valle (\(D_1\)) y punta (\(D_2\)) con capacidad \(\bar{K}\):\\
+        • \textbf{Valle:} \(P_1 = b\) (solo \(CMg\) operativo).\\
+        • \textbf{Punta:} \(P_2 = b + \beta\) (\(CMg\) operativo + costo marginal de capacidad \(\beta\)).
       }
     \end{column}
     \begin{column}{0.32\textwidth}
       \tarjeta{naranjaAcento}{Subsidios Cruzados (SUNASS)}{
-        Usuarios no residenciales/comerciales pagan \(P > CMe\) para subsidiar a usuarios vulnerables (\(P < CMe\)).\\[2pt]
-        • Financia el acceso sin aporte fiscal.\\
-        • \textbf{Riesgo:} incentivo al \textit{cream-skimming} (entrada selectiva solo al segmento rentable) si no hay exclusividad legal.
+        Usuarios no residenciales pagan \(P > CMe\) para subsidiar a vulnerables (\(P < CMe\)).\\[2pt]
+        • Financia acceso sin aporte fiscal.\\
+        • \textbf{Riesgo:} \textit{cream-skimming} (entrada selectiva al segmento rentable) si no hay exclusividad.
       }
     \end{column}
     \begin{column}{0.32\textwidth}
       \tarjeta{rojoAcento}{Captura Regulatoria (Stigler)}{
         Teoría económica de la regulación:\\
-        • Los grupos pequeños y concentrados (empresas reguladas) tienen mayor incentivo a influir en el regulador que los consumidores dispersos.\\
-        • La transparencia tarifaria y audiencias públicas mitigan la captura.
+        • Grupos concentrados (empresas) tienen mayor incentivo a influir en el regulador que usuarios dispersos.\\
+        • Audiencias públicas y transparencia mitigan la captura.
       }
     \end{column}
   \end{columns}
 
-  \vspace{0.1cm}
+  \vspace{0.04cm}
   \recuadroclave{
     \small\textbf{Empaquetamiento (Bundling):} Vender dos bienes juntos puede elevar beneficios si las valoraciones de los consumidores están \textbf{negativamente correlacionadas}.
   }
-  \mensajefinal{Las tarifas diferenciadas por bloque y horario (\textit{peak-load}) asignan eficientemente la capacidad instalada de la red.}
+  \mensajefinal{Las tarifas diferenciadas por bloque y horario (\textit{peak-load}) asignan eficientemente la capacidad de red.}
 \end{frame}
 
 % ==============================================================================
-% SLIDE 9: CONCLUSIONES Y CHEAT-SHEET MÓDULO V
+% SLIDE 12: CONCLUSIONES Y CHEAT-SHEET MÓDULO V
 % ==============================================================================
 \begin{frame}{Conclusiones y Formulario Rápido — Módulo V}
-  \vspace{0.05cm}
+  \vspace{0.04cm}
   \recuadroclave{
     \small\textbf{Regla de Oro:} El monopolista fija \(IMg = CMg\) con poder de mercado \(L = 1/|\varepsilon_d|\); el regulador busca acercar \(P\) hacia \(CMg\) o \(CMe\) preservando la sostenibilidad financiera.
   }
 
-  \vspace{0.15cm}
+  \vspace{0.12cm}
   \begin{columns}[T]
     \begin{column}{0.32\textwidth}
       \tarjeta{verdeAcento}{Fórmulas Imprescindibles}{
-        • Lerner: \(L = \frac{P-CMg}{P} = \frac{1}{|\varepsilon_d|}\)\\
+        • Mark-Up: \(P = \frac{CMg}{1 - 1/|\varepsilon_d|}\)\\
+        • 2 tramos: \(T = A + P^*Q\) (\(A = EC_2\))\\
         • 3er grado: \(IMg_1 = IMg_2 = CMg\)\\
         • Ramsey: \(\frac{P_i-CMg_i}{P_i} = \frac{\lambda}{|\varepsilon_i|}\)
       }

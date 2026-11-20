@@ -54,11 +54,11 @@
 % SLIDE 3: TEORÍA DE JUEGOS (NASH, DILEMA, DINÁMICOS Y REPETIDOS)
 % ==============================================================================
 \begin{frame}{1. Teoría de Juegos: Nash, Dinámicos y Repetidos}
-  \vspace{0.1cm}
+  \vspace{0.02cm}
   \begin{columns}[T]
     \begin{column}{0.32\textwidth}
       \tarjeta{azulPrincipal}{Equilibrio de Nash (EN)}{
-        Perfil de estrategias \((s_1^*, s_2^*)\) donde cada jugador elige su \textbf{mejor respuesta} dada la estrategia del rival: ningún jugador tiene incentivo a desviarse unilateralmente.\\[3pt]
+        Perfil de estrategias \((s_1^*, s_2^*)\) donde cada jugador elige su \textbf{mejor respuesta} dada la estrategia del rival: nadie tiene incentivo a desviarse unilateralmente.\\[2pt]
         • \textbf{Estrategia dominante:} es óptima sin importar qué haga el rival.
       }
     \end{column}
@@ -70,17 +70,17 @@
     \end{column}
     \begin{column}{0.32\textwidth}
       \tarjeta{verdeAcento}{Juegos Repetidos (Folk Theorem)}{
-        Con horizonte finito \(T\) conocido, por inducción hacia atrás no hay cooperación.\\[3pt]
+        Con horizonte finito \(T\) conocido, por inducción hacia atrás no hay cooperación.\\[2pt]
         Con \textbf{horizonte infinito} (o probabilidad de continuación \(\delta\)), se sostiene la colusión con estrategia \textit{Grim Trigger} si \(\delta \ge \delta^*\).
       }
     \end{column}
   \end{columns}
 
-  \vspace{0.15cm}
+  \vspace{0.05cm}
   \recuadroclave{
     \small\textbf{Estrategias Mixtas:} Si no existe EN en estrategias puras, todo juego finito tiene al menos un EN en estrategias mixtas (haciendo indiferente al rival entre sus acciones puras).
   }
-  \mensajefinal{Todo equilibrio en estrategias dominantes es un Equilibrio de Nash, pero no todo Equilibrio de Nash involucra estrategias dominantes.}
+  \mensajefinal{Todo equilibrio en estrategias dominantes es de Nash, pero no todo Equilibrio de Nash usa estrategias dominantes.}
 \end{frame}
 
 % ==============================================================================
@@ -140,33 +140,166 @@
 \end{frame}
 
 % ==============================================================================
-% SLIDE 5: MODELO DE BERTRAND Y COLUSIÓN (CÁRTEL)
+% SLIDE 5: OLIGOPOLIO ASIMÉTRICO, CÁRTEL Y COMPARATIVA DE EFICIENCIA (PES)
 % ==============================================================================
-\begin{frame}{3. Modelo de Bertrand y Colusión (Cártel)}
-  \vspace{0.1cm}
+\begin{frame}{2b. Oligopolio Asimétrico, Cártel y Pérdida de Eficiencia}
   \begin{columns}[T]
-    \begin{column}{0.48\textwidth}
-      \tarjeta{azulPrincipal}{Paradoja de Bertrand (Precios)}{
-        Con bienes \textbf{homogéneos}, \(CMg = c\) constante y sin restricción de capacidad:\\[3pt]
-        El único Equilibrio de Nash es \quad \(\mathbf{P_1^* = P_2^* = c}\) \quad (\(\pi = 0\)).\\[4pt]
-        \textit{Bastan 2 empresas para replicar el resultado competitivo.}\\
-        \textbf{Cómo se rompe la paradoja:} diferenciación de productos, restricciones de capacidad (Edgeworth) o juegos repetidos.
-      }
+    \begin{column}{0.51\textwidth}
+      {\small\textbf{Jerarquía de Bienestar (\(P = a - bQ\), \(CMg = c\))}}
+      \vspace{0.05cm}
+      \begin{tikzpicture}[scale=0.77]
+        \begin{axis}[
+          axis lines=left,
+          xlabel={Cantidad ($Q$)}, ylabel={Precio ($P$)},
+          xmin=0, xmax=9.2, ymin=0, ymax=8.8,
+          xtick={3.0, 4.0, 4.5, 6.0}, xticklabels={$Q_{\text{Col}}$, $Q_{\text{Co}}$, $Q_{\text{St}}$, $Q_{\text{Be}}$},
+          ytick={2.0, 3.5, 4.0, 5.0, 8.0}, yticklabels={$c$, $P_{\text{Sta}}$, $P_{\text{Cou}}$, $P_{\text{Col}}$, $a$},
+          tick label style={font=\tiny},
+          width=8.0cm, height=5.1cm, clip=false
+        ]
+          % Demanda P = 8 - Q, CMg = 2 => QC = 6
+          % Q_Col = 3, P_Col = 5; Q_Cou = 4, P_Cou = 4; Q_Sta = 4.5, P_Sta = 3.5; Q_Ber = 6, P_Ber = 2
+          \addplot[fill=rojoAcento!16, draw=none] coordinates {(3.0,2.0) (6.0,2.0) (3.0,5.0)} \closedcycle;
+          \addplot[fill=naranjaAcento!20, draw=none] coordinates {(4.0,2.0) (6.0,2.0) (4.0,4.0)} \closedcycle;
+          \addplot[fill=verdeAcento!24, draw=none] coordinates {(4.5,2.0) (6.0,2.0) (4.5,3.5)} \closedcycle;
+
+          \addplot[azulPrincipal, very thick, domain=0:7.6] {8 - x};
+          \node[azulPrincipal, font=\scriptsize, anchor=west] at (axis cs:7.0, 1.3) {$D$};
+          \addplot[rojoAcento, very thick, domain=0:8.3] {2};
+          \node[rojoAcento, font=\scriptsize, anchor=west] at (axis cs:8.35, 2.0) {$CMg=c$};
+
+          \draw[dotted, grisTexto] (axis cs:3.0, 0) -- (axis cs:3.0, 5.0) -- (axis cs:0, 5.0);
+          \draw[dotted, grisTexto] (axis cs:4.0, 0) -- (axis cs:4.0, 4.0) -- (axis cs:0, 4.0);
+          \draw[dotted, grisTexto] (axis cs:4.5, 0) -- (axis cs:4.5, 3.5) -- (axis cs:0, 3.5);
+          \addplot[only marks, mark=*, mark size=2pt, azulOscuro] coordinates {(3,5) (4,4) (4.5,3.5) (6,2)};
+
+          \node[rojoAcento, font=\tiny\bfseries, anchor=west] at (axis cs:3.1, 5.35) {Colusión \(\big(\frac{(a-c)^2}{8b}\big)\)};
+          \node[naranjaAcento!90!black, font=\tiny\bfseries, anchor=west] at (axis cs:4.1, 4.25) {Cournot \(\big(\frac{(a-c)^2}{18b}\big)\)};
+          \node[verdeAcento!90!black, font=\tiny\bfseries, anchor=west] at (axis cs:4.65, 3.55) {Stackelberg \(\big(\frac{(a-c)^2}{32b}\big)\)};
+          \node[azulPrincipal, font=\tiny\bfseries, anchor=south west] at (axis cs:6.05, 2.2) {Bertrand (\(PES=0\))};
+        \end{axis}
+      \end{tikzpicture}
     \end{column}
-    \begin{column}{0.48\textwidth}
-      \tarjeta{rojoAcento}{Colusión y Estabilidad del Cártel}{
-        Las firmas acuerdan producir \(Q_M\) (\(IMg_{ind} = CMg\)) y repartirse \(\pi_M\).\\[4pt]
-        • \textbf{¿Por qué es inestable?} En el punto de cártel, \(P_M > CMg_i\), por lo que cada firma tiene un incentivo fuerte a \textbf{hacer trampa} (vender un poco más o bajar \(P\)).\\
-        • \textbf{Factor de descuento crítico:} en Bertrand homogéneo repetido con \(N\) firmas, la colusión se sostiene si \(\delta \ge 1 - \frac{1}{N}\).
+
+    \begin{column}{0.46\textwidth}
+      {\scriptsize\color{grisTexto}Cournot con Costos Asimétricos (\(c_1 < c_2\))}\\[1pt]
+      {\small\color{azulPrincipal}\textbf{\(q_1^* = \frac{a-2c_1+c_2}{3b},\quad q_2^* = \frac{a-2c_2+c_1}{3b}\)}}\\[1pt]
+      {\scriptsize
+        • Precio de equilibrio: \(P^* = \frac{a + c_1 + c_2}{3}\) (menor \(CMg \Rightarrow\) mayor cuota).\\[3pt]
+      }
+      {\scriptsize\color{grisTexto}Stackelberg Asimétrico (Líder: menor \(CMg\) o mayor \(CF\))}\\[1pt]
+      {\small\color{naranjaAcento}\textbf{\(q_1^S = \frac{a-2c_1+c_2}{2b},\quad q_2^S = \frac{a-3c_2+2c_1}{4b}\)}}\\[1pt]
+      {\scriptsize
+        • Precio: \(P^S = \frac{a + 2c_1 + c_2}{4}\) (solución interior si \(a+2c_1 > 3c_2\)).\\[3pt]
+      }
+      {\scriptsize\color{grisTexto}Cártel con Cuotas (\(q_1 = XQ,\; q_2 = YQ,\; X+Y=1\))}\\[1pt]
+      {\small\color{rojoAcento}\textbf{\(Q_{\text{Col}} = \frac{a - Xc_1 - Yc_2}{2b},\quad P_{\text{Col}} = \frac{a + Xc_1 + Yc_2}{2}\)}}\\[1pt]
+      {\scriptsize
+        • Sin pacto de cuotas y \(c_1 < c_2\), el cártel cierra la planta ineficiente y produce solo con la firma \(1\).
       }
     \end{column}
   \end{columns}
 
-  \vspace{0.15cm}
-  \recuadroclave{
-    \small\textbf{En Bertrand con productos diferenciados:} Las funciones de reacción en precios tienen \textbf{pendiente positiva} (\textbf{complementos estratégicos}): si el rival sube su precio, me conviene subir el mío.
-  }
-  \mensajefinal{En competencia por cantidades (Cournot), las decisiones son sustitutos estratégicos; en precios (Bertrand diferenciado), son complementos estratégicos.}
+  \mensajefinal{A mayor competencia (\text{Colusión} \(\to\) \text{Cournot} \(\to\) \text{Stackelberg} \(\to\) \text{Bertrand}), menor \(PES\).}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 6: MODELO DE BERTRAND HOMOGÉNEO Y COLUSIÓN (CÁRTEL)
+% ==============================================================================
+\begin{frame}{3. Modelo de Bertrand (Homogéneo) y Colusión}
+  \begin{columns}[T]
+    \begin{column}{0.49\textwidth}
+      {\small\textbf{Funciones de Reacción en Precios (\textit{Undercutting})}}
+      \vspace{0.03cm}
+      \begin{tikzpicture}[scale=0.68, >=stealth]
+        % Ejes
+        \draw[->, thick] (0,0) -- (6.2,0) node[right, font=\scriptsize] {$p_1$};
+        \draw[->, thick] (0,0) -- (0,5.8) node[above, font=\scriptsize] {$p_2$};
+        % Diagonal 45°
+        \draw[dashed, thin, grisTexto] (0,0) -- (5.3,5.3);
+        % Guías p_max y CMg
+        \draw[dotted, grisTexto] (4.3,0) node[below, font=\tiny, black] {$p_1^{\max}$} -- (4.3,4.55);
+        \draw[dotted, grisTexto] (0,4.3) node[left, font=\tiny, black] {$p_2^{\max}$} -- (4.55,4.3);
+        % FR1 (azul)
+        \draw[azulPrincipal, very thick] (1.4,0) -- (1.4,1.65) -- (4.3,4.55) -- (4.3,5.4) node[right, font=\scriptsize] {$FR_1$};
+        % FR2 (verde)
+        \draw[verdeAcento, very thick] (0,1.4) -- (1.65,1.4) -- (4.55,4.3) -- (5.5,4.3) node[above, font=\scriptsize] {$FR_2$};
+        % Nash equilibrium at (1.4, 1.4)
+        \fill[rojoAcento] (1.4,1.4) circle (2.8pt);
+        \node[below, font=\tiny, black] at (1.4,0) {$CMg_1$};
+        \node[left, font=\tiny, black] at (0,1.4) {$CMg_2$};
+        \node[rojoAcento, font=\tiny\bfseries, anchor=west] at (1.65,0.8) {EN: \((CMg, CMg)\)};
+      \end{tikzpicture}\\[-2pt]
+      {\tiny\textbf{Demanda discontinua:} \(D_i = D(p_i)\) si \(p_i < p_j\);\; \(\frac{1}{2}D(p_i)\) si \(p_i = p_j\);\; \(0\) si \(p_i > p_j\).}
+    \end{column}
+
+    \begin{column}{0.48\textwidth}
+      \tarjeta{azulPrincipal}{Paradoja de Bertrand (Bienes Homogéneos)}{
+        Con bienes idénticos, \(CMg = c\) cte. y sin límites de capacidad: el único Equilibrio de Nash es \(\mathbf{P_1^* = P_2^* = c}\) (\(\pi = 0\)).\\[2pt]
+        • \textbf{Mecanismo:} mientras \(p_j > c\), conviene recortar un céntimo (\(p_i = p_j - \varepsilon\)) y captar todo el mercado.\\
+        • \textbf{Cómo se rompe:} diferenciación, restricción de capacidad (Edgeworth) o repetición infinita.
+      }
+      \vspace{0.04cm}
+      \tarjeta{rojoAcento}{Colusión Tácita y Estabilidad del Cártel}{
+        • \textbf{Grim Trigger (Bertrand homogéneo con \(N\) firmas):} la colusión se sostiene si \(\delta \ge 1 - \frac{1}{N}\).\\
+        • Si \(P_M > CMg\), cada firma tiene incentivo a desviarse (\textit{Dilema del Prisionero}).
+      }
+    \end{column}
+  \end{columns}
+
+  \mensajefinal{En Bertrand homogéneo bastan dos empresas para replicar el precio competitivo (\(P^* = c\)).}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 7: OLIGOPOLIO CON PRODUCTOS DIFERENCIADOS (COURNOT Y BERTRAND)
+% ==============================================================================
+\begin{frame}{3b. Oligopolio Diferenciado: Cournot y Bertrand}
+  \begin{columns}[T]
+    \begin{column}{0.49\textwidth}
+      {\small\textbf{Bertrand Diferenciado (Complementos Estratégicos)}}
+      \vspace{0.05cm}
+      \begin{tikzpicture}[scale=0.76]
+        \begin{axis}[
+          axis lines=left,
+          xlabel={$p_1$}, ylabel={$p_2$},
+          xmin=0, xmax=12.5, ymin=0, ymax=12.5,
+          xtick={6, 8}, xticklabels={$p_1^0$, $p_1^*$},
+          ytick={6, 8}, yticklabels={$p_2^0$, $p_2^*$},
+          width=7.8cm, height=5.0cm, clip=false
+        ]
+          % FR1: p1 = 6 + 0.25*p2 => (6,0) a (9.1, 12.4)
+          \addplot[azulPrincipal, very thick, domain=6:9.0] {4*(x - 6)};
+          \node[azulPrincipal, font=\scriptsize, anchor=south] at (axis cs:9.0, 12.0) {$FR_1(p_2)$};
+          % FR2: p2 = 6 + 0.25*p1 => (0,6) a (12,9)
+          \addplot[rojoAcento, very thick, domain=0:12] {6 + 0.25*x};
+          \node[rojoAcento, font=\scriptsize, anchor=west] at (axis cs:12.0, 9.0) {$FR_2(p_1)$};
+          % Diagonal 45 y equilibrio (8,8)
+          \addplot[dashed, grisTexto!65, domain=0:11] {x};
+          \draw[dotted, grisTexto] (axis cs:8,0) -- (axis cs:8,8) -- (axis cs:0,8);
+          \addplot[only marks, mark=*, mark size=2.6pt, verdeAcento] coordinates {(8,8)};
+          \node[verdeAcento, font=\scriptsize\bfseries, anchor=north west] at (axis cs:8.2, 7.15) {EN \((p_1^*, p_2^*)\)};
+        \end{axis}
+      \end{tikzpicture}
+    \end{column}
+
+    \begin{column}{0.48\textwidth}
+      {\scriptsize\color{grisTexto}Bertrand Diferenciado (\(q_i = \alpha - \beta p_i + \delta p_j\))}\\[1pt]
+      {\small\color{azulPrincipal}\textbf{\(FR_1:\; p_1 = \frac{\alpha + \beta c_1}{2\beta} + \frac{\delta}{2\beta}p_2 \;\; \text{(pendiente} > 0\text{)}\)}}\\[2pt]
+      {\scriptsize
+        • Si \(c_1 = c_2 = c\): \(\mathbf{p^* = \frac{\alpha + \beta c}{2\beta - \delta} > c}\) (margen positivo).\\
+        • Son \textbf{complementos estratégicos}: si el rival sube \(p_j\), conviene subir \(p_i\).\\[4pt]
+      }
+      {\scriptsize\color{grisTexto}Cournot Diferenciado (\(p_i = a - q_i - d q_j,\; d \in [0, 1]\))}\\[1pt]
+      {\small\color{verdeAcento}\textbf{\(q_i^* = \frac{a-c}{2+d},\quad p_i^* = \frac{a+c+cd}{2+d},\quad \pi_i^* = \left(\frac{a-c}{2+d}\right)^2 - CF\)}}\\[2pt]
+      {\scriptsize
+        • \(d = 0\): monopolios independientes (\(q_i = \frac{a-c}{2}\)).\\
+        • \(d = 1\): bienes homogéneos (Cournot clásico).\\
+        • Mayor diferenciación (\(\downarrow d\)) \(\implies \uparrow P\) y \(\uparrow \pi\).
+      }
+    \end{column}
+  \end{columns}
+
+  \mensajefinal{La diferenciación de productos (\(d < 1\)) suaviza la competencia en precios (\(\text{FR}\) con pendiente positiva) y rescata márgenes.}
 \end{frame}
 
 % ==============================================================================
@@ -274,7 +407,8 @@
     \begin{column}{0.32\textwidth}
       \tarjeta{verdeAcento}{Fórmulas Imprescindibles}{
         • Cournot \(N\): \(Q = \frac{N}{N+1}Q_C\)\\
-        • Stackelberg: \(q_1^S = \frac{1}{2}Q_C, \ q_2^S = \frac{1}{4}Q_C\)\\
+        • Stackelberg: \(q_1^S = \frac{1}{2}Q_C,\ q_2^S = \frac{1}{4}Q_C\)\\
+        • Bertrand dif.: \(p^* = \frac{\alpha+\beta c}{2\beta-\delta}\)\\
         • Colusión \(N\): \(\delta \ge 1 - \frac{1}{N}\)
       }
     \end{column}
