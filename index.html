@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Simulador PEU SUNASS · Economía | BackBone Academy</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous" onload="if (typeof upgradePendingMath === 'function') upgradePendingMath()"></script>
   <style>
     :root {
       --azul: #2B2DA2;
@@ -266,6 +268,7 @@
     .question-text {
       font-size: 16px;
       font-weight: 600;
+      line-height: 1.65;
       margin: 0 0 16px;
     }
 
@@ -286,6 +289,7 @@
       background: var(--blanco);
       font-family: inherit;
       font-size: 14px;
+      line-height: 1.5;
       color: var(--texto);
       cursor: pointer;
     }
@@ -298,6 +302,7 @@
       flex-shrink: 0;
       width: 24px;
       height: 24px;
+      margin-top: 1px;
       border-radius: 4px;
       background: var(--fondo-suave);
       color: var(--azul-oscuro);
@@ -307,6 +312,32 @@
       align-items: center;
       justify-content: center;
     }
+
+    /* Tipografía matemática (KaTeX + respaldo CSS offline) */
+    .katex { font-size: 1.05em; }
+    .opt-btn .katex { font-size: 1.03em; }
+    .feedback-box, .premise-box { line-height: 1.6; }
+    .math-fallback {
+      font-family: "Cambria Math", "STIX Two Math", "Latin Modern Math", Georgia, serif;
+      font-style: italic;
+    }
+    .math-fallback .mtxt { font-style: normal; font-family: inherit; }
+    .math-fallback .mfrac {
+      display: inline-flex;
+      flex-direction: column;
+      vertical-align: middle;
+      text-align: center;
+      margin: 0 2px;
+      font-size: 0.88em;
+      line-height: 1.15;
+    }
+    .math-fallback .mfrac > span:first-child { border-bottom: 1px solid currentColor; padding: 0 3px 1px; }
+    .math-fallback .mfrac > span:last-child { padding: 1px 3px 0; }
+    .math-fallback .msqrt { display: inline-flex; align-items: baseline; }
+    .math-fallback .msqrt-rad { font-style: normal; margin-right: 1px; }
+    .math-fallback .msqrt-body { border-top: 1px solid currentColor; padding: 0 2px; }
+    .math-fallback .mbar { text-decoration: overline; }
+    .math-fallback sup, .math-fallback sub { font-size: 0.74em; line-height: 0; }
     .opt-btn.selected { border-color: var(--azul); background: var(--fondo-suave); }
     .opt-btn.selected .opt-key { background: var(--azul); color: var(--blanco); }
     .opt-btn.correct { border-color: var(--verde); background: var(--verde-bg); }
@@ -714,23 +745,185 @@
       }
     }
 
-    function cleanText(s) {
-      if (!s) return "";
-      return String(s)
-        .replace(/\\text\{([^}]*)\}/g, "$1")
-        .replace(/\\frac\{([^}]*)\}\{([^}]*)\}/g, "($1 / $2)")
-        .replace(/Dacute\{imath\}as/g, "Días")
-        .replace(/acute\{([AaEeIiOoUu])\}/g, (_, ch) => ({A:"Á",a:"á",E:"É",e:"é",I:"Í",i:"í",O:"Ó",o:"ó",U:"Ú",u:"ú"}[ch] || ch))
-        .replace(/\\([{}])/g, "$1")
-        .replace(/\\ /g, " ");
-    }
-
-    function esc(s) {
-      return cleanText(s)
+    function escapeHtml(s) {
+      return String(s || "")
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;");
+    }
+
+    function cleanText(s) {
+      if (!s) return "";
+      return String(s)
+        .replace(/\$/g, "")
+        .replace(/\\text\{([^}]*)\}/g, "$1")
+        .replace(/\\textbf\{([^}]*)\}/g, "$1")
+        .replace(/\\(?:d)?frac\{([^}]*)\}\{([^}]*)\}/g, "($1 / $2)")
+        .replace(/D\\acute\{\\imath\}as/g, "Días")
+        .replace(/Dacute\{imath\}as/g, "Días")
+        .replace(/\\?acute\{([AaEeIiOoUu])\}/g, (_, ch) => ({A:"Á",a:"á",E:"É",e:"é",I:"Í",i:"í",O:"Ó",o:"ó",U:"Ú",u:"ú"}[ch] || ch))
+        .replace(/\\([{}%&])/g, "$1")
+        .replace(/\\(left|right)/g, "")
+        .replace(/\\[,; ]/g, " ");
+    }
+
+    function esc(s) {
+      return escapeHtml(cleanText(s));
+    }
+
+    const TEX_SYMBOLS = {
+      alpha:"α", beta:"β", gamma:"γ", delta:"δ", epsilon:"ε", varepsilon:"ε",
+      lambda:"λ", rho:"ρ", sigma:"σ", tau:"τ", pi:"π", Pi:"Π", Delta:"Δ",
+      Sigma:"Σ", chi:"χ", partial:"∂", implies:"⇒", approx:"≈", neq:"≠",
+      ge:"≥", geq:"≥", le:"≤", leq:"≤", times:"×", cdot:"·", pm:"±",
+      sum:"∑", int:"∫", in:"∈", infty:"∞", dots:"…", sim:"∼"
+    };
+
+    function readTeXGroup(str, pos) {
+      while (pos < str.length && str[pos] === " ") pos++;
+      if (pos >= str.length) return ["", pos];
+      if (str[pos] === "{") {
+        pos++;
+        let depth = 1, start = pos;
+        while (pos < str.length && depth > 0) {
+          if (str[pos] === "\\" && pos + 1 < str.length) { pos += 2; continue; }
+          if (str[pos] === "{") depth++;
+          else if (str[pos] === "}") { depth--; if (depth === 0) return [str.slice(start, pos), pos + 1]; }
+          pos++;
+        }
+        return [str.slice(start), pos];
+      }
+      if (str[pos] === "\\" && pos + 1 < str.length) {
+        const m = str.slice(pos).match(/^\\[a-zA-Z]+/);
+        if (m) return [m[0], pos + m[0].length];
+        return [str.slice(pos, pos + 2), pos + 2];
+      }
+      return [str[pos], pos + 1];
+    }
+
+    function texExprToHtml(tex) {
+      let out = "";
+      let i = 0;
+      while (i < tex.length) {
+        const ch = tex[i];
+        if (ch === "^" || ch === "_") {
+          const tag = ch === "^" ? "sup" : "sub";
+          const [grp, nextPos] = readTeXGroup(tex, i + 1);
+          out += `<${tag}>${texExprToHtml(grp)}</${tag}>`;
+          i = nextPos;
+          continue;
+        }
+        if (ch === "\\" && i + 1 < tex.length) {
+          const rest = tex.slice(i);
+          const cmdMatch = rest.match(/^\\([a-zA-Z]+)/);
+          if (cmdMatch) {
+            const cmd = cmdMatch[1];
+            let p = i + cmdMatch[0].length;
+            if (cmd === "frac" || cmd === "dfrac") {
+              const [num, p1] = readTeXGroup(tex, p);
+              const [den, p2] = readTeXGroup(tex, p1);
+              out += `<span class="mfrac"><span>${texExprToHtml(num)}</span><span>${texExprToHtml(den)}</span></span>`;
+              i = p2;
+              continue;
+            }
+            if (cmd === "sqrt") {
+              let deg = "";
+              if (tex[p] === "[") {
+                const closeB = tex.indexOf("]", p);
+                if (closeB !== -1) { deg = tex.slice(p + 1, closeB); p = closeB + 1; }
+              }
+              const [body, p1] = readTeXGroup(tex, p);
+              const supDeg = deg ? `<sup>${escapeHtml(deg)}</sup>` : "";
+              out += `${supDeg}<span class="msqrt"><span class="msqrt-rad">√</span><span class="msqrt-body">${texExprToHtml(body)}</span></span>`;
+              i = p1;
+              continue;
+            }
+            if (cmd === "text") {
+              const [txt, p1] = readTeXGroup(tex, p);
+              out += `<span class="mtxt">${escapeHtml(txt)}</span>`;
+              i = p1;
+              continue;
+            }
+            if (cmd === "bar") {
+              const [body, p1] = readTeXGroup(tex, p);
+              out += `<span class="mbar">${texExprToHtml(body)}</span>`;
+              i = p1;
+              continue;
+            }
+            if (cmd === "hat" || cmd === "widehat") {
+              const [body, p1] = readTeXGroup(tex, p);
+              out += `${texExprToHtml(body)}&#x0302;`;
+              i = p1;
+              continue;
+            }
+            if (cmd === "tilde") {
+              const [body, p1] = readTeXGroup(tex, p);
+              out += `${texExprToHtml(body)}&#x0303;`;
+              i = p1;
+              continue;
+            }
+            if (cmd === "min" || cmd === "max" || cmd === "ln") {
+              out += `<span class="mtxt">${cmd}</span>`;
+              i = p;
+              continue;
+            }
+            if (cmd === "left" || cmd === "right") {
+              i = p;
+              continue;
+            }
+            if (TEX_SYMBOLS[cmd]) {
+              out += `<span class="mtxt">${TEX_SYMBOLS[cmd]}</span>`;
+              i = p;
+              continue;
+            }
+            out += escapeHtml(cmd);
+            i = p;
+            continue;
+          }
+          const escChar = tex[i + 1];
+          if (escChar === "," || escChar === ";" || escChar === " ") {
+            out += " ";
+          } else {
+            out += escapeHtml(escChar);
+          }
+          i += 2;
+          continue;
+        }
+        if (ch === "{" || ch === "}") { i++; continue; }
+        if (/[0-9=+\-*/(),.:;[\]<>|]/.test(ch)) {
+          out += `<span class="mtxt">${escapeHtml(ch)}</span>`;
+        } else {
+          out += escapeHtml(ch);
+        }
+        i++;
+      }
+      return out;
+    }
+
+    function renderKaTeXExpr(tex) {
+      if (typeof katex !== "undefined" && katex && typeof katex.renderToString === "function") {
+        return katex.renderToString(tex, { throwOnError: false, strict: false });
+      }
+      return `<span class="math-pending math-fallback" data-tex="${escapeHtml(tex)}">${texExprToHtml(tex)}</span>`;
+    }
+
+    function renderMathHTML(raw) {
+      if (!raw) return "";
+      const parts = String(raw).split(/(\$[^$]+\$)/g);
+      return parts.map((part, idx) => {
+        if (idx % 2 === 1 && part.length >= 2) {
+          return renderKaTeXExpr(part.slice(1, -1));
+        }
+        return escapeHtml(part);
+      }).join("");
+    }
+
+    function upgradePendingMath() {
+      if (typeof katex === "undefined" || !katex || typeof katex.renderToString !== "function") return;
+      document.querySelectorAll(".math-pending[data-tex]").forEach(el => {
+        el.outerHTML = katex.renderToString(el.getAttribute("data-tex"), { throwOnError: false, strict: false });
+      });
     }
 
     function showView(id) {
@@ -1000,19 +1193,19 @@
         document.getElementById("q-premise-title").textContent = ref
           ? `Premisa vinculada (${ref})`
           : `Contexto del caso (${q.cluster_id || q.id})`;
-        document.getElementById("q-premise-text").textContent = cleanText(q.context_premise);
+        document.getElementById("q-premise-text").innerHTML = renderMathHTML(q.context_premise);
         premWrap.classList.remove("hidden");
       } else {
         premWrap.classList.add("hidden");
       }
 
-      document.getElementById("q-text").textContent = cleanText(q.question);
+      document.getElementById("q-text").innerHTML = renderMathHTML(q.question);
 
       const letters = ["A", "B", "C", "D"];
       document.getElementById("q-options").innerHTML = q.options.map((opt, i) => `
         <button class="opt-btn" id="opt-${letters[i]}" onclick="answerQuestion('${letters[i]}')">
           <span class="opt-key">${letters[i]}</span>
-          <span>${esc(opt)}</span>
+          <span>${renderMathHTML(opt)}</span>
         </button>
       `).join("");
 
@@ -1068,7 +1261,7 @@
         fbTitle.textContent = `✘ Incorrecto. Marcaste [${choice}], la clave correcta es [${q.correct_key}].`;
       }
 
-      document.getElementById("q-feedback-expl").textContent = cleanText(q.explanation);
+      document.getElementById("q-feedback-expl").innerHTML = renderMathHTML(q.explanation);
       document.getElementById("btn-skip").classList.add("hidden");
       const nextBtn = document.getElementById("btn-next");
       nextBtn.textContent = session.idx + 1 >= session.questions.length ? "Ver resultados →" : "Siguiente →";
@@ -1195,8 +1388,9 @@
         document.getElementById("res-review-list").innerHTML = toReview.map(r => `
           <div class="feedback-box ${r.isSkipped ? "skip" : "bad"}" style="margin-bottom:10px;">
             <div class="feedback-title">${esc(r.item.id)} · ${r.isSkipped ? "Saltada" : `Marcaste [${r.userChoice}]`} · Correcta: [${r.correctKey}]</div>
-            <div style="margin-bottom:6px;"><strong>${esc(r.item.question)}</strong></div>
-            <div class="muted">${esc(r.item.explanation)}</div>
+            ${r.item.context_premise ? `<div class="muted" style="margin-bottom:4px;font-size:13px;"><em>Contexto: ${renderMathHTML(r.item.context_premise)}</em></div>` : ""}
+            <div style="margin-bottom:6px;"><strong>${renderMathHTML(r.item.question)}</strong></div>
+            <div class="muted">${renderMathHTML(r.item.explanation)}</div>
           </div>
         `).join("");
         revWrap.classList.remove("hidden");

@@ -16,6 +16,7 @@ Mejoras v2.0:
 import os
 import sys
 import json
+import re
 import random
 import time
 import textwrap
@@ -199,6 +200,140 @@ def sample_clustered(questions, target_n, all_db=None):
         selected.extend(c)
     return ensure_prerequisites(selected, all_db if all_db is not None else questions)
 
+_CLI_SYMBOLS = {
+    "alpha": "α", "beta": "β", "gamma": "γ", "delta": "δ", "epsilon": "ε",
+    "varepsilon": "ε", "lambda": "λ", "rho": "ρ", "sigma": "σ", "tau": "τ",
+    "pi": "π", "Pi": "Π", "Delta": "Δ", "Sigma": "Σ", "chi": "χ",
+    "partial": "∂", "implies": "⇒", "approx": "≈", "neq": "≠",
+    "ge": "≥", "geq": "≥", "le": "≤", "leq": "≤", "times": "×",
+    "cdot": "·", "pm": "±", "sum": "∑", "int": "∫", "in": "∈",
+    "infty": "∞", "dots": "…", "sim": "∼",
+}
+_SUP_MAP = str.maketrans("0123456789+-=n()*", "⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻⁼ⁿ⁽⁾*")
+_SUB_MAP = str.maketrans("0123456789+-=()aeijoprx", "₀₁₂₃₄₅₆₇₈₉₊₋₌₍₎ₐₑᵢⱼₒₚᵣₓ")
+
+def _read_tex_group(s, pos):
+    while pos < len(s) and s[pos] == " ":
+        pos += 1
+    if pos >= len(s):
+        return "", pos
+    if s[pos] == "{":
+        pos += 1
+        depth = 1
+        start = pos
+        while pos < len(s) and depth > 0:
+            if s[pos] == "\\" and pos + 1 < len(s):
+                pos += 2
+                continue
+            if s[pos] == "{":
+                depth += 1
+            elif s[pos] == "}":
+                depth -= 1
+                if depth == 0:
+                    return s[start:pos], pos + 1
+            pos += 1
+        return s[start:], pos
+    if s[pos] == "\\" and pos + 1 < len(s):
+        m = re.match(r"\\[a-zA-Z]+", s[pos:])
+        if m:
+            return m.group(0), pos + len(m.group(0))
+        return s[pos:pos + 2], pos + 2
+    return s[pos], pos + 1
+
+def _tex_expr_to_unicode(expr):
+    out = []
+    i = 0
+    while i < len(expr):
+        ch = expr[i]
+        if ch in ("^", "_"):
+            grp, i = _read_tex_group(expr, i + 1)
+            rendered = _tex_expr_to_unicode(grp)
+            cmap = _SUP_MAP if ch == "^" else _SUB_MAP
+            if rendered and all(ord(c) in cmap for c in rendered):
+                out.append(rendered.translate(cmap))
+            elif ch == "^":
+                out.append(f"^({rendered})" if len(rendered) > 1 else f"^{rendered}")
+            else:
+                out.append(f"_{rendered}")
+            continue
+        if ch == "\\" and i + 1 < len(expr):
+            m = re.match(r"^\\([a-zA-Z]+)", expr[i:])
+            if m:
+                cmd = m.group(1)
+                p = i + len(m.group(0))
+                if cmd in ("frac", "dfrac"):
+                    num, p1 = _read_tex_group(expr, p)
+                    den, p2 = _read_tex_group(expr, p1)
+                    n_s = _tex_expr_to_unicode(num).strip()
+                    d_s = _tex_expr_to_unicode(den).strip()
+                    n_fmt = f"({n_s})" if any(op in n_s for op in "+-/× ") else n_s
+                    d_fmt = f"({d_s})" if any(op in d_s for op in "+-/× ") else d_s
+                    out.append(f"{n_fmt}/{d_fmt}")
+                    i = p2
+                    continue
+                if cmd == "sqrt":
+                    deg = ""
+                    if p < len(expr) and expr[p] == "[":
+                        end_b = expr.find("]", p)
+                        if end_b != -1:
+                            deg = expr[p + 1:end_b]
+                            p = end_b + 1
+                    body, p1 = _read_tex_group(expr, p)
+                    b_s = _tex_expr_to_unicode(body)
+                    prefix = "∛" if deg == "3" else (f"{deg.translate(_SUP_MAP)}√" if deg and all(c in _SUP_MAP for c in deg) else "√")
+                    out.append(f"{prefix}({b_s})")
+                    i = p1
+                    continue
+                if cmd == "text":
+                    txt, p1 = _read_tex_group(expr, p)
+                    out.append(txt)
+                    i = p1
+                    continue
+                if cmd in ("hat", "bar", "tilde", "widehat"):
+                    body, p1 = _read_tex_group(expr, p)
+                    b_s = _tex_expr_to_unicode(body)
+                    comb = {"bar": "\u0304", "tilde": "\u0303"}.get(cmd, "\u0302")
+                    out.append(b_s + comb if len(b_s) <= 2 else f"{cmd}({b_s})")
+                    i = p1
+                    continue
+                if cmd in ("min", "max", "ln"):
+                    out.append(cmd)
+                    i = p
+                    continue
+                if cmd in ("left", "right"):
+                    i = p
+                    continue
+                if cmd in _CLI_SYMBOLS:
+                    out.append(_CLI_SYMBOLS[cmd])
+                    i = p
+                    continue
+                out.append(cmd)
+                i = p
+                continue
+            nxt = expr[i + 1]
+            out.append(" " if nxt in (",", ";", " ") else nxt)
+            i += 2
+            continue
+        if ch in ("{", "}"):
+            i += 1
+            continue
+        out.append(ch)
+        i += 1
+    return "".join(out)
+
+def format_cli_math(text):
+    """Convierte bloques TeX ($...$) a Unicode legible para terminal."""
+    if not text:
+        return ""
+    parts = re.split(r"(\$[^$]+\$)", str(text))
+    res = []
+    for idx, part in enumerate(parts):
+        if idx % 2 == 1 and len(part) >= 2:
+            res.append(_tex_expr_to_unicode(part[1:-1]))
+        else:
+            res.append(part)
+    return "".join(res)
+
 def ask_question(item, index, total, tutor_mode=True):
     print(f"\n{BOLD}{CYAN}------------------------------------------------------------------------------{RESET}")
     print(f"{BOLD}{BLUE}[{index}/{total}] {item['module_name'].upper()}{RESET}  {DIM}(ID: {item['id']}){RESET}")
@@ -212,18 +347,18 @@ def ask_question(item, index, total, tutor_mode=True):
         header_label = f"PREMISA / CONTEXTO VINCULADO ({ref})" if ref else f"CONTEXTO DEL CASO ({item.get('cluster_id') or item['id']})"
         pad = "─" * max(4, 52 - len(header_label))
         print(f"  {YELLOW}{BOLD}┌─ 📌 {header_label} {pad}┐{RESET}")
-        wrapped_premise = textwrap.fill(item["context_premise"], width=70, initial_indent="  │ ", subsequent_indent="  │ ")
+        wrapped_premise = textwrap.fill(format_cli_math(item["context_premise"]), width=70, initial_indent="  │ ", subsequent_indent="  │ ")
         print(f"{DIM}{wrapped_premise}{RESET}")
         print(f"  {YELLOW}{BOLD}└{'─'*72}┘{RESET}\n")
 
     # Enunciado de la pregunta
-    wrapped_q = textwrap.fill(item["question"], width=76, initial_indent="  ", subsequent_indent="  ")
+    wrapped_q = textwrap.fill(format_cli_math(item["question"]), width=76, initial_indent="  ", subsequent_indent="  ")
     print(f"{BOLD}{wrapped_q}{RESET}\n")
 
     # Alternativas
     letters = ["A", "B", "C", "D"]
     for i, opt in enumerate(item["options"]):
-        wrapped_opt = textwrap.fill(opt, width=72, initial_indent="     ", subsequent_indent="     ")
+        wrapped_opt = textwrap.fill(format_cli_math(opt), width=72, initial_indent="     ", subsequent_indent="     ")
         print(f"  {BOLD}{YELLOW}[{letters[i]}]{RESET} {wrapped_opt[5:]}")
 
     print()
@@ -256,7 +391,7 @@ def ask_question(item, index, total, tutor_mode=True):
             print(f"{RED}{BOLD}✘ INCORRECTO.{RESET} {RED}Marcaste [{choice}], pero la clave correcta es {BOLD}[{correct_key}]{RESET}.")
 
         print(f"\n{CYAN}{BOLD}📖 SOLUCIONARIO:{RESET}")
-        wrapped_expl = textwrap.fill(item["explanation"], width=74, initial_indent="  ", subsequent_indent="  ")
+        wrapped_expl = textwrap.fill(format_cli_math(item["explanation"]), width=74, initial_indent="  ", subsequent_indent="  ")
         print(f"{DIM}{wrapped_expl}{RESET}\n")
         try:
             input(f"{DIM}[Presione ENTER para continuar...]{RESET}")
