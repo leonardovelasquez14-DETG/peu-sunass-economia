@@ -49,58 +49,154 @@
 \end{frame}
 
 % ==============================================================================
-% SLIDE 3: CAJA DE EDGEWORTH DE INTERCAMBIO
+% SLIDE 3: CAJA DE EDGEWORTH DE INTERCAMBIO (MEJORADA Y COMPLETA)
 % ==============================================================================
-\begin{frame}{1. La Caja de Edgeworth y Curva de Contrato}
+\begin{frame}{1. La Caja de Edgeworth: Lente, Núcleo y Equilibrio}
   \begin{columns}[T]
-    \begin{column}{0.52\textwidth}
-      {\small\textbf{Eficiencia de Pareto en el Intercambio}}
-      \vspace{0.05cm}
-      \begin{tikzpicture}[scale=0.82]
-        % Caja
-        \draw[thick, aceroAcento] (0,0) rectangle (6.8,4.6);
-        \node[font=\scriptsize, azulPrincipal, anchor=north east] at (0,0) {$O_A$};
-        \node[font=\scriptsize, rojoAcento, anchor=south west] at (6.8,4.6) {$O_B$};
-        \node[font=\tiny, grisTexto] at (3.4, -0.3) {Total $x_1 = \bar{x}_1^A + \bar{x}_1^B$};
-        \node[font=\tiny, grisTexto, rotate=90] at (-0.35, 2.3) {Total $x_2$};
+    \begin{column}{0.54\textwidth}
+      {\small\textbf{Lectura Dual (\(O_A\) abajo-izq. / \(O_B\) arriba-der.)}}
+      \vspace{0.18cm}
 
-        % Curva de contrato (diagonal exacta para Cobb-Douglas simétricas)
-        \draw[verdeAcento, ultra thick] (0,0) -- (6.8,4.6);
-        \node[verdeAcento, font=\scriptsize, anchor=north west] at (4.35, 2.75) {\textbf{Curva de Contrato}};
+      \begin{tikzpicture}[scale=0.80]
+        % Relleno exacto del lente de mejora paretiana entre U_A^W y U_B^W (x in [1.45, 5.75])
+        % U_A = x^0.6 y^0.4 -> yA(x) = 6.0238 / x^1.5
+        % U_B = (6.4-x)^0.4 (4.5-y)^0.6 -> yB(x) = 4.5 - 3.0497 / (6.4-x)^(2/3)
+        \fill[verdeAcento!16]
+          plot[domain=1.45:5.75, samples=45] (\x, {6.0238/(\x^(1.5))}) --
+          plot[domain=5.75:1.45, samples=45] (\x, {4.5 - 3.0497/((6.4-\x)^(0.6667))}) -- cycle;
 
-        % Dotación inicial W = (1.6, 3.52) sobre la recta presupuestaria
-        \fill[naranjaAcento] (1.6, 3.52) circle (2.5pt) node[above right, font=\scriptsize] {$W$};
+        % Marco de la Caja (W=6.4, H=4.5)
+        \draw[thick, aceroAcento] (0,0) rectangle (6.4,4.5);
 
-        % Lente exacto de mejora paretiana pasando por W(1.6, 3.52) y (5.2, 1.09)
-        % U_A(W) = 5.632 => x2 = 5.632/x1 (convexa hacia O_A)
-        \draw[azulPrincipal, thick, domain=1.25:5.6, samples=40] plot (\x, {5.632/\x});
-        % U_B(W) = 5.616 => x2 = 4.6 - 5.616/(6.8 - x1) (convexa hacia O_B)
-        \draw[rojoAcento, thick, domain=1.2:5.55, samples=40] plot (\x, {4.6 - 5.616/(6.8 - \x)});
+        % Orígenes y 4 ejes con flechas direccionales claras
+        \fill[azulPrincipal] (0,0) circle (2.2pt) node[anchor=north east, font=\scriptsize\bfseries] {$O_A$};
+        \fill[rojoAcento] (6.4,4.5) circle (2.2pt) node[anchor=south west, font=\scriptsize\bfseries] {$O_B$};
+        \node[font=\tiny\bfseries, azulPrincipal] at (3.2, -0.30) {Bien $x_1^A \;\longrightarrow$};
+        \node[font=\tiny\bfseries, azulPrincipal, rotate=90] at (-0.34, 2.25) {Bien $x_2^A \;\longrightarrow$};
+        \node[font=\tiny\bfseries, rojoAcento] at (3.2, 4.78) {$\longleftarrow\; \text{Bien } x_1^B$};
+        \node[font=\tiny\bfseries, rojoAcento, rotate=90] at (6.72, 2.25) {$\longleftarrow\; \text{Bien } x_2^B$};
 
-        % Equilibrio E* = (3.4, 2.3) sobre curva de contrato (tangencia exacta con p1/p2 = 0.6765)
-        \draw[azulPrincipal, thick, dashed, domain=1.75:5.6, samples=40] plot (\x, {7.82/\x});
-        \draw[rojoAcento, thick, dashed, domain=1.2:5.05, samples=40] plot (\x, {4.6 - 7.82/(6.8 - \x)});
-        % Recta presupuestaria tangente en E*(3.4, 2.3) y pasando por W(1.6, 3.52)
-        \draw[grisTexto, thick] (0.6, 4.19) -- (6.2, 0.41);
-        \fill[azulPrincipal] (3.4, 2.3) circle (2.8pt) node[above right, font=\scriptsize] {$E^*$};
+        % Curva de contrato completa y = 18*x / (57.6 - 5*x) y Núcleo destacado [2.89, 4.61]
+        \draw[verdeAcento!75, thick, dashed, domain=0:6.4, samples=45] plot (\x, {18*\x/(57.6 - 5*\x)});
+        \draw[verdeAcento, line width=2.2pt, domain=2.89:4.61, samples=25] plot (\x, {18*\x/(57.6 - 5*\x)});
+
+        % Curvas de indiferencia que pasan por W(1.45, 3.45)
+        \draw[azulPrincipal, thick, domain=1.22:5.95, samples=45] plot (\x, {6.0238/(\x^(1.5))});
+        \node[azulPrincipal, font=\tiny\bfseries, anchor=west] at (1.35, 4.18) {$U_A^W$};
+        \draw[rojoAcento, thick, domain=0.95:5.85, samples=45] plot (\x, {4.5 - 3.0497/((6.4-\x)^(0.6667))});
+        \node[rojoAcento, font=\tiny\bfseries, anchor=north] at (0.92, 3.44) {$U_B^W$};
+
+        % Curvas tangentes en E*(3.821, 1.787)
+        \draw[azulPrincipal!85, thick, dashed, domain=2.15:5.95, samples=40] plot (\x, {13.3469/(\x^(1.5))});
+        \node[azulPrincipal, font=\tiny, anchor=south] at (5.75, 0.92) {$U_A^*$};
+        \draw[rojoAcento!85, thick, dashed, domain=0.95:5.18, samples=40] plot (\x, {4.5 - 5.1022/((6.4-\x)^(0.6667))});
+        \node[rojoAcento, font=\tiny, anchor=north] at (1.08, 2.75) {$U_B^*$};
+
+        % Recta presupuestaria por W(1.45,3.45) y E*(3.821,1.787), pendiente -0.7014
+        \draw[grisTexto!90!black, thick] (0.35, 4.221) -- (5.95, 0.294);
+
+        % Dotación W y Equilibrio E*
+        \fill[naranjaAcento] (1.45, 3.45) circle (2.6pt) node[anchor=south west, font=\scriptsize\bfseries] {$W$};
+        \fill[azulOscuro] (3.821, 1.787) circle (2.7pt);
+        \node[azulOscuro, font=\scriptsize\bfseries, anchor=east] at (3.62, 1.56) {$E^*$};
+
+        % Anotaciones limpias dentro/al borde sin chocar
+        \node[verdeAcento!85!black, font=\tiny\bfseries, align=center] at (2.25, 2.02) {Lente\\(mejora)};
+        \draw[<-, verdeAcento, thin] (4.42, 2.38) -- (5.05, 2.65) node[right, font=\tiny\bfseries, align=left] {Núcleo\\(en CC)};
+        \draw[<-, verdeAcento!80!black, thin] (5.55, 3.45) -- (4.70, 3.92) node[left, font=\tiny] {Curva de Contrato};
       \end{tikzpicture}
     \end{column}
 
-    \begin{column}{0.45\textwidth}
-      \indicador{Condición de Eficiencia en Intercambio}{verdeAcento}{\(TMS_{1,2}^A = TMS_{1,2}^B\)}
+    \begin{column}{0.43\textwidth}
+      \indicador{Condición de Eficiencia (\(\text{CC}\))}{verdeAcento}{\(TMS_{1,2}^A = TMS_{1,2}^B\)}
       {\scriptsize
-        • En \(W\), las curvas se cruzan y forman el \textbf{lente de intercambio}: cualquier punto interior mejora al menos a uno sin empeorar al otro.\\
-        • \textbf{Curva de Contrato:} conjunto de todos los óptimos de Pareto.\\
-        • \textbf{Núcleo:} tramo de la curva de contrato dentro del lente (mejora a ambos respecto a \(W\)).\\[4pt]
+        • En \(W\), \(TMS^A \neq TMS^B\): se forma el \textbf{lente} entre \(U_A^W\) y \(U_B^W\) con ganancias mutuas.\\
+        • \textbf{Curva de Contrato:} todos los Óptimos de Pareto (\(O_A \to O_B\)).\\
+        • \textbf{Núcleo:} tramo de la CC dentro del lente (ambos ganan vs. \(W\)).\\[3pt]
       }
-      \indicador{Equilibrio Walrasiano}{azulPrincipal}{\(TMS^A = \frac{p_1}{p_2} = TMS^B\)}
+      \indicador{Equilibrio Walrasiano (\(E^*\))}{azulPrincipal}{\(TMS^A = \frac{p_1}{p_2} = TMS^B\)}
       {\scriptsize
-        • En \(E^*\), ambas restricciones de exceso de demanda se anulan y la recta de precios es tangente a ambas curvas.
+        • La recta de precios (pendiente \(-\frac{p_1}{p_2}\)) parte de \(W\) y es tangente en \(E^* \in \text{Núcleo}\).\\
+        • En \(E^*\), \(z_1 = z_2 = 0\) (excesos de demanda nulos).
       }
     \end{column}
   \end{columns}
 
-  \mensajefinal{Un punto es Óptimo de Pareto si es imposible mejorar el bienestar de alguien sin reducir el de otro agente.}
+  \mensajefinal{Dentro del lente ambos ganan frente a \(W\); solo la tangencia sobre la CC es Óptimo de Pareto.}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 4: CASO NUMÉRICO PEU SUNASS Y LEY DE WALRAS EN LA CAJA
+% ==============================================================================
+\begin{frame}{1b. Caso Numérico PEU SUNASS y Desequilibrio Walrasiano}
+  \begin{columns}[T]
+    \begin{column}{0.51\textwidth}
+      {\small\textbf{Economía \(U_A = x_A y_A,\; U_B = x_B y_B\), \(W: A=(8,2)\)}}
+      \vspace{0.12cm}
+
+      \begin{tikzpicture}[xscale=0.54, yscale=0.45]
+        % Lente exacto entre W=(8,2) y (2,8): U_A=16 -> 16/x; U_B=16 -> 10 - 16/(10-x)
+        \fill[verdeAcento!15]
+          plot[domain=2:8, samples=40] (\x, {16/\x}) --
+          plot[domain=8:2, samples=40] (\x, {10 - 16/(10-\x)}) -- cycle;
+
+        % Caja 10x10
+        \draw[thick, aceroAcento] (0,0) rectangle (10,10);
+        \fill[azulPrincipal] (0,0) circle (3pt) node[anchor=north east, font=\scriptsize\bfseries] {$O_A$};
+        \fill[rojoAcento] (10,10) circle (3pt) node[anchor=south west, font=\scriptsize\bfseries] {$O_B$};
+
+        % Marcas en ejes A
+        \draw[grisTexto!50, dotted] (8,0) -- (8,2) -- (0,2);
+        \draw[grisTexto!50, dotted] (5,0) -- (5,5) -- (0,5);
+        \node[below, font=\tiny] at (5,0) {$5$};
+        \node[below, font=\tiny] at (8,0) {$8$};
+        \node[below right, font=\tiny, grisTexto] at (9.6,0) {$X=10$};
+        \node[left, font=\tiny] at (0,2) {$2$};
+        \node[left, font=\tiny] at (0,5) {$5$};
+        \node[left, font=\tiny, grisTexto] at (0,9.8) {$Y=10$};
+
+        % Curva de Contrato y_A = x_A y Núcleo [(4,4) a (6,6)]
+        \draw[verdeAcento!75, thick, dashed] (0,0) -- (10,10);
+        \draw[verdeAcento, line width=2.3pt] (4,4) -- (6,6);
+
+        % Indiferencias por W(8,2)
+        \draw[azulPrincipal, thick, domain=1.65:9.2, samples=40] plot (\x, {16/\x});
+        \node[azulPrincipal, font=\tiny\bfseries, anchor=west] at (1.75, 9.25) {$U_A=16$};
+        \draw[rojoAcento, thick, domain=0.8:8.28, samples=40] plot (\x, {10 - 16/(10-\x)});
+        \node[rojoAcento, font=\tiny\bfseries, anchor=south] at (5.6, 6.5) {$U_B=16$};
+
+        % Indiferencias óptimas tangentes en E*(5,5): U_A*=25 y U_B*=25
+        \draw[azulPrincipal!85, thick, dashed, domain=2.75:9.2, samples=40] plot (\x, {25/\x});
+        \draw[rojoAcento!85, thick, dashed, domain=0.8:7.25, samples=40] plot (\x, {10 - 25/(10-\x)});
+
+        % Recta presupuestaria x + y = 10 (px/py = 1)
+        \draw[grisTexto!90!black, thick] (1.0, 9.0) -- (9.0, 1.0);
+        \node[grisTexto, font=\tiny, inner sep=0pt, scale=0.88, anchor=east] at (9.90, 0.44) {$p_x/p_y=1$};
+
+        % Puntos clave W=(8,2), E*=(5,5), T=(6,6)
+        \fill[naranjaAcento] (8,2) circle (3.5pt) node[anchor=west, font=\tiny\bfseries] {$W(8,2)$};
+        \fill[azulOscuro] (5,5) circle (3.6pt);
+        \draw[<-, azulOscuro, thin] (5.00, 5.10) -- (4.92, 5.72) node[above=0pt, font=\tiny\bfseries, align=center, inner sep=0.5pt, anchor=south] {$E^*$\\[-2pt]$(5,5)$};
+        \fill[verdeAcento!90!black] (6,6) circle (3.0pt) node[anchor=west, font=\tiny\bfseries] {$(6,6)$};
+        \node[azulPrincipal, font=\tiny\bfseries, anchor=west] at (3.2, 8.2) {$U_A^*=25$};
+      \end{tikzpicture}
+    \end{column}
+
+    \begin{column}{0.46\textwidth}
+      {\scriptsize\color{grisTexto}Resolución Paso a Paso (Caso Clásico Bloque B)}\\[2pt]
+      {\scriptsize
+        \textbf{1. Evaluar \(W=(8,2)\):} \(TMS^A = \frac{2}{8} = 0.25 \neq 4 = TMS^B \implies\) intercambio.\\[3pt]
+        \textbf{2. Curva de Contrato:} \(\frac{y_A}{x_A} = \frac{10-y_A}{10-x_A} \implies \mathbf{y_A = x_A}\).\\[3pt]
+        \textbf{3. Equilibrio (\(E^*\)):} con \(p_y = 1\), \(I_A = 8p_x+2\) y \(x_A + x_B = 10 \implies \mathbf{p_x / p_y = 1}\), \(E^* = (5,5)\), \(\Delta U_A = \Delta U_B = \mathbf{+9}\).\\[3pt]
+        \textbf{4. Ajuste (Ley de Walras):} \(p_x z_x + p_y z_y \equiv 0\). Si \(z_x > 0\), entonces \(z_y < 0\) y sube \(p_x / p_y\).\\[4pt]
+      }
+      \recuadroclave{
+        {\scriptsize\textbf{2do Teorema (M04-Q44):} Para lograr \(A=(6,6),\; B=(4,4)\) con \(p_x=p_y=1\), transferir \(T = \mathbf{2}\) de \(B\) a \(A\).}
+      }
+    \end{column}
+  \end{columns}
+
+  \mensajefinal{En el Núcleo de \(W=(8,2)\), ambos superan su utilidad inicial \(U_A=U_B=16\).}
 \end{frame}
 
 % ==============================================================================
@@ -206,7 +302,7 @@
 % SLIDE 7: PRODUCCIÓN 2x2, TEOREMAS H-O Y CRITERIO KALDOR-HICKS
 % ==============================================================================
 \begin{frame}{5. Estática Comparativa \(2\times 2\), Existencia y Kaldor-Hicks}
-  \vspace{0.05cm}
+  \vspace{0.01cm}
   \begin{columns}[T]
     \begin{column}{0.32\textwidth}
       \tarjeta{azulPrincipal}{Teoremas \(2\times 2\) (Producción)}{
@@ -215,25 +311,24 @@
       }
     \end{column}
     \begin{column}{0.32\textwidth}
-      \tarjeta{verdeAcento}{Existencia y Unicidad Walrasiana}{
-        • \textbf{Existencia (Arrow-Debreu):} Garantizada por el Teorema de Punto Fijo de \textbf{Brouwer} (funciones continuas) o \textbf{Kakutani}, si el exceso de demanda es continuo y homogéneo.\\
-        • \textbf{Unicidad:} Exige sustitubilidad bruta o preferencias reveladas agregadas (WARP).
+      \tarjeta{verdeAcento}{Existencia y Unicidad}{
+        • \textbf{Existencia (Arrow-Debreu):} Teorema de Punto Fijo de \textbf{Brouwer} (o \textbf{Kakutani}) si \(z(p)\) es continuo y homogéneo.\\
+        • \textbf{Unicidad:} Exige sustitubilidad bruta o WARP agregado.
       }
     \end{column}
     \begin{column}{0.32\textwidth}
       \tarjeta{naranjaAcento}{Criterio de Kaldor-Hicks}{
-        Un cambio mejora el bienestar si los ganadores \textbf{podrían compensar} a los perdedores y seguir mejor (mejora potencial de Pareto).\\[3pt]
-        • \textit{No exige} que la compensación ocurra efectivamente.\\
-        • Base teórica del análisis Costo-Beneficio (equivalente a \(\Delta W > 0\)).
+        Un cambio mejora bienestar si ganadores \textbf{podrían compensar} a perdedores y seguir mejor (mejora potencial de Pareto).\\[2pt]
+        • No exige compensación efectiva; base del análisis Costo-Beneficio (\(\Delta W > 0\)).
       }
     \end{column}
   \end{columns}
 
-  \vspace{0.1cm}
+  \vspace{0.02cm}
   \recuadroclave{
     \small\textbf{FPP Cóncava vs. Lineal:} La FPP es cóncava al origen cuando existen intensidades factoriales distintas entre \(X\) e \(Y\) o rendimientos marginales decrecientes; solo es recta si hay proporciones idénticas y RCE.
   }
-  \mensajefinal{El Teorema de Sonnenschein-Mantel-Debreu demuestra que el equilibrio general puede ser múltiple e inestable sin supuestos fuertes en la demanda agregada.}
+  \mensajefinal{Sonnenschein-Mantel-Debreu: el equilibrio general puede ser múltiple e inestable.}
 \end{frame}
 
 % ==============================================================================
