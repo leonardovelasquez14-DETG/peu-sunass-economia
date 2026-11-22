@@ -189,3 +189,95 @@
 
 \sol{90}{D}{\textbf{Tema:} Poder estadístico y errores Tipo I y II en calidad de agua. \textbf{Explicación:} El diseño del muestreo bacteriológico es una decisión econométrica/estadística crucial: rechazar erróneamente el cumplimiento impone costos judiciales injustos a la EPS (Tipo I), mientras que no detectar contaminación expone a la población a epidemias diarreicas (Tipo II), requiriendo un poder estadístico ($1 - \beta$) riguroso.}
 
+\subsection*{Bloque D. Ampliación: Teoría y Aplicaciones Prácticas (91 a 180)}
+
+\sol{91}{A}{La matriz $M = I_n - P_X$ proyecta sobre el complemento ortogonal de $X$: es simétrica ($M'=M$), idempotente ($M^2=M$), aniquila a $X$ ($MX=0$) y $\text{tr}(M)=n-k$.}
+\sol{92}{B}{El teorema FWL demuestra que $\hat{\beta}_1 = (X_1' M_2 X_1)^{-1} X_1' M_2 Y$, es decir, MCO sobre las variables previamente depuradas de la influencia lineal de $X_2$.}
+\sol{93}{C}{Sin intercepto en $X$, la condición de primer orden $X'\hat{u}=0$ no garantiza $\sum \hat{u}_i = 0$, por lo que $SCT \neq SCE + SCR$ y $1 - SCR/SCT$ puede ser negativo.}
+\sol{94}{D}{Por la ley de expectativas iteradas, $E[u|X]=0 \Rightarrow E[X'u]=0$, pero no al revés. $E[u|X]=0$ da insesgadez exacta; $E[X'u]=0$ garantiza consistencia asintótica.}
+\sol{95}{B}{Bajo normalidad, MCO coincide con MV y alcanza la cota de Cramér-Rao, siendo el Mejor Estimador Insesgado (MIE/BUE) incluso frente a estimadores no lineales.}
+\sol{96}{C}{Si $X_2^* = c X_2$, entonces $\hat{\beta}_2^* = \hat{\beta}_2/c$ y $ee(\hat{\beta}_2^*) = ee(\hat{\beta}_2)/c$; por tanto, $t_2$, $\hat{Y}$ y $R^2$ permanecen exactamente invariantes.}
+\sol{97}{D}{$u_i = Y_i - X_i'\beta$ es inobservable y esférico ($\sigma^2 I$), en tanto $\hat{u} = Mu$ es observable y tiene matriz de varianzas $\sigma^2 M$ (ni independiente ni homocedástica).}
+\sol{98}{A}{Puede demostrarse algebraicamente que añadir un regresor reduce la varianza residual estimada $s^2 = SCR/(n-k)$ (y por ende sube $\bar{R}^2$) si y solo si $|t_{k+1}| > 1$.}
+\sol{99}{C}{Al pasar de $D=0$ a $D=1$, $\frac{Y_1 - Y_0}{Y_0} = e^{\delta} - 1$. Así, el cambio porcentual exacto es $100(e^{\delta}-1)\%$; la regla $100\delta\%$ es solo una aproximación de primer orden.}
+\sol{100}{D}{Derivando respecto a $X$: $\frac{\partial E[Y|X]}{\partial X} = \beta_1 + 2\beta_2 X$. Igualando a cero se obtiene el punto crítico $X^* = -\beta_1/(2\beta_2)$, que es máximo pues $2\beta_2 < 0$.}
+\sol{101}{A}{El cuadrado de una variable $t_{n-k}$ sigue exactamente una distribución $F_{1,n-k}$. Por ello, para $q=1$ restricción lineal, el contraste $F$ y el contraste $t$ bilateral son idénticos.}
+\sol{102}{B}{Como $ee(\hat{\beta}_j) \propto 1/\sqrt{n}$, en muestras muy grandes cualquier efecto real distinto de cero —por diminuto que sea— genera $|t|$ muy grande y $p$-valor cercano a $0$.}
+\sol{103}{D}{La prueba de Chow contrasta si tanto el intercepto como todas las pendientes permanecen constantes entre submuestras, lo cual equivale a probar conjuntamente la dummy de periodo y todas sus interacciones.}
+\sol{104}{A}{En el modelo lineal normal con restricciones lineales se cumple exactamente $W \ge LR \ge LM$, y asintóticamente los tres estadísticos son equivalentes bajo $H_0$ con distribución $\chi^2_q$.}
+\sol{105}{B}{Sobre-especificar el modelo añadiendo una variable con $\beta=0$ no introduce sesgo ni inconsistencia en MCO, pero reduce eficiencia (infla las varianzas) si correlaciona con los demás regresores.}
+\sol{106}{C}{Con $\text{Cov}(X_1, X_2)=0$, el sesgo de variable omitida en $\hat{\beta}_1$ es cero; sin embargo, $\beta_2 X_2$ pasa al término de error, inflando $s^2$ y sesgando al alza los errores estándar.}
+\sol{107}{A}{Ambos criterios se minimizan. Como para $n \ge 8$ se cumple $\ln(n) > 2$, BIC penaliza más la complejidad que AIC, favorece modelos más parsimoniosos y es consistente en selección.}
+\sol{108}{B}{Con $n$ fijo, reducir $\alpha$ estrecha la región de rechazo, dificultando rechazar $H_0$: baja el Error Tipo I, pero sube el Error Tipo II ($\beta$) y disminuye la potencia ($1-\beta$).}
+\sol{109}{C}{La multicolinealidad infla las varianzas individuales (bajando los $|t|$), pero no afecta la capacidad explicativa conjunta ($R^2$ y $F$ global altos) ni viola el carácter MELI de MCO.}
+\sol{110}{D}{$R_j^2$ es el $R^2$ de regresar $X_j$ contra las demás explicativas; $1/(1-R_j^2)$ es el $VIF_j$, que mide cuánto se infla la varianza de $\hat{\beta}_j$ por colinealidad.}
+\sol{111}{B}{La prueba de White detecta divergencias entre la matriz de varianzas clásica y la robusta, lo cual ocurre tanto ante heterocedasticidad pura como ante mala especificación funcional.}
+\sol{112}{C}{Goldfeld-Quandt ordena según $X_j$, elimina $c$ observaciones intermedias para acentuar la diferencia de varianzas, estima MCO en ambos extremos y contrasta $F = SCR_2/SCR_1$.}
+\sol{113}{D}{Al sustituir $\Omega$ por una estimación $\hat{\Omega}$, FGLS pierde la garantía exacta de insesgadez en muestras finitas, pero conserva consistencia y eficiencia asintótica sobre MCO.}
+\sol{114}{A}{Los procesos ARCH/GARCH modelan agrupamientos de volatilidad (*volatility clustering*): la varianza condicional $\sigma_t^2$ varía en el tiempo aunque la varianza incondicional sea finita y constante.}
+\sol{115}{C}{Como $DW \approx 2(1 - \hat{\rho})$, cuando $\hat{\rho} < 0$ se tiene $DW > 2$, acercándose a $4$ cuando $\hat{\rho} \to -1$.}
+\sol{116}{D}{Con $Y_{t-1}$ en el lado derecho, DW se sesga hacia 2; se emplea el estadístico $h$ de Durbin (para $AR(1)$) o preferentemente Breusch-Godfrey (válido para cualquier orden $p$).}
+\sol{117}{A}{Cochrane-Orcutt descarta $t=1$ al cuasi-diferenciar ($y_t - \hat{\rho}y_{t-1}$). Prais-Winsten preserva $t=1$ escalando por $\sqrt{1-\hat{\rho}^2}$, lo que mejora la eficiencia en muestras pequeñas.}
+\sol{118}{B}{Al igual que los errores robustos de White, Newey-West no modifica $\hat{\beta}_{MCO}$; solo reemplaza la matriz de varianzas por un estimador consistente ante heterocedasticidad y autocorrelación.}
+\sol{119}{D}{Un error clásico en $Y$ se absorbe en $u$, manteniendo insesgadez con mayor varianza. Un error clásico en $X$ correlaciona el regresor observado con el error compuesto, sesgando $\hat{\beta}_1$ hacia cero.}
+\sol{120}{A}{La condición de orden (contar exclusiones: $K - k \ge m - 1$) es necesaria mas no suficiente; la condición de rango sobre la matriz de parámetros reducidos es necesaria y suficiente.}
+\sol{121}{B}{Imbens y Angrist (1994) demostraron que con efectos heterogéneos, validez del instrumento y monotonicidad, el estimador VI identifica el LATE: el efecto causal promedio para los *compliers*.}
+\sol{122}{C}{Con instrumentos débiles ($\text{Cov}(Z,X) \approx 0$), MC2E tiene una distribución no normal, varianza enorme y un sesgo en muestras finitas que lo arrastra hacia el estimador sesgado de MCO.}
+\sol{123}{A}{Con $L = m$ (exactamente identificado), los residuos VI cumplen $Z'\hat{u}_{VI} = 0$ por definición algebraica ($0$ grados de sobreidentificación), por lo que la exclusión debe defenderse teóricamente.}
+\sol{124}{B}{MC2E es un caso particular de GMM que usa la matriz de pesos óptima solo bajo homocedasticidad. Con heterocedasticidad y sobreidentificación, GMM en dos etapas es asintóticamente más eficiente.}
+\sol{125}{C}{La prueba de Sargan asume errores homocedásticos; bajo heterocedasticidad o errores agrupados, el estadístico $J$ de Hansen (basado en GMM) mantiene distribución asintótica $\chi^2_{L-m}$.}
+\sol{126}{D}{Controlar por variables determinadas después del tratamiento (*bad controls*) introduce sesgo de selección al condicionar en un resultado o colisionador, distorsionando el efecto causal total.}
+\sol{127}{B}{La transformación intragrupo resta la media temporal de cada individuo. Si $z_{it} = z_i$ para todo $t$, entonces $z_{it} - \bar{z}_i = 0$ y queda colinealmente absorbida por el efecto fijo $\alpha_i$.}
+\sol{128}{C}{Por el Teorema de Frisch-Waugh-Lovell, proyectar fuera las dummies individuales produce exactamente las desviaciones respecto a la media individual; por ello $\hat{\beta}_{within} \equiv \hat{\beta}_{LSDV}$.}
+\sol{129}{D}{Si $u_{it}$ es ruido blanco, FE es más eficiente que FD (pues $\Delta u_{it}$ tiene autocorrelación $-0.5$). Si $u_{it}$ es caminata aleatoria, $\Delta u_{it} = e_{it}$ es serialmente no correlacionado y FD es más eficiente.}
+\sol{130}{A}{Como $\theta = 1 - \sqrt{\frac{\sigma_u^2}{\sigma_u^2 + T\sigma_{\alpha}^2}}$, si $T\sigma_{\alpha}^2 \gg \sigma_u^2$ entonces $\theta \to 1$ y RE se aproxima a FE; si $\sigma_{\alpha}^2 \to 0$, $\theta \to 0$ y RE tiende a MCO agrupado.}
+\sol{131}{C}{Agrupar (*cluster*) los errores estándar a nivel de unidad (EPS) garantiza inferencia asintóticamente válida ante heterocedasticidad y correlación serial arbitraria dentro de cada clúster.}
+\sol{132}{D}{En paneles cortos con $y_{it-1}$, la media $\bar{u}_i$ contiene $u_{it-1}$, correlacionando $\tilde{y}_{it-1}$ con $\tilde{u}_{it}$ (sesgo de Nickell). Arellano-Bond usa primeras diferencias e instrumentos en niveles rezagados.}
+\sol{133}{A}{FE es robusto a la atrición si la selección depende de regresores $X_{it}$ o de $\alpha_i$ (ya que $\alpha_i$ se elimina), pero se sesga si la salida depende de los choques idiosincráticos $u_{it}$.}
+\sol{134}{B}{En un proceso TS ($y_t = \alpha + \delta t + u_t$ con $u_t$ estacionario), los shocks mueren y $y_t$ vuelve a la tendencia. En un proceso DS ($y_t = \delta + y_{t-1} + \varepsilon_t$), cada shock se acumula permanentemente.}
+\sol{135}{D}{Un proceso $AR(p)$ es estacionario si todas las raíces de $\phi(z)=1-\phi_1 z - \dots - \phi_p z^p = 0$ satisfacen $|z| > 1$ (en el caso $AR(1)$, $1-\phi_1 z=0 \Rightarrow |z|=1/|\phi_1|>1 \Leftrightarrow |\phi_1|<1$).}
+\sol{136}{A}{En un proceso $MA(q)$, la memoria se corta en el rezago $q$ (FAC $= 0$ para $k > q$) y la FACP decae gradualmente; en un $AR(p)$ ocurre exactamente el patrón simétrico inverso.}
+\sol{137}{B}{La prueba DF simple asume errores no correlacionados. La versión Aumentada (ADF) añade rezagos de $\Delta y_t$ para limpiar la autocorrelación residual, manteniendo valores críticos de Dickey-Fuller.}
+\sol{138}{C}{El Teorema de Representación de Granger establece que dos series $I(1)$ están cointegradas si y solo si admiten un MCE, implicando además causalidad de Granger en al menos una dirección.}
+\sol{139}{A}{Si $y_{t-1}$ excede su valor de equilibrio ($u_{t-1} > 0$), la corrección requiere que $\Delta y_t$ baje; por ello se exige $\alpha < 0$ (típicamente $-1 < \alpha < 0$ para convergencia monótona).}
+\sol{140}{B}{La causalidad de Granger evalúa precedencia predictiva (contrastada mediante prueba $F$/Wald sobre los rezagos de $X$ en la ecuación de $Y$), no causalidad estructural filosófica.}
+\sol{141}{C}{Cholesky impone una estructura recursiva triangular inferior sobre los impactos contemporáneos; si la matriz de covarianzas residuales no es diagonal, cambiar el orden de las variables altera las IRF.}
+\sol{142}{D}{Como $\frac{\partial P(Y=1|X)}{\partial X_j} = g(X'\beta)\beta_j$ y $g(\cdot)>0$, el signo coincide con $\beta_j$, pero la magnitud varía según $X$; se resume mediante el efecto en la media (MEM) o el promedio (AME).}
+\sol{143}{B}{En Logit, $\ln\left(\frac{p}{1-p}\right) = X'\beta$, de modo que aumentar $X_j$ en una unidad multiplica los *odds* $\frac{p}{1-p}$ exactamente por $e^{\beta_j}$.}
+\sol{144}{C}{Con censura (solución de esquina o límite de medición) conocemos $X_i$ de toda la muestra aunque $Y_i$ se apile en el límite; con truncamiento se excluyen de la base los individuos fuera del rango.}
+\sol{145}{D}{Poisson impone equidispersión ($\text{Var}=E$). Bajo sobredispersión, Poisson cuasi-MV sigue siendo consistente para $\beta$ si la media está bien especificada, pero los $ee$ estándar son demasiado pequeños; Binomial Negativa modela explícitamente la sobredispersión.}
+\sol{146}{A}{Como en modelos discretos $0 > \ln L_{ur} \ge \ln L_0$, el cociente $\ln L_{ur}/\ln L_0 \in (0, 1]$ y $R^2_{McF} = 1 - \ln L_{ur}/\ln L_0 \in [0, 1)$, evaluando mejora relativa en log-verosimilitud.}
+\sol{147}{C}{PSM asume que, condicionando en $X$ (o en $p(X)$), el tratamiento es independiente de los resultados potenciales (CIA) y que existe traslape de probabilidades $0 < P(D=1|X) < 1$ (soporte común).}
+\sol{148}{D}{En *Fuzzy RDD*, el indicador de cruzar el umbral actúa como instrumento válido para el tratamiento efectivo cerca del corte: $\hat{\tau}_{FRD} = \frac{\lim_{x\downarrow c}E[Y|x] - \lim_{x\uparrow c}E[Y|x]}{\lim_{x\downarrow c}E[D|x] - \lim_{x\uparrow c}E[D|x]}$.}
+\sol{149}{A}{La validez de RDD exige que los individuos no puedan manipular con precisión su puntaje alrededor del corte; McCrary contrasta la continuidad de la densidad de la *running variable* en el umbral.}
+\sol{150}{B}{Goodman-Bacon (2021) y Callaway-Sant'Anna muestran que con adopción escalonada y efectos dinámicos heterogéneos, TWFE realiza comparaciones 'prohibidas' usando ya tratados como controles, pudiendo asignar pesos negativos.}
+\sol{151}{D}{DEA construye una frontera determinística por programación lineal (sensible a outliers/ruido); SFA estima una frontera paramétrica descomponiendo la desviación en ruido simétrico y término de ineficiencia.}
+\sol{152}{A}{En SFA de costos (minimización), $v_i \sim N(0, \sigma_v^2)$ es ruido aleatorio bidireccional y $u_i \ge 0$ (seminormal, exponencial o normal truncada) mide el sobrecosto por ineficiencia.}
+\sol{153}{B}{En Heckman en dos etapas, $\hat{\lambda}_i = \phi(z_i'\hat{\gamma})/\Phi(z_i'\hat{\gamma})$ corrige la media condicional truncada; si su coeficiente es significativamente distinto de cero, existe sesgo de selección.}
+\sol{154}{C}{La recta MCO pasa por $(\bar{X}, \bar{Y})$: $\hat{\beta}_0 = \bar{Y} - \hat{\beta}_1\bar{X} = 85 - 2.5(20) = 35.0$. Luego, $\hat{Y} = 35.0 + 2.5(24) = 95.0$.}
+\sol{155}{A}{$R^2 = 1 - \frac{100}{500} = 0.80$. Además, $\bar{R}^2 = 1 - \frac{SCR/(n-k)}{SCT/(n-1)} = 1 - \frac{100/40}{500/44} = 1 - 0.22 = 0.78$.}
+\sol{156}{B}{Aplicando $\bar{R}^2 = 1 - (1 - R^2)\frac{n-1}{n-k} = 1 - (0.25)\frac{50}{45} = 1 - 0.2778 = 0.7222$.}
+\sol{157}{C}{El estadístico es $t = \frac{\hat{\beta}_1 - \beta_{1,0}}{ee(\hat{\beta}_1)} = \frac{-0.64 - (-1.00)}{0.12} = \frac{0.36}{0.12} = 3.00$.}
+\sol{158}{D}{Usando $F = \frac{(R^2_{NR} - R^2_R)/q}{(1 - R^2_{NR})/(n - k)} = \frac{(0.70 - 0.58)/3}{(1 - 0.70)/(66 - 6)} = \frac{0.04}{0.005} = 8.00$.}
+\sol{159}{B}{Para $q = 1$ se cumple $F = t^2$, luego $|t| = \sqrt{16} = 4.0$. Así, $ee(\hat{\beta}_j) = \frac{|\hat{\beta}_j|}{|t|} = \frac{1.20}{4.0} = 0.300$.}
+\sol{160}{C}{El cambio porcentual exacto es $100(e^{\hat{\delta}} - 1)\% = 100(e^{-0.20} - 1)\% = 100(0.8187 - 1)\% = -18.13\%$.}
+\sol{161}{D}{Derivando respecto a $X$: $\frac{d\hat{Y}}{dX} = 12 - 0.60X = 0 \Rightarrow X^* = \frac{12}{0.60} = 20$ años (máximo porque $-0.60 < 0$).}
+\sol{162}{A}{El efecto marginal es $\frac{\partial \hat{Y}}{\partial X} = 0.80 - 0.25D$. Evaluando en $D = 1$ se obtiene $0.80 - 0.25 = 0.55$ unidades.}
+\sol{163}{C}{Como $VIF_3 = \frac{1}{1 - R_3^2} = 8$, se despeja $1 - R_3^2 = \frac{1}{8} = 0.125 \Rightarrow R_3^2 = 0.875$.}
+\sol{164}{D}{El estadístico de Breusch-Godfrey es $LM = n \cdot R^2_{aux} = 100 \times 0.085 = 8.50$, el cual sigue asintóticamente una distribución $\chi^2_p = \chi^2_2$ bajo $H_0$.}
+\sol{165}{A}{Despejando de $DW \approx 2(1 - \hat{\rho})$: $\hat{\rho} \approx 1 - \frac{DW}{2} = 1 - \frac{1.30}{2} = 1 - 0.65 = 0.35$.}
+\sol{166}{B}{Bajo error de medición clásico en $X$, $\text{plim}\,\hat{\beta}_1 = \beta_1 \frac{\sigma_{X^*}^2}{\sigma_{X^*}^2 + \sigma_e^2} = 2.0 \times \frac{16}{16 + 4} = 2.0 \times 0.80 = 1.60$.}
+\sol{167}{D}{El estimador de Wald es la razón entre el efecto intención de tratar y la primera etapa: $\hat{\beta}_{Wald} = \frac{\bar{Y}_1 - \bar{Y}_0}{\bar{X}_1 - \bar{X}_0} = \frac{42 - 36}{0.75 - 0.25} = \frac{6}{0.50} = 12.0$.}
+\sol{168}{A}{El sesgo de variable omitida es $\text{Sesgo}(\hat{\beta}_1) = \beta_2 \frac{\text{Cov}(X_1, X_2)}{\text{Var}(X_1)} = 4.0 \times \frac{-3.0}{10.0} = -1.20$.}
+\sol{169}{B}{$\hat{\delta}_{DiD} = (\bar{Y}_{T,1} - \bar{Y}_{T,0}) - (\bar{Y}_{C,1} - \bar{Y}_{C,0}) = (17.5 - 22.0) - (18.5 - 20.0) = -4.5 - (-1.5) = -3.0\ m^3$.}
+\sol{170}{C}{En el modelo Logit, $\hat{P}(Y=1|X) = \frac{1}{1 + e^{-X'\hat{\beta}}} = \frac{1}{1 + e^{-1}} = \frac{1}{1.3679} \approx 0.7311$.}
+\sol{171}{A}{El *odds ratio* es $e^{\hat{\beta}_1} = e^{0.40} \approx 1.4918$, lo que equivale a un incremento porcentual en los *odds* de $(1.4918 - 1) \times 100\% = 49.18\%$.}
+\sol{172}{B}{El pseudo-$R^2$ de McFadden es $R^2_{McF} = 1 - \frac{\ln L_{ur}}{\ln L_0} = 1 - \frac{-120}{-200} = 1 - 0.60 = 0.40$.}
+\sol{173}{C}{Para un $AR(1)$ estacionario: $E[y_t] = \frac{c}{1-\phi} = \frac{6}{0.4} = 15$, y $\text{Var}(y_t) = \frac{\sigma_\varepsilon^2}{1-\phi^2} = \frac{16}{1-0.36} = \frac{16}{0.64} = 25$.}
+\sol{174}{D}{En un proceso $AR(1)$ estacionario, la autocorrelación de orden $k$ cumple $\rho_k = \phi^k$. Para $k = 3$: $\rho_3 = (0.8)^3 = 0.512$.}
+\sol{175}{B}{Para un $MA(1)$: $\text{Var}(y_t) = \sigma_\varepsilon^2(1 + \theta^2) = 4(1 + 0.25) = 5.0$ y $\rho_1 = \frac{\theta}{1 + \theta^2} = \frac{0.5}{1.25} = 0.40$.}
+\sol{176}{C}{Con $\Delta x_t = 0$ y desequilibrio $(y_{t-1} - y^*_{t-1}) = +8$, el ajuste esperado es $E[\Delta y_t] = -0.25(8) = -2.00$ unidades (corrige $25\%$ del desvío por periodo).}
+\sol{177}{D}{$AIC = 2.00 + \frac{2(5)}{100} = 2.100$. $BIC = 2.00 + \frac{5(4.605)}{100} = 2.00 + 0.230 = 2.230$.}
+\sol{178}{A}{Sustituyendo en la fórmula: $JB = \frac{120}{6}\left[(0.5)^2 + \frac{(4.0 - 3.0)^2}{4}\right] = 20(0.25 + 0.25) = 10.00$.}
+\sol{179}{C}{En un modelo lin-log, $\Delta Q \approx \left(\frac{\hat{\beta}_1}{100}\right) \%\Delta X = \left(\frac{30}{100}\right)(10) = 3.00\ m^3$.}
+\sol{180}{D}{La media temporal de la EPS es $\bar{x}_i = \frac{12 + 18 + 21 + 25}{4} = 19.0$. Por tanto, para $t = 3$ se obtiene $\tilde{x}_{i3} = 21 - 19 = +2.0$.}

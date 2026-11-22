@@ -4,7 +4,7 @@
 """
 SIMULADOR INTERACTIVO PEU SUNASS - ECONOMÍA (VERSIÓN 2.0)
 =========================================================
-Banco oficial consolidado: 10 Módulos | 900 Preguntas
+Banco oficial consolidado: 10 Módulos | 1,800 Preguntas
 Mejoras v2.0:
   - Preservación estricta del orden y de cadenas de preguntas dependientes.
   - Inclusión de premisa de contexto para preguntas encadenadas.
@@ -534,7 +534,7 @@ def mode_simulacro_general(db):
         n = 90
     elif sub == "4":
         try:
-            n = int(input("Ingrese el número de preguntas (1-900): ").strip())
+            n = int(input(f"Ingrese el número de preguntas (1-{len(db)}): ").strip())
             n = max(1, min(len(db), n))
         except ValueError:
             return
@@ -567,15 +567,17 @@ def mode_por_modulo(db):
 
     mod_questions = sorted([q for q in db if q["module_num"] == mod_num], key=lambda x: x["q_num"])
 
+    max_q = len(mod_questions)
     print(f"\n{BOLD}MODO DE ESTUDIO DEL MÓDULO:{RESET}")
-    print(f"  {GREEN}{BOLD}[1]{RESET} {BOLD}Orden Secuencial Oficial (Recomendado){RESET} {DIM}- Bloques A, B, C en orden lógico (1 al 90){RESET}")
+    print(f"  {GREEN}{BOLD}[1]{RESET} {BOLD}Orden Secuencial Oficial (Recomendado){RESET} {DIM}- Bloques A, B, C, D en orden lógico (1 al {max_q}){RESET}")
     print(f"  {YELLOW}{BOLD}[2]{RESET} Bloque A: Fundamentos Teóricos (Preguntas 1 a 30)")
     print(f"  {YELLOW}{BOLD}[3]{RESET} Bloque B: Cálculo y Optimización (Preguntas 31 a 65)")
     print(f"  {YELLOW}{BOLD}[4]{RESET} Bloque C: Casos Regulatorios y Saneamiento (Preguntas 66 a 90)")
-    print(f"  {BLUE}{BOLD}[5]{RESET} Modo Aleatorio Clustered (Mantiene cadenas vinculadas juntas)")
-    print("  6. Volver")
+    print(f"  {YELLOW}{BOLD}[5]{RESET} Bloque D: Ampliación 70% Teórico / 30% Práctico (Preguntas 91 a {max_q})")
+    print(f"  {BLUE}{BOLD}[6]{RESET} Modo Aleatorio Clustered (Mantiene cadenas vinculadas juntas)")
+    print("  7. Volver")
 
-    sub = input(f"\n{BOLD}Seleccione modalidad [1-6] (default: 1): {RESET}").strip()
+    sub = input(f"\n{BOLD}Seleccione modalidad [1-7] (default: 1): {RESET}").strip()
 
     if sub == "2":
         questions_to_run = mod_questions[0:30]
@@ -587,38 +589,41 @@ def mode_por_modulo(db):
         questions_to_run = mod_questions[65:90]
         title = f"{MODULE_NAMES[mod_num]} - Bloque C"
     elif sub == "5":
+        questions_to_run = mod_questions[90:max_q]
+        title = f"{MODULE_NAMES[mod_num]} - Bloque D (70/30)"
+    elif sub == "6":
         try:
-            n = int(input("¿Cuántas preguntas desea practicar? (1-90): ").strip())
-            n = max(1, min(len(mod_questions), n))
+            n = int(input(f"¿Cuántas preguntas desea practicar? (1-{max_q}): ").strip())
+            n = max(1, min(max_q, n))
         except ValueError:
             n = 20
         questions_to_run = sample_clustered(mod_questions, n, all_db=db)
         title = f"{MODULE_NAMES[mod_num]} - Aleatorio ({len(questions_to_run)} preg)"
-    elif sub == "6":
+    elif sub == "7":
         return
     else:
         # Default: Secuencial completo o rango
-        print(f"\n¿Desea estudiar desde la pregunta 1 hasta la 90 o un rango específico?")
-        print("  1. Todo el módulo completo (Preguntas 1 a 90)")
-        print("  2. Especificar rango personalizado (ej. de la 30 a la 60)")
+        print(f"\n¿Desea estudiar desde la pregunta 1 hasta la {max_q} o un rango específico?")
+        print(f"  1. Todo el módulo completo (Preguntas 1 a {max_q})")
+        print("  2. Especificar rango personalizado (ej. de la 30 a la 120)")
         rng = input("Opción [1-2] (default: 1): ").strip()
         if rng == "2":
             try:
-                ini = int(input("Pregunta inicial (1-90): ").strip())
-                fin = int(input("Pregunta final (1-90): ").strip())
-                ini = max(1, min(90, ini))
-                fin = max(ini, min(90, fin))
+                ini = int(input(f"Pregunta inicial (1-{max_q}): ").strip())
+                fin = int(input(f"Pregunta final (1-{max_q}): ").strip())
+                ini = max(1, min(max_q, ini))
+                fin = max(ini, min(max_q, fin))
                 questions_to_run = mod_questions[ini-1:fin]
                 title = f"{MODULE_NAMES[mod_num]} (Preguntas {ini} a {fin})"
             except ValueError:
                 questions_to_run = mod_questions
-                title = f"{MODULE_NAMES[mod_num]} (Completo 1-90)"
+                title = f"{MODULE_NAMES[mod_num]} (Completo 1-{max_q})"
         else:
             questions_to_run = mod_questions
-            title = f"{MODULE_NAMES[mod_num]} (Completo 1-90)"
+            title = f"{MODULE_NAMES[mod_num]} (Completo 1-{max_q})"
 
     questions_to_run = ensure_prerequisites(questions_to_run, db)
-    if sub == "5":
+    if sub == "6":
         title = f"{MODULE_NAMES[mod_num]} - Aleatorio ({len(questions_to_run)} preg)"
     run_quiz(questions_to_run, title=title, tutor_mode=True)
 

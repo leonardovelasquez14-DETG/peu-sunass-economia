@@ -1,0 +1,727 @@
+\section*{Bloque D. Ampliación: Teoría y Aplicaciones Prácticas (70\% / 30\%)}
+
+\noindent\textit{Preguntas 91 a 180. Ampliación del banco oficial con 63 preguntas teóricas y conceptuales (91 a 153) y 27 aplicaciones cuantitativas prácticas (154 a 180).}
+
+\subsection*{Parte I. Preguntas teóricas y conceptuales (91 a 153)}
+
+\q{En el modelo lineal general $Y = X\beta + u$, la matriz generadora de residuos (o matriz aniquiladora) $M = I_n - X(X'X)^{-1}X'$ cumple simultáneamente las siguientes propiedades algebraicas:}
+\begin{opts}
+    \item Es simétrica, idempotente ($M^2 = M$), satisface $MX = 0$ y su traza es igual a $n - k$.
+    \item Es diagonal, invertible y posee determinante estrictamente positivo igual a $n - k$ para cualquier muestra.
+    \item Es ortogonal, definida positiva, satisface $MX = X$ y su rango es igual exactamente a $k$ parámetros.
+    \item Es antisimétrica, singular, satisface $MY = X\hat{\beta}$ y su traza equivale exactamente a $k$ regresores.
+\end{opts}
+
+\q{De acuerdo con el Teorema de Frisch-Waugh-Lovell (FWL) aplicado a la regresión particionada $Y = X_1\beta_1 + X_2\beta_2 + u$, el estimador MCO $\hat{\beta}_1$ es algebraicamente idéntico al que se obtiene al:}
+\begin{opts}
+    \item Regresar $Y$ directamente sobre $X_1$ omitiendo $X_2$ y luego restar la covarianza muestral entre ambos bloques.
+    \item Regresar los residuos de $Y$ sobre $X_2$ contra los residuos de $X_1$ sobre $X_2$ ($M_2 Y$ sobre $M_2 X_1$).
+    \item Regresar $Y$ sobre los valores ajustados $\hat{X}_1$ obtenidos de proyectar $X_1$ sobre el subespacio de $X_2$.
+    \item Estimar por separado $Y$ sobre $X_1$ y $Y$ sobre $X_2$ y ponderar ambos coeficientes por sus respectivas varianzas.
+\end{opts}
+
+\q{Cuando se estima un modelo de regresión lineal por MCO restringiendo el intercepto a cero (regresión a través del origen), una consecuencia algebraica directa es que:}
+\begin{opts}
+    \item El estimador de la pendiente mantiene exactamente la misma varianza que en el modelo con intercepto libre.
+    \item Los estimadores MCO pasan a ser automáticamente consistentes incluso en presencia de endogeneidad severa.
+    \item La suma de los residuos MCO ya no es necesariamente cero y el $R^2$ centrado puede resultar negativo.
+    \item La descomposición $SCT = SCE + SCR$ se conserva intacta y el $R^2$ siempre permanece estrictamente entre $0$ y $1$.
+\end{opts}
+
+\q{Respecto a la relación entre el supuesto de exogeneidad estricta $E[u|X] = 0$ y la condición de ortogonalidad $E[X'u] = 0$ en el modelo lineal, es correcto afirmar que:}
+\begin{opts}
+    \item La condición $E[X'u] = 0$ es más restrictiva que $E[u|X] = 0$ y asegura insesgadez exacta en cualquier muestra finita.
+    \item Ambos supuestos son estrictamente equivalentes y requieren necesariamente que los errores sigan una distribución normal exacta.
+    \item Ninguno de los dos supuestos resulta necesario para la consistencia si se cumple la homocedasticidad condicional de los errores.
+    \item El supuesto $E[u|X] = 0$ garantiza insesgadez en muestras finitas, mientras que $E[X'u] = 0$ basta para consistencia asintótica.
+\end{opts}
+
+\q{Si a los supuestos clásicos de Gauss-Markov se añade el supuesto de normalidad de las perturbaciones $u|X \sim N(0, \sigma^2 I_n)$, el estimador MCO $\hat{\beta}$ alcanza una propiedad de eficiencia más fuerte porque:}
+\begin{opts}
+    \item Se vuelve el estimador de mínima varianza únicamente dentro de la subclase de estimadores lineales e insesgados.
+    \item Coincide con el estimador de Máxima Verosimilitud y alcanza la cota inferior de Cramér-Rao (es MIE / BUE).
+    \item Elimina por completo el error de muestreo en muestras pequeñas sin necesidad de que exista rango completo en la matriz $X$.
+    \item Permite que el estimador de la varianza residual de Máxima Verosimilitud $\tilde{\sigma}^2 = SCR/n$ sea estrictamente insesgado.
+\end{opts}
+
+\q{En una regresión lineal múltiple estimada por MCO, si se multiplican todos los valores del regresor $X_2$ por una constante $c = 1000$ (por ejemplo, pasando de miles de soles a soles) sin alterar $Y$ ni los demás regresores, entonces:}
+\begin{opts}
+    \item El coeficiente $\hat{\beta}_2$ no cambia, pero su error estándar se divide entre $1000$ y el $R^2$ se mantiene completamente inalterado.
+    \item El coeficiente $\hat{\beta}_2$ se multiplica por $1000$, mientras que el estadístico $t_2$ y el $R^2$ aumentan proporcionalmente.
+    \item Tanto $\hat{\beta}_2$ como su error estándar se dividen entre $1000$, dejando invariantes el estadístico $t_2$ y el $R^2$.
+    \item Tanto $\hat{\beta}_2$ como el intercepto $\hat{\beta}_0$ se dividen entre $1000$, reduciendo el estadístico $F$ global del modelo.
+\end{opts}
+
+\q{¿Cuál es la diferencia conceptual y estadística fundamental entre la perturbación aleatoria $u_i$ y el residuo MCO $\hat{u}_i$ en una regresión lineal?}
+\begin{opts}
+    \item La perturbación $u_i$ es observable a partir de los datos muestrales, mientras que $\hat{u}_i$ es una variable latente teórica inobservable.
+    \item Ambos coinciden idénticamente en muestras finitas siempre que el modelo incluya un intercepto y no exista multicolinealidad perfecta.
+    \item Los residuos $\hat{u}_i$ siempre son independientes entre sí y homocedásticos, mientras que las perturbaciones $u_i$ están correlacionadas entre sí.
+    \item La perturbación $u_i$ es inobservable con varianza $\sigma^2$; $\hat{u}_i = Y_i - \hat{Y}_i$ es muestral con $\text{Var}(\hat{u}|X) = \sigma^2 M$.
+\end{opts}
+
+\q{Al añadir una nueva variable explicativa $X_{k+1}$ a un modelo de regresión lineal múltiple estimado por MCO, el coeficiente de determinación ajustado $\bar{R}^2$ aumentará si y solo si:}
+\begin{opts}
+    \item El valor absoluto del estadístico $t$ asociado a la nueva variable incorporada es mayor que $1$ ($|t| > 1$).
+    \item La correlación simple entre $Y$ y $X_{k+1}$ supera el valor del $R^2$ del modelo original sin restringir.
+    \item El coeficiente estimado $\hat{\beta}_{k+1}$ resulta estrictamente positivo independientemente de su error estándar muestral.
+    \item La nueva variable reduce la suma de cuadrados totales ($SCT$) manteniendo inalterados los grados de libertad residuales.
+\end{opts}
+
+\q{En un modelo semilogarítmico $\ln(Y_i) = \beta_0 + \beta_1 X_i + \delta D_i + u_i$, donde $D_i \in \{0, 1\}$ es una variable binaria (por ejemplo, contar con micromedidor de agua), el cambio porcentual exacto en $Y$ al pasar de $D_i = 0$ a $D_i = 1$ (ceteris paribus) es:}
+\begin{opts}
+    \item Exactamente $100 \cdot \delta\%$ para cualquier magnitud positiva o negativa que tome el parámetro $\delta$ en la población.
+    \item Exactamente $100 \cdot \ln(1 + \delta)\%$, válido exclusivamente si el error sigue una distribución logística simétrica.
+    \item Exactamente $100 \cdot (e^{\delta} - 1)\%$, aproximado por $100 \cdot \delta\%$ solo cuando $|\delta|$ es pequeño.
+    \item Exactamente $100 \cdot (\delta / \bar{Y})\%$, evaluado en el promedio muestral de la variable dependiente transformada.
+\end{opts}
+
+\q{En una especificación cuadrática $Y_i = \beta_0 + \beta_1 X_i + \beta_2 X_i^2 + u_i$ con $\beta_1 > 0$ y $\beta_2 < 0$, el efecto marginal de $X$ sobre $Y$ y el valor de $X$ donde $E[Y|X]$ alcanza su máximo son, respectivamente:}
+\begin{opts}
+    \item Constante igual a $\beta_1 + 2\beta_2$ y un máximo ubicado en $X^* = -\beta_2 / (2\beta_1)$ sobre el eje horizontal.
+    \item Igual a $\beta_1 + \beta_2 X$ y un punto de inflexión ubicado en $X^* = -\beta_1 / \beta_2$ para todo $X > 0$.
+    \item Igual a $2\beta_1 X + \beta_2$ y un mínimo global ubicado en $X^* = \beta_1 / (2\beta_2)$ en la muestra.
+    \item Igual a $\beta_1 + 2\beta_2 X$ y un máximo ubicado en $X^* = -\beta_1 / (2\beta_2)$.
+\end{opts}
+
+\q{Al contrastar una única restricción lineal ($q = 1$) sobre los parámetros de un modelo clásico con errores normales, la relación exacta entre el estadístico $F$ y el estadístico $t$ bilateral es:}
+\begin{opts}
+    \item $F_{1, n-k} = t_{n-k}^2$, por lo que ambas pruebas producen el mismo p-valor y decisión.
+    \item $F_{1, n-k} = \sqrt{|t_{n-k}|}$, de modo que la prueba $F$ resulta siempre más conservadora que la prueba $t$.
+    \item $F_{1, n-k} = (n - k) \cdot t_{n-k}^2$, razón por la cual solo coinciden en el límite asintótico de muestras grandes.
+    \item No existe equivalencia exacta porque la prueba $F$ es unilateral a la izquierda y la prueba $t$ es siempre bilateral.
+\end{opts}
+
+\q{En econometría aplicada con bases de datos masivas (por ejemplo, millones de registros de facturación de agua), ¿por qué un coeficiente puede ser altamente significativo estadísticamente ($p < 0.001$) y, sin embargo, carecer de relevancia económica?}
+\begin{opts}
+    \item Porque al crecer $n$, el estimador MCO se vuelve sesgado y converge hacia un valor distinto del parámetro poblacional real.
+    \item Porque al crecer $n$, los errores estándar tienden a cero y rechazan $H_0: \beta_j = 0$ incluso ante efectos minúsculos.
+    \item Porque la distribución $t$ de Student deja de converger a la normal estándar cuando $n$ supera las mil observaciones.
+    \item Porque el coeficiente de determinación $R^2$ tiende obligatoriamente a uno conforme aumenta el tamaño muestral del estudio.
+\end{opts}
+
+\q{La prueba de Chow para detectar un cambio estructural conocido en una fecha $t_0$ entre dos subperiodos equivale a realizar una prueba $F$ conjunta sobre:}
+\begin{opts}
+    \item La igualdad exclusiva de las varianzas residuales de ambos subperiodos sin restringir interceptos ni pendientes del modelo.
+    \item La significancia de una única variable dummy de periodo que solo permite variar el intercepto entre subperiodos.
+    \item La ausencia de autocorrelación de primer orden en los residuos agrupados del periodo completo de estimación econométrica.
+    \item La significancia conjunta de una dummy de periodo y todas sus interacciones con los regresores.
+\end{opts}
+
+\q{En un modelo lineal con errores normales estimado por Máxima Verosimilitud, los tres contrastes asintóticos clásicos para $q$ restricciones lineales —Wald ($W$), Razón de Verosimilitud ($LR$) y Multiplicador de Lagrange ($LM$)— satisfacen:}
+\begin{opts}
+    \item La desigualdad $W \ge LR \ge LM$ en muestras finitas y convergen todos a $\chi^2_q$ bajo $H_0$.
+    \item La desigualdad $LM \ge LR \ge W$ en muestras finitas y convergen a distintas distribuciones $t$ de Student asintóticamente.
+    \item La igualdad exacta $W = LR = LM$ para cualquier tamaño de muestra finita siempre que existan $q \ge 2$ restricciones.
+    \item Que únicamente $LM$ requiere estimar el modelo no restringido, mientras que $W$ utiliza exclusivamente el modelo restringido.
+\end{opts}
+
+\q{Si un investigador incluye en una regresión lineal una variable explicativa completamente irrelevante (cuyo verdadero parámetro poblacional es $\beta_{irr} = 0$) que está correlacionada con los demás regresores, el estimador MCO de los parámetros relevantes:}
+\begin{opts}
+    \item Se vuelve sesgado e inconsistente debido a la pérdida de grados de libertad en la estimación de la matriz $X'X$.
+    \item Permanece insesgado y consistente, pero pierde eficiencia al aumentar las varianzas de los estimadores.
+    \item Aumenta su eficiencia asintótica porque el coeficiente de determinación $R^2$ del modelo no disminuye al incorporar regresores.
+    \item Deja de ser lineal en $Y$ y viola el supuesto de exogeneidad estricta requerido por el teorema clásico de Gauss-Markov.
+\end{opts}
+
+\q{Suponga que el modelo verdadero es $Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + u$ con $\beta_2 \neq 0$, pero se omite $X_2$ al estimar por MCO. Si $X_1$ y $X_2$ son estrictamente ortogonales en la muestra ($\text{Cov}(X_1, X_2) = 0$), entonces:}
+\begin{opts}
+    \item $\hat{\beta}_1$ sigue siendo sesgado, aunque el estimador de la varianza residual $s^2$ permanece completamente insesgado.
+    \item Tanto $\hat{\beta}_1$ como el estimador de la varianza residual $s^2$ se mantienen insesgados y asintóticamente eficientes.
+    \item $\hat{\beta}_1$ permanece insesgado, pero el estimador de la varianza residual $s^2$ queda sesgado al alza.
+    \item $\hat{\beta}_1$ resulta inconsistente y la prueba $t$ asociada tiende a rechazar $H_0$ con mayor frecuencia de la real.
+\end{opts}
+
+\q{Al comparar los criterios de información de Akaike (AIC) y Bayesiano de Schwarz (BIC) para seleccionar entre modelos no anidados con $n \ge 8$ observaciones, es correcto señalar que:}
+\begin{opts}
+    \item BIC impone una penalización mayor por parámetro ($\ln n > 2$) y es consistente para seleccionar el modelo verdadero.
+    \item AIC penaliza más fuertemente la inclusión de parámetros adicionales y tiende siempre a elegir modelos mucho más parsimoniosos.
+    \item Ambos criterios seleccionan el modelo con el valor numérico más alto posible de la función objetivo evaluada en los residuos.
+    \item El criterio BIC ignora por completo el tamaño muestral $n$ y depende exclusivamente del número de regresores $k$ incluidos.
+\end{opts}
+
+\q{En una prueba de hipótesis econométrica para evaluar si la calidad del agua potable cumple el estándar regulatorio, mantener fijo el tamaño muestral $n$ y reducir el nivel de significancia $\alpha$ de $5\%$ a $1\%$ provoca:}
+\begin{opts}
+    \item Una disminución simultánea de la probabilidad de cometer Error Tipo I y de la probabilidad de cometer Error Tipo II.
+    \item Una menor probabilidad de Error Tipo I, pero mayor probabilidad de Error Tipo II (menor potencia).
+    \item Un incremento en la potencia estadística $(1 - \beta)$ sin alterar el tamaño de la región crítica del contraste bilateral.
+    \item Una reducción del error estándar del estimador y un estrechamiento automático del intervalo de confianza correspondiente.
+\end{opts}
+
+\q{En presencia de multicolinealidad imperfecta severa entre dos regresores de un modelo de costos de una EPS, un síntoma clásico en la salida econométrica consiste en observar:}
+\begin{opts}
+    \item Un $R^2$ muy bajo y un estadístico $F$ global no significativo, acompañados de estadísticos $t$ individuales muy elevados.
+    \item Estimadores MCO severamente sesgados e inconsistentes cuyo signo se invierte sistemáticamente al aumentar el tamaño de muestra $n$.
+    \item Un $R^2$ alto y un estadístico $F$ global significativo, junto con estadísticos $t$ individuales bajos.
+    \item Residuos altamente correlacionados con las variables explicativas, violando la ortogonalidad algebraica $X'\hat{u} = 0$ del estimador.
+\end{opts}
+
+\q{En la expresión de la varianza del estimador MCO $\text{Var}(\hat{\beta}_j | X) = \frac{\sigma^2}{SCT_j (1 - R_j^2)}$, el término $R_j^2$ representa:}
+\begin{opts}
+    \item El coeficiente de determinación de la regresión principal de $Y$ sobre todos los regresores del modelo estimado.
+    \item La proporción de la varianza residual explicada por los términos cuadráticos en la prueba general de heterocedasticidad.
+    \item El cuadrado de la correlación parcial entre la variable dependiente $Y$ y la variable explicativa $X_j$ seleccionada.
+    \item El coeficiente de determinación de la regresión auxiliar de $X_j$ sobre los demás regresores.
+\end{opts}
+
+\q{Una cautela importante al interpretar un rechazo de la hipótesis nula en la prueba general de White es que este estadístico puede resultar significativo no solo por heterocedasticidad pura, sino también por:}
+\begin{opts}
+    \item La presencia de multicolinealidad imperfecta moderada entre dos variables explicativas continuas del modelo lineal.
+    \item Errores de especificación en la forma funcional de la media condicional (como omisión de no linealidades).
+    \item Un cambio de unidades de medida en la variable dependiente $Y$ aplicado previamente a la estimación por MCO.
+    \item La falta de normalidad asintótica de las variables explicativas cuando el tamaño muestral es suficientemente elevado.
+\end{opts}
+
+\q{¿En qué consiste el procedimiento de la prueba de Goldfeld-Quandt para contrastar heterocedasticidad vinculada a una variable $X_j$?}
+\begin{opts}
+    \item Dividir la muestra aleatoriamente en dos mitades iguales y aplicar una prueba de Kolmogorov-Smirnov sobre los residuos.
+    \item Regresar los residuos al cuadrado sobre todas las variables explicativas, sus cuadrados y todos sus productos cruzados.
+    \item Ordenar según $X_j$, omitir $c$ datos centrales, estimar dos regresiones extremas y calcular $F = SCR_2 / SCR_1$.
+    \item Estimar una regresión auxiliar del valor absoluto de los residuos sobre el logaritmo natural de los valores predichos $\hat{Y}_i$.
+\end{opts}
+
+\q{A diferencia de Mínimos Cuadrados Generalizados (MCG) con matriz $\Omega$ conocida, el estimador de Mínimos Cuadrados Generalizados Factibles (MCGF / FGLS) que estima los parámetros de la varianza desconocida:}
+\begin{opts}
+    \item Es siempre estrictamente insesgado en muestras finitas y exactamente igual al estimador MCO convencional sin ponderar.
+    \item Solo puede aplicarse en modelos de series de tiempo macroeconómicas y carece de validez en datos de corte transversal.
+    \item Requiere obligatoriamente conocer a priori la varianza poblacional exacta $\sigma_i^2$ de cada observación individual de la muestra.
+    \item No es necesariamente insesgado en muestras pequeñas, pero es consistente y asintóticamente más eficiente que MCO.
+\end{opts}
+
+\q{¿Qué distingue conceptualmente a un proceso ARCH/GARCH respecto de la heterocedasticidad clásica de corte transversal?}
+\begin{opts}
+    \item En ARCH/GARCH la varianza condicional $\sigma_t^2$ evoluciona según shocks pasados ($\varepsilon_{t-1}^2$) y varianzas rezagadas.
+    \item En ARCH/GARCH la varianza incondicional siempre diverge al infinito, mientras que la varianza condicional permanece constante en el tiempo.
+    \item Los modelos ARCH/GARCH corrigen únicamente la endogeneidad por variables omitidas en series macroeconómicas trimestrales.
+    \item En los modelos ARCH/GARCH el término de error está correlacionado serialmente en media ($E[\varepsilon_t \varepsilon_{t-1}] \neq 0$).
+\end{opts}
+
+\q{Si los errores de una regresión de series de tiempo exhiben autocorrelación serial negativa ($\rho < 0$) en un proceso $AR(1)$, el estadístico de Durbin-Watson ($DW$) se ubicará aproximadamente en el intervalo:}
+\begin{opts}
+    \item Entre $0$ y $2$, tendiendo hacia $0$ conforme el coeficiente $\rho$ se acerca al límite $-1$.
+    \item Exactamente en $2$, independientemente del signo y de la magnitud del coeficiente autorregresivo $\rho$.
+    \item Entre $2$ y $4$, tendiendo a $4$ conforme $\rho$ se acerca a $-1$.
+    \item En valores estrictamente negativos, dado que el estadístico cumple aproximadamente $DW \approx -2(1 - \hat{\rho})$.
+\end{opts}
+
+\q{Cuando un modelo dinámico incluye la variable dependiente rezagada $Y_{t-1}$ como regresor, el estadístico $d$ de Durbin-Watson está sesgado hacia $2$. Para contrastar autocorrelación $AR(1)$ en este contexto, una alternativa válida en muestras grandes es:}
+\begin{opts}
+    \item La prueba de normalidad de Jarque-Bera evaluada en la regresión auxiliar en primeras diferencias.
+    \item La prueba de Goldfeld-Quandt aplicada sobre los residuos ordenados de forma estrictamente cronológica.
+    \item El factor de inflación de varianza (VIF) calculado específicamente sobre la variable dependiente rezagada.
+    \item El estadístico $h$ de Durbin o, de forma más general, la prueba LM de Breusch-Godfrey.
+\end{opts}
+
+\q{Al corregir autocorrelación $AR(1)$ mediante MCG factibles, la ventaja principal del procedimiento de Prais-Winsten frente al algoritmo iterativo de Cochrane-Orcutt radica en que:}
+\begin{opts}
+    \item Prais-Winsten conserva la primera observación ($t=1$) escalándola por $\sqrt{1 - \hat{\rho}^2}$, mejorando eficiencia.
+    \item Cochrane-Orcutt exige conocer el valor poblacional exacto de $\rho$, mientras que Prais-Winsten no requiere estimar ningún parámetro.
+    \item Prais-Winsten corrige automáticamente problemas de endogeneidad y simultaneidad que el método de Cochrane-Orcutt deja intactos.
+    \item Cochrane-Orcutt solo funciona cuando $\rho < 0$, en tanto Prais-Winsten es exclusivo para procesos con raíz unitaria.
+\end{opts}
+
+\q{Al utilizar el estimador de varianzas HAC de Newey-West en una regresión de series de tiempo, los coeficientes puntuales $\hat{\beta}$ obtenidos respecto de MCO tradicional:}
+\begin{opts}
+    \item Cambian sustancialmente porque Newey-West aplica una transformación cuasi-diferenciada a todas las variables del modelo.
+    \item Permanecen idénticos a los de MCO; únicamente se corrigen la matriz de covarianzas y los errores estándar.
+    \item Se vuelven automáticamente consistentes incluso cuando existe simultaneidad severa entre los regresores y el término de error.
+    \item Alcanzan la eficiencia exacta de Mínimos Cuadrados Generalizados en muestras finitas pequeñas sin estimar $\rho$.
+\end{opts}
+
+\q{En el modelo de regresión lineal simple $Y_i = \beta_0 + \beta_1 X_i^* + u_i$, contraste el efecto de un error de medición clásico (media cero e independiente del verdadero valor) en $X_i^*$ frente a un error de medición clásico en $Y_i$:}
+\begin{opts}
+    \item El error en $Y_i$ sesga $\hat{\beta}_1$ hacia cero de manera inconsistente, mientras que el error en $X_i^*$ solo incrementa la varianza residual.
+    \item Ninguno de los dos errores afecta la consistencia asintótica de MCO siempre que el tamaño muestral $n$ sea suficientemente grande.
+    \item Ambos tipos de error de medición generan exactamente el mismo sesgo de atenuación proporcional a la varianza del ruido aleatorio.
+    \item El error en $X_i^*$ genera sesgo de atenuación hacia cero; el error en $Y_i$ mantiene la insesgadez pero infla varianzas.
+\end{opts}
+
+\q{En un sistema lineal de ecuaciones simultáneas (por ejemplo, oferta y demanda de agua), respecto de las condiciones de identificación de una ecuación estructural es correcto afirmar que:}
+\begin{opts}
+    \item La condición de orden (exógenas excluidas $\ge$ endógenas incluidas menos una) es necesaria; la de rango es necesaria y suficiente.
+    \item La condición de orden es suficiente por sí sola para garantizar que todos los parámetros estructurales estén exactamente identificados.
+    \item Una ecuación exactamente identificada no puede estimarse mediante MC2E y requiere obligatoriamente aplicar Mínimos Cuadrados Ordinarios.
+    \item La condición de rango exige que todas las variables exógenas del sistema aparezcan incluidas simultáneamente en cada ecuación estructural.
+\end{opts}
+
+\q{Bajo efectos de tratamiento heterogéneos y un instrumento binario válido que satisface el supuesto de monotonicidad (ausencia de desafiantes o *defiers*), el estimador de Variables Instrumentales (estimador de Wald) identifica:}
+\begin{opts}
+    \item El Efecto Promedio del Tratamiento (ATE) sobre toda la población objetivo independientemente de su respuesta al instrumento asignado.
+    \item El Efecto Local Promedio del Tratamiento (LATE) para la subpoblación de cumplidores (*compliers*).
+    \item El Efecto Promedio sobre los Nunca Tratados (*never-takers*) evaluado exactamente en el umbral de elegibilidad.
+    \item Una cota inferior del sesgo de selección muestral en observables sin ninguna interpretación causal directa.
+\end{opts}
+
+\q{Cuando se emplean instrumentos débiles (por ejemplo, un estadístico $F$ de la primera etapa muy inferior a $10$) en una estimación por Mínimos Cuadrados en Dos Etapas (MC2E), la principal consecuencia econométrica es que:}
+\begin{opts}
+    \item El estimador MC2E converge más rápidamente al parámetro verdadero y presenta errores estándar mucho más precisos que MCO.
+    \item El estimador MC2E se vuelve exactamente igual al estimador de Efectos Fijos y elimina por completo el sesgo de variable omitida.
+    \item MC2E exhibe un fuerte sesgo en muestras finitas hacia MCO inconsistente y pierde cobertura en sus intervalos.
+    \item La prueba de sobreidentificación de Sargan rechaza automáticamente la hipótesis nula con probabilidad exactamente igual a uno.
+\end{opts}
+
+\q{¿Por qué no es posible contrastar estadísticamente la condición de exogeneidad del instrumento (restricción de exclusión $\text{Cov}(Z, u) = 0$) en un modelo exactamente identificado (un instrumento para una variable endógena)?}
+\begin{opts}
+    \item Porque $Z'\hat{u}_{VI} = 0$ se cumple por construcción, sin grados de libertad para probar sobreidentificación.
+    \item Porque la condición de relevancia $\text{Cov}(Z, X) \neq 0$ impide calcular los residuos estructurales de la segunda etapa.
+    \item Porque el estimador de primera etapa es inconsistente cuando el número de instrumentos iguala al número de regresores endógenos.
+    \item Porque la distribución asintótica del estimador VI en modelos exactamente identificados no depende de la covarianza con el error.
+\end{opts}
+
+\q{En un modelo lineal sobreidentificado ($L > m$ instrumentos) con perturbaciones heterocedásticas, ¿por qué el estimador óptimo del Método Generalizado de Momentos (GMM en dos etapas) supera asintóticamente a MC2E?}
+\begin{opts}
+    \item Porque GMM no requiere que los instrumentos satisfagan la condición de relevancia estadística en la primera etapa del modelo.
+    \item Porque GMM usa la matriz óptima de pesos de momentos, logrando menor varianza asintótica que MC2E.
+    \item Porque MC2E resulta inconsistente en presencia de heterocedasticidad, mientras que GMM corrige el sesgo asintótico.
+    \item Porque GMM transforma automáticamente la variable dependiente en logaritmos y elimina cualquier correlación entre los instrumentos.
+\end{opts}
+
+\q{Al evaluar la validez conjunta de las restricciones de sobreidentificación en un modelo con heterocedasticidad, la ventaja del estadístico $J$ de Hansen frente al estadístico clásico de Sargan es que:}
+\begin{opts}
+    \item El estadístico de Sargan contrasta relevancia de los instrumentos en primera etapa, mientras que Hansen-J contrasta normalidad.
+    \item El estadístico $J$ de Hansen permite contrastar la exogeneidad incluso en modelos exactamente identificados ($L = m$).
+    \item Sargan requiere homocedasticidad para seguir $\chi^2_{L-m}$, mientras que Hansen-J es robusto a heterocedasticidad.
+    \item El estadístico $J$ de Hansen no pierde potencia estadística aunque se incluyan decenas de instrumentos débiles en la estimación.
+\end{opts}
+
+\q{En inferencia causal aplicada, incluir como covariable de control una variable que a su vez es un resultado afectado por el tratamiento (un 'mal control' o *bad control*) produce:}
+\begin{opts}
+    \item Una reducción garantizada del error estándar sin afectar en absoluto la insesgadez del efecto causal estimado.
+    \item Un aumento de la validez externa del estimador al restringir la muestra exclusivamente a los individuos tratados.
+    \item Una solución exacta al problema de endogeneidad causado por variables omitidas estrictamente invariantes en el tiempo.
+    \item Sesgo de selección post-tratamiento al bloquear parte del mecanismo causal o abrir rutas espurias de colisionador.
+\end{opts}
+
+\q{En un modelo de datos de panel de empresas prestadoras de saneamiento (EPS) estimado por Efectos Fijos mediante la transformación *within* ($y_{it} - \bar{y}_i$), ¿por qué no es posible estimar el coeficiente de una variable estrictamente invariante en el tiempo (como la altitud de la ciudad)?}
+\begin{opts}
+    \item Porque las variables invariantes en el tiempo siempre presentan autocorrelación serial perfecta de segundo orden en paneles.
+    \item Porque al restar la media temporal de cada EPS, toda variable constante en el tiempo se anula ($x_i - \bar{x}_i = 0$).
+    \item Porque el estimador *within* utiliza exclusivamente la variación entre distintas EPS y descarta la variación temporal.
+    \item Porque la presencia de variables invariantes en el tiempo viola la condición de homocedasticidad en datos de panel.
+\end{opts}
+
+\q{En un panel lineal sin variables dependientes rezagadas, la relación entre el estimador *within* (variables centradas en su media individual) y el estimador MCO con variables ficticias individuales (LSDV) es que:}
+\begin{opts}
+    \item El estimador *within* produce coeficientes más pequeños porque omite por completo la variación del intercepto común.
+    \item LSDV es consistente únicamente bajo el supuesto de efectos aleatorios, mientras que *within* es consistente bajo efectos fijos.
+    \item Ambos producen idénticos coeficientes $\hat{\beta}_{FE}$, aunque LSDV consume explícitamente $N$ grados de libertad.
+    \item LSDV solo coincide numéricamente con *within* cuando el número de periodos $T$ tiende a infinito y $N$ permanece fijo.
+\end{opts}
+
+\q{Al comparar el estimador de Efectos Fijos (FE) y el estimador de Primeras Diferencias (FD) en un panel con $T > 2$ periodos, ¿en qué escenario resulta más eficiente el estimador FD que el estimador FE?}
+\begin{opts}
+    \item Cuando los errores idiosincráticos $u_{it}$ no presentan autocorrelación serial de ningún orden y son homocedásticos.
+    \item Cuando el efecto inobservable $\alpha_i$ no está correlacionado con ninguna de las variables explicativas $X_{it}$ incluidas.
+    \item Cuando las variables explicativas son estrictamente constantes a lo largo de todos los periodos temporales del panel.
+    \item Cuando $u_{it}$ sigue una caminata aleatoria ($u_{it} = u_{it-1} + e_{it}$), haciendo que $\Delta u_{it}$ sea ruido blanco.
+\end{opts}
+
+\q{El estimador de Efectos Aleatorios (RE) en datos de panel se obtiene aplicando MCG mediante una transformación de cuasi-centrado ($y_{it} - \theta \bar{y}_i$). Cuando la varianza del efecto individual $\sigma_{\alpha}^2$ es muy grande en relación con $\sigma_u^2$ (o $T \to \infty$), el factor $\theta$:}
+\begin{opts}
+    \item Tiende a $1$, haciendo que Efectos Aleatorios converja al estimador de Efectos Fijos (*within*).
+    \item Tiende a $0$, haciendo que el estimador de Efectos Aleatorios converja al estimador de MCO agrupado (*pooled OLS*).
+    \item Tiende a infinito, invalidando la existencia de la matriz de varianzas-covarianzas de los errores compuestos.
+    \item Permanece fijo exactamente en $0.5$, ponderando por igual la variación *within* y la variación *between* del panel.
+\end{opts}
+
+\q{En estudios empíricos con datos de panel de EPS (por ejemplo, $50$ empresas observadas durante $15$ años), ¿por qué se recomienda calcular errores estándar agrupados (*clustered*) a nivel de EPS tras estimar Efectos Fijos?}
+\begin{opts}
+    \item Para corregir el sesgo en los coeficientes $\hat{\beta}_{FE}$ causado por la presencia de variables omitidas cambiantes en el tiempo.
+    \item Para reducir artificialmente los errores estándar y asegurar que los coeficientes resulten estadísticamente significativos al $5\%$.
+    \item Para permitir heterocedasticidad y correlación serial arbitraria dentro de los residuos de cada EPS.
+    \item Para transformar el estimador de Efectos Fijos en un estimador de Máxima Verosimilitud con distribución normal exacta.
+\end{opts}
+
+\q{En un modelo de panel dinámico corto ($N$ grande, $T$ pequeño) que incluye la variable dependiente rezagada $y_{it-1}$ junto con efectos fijos individuales $\alpha_i$, estimar mediante el estimador *within* tradicional produce:}
+\begin{opts}
+    \item Un estimador completamente insesgado y consistente debido a que la transformación *within* elimina el efecto fijo $\alpha_i$.
+    \item Estimadores consistentes en muestras finitas únicamente si el coeficiente autorregresivo verdadero es estrictamente igual a cero.
+    \item Un sesgo que desaparece automáticamente al reemplazar los errores estándar clásicos por errores agrupados por individuo.
+    \item El sesgo de Nickell por correlación entre $\tilde{y}_{it-1}$ y $\tilde{u}_{it}$; suele resolverse con GMM de Arellano-Bond.
+\end{opts}
+
+\q{En un panel desbalanceado de hogares evaluados por SUNASS donde algunas familias abandonan la muestra en periodos posteriores (atrición), el estimador de Efectos Fijos conserva la consistencia siempre que:}
+\begin{opts}
+    \item La atrición dependa solo de observables incluidos o de $\alpha_i$, y no del error idiosincrático $u_{it}$.
+    \item La probabilidad de permanecer en la muestra sea estrictamente idéntica a $1$ para todos los hogares encuestados inicialmente.
+    \item Se eliminen todos los periodos anteriores de los hogares que abandonan para forzar mecánicamente un panel balanceado.
+    \item La atrición esté fuertemente correlacionada con choques transitorios no observados en el consumo mensual de agua $u_{it}$.
+\end{opts}
+
+\q{¿Cuál es la diferencia fundamental entre una serie estacionaria en tendencia (TS) y una serie estacionaria en diferencias (DS, con raíz unitaria) frente a un choque aleatorio transitorio $\varepsilon_t$?}
+\begin{opts}
+    \item En una serie TS el choque tiene un efecto permanente sobre la trayectoria futura, mientras que en una serie DS se disipa rápidamente.
+    \item En una serie TS el choque es transitorio (revierte a la tendencia); en una serie DS su efecto es permanente.
+    \item Ambas series poseen varianza incondicional constante en el tiempo y media completamente independiente del periodo $t$.
+    \item Una serie TS requiere diferenciarse dos veces para volverse estacionaria, en tanto una DS solo requiere restar una tendencia lineal.
+\end{opts}
+
+\q{Para un proceso autorregresivo $AR(p)$ representado como $\phi(L) y_t = c + \varepsilon_t$, la condición necesaria y suficiente para que el proceso sea estacionario en covarianza es que:}
+\begin{opts}
+    \item Al menos una raíz del polinomio $\phi(z) = 0$ sea igual a $1$ y las demás sean números reales negativos.
+    \item Todas las raíces del polinomio característico $\phi(z) = 0$ caigan estrictamente dentro del círculo unitario ($|z| < 1$).
+    \item La suma de los coeficientes autorregresivos sea estrictamente igual a la unidad ($\sum_{i=1}^p \phi_i = 1$).
+    \item Todas las raíces del polinomio característico $\phi(z) = 0$ caigan fuera del círculo unitario ($|z| > 1$).
+\end{opts}
+
+\q{Al identificar un proceso estacionario $ARMA(p, q)$ mediante la metodología de Box-Jenkins, el patrón teórico característico de un proceso puro de medias móviles $MA(q)$ consiste en que:}
+\begin{opts}
+    \item La función de autocorrelación (FAC) se trunca después del rezago $q$, mientras la FACP decae gradualmente.
+    \item La función de autocorrelación (FAC) decae exponencialmente y la autocorrelación parcial (FACP) se trunca exactamente después del rezago $q$.
+    \item Tanto la FAC como la FACP se mantienen constantes e iguales a $1$ para todos los rezagos $k \ge 1$ del correlograma.
+    \item Tanto la FAC como la FACP se anulan abruptamente a partir del primer rezago sin importar el valor del orden $q$.
+\end{opts}
+
+\q{En la prueba de raíz unitaria de Dickey-Fuller Aumentada (ADF), ¿con qué propósito se incorporan rezagos de la primera diferencia ($\Delta y_{t-1}, \dots, \Delta y_{t-p}$) en la ecuación auxiliar?}
+\begin{opts}
+    \item Para convertir la distribución asintótica del estadístico de prueba en una distribución $t$ de Student estándar simétrica.
+    \item Para absorber la autocorrelación serial residual y lograr que el error de la ecuación auxiliar sea ruido blanco.
+    \item Para invertir la hipótesis nula de modo que $H_0$ pase a representar estacionariedad en sentido débil de la serie.
+    \item Para garantizar que el coeficiente de determinación $R^2$ de la regresión auxiliar supere al estadístico Durbin-Watson.
+\end{opts}
+
+\q{Según el Teorema de Representación de Granger, si dos series no estacionarias $y_t$ y $x_t$ son integradas de orden uno $I(1)$ y están cointegradas, entonces necesariamente:}
+\begin{opts}
+    \item Su relación de largo plazo es espuria y solo puede modelarse estimando un VAR exclusivamente en primeras diferencias.
+    \item El estimador MCO en niveles resulta inconsistente y converge a cero conforme el tamaño muestral tiende a infinito.
+    \item Admiten una representación mediante un Modelo de Corrección de Errores (MCE) que vincula corto y largo plazo.
+    \item Ambas series carecen por completo de causalidad en el sentido de Granger en cualquiera de las dos direcciones posibles.
+\end{opts}
+
+\q{En el Modelo de Corrección de Errores $\Delta y_t = \gamma \Delta x_t + \alpha (y_{t-1} - \beta_0 - \beta_1 x_{t-1}) + \varepsilon_t$, ¿qué signo y rango debe tener el parámetro de ajuste $\alpha$ para que el sistema converja de forma estable hacia el equilibrio de largo plazo?}
+\begin{opts}
+    \item Debe ubicarse en $-1 < \alpha < 0$ (o en general $-2 < \alpha < 0$) para corregir el desequilibrio previo.
+    \item Debe ser estrictamente positivo ($\alpha > 0$) para amplificar progresivamente las desviaciones respecto del equilibrio.
+    \item Debe ser exactamente igual a cero ($\alpha = 0$), indicando que la serie no responde a los desequilibrios previos.
+    \item Debe ser menor que $-2$ para garantizar que la varianza de $\Delta y_t$ converja a cero en un único periodo.
+\end{opts}
+
+\q{En el marco de un modelo de Vectores Autorregresivos (VAR) estacionario, afirmar que la variable $X_t$ 'causa en el sentido de Granger' a $Y_t$ significa formalmente que:}
+\begin{opts}
+    \item Existe una relación estructural causal demostrada que descarta la intervención de terceras variables omitidas en la economía.
+    \item Los rezagos de $X_t$ mejoran significativamente el pronóstico de $Y_t$ más allá de la historia pasada de $Y_t$.
+    \item La correlación contemporánea entre $X_t$ y $Y_t$ es estrictamente positiva y superior al $50\%$ en la muestra.
+    \item Las series $X_t$ y $Y_t$ son obligatoriamente no estacionarias $I(1)$ y comparten una raíz unitaria común en el sistema.
+\end{opts}
+
+\q{Al calcular Funciones de Impulso-Respuesta (IRF) ortogonalizadas en un modelo VAR mediante la descomposición de Cholesky, una limitación metodológica bien conocida es que:}
+\begin{opts}
+    \item El método solo permite analizar choques de dos variables simultáneamente y no admite sistemas de tres o más ecuaciones.
+    \item La descomposición de Cholesky impide que las variables del sistema VAR sean estacionarias en sentido débil.
+    \item Las respuestas dependen del orden de las variables cuando los residuos reducidos tienen correlación contemporánea.
+    \item Las funciones de impulso-respuesta obtenidas por Cholesky nunca convergen a cero aun cuando el VAR sea estable.
+\end{opts}
+
+\q{En los modelos de respuesta binaria Logit y Probit, dado que la probabilidad predicha $P(Y=1|X) = G(X'\beta)$ es no lineal en $X$, el efecto marginal de un regresor continuo $X_j$ sobre dicha probabilidad:}
+\begin{opts}
+    \item Es constante para todos los individuos de la muestra e idénticamente igual al coeficiente estimado $\hat{\beta}_j$.
+    \item Se estima mediante Mínimos Cuadrados Ponderados en lugar de Máxima Verosimilitud para garantizar insesgadez exacta.
+    \item Tiene siempre signo opuesto al del coeficiente estimado $\hat{\beta}_j$ cuando el índice $X'\beta$ toma valores negativos.
+    \item Depende de $X$ mediante $g(X'\beta)\beta_j$, por lo que suele resumirse en la media (MEM) o en promedio (AME).
+\end{opts}
+
+\q{En un modelo Logit estimado para explicar la probabilidad de morosidad en el recibo de agua, la exponencial del coeficiente $e^{\hat{\beta}_j}$ se interpreta directamente como:}
+\begin{opts}
+    \item El incremento exacto en puntos porcentuales de la probabilidad de morosidad ante un aumento unitario de $X_j$.
+    \item El factor multiplicativo en los *odds* ($\frac{p}{1-p}$) ante un incremento unitario de $X_j$.
+    \item La elasticidad constante de la probabilidad de morosidad respecto de la variable explicativa $X_j$ en toda la muestra.
+    \item El valor esperado del error latente logístico condicionado a que el usuario incurra efectivamente en morosidad.
+\end{opts}
+
+\q{En microeconometría aplicada (por ejemplo, modelar el gasto mensual de los hogares en agua embotellada, donde una fracción importante registra cero gasto), ¿qué diferencia existe entre una muestra censurada (modelo Tobit) y una muestra truncada?}
+\begin{opts}
+    \item La censura ocurre únicamente en series de tiempo financieras, mientras que el truncamiento es exclusivo de datos de panel.
+    \item En una muestra truncada MCO produce estimadores insesgados, mientras que en una muestra censurada MCO es siempre inconsistente.
+    \item En censura se observan las $X$ de toda la muestra; en truncamiento se pierden $Y$ y $X$ fuera del umbral.
+    \item En una muestra censurada la variable dependiente es siempre binaria, en tanto en una truncada es siempre discreta de conteo.
+\end{opts}
+
+\q{Al modelar el número mensual de roturas de tuberías en redes de distribución de una EPS mediante una regresión de Poisson, si los datos presentan sobredispersión severa ($\text{Var}(Y|X) > E[Y|X]$), la principal consecuencia y alternativa estándar son:}
+\begin{opts}
+    \item El estimador MV de Poisson se vuelve inconsistente en media y debe reemplazarse obligatoriamente por un modelo Logit binario.
+    \item Los errores estándar clásicos de Poisson quedan sobreestimados y conviene aplicar un modelo Tobit censurado en cero.
+    \item La sobredispersión viola el supuesto de rango completo y hace imposible maximizar la función de log-verosimilitud de Poisson.
+    \item La media sigue consistente (cuasi-MV), pero los errores estándar clásicos subestiman la varianza; se usa Binomial Negativa.
+\end{opts}
+
+\q{El pseudo-$R^2$ de McFadden en modelos de elección discreta estimados por Máxima Verosimilitud se define como $1 - \frac{\ln L_{ur}}{\ln L_0}$, donde $\ln L_0$ es la log-verosimilitud del modelo solo con intercepto. Respecto de este indicador es correcto afirmar que:}
+\begin{opts}
+    \item Toma valores en $[0, 1)$, acercándose a $0$ si los regresores no mejoran el ajuste y creciendo conforme $\ln L_{ur} \to 0$.
+    \item Mide exactamente la proporción de la varianza de la variable dependiente explicada por los regresores igual que el $R^2$ de MCO.
+    \item Puede tomar valores mayores que $1$ cuando el modelo predice correctamente más del $90\%$ de las observaciones binarias.
+    \item Disminuye automáticamente cada vez que se añade una nueva variable explicativa relevante al modelo Logit o Probit.
+\end{opts}
+
+\q{En la evaluación de impacto mediante emparejamiento por puntaje de propensión (*Propensity Score Matching*, PSM), los dos supuestos fundamentales de identificación que permiten estimar el efecto causal promedio sobre los tratados (ATT) son:}
+\begin{opts}
+    \item Tendencias paralelas en el periodo pre-tratamiento y ausencia de correlación serial en los errores idiosincráticos.
+    \item Existencia de un umbral continuo exógeno y continuidad de la función de densidad alrededor del punto de corte.
+    \item Independencia condicional en observables (CIA) y existencia de soporte común (*common support*) entre grupos.
+    \item Relevancia de un instrumento excluido en la primera etapa y normalidad exacta de la variable de resultado.
+\end{opts}
+
+\q{En un diseño de Regresión Discontinua Difusa (*Fuzzy RDD*), donde cruzar el umbral de puntaje SISFOH incrementa la probabilidad de recibir un subsidio de agua pero no de $0$ a $1$ de manera determinística, el efecto causal local en el umbral se estima mediante:}
+\begin{opts}
+    \item La diferencia simple de medias entre todos los hogares por debajo y por encima del puntaje de corte SISFOH.
+    \item La exclusión de todos los hogares que no cumplieron la regla de asignación para convertir el diseño en un *Sharp RDD*.
+    \item Un modelo de Efectos Aleatorios con errores estándar clásicos bajo el supuesto de homocedasticidad condicional.
+    \item Variables Instrumentales: el cociente entre el salto en el resultado y el salto en la probabilidad de tratamiento.
+\end{opts}
+
+\q{¿Qué hipótesis evalúa la prueba de densidad de McCrary en un diseño de Regresión Discontinua (RDD) aplicado a la focalización de subsidios cruzados mediante el índice SISFOH?}
+\begin{opts}
+    \item Si hay discontinuidad en la densidad de la variable de asignación en el umbral (manipulación del puntaje).
+    \item Si la variable de resultado $Y$ presenta heterocedasticidad condicional a ambos lados del punto de corte establecido.
+    \item Si las tendencias temporales de los grupos tratado y de control eran paralelas antes de la reforma tarifaria.
+    \item Si los residuos del polinomio local siguen una distribución normal estándar dentro de la ventana óptima de estimación.
+\end{opts}
+
+\q{En la literatura reciente de evaluación de impacto, cuando una política regulatoria (como la incorporación de EPS al Régimen de Apoyo Transitorio) se adopta de forma escalonada en distintos años (*staggered DiD*), estimar un modelo tradicional de Efectos Fijos de Dos Vías (TWFE) puede resultar sesgado si:}
+\begin{opts}
+    \item El efecto del tratamiento es estrictamente constante y homogéneo entre todas las cohortes y todos los periodos.
+    \item Los efectos son heterogéneos entre cohortes o en el tiempo, pues TWFE usa ya tratados como controles.
+    \item El número de periodos previos al tratamiento supera al número de periodos posteriores disponibles en el panel.
+    \item Se utilizan errores estándar agrupados a nivel de empresa prestadora en lugar de errores robustos clásicos de White.
+\end{opts}
+
+\q{Al realizar benchmarking de eficiencia de costos entre las EPS peruanas para fijar metas de gestión, la diferencia metodológica esencial entre el Análisis Envolvente de Datos (DEA) y el Análisis de Frontera Estocástica (SFA) es que:}
+\begin{opts}
+    \item DEA es un método paramétrico que asume una función de costos Translog, mientras que SFA es determinístico y lineal.
+    \item DEA únicamente puede medir eficiencia técnica con un solo insumo, mientras que SFA exige datos de series de tiempo puras.
+    \item SFA no requiere especificar ninguna forma funcional ni distribución de errores, a diferencia del enfoque DEA.
+    \item DEA es no paramétrico (toda desviación es ineficiencia); SFA es paramétrico y separa ruido aleatorio de ineficiencia.
+\end{opts}
+
+\q{En una Frontera Estocástica de Costos (SFA) para empresas de saneamiento especificada como $\ln C_i = f(Q_i, W_i; \beta) + v_i + u_i$, los dos componentes del término de error compuesto representan, respectivamente:}
+\begin{opts}
+    \item $v_i$ es el ruido aleatorio simétrico y $u_i \ge 0$ es la ineficiencia de costos asimétrica sobre la frontera.
+    \item $v_i$ es la ineficiencia de costos estrictamente positiva y $u_i$ es el ruido estadístico simétrico con media igual a cero.
+    \item Tanto $v_i$ como $u_i$ son variables aleatorias estrictamente negativas que desplazan los costos por debajo del mínimo.
+    \item $v_i$ representa los costos fijos hundidos de la EPS y $u_i$ captura exclusivamente la tasa de depreciación contable.
+\end{opts}
+
+\q{En el método de corrección de sesgo de selección muestral de Heckman en dos etapas, incluir la razón inversa de Mills ($\hat{\lambda}_i$) como regresor adicional en la ecuación de resultado permite:}
+\begin{opts}
+    \item Corregir la correlación serial de primer orden en los errores de la ecuación de selección Probit estimada.
+    \item Controlar el sesgo de selección no aleatoria y contrastarlo vía la significancia de $\hat{\lambda}_i$.
+    \item Eliminar automáticamente la multicolinealidad perfecta entre los regresores continuos de la ecuación principal.
+    \item Reemplazar la necesidad de contar con una variable de exclusión en la ecuación de selección sin pérdida de precisión.
+\end{opts}
+
+\subsection*{Parte II. Aplicaciones prácticas y ejercicios cuantitativos (154 a 180)}
+
+\q{En una regresión lineal simple MCO del gasto mensual en agua ($Y$, en soles) sobre el consumo ($X$, en $m^3$), se sabe que $\bar{X} = 20$, $\bar{Y} = 85$ y la pendiente estimada es $\hat{\beta}_1 = 2.5$. ¿Cuáles son el intercepto $\hat{\beta}_0$ y el gasto predicho $\hat{Y}$ para un hogar que consume $X = 24\ m^3$?}
+\begin{opts}
+    \item $\hat{\beta}_0 = 30.0$ y $\hat{Y} = 90.0$
+    \item $\hat{\beta}_0 = 40.0$ y $\hat{Y} = 100.0$
+    \item $\hat{\beta}_0 = 35.0$ y $\hat{Y} = 95.0$
+    \item $\hat{\beta}_0 = 35.0$ y $\hat{Y} = 105.0$
+\end{opts}
+
+\q{Un modelo de regresión múltiple con $n = 45$ observaciones y $k = 5$ parámetros (incluido el intercepto) reporta una suma de cuadrados totales $SCT = 500$ y una suma de cuadrados de los residuos $SCR = 100$. Calcule el $R^2$ y el $R^2$ ajustado ($\bar{R}^2$).}
+\begin{opts}
+    \item $R^2 = 0.80$ y $\bar{R}^2 = 0.78$
+    \item $R^2 = 0.80$ y $\bar{R}^2 = 0.75$
+    \item $R^2 = 0.78$ y $\bar{R}^2 = 0.76$
+    \item $R^2 = 0.82$ y $\bar{R}^2 = 0.78$
+\end{opts}
+
+\q{En una regresión estimada con $n = 51$ observaciones y $5$ variables explicativas (más el intercepto, es decir $k = 6$), se obtiene un coeficiente de determinación $R^2 = 0.75$. ¿Cuál es el valor del $\bar{R}^2$ ajustado?}
+\begin{opts}
+    \item $0.7000$
+    \item $0.7222$
+    \item $0.7150$
+    \item $0.7350$
+\end{opts}
+
+\q{Al estimar la elasticidad-precio de la demanda residencial de agua en un modelo log-log se obtiene $\hat{\beta}_1 = -0.64$ con error estándar $ee(\hat{\beta}_1) = 0.12$. Calcule el estadístico $t$ para contrastar la hipótesis nula de elasticidad unitaria $H_0: \beta_1 = -1$.}
+\begin{opts}
+    \item $t = -5.33$
+    \item $t = -2.25$
+    \item $t = 3.00$
+    \item $t = 2.50$
+\end{opts}
+
+\q{En una muestra de $n = 66$ observaciones, un modelo no restringido con $k = 6$ parámetros alcanza $R^2_{NR} = 0.70$. Al imponer $q = 3$ restricciones lineales de exclusión, el modelo restringido obtiene $R^2_R = 0.58$. ¿Cuál es el valor del estadístico $F$?}
+\begin{opts}
+    \item $F = 4.00$
+    \item $F = 6.00$
+    \item $F = 12.00$
+    \item $F = 8.00$
+\end{opts}
+
+\q{Al probar la exclusión individual ($q = 1$) de una variable cuyo coeficiente MCO estimado es $\hat{\beta}_j = 1.20$, el contraste $F$ arroja $F = 16.00$. ¿Cuál es el error estándar $ee(\hat{\beta}_j)$ de dicho coeficiente?}
+\begin{opts}
+    \item $0.075$
+    \item $0.300$
+    \item $0.240$
+    \item $0.400$
+\end{opts}
+
+\q{En una ecuación de consumo de agua $\ln(Q_i) = \beta_0 + \beta_1 \ln(P_i) - 0.20\, M_i + u_i$, donde $M_i = 1$ si el hogar tiene micromedidor y $0$ en caso contrario, el efecto porcentual exacto de instalar un micromedidor sobre el consumo (use $e^{-0.20} \approx 0.8187$) es:}
+\begin{opts}
+    \item Una reducción exacta del $20.00\%$.
+    \item Una reducción exacta del $16.67\%$.
+    \item Una reducción exacta del $18.13\%$.
+    \item Una reducción exacta del $22.14\%$.
+\end{opts}
+
+\q{Un estudio econométrico sobre eficiencia operativa estima la función $\hat{Y} = 50 + 12X - 0.30X^2$, donde $X$ es la antigüedad de la planta en años. ¿A qué valor de $X$ alcanza $\hat{Y}$ su nivel máximo?}
+\begin{opts}
+    \item $X^* = 15$ años
+    \item $X^* = 40$ años
+    \item $X^* = 25$ años
+    \item $X^* = 20$ años
+\end{opts}
+
+\q{Se estima la regresión $\hat{Y} = 10 + 0.80X + 5.0D - 0.25(X \cdot D)$, donde $D = 1$ identifica a las EPS grandes y $D = 0$ a las pequeñas. ¿Cuál es el efecto marginal de aumentar $X$ en una unidad para una EPS grande ($D = 1$)?}
+\begin{opts}
+    \item $0.55$ unidades
+    \item $0.80$ unidades
+    \item $1.05$ unidades
+    \item $5.55$ unidades
+\end{opts}
+
+\q{En el diagnóstico de multicolinealidad de una regresión múltiple, el Factor de Inflación de Varianza de la variable $X_3$ resulta igual a $VIF_3 = 8.0$. ¿Qué valor tiene el $R_3^2$ de la regresión auxiliar de $X_3$ sobre los demás regresores?}
+\begin{opts}
+    \item $0.800$
+    \item $0.850$
+    \item $0.875$
+    \item $0.925$
+\end{opts}
+
+\q{Para contrastar autocorrelación hasta de orden $p = 2$ mediante la prueba de Breusch-Godfrey, se estima la regresión auxiliar con $100$ observaciones efectivas (incluyendo $\hat{u}_{t-1}$ y $\hat{u}_{t-2}$) y se obtiene $R^2_{aux} = 0.085$. ¿Cuál es el valor del estadístico $LM$ y su distribución asintótica bajo $H_0$?}
+\begin{opts}
+    \item $LM = 4.25$, distribuido como $\chi^2_2$
+    \item $LM = 17.00$, distribuido como $\chi^2_2$
+    \item $LM = 8.50$, distribuido como $\chi^2_1$
+    \item $LM = 8.50$, distribuido como $\chi^2_2$
+\end{opts}
+
+\q{En una serie temporal trimestral de recaudación tarifaria se obtiene un estadístico de Durbin-Watson igual a $DW = 1.30$. Usando la aproximación estándar $DW \approx 2(1 - \hat{\rho})$, ¿cuál es el coeficiente de autocorrelación serial de primer orden estimado $\hat{\rho}$?}
+\begin{opts}
+    \item $\hat{\rho} = 0.35$
+    \item $\hat{\rho} = 0.30$
+    \item $\hat{\rho} = 0.20$
+    \item $\hat{\rho} = 0.65$
+\end{opts}
+
+\q{En el modelo verdadero $Y_i = \beta_0 + 2.0 X_i^* + u_i$, la variable $X_i^*$ tiene varianza $\sigma_{X^*}^2 = 16$, pero se observa con un error de medición clásico $X_i = X_i^* + e_i$ cuya varianza es $\sigma_e^2 = 4$. ¿A qué valor converge en probabilidad el estimador MCO $\hat{\beta}_1$?}
+\begin{opts}
+    \item $1.20$
+    \item $1.60$
+    \item $1.50$
+    \item $2.50$
+\end{opts}
+
+\q{Para estimar el efecto causal de un programa de capacitación ($X \in \{0,1\}$) sobre la productividad ($Y$) usando una lotería aleatoria como instrumento binario ($Z \in \{0,1\}$), se observa $\bar{Y}_{Z=1} = 42$, $\bar{Y}_{Z=0} = 36$, $\bar{X}_{Z=1} = 0.75$ y $\bar{X}_{Z=0} = 0.25$. Calcule el estimador de Wald ($\hat{\beta}_{VI}$).}
+\begin{opts}
+    \item $06.0$
+    \item $08.0$
+    \item $16.0$
+    \item $12.0$
+\end{opts}
+
+\q{El modelo verdadero es $Y = \beta_0 + \beta_1 X_1 + 4.0 X_2 + u$, pero se estima por MCO omitiendo $X_2$. Si $\text{Cov}(X_1, X_2) = -3.0$ y $\text{Var}(X_1) = 10.0$, ¿cuál es la magnitud y signo del sesgo de variable omitida en $\hat{\beta}_1$?}
+\begin{opts}
+    \item $-1.20$ (sesgo a la baja)
+    \item $+1.20$ (sesgo al alza)
+    \item $-0.75$ (sesgo a la baja)
+    \item $-1.50$ (sesgo a la baja)
+\end{opts}
+
+\q{Para evaluar el impacto de la micromedición en el consumo mensual de agua ($m^3$), el grupo tratado pasó de $22.0\ m^3$ antes a $17.5\ m^3$ después de la intervención, mientras que el grupo de control pasó de $20.0\ m^3$ a $18.5\ m^3$. ¿Cuál es el estimador de Diferencias en Diferencias ($\hat{\delta}_{DiD}$)?}
+\begin{opts}
+    \item $-4.5\ m^3$
+    \item $-3.0\ m^3$
+    \item $-1.5\ m^3$
+    \item $-1.0\ m^3$
+\end{opts}
+
+\q{En un modelo Logit de acceso a saneamiento, el índice lineal estimado para un hogar es $X_i'\hat{\beta} = 1.0$. Sabiendo que $e^{-1} \approx 0.3679$, ¿cuál es la probabilidad predicha $\hat{P}(Y_i = 1 | X_i)$?}
+\begin{opts}
+    \item $0.5000$
+    \item $0.6321$
+    \item $0.7311$
+    \item $0.8413$
+\end{opts}
+
+\q{En un modelo Logit, el coeficiente estimado de la variable $X_1$ es $\hat{\beta}_1 = 0.40$. Dado que $e^{0.40} \approx 1.4918$, un incremento de una unidad en $X_1$ (ceteris paribus) provoca que la razón de probabilidades (*odds*) del evento:}
+\begin{opts}
+    \item Aumente aproximadamente en $49.18\%$.
+    \item Aumente aproximadamente en $40.00\%$.
+    \item Aumente aproximadamente en $14.92\%$.
+    \item Se multiplique exactamente por $0.40$.
+\end{opts}
+
+\q{Un modelo Probit estimado por Máxima Verosimilitud reporta una log-verosimilitud restringida (solo intercepto) de $\ln L_0 = -200$ y una log-verosimilitud no restringida de $\ln L_{ur} = -120$. Calcule el pseudo-$R^2$ de McFadden.}
+\begin{opts}
+    \item $0.30$
+    \item $0.40$
+    \item $0.60$
+    \item $0.80$
+\end{opts}
+
+\q{Considere el proceso estacionario $AR(1)$ dado por $y_t = 6 + 0.6 y_{t-1} + \varepsilon_t$, donde $\varepsilon_t$ es ruido blanco con varianza $\sigma_\varepsilon^2 = 16$. ¿Cuáles son la media incondicional $E[y_t]$ y la varianza incondicional $\text{Var}(y_t)$ del proceso?}
+\begin{opts}
+    \item $E[y_t] = 10$ y $\text{Var}(y_t) = 20$
+    \item $E[y_t] = 15$ y $\text{Var}(y_t) = 40$
+    \item $E[y_t] = 15$ y $\text{Var}(y_t) = 25$
+    \item $E[y_t] = 12$ y $\text{Var}(y_t) = 25$
+\end{opts}
+
+\q{Si una serie de caudales estacionaria sigue un proceso $AR(1)$ puro con coeficiente autorregresivo $\phi = 0.8$, ¿cuál es el valor teórico de su coeficiente de autocorrelación de tercer orden ($\rho_3$)?}
+\begin{opts}
+    \item $0.240$
+    \item $0.800$
+    \item $0.640$
+    \item $0.512$
+\end{opts}
+
+\q{Sea el proceso de medias móviles $MA(1)$ definido por $y_t = 10 + \varepsilon_t + 0.5\varepsilon_{t-1}$, donde $\varepsilon_t$ es ruido blanco con $\sigma_\varepsilon^2 = 4$. Determine la varianza $\text{Var}(y_t)$ y la autocorrelación de primer orden $\rho_1$.}
+\begin{opts}
+    \item $\text{Var}(y_t) = 5.0$ y $\rho_1 = 0.50$
+    \item $\text{Var}(y_t) = 5.0$ y $\rho_1 = 0.40$
+    \item $\text{Var}(y_t) = 6.0$ y $\rho_1 = 0.40$
+    \item $\text{Var}(y_t) = 4.5$ y $\rho_1 = 0.25$
+\end{opts}
+
+\q{En el Modelo de Corrección de Errores $\Delta y_t = 0.40\Delta x_t - 0.25(y_{t-1} - 2.0 - 1.50x_{t-1}) + \varepsilon_t$, si en el periodo $t-1$ la variable $y_{t-1}$ se ubicó $8$ unidades por encima de su equilibrio de largo plazo y $\Delta x_t = 0$, ¿cuál es el ajuste esperado $E[\Delta y_t]$ en el periodo $t$?}
+\begin{opts}
+    \item $-3.20$ unidades
+    \item $-1.25$ unidades
+    \item $-2.00$ unidades
+    \item $-0.25$ unidades
+\end{opts}
+
+\q{Para un modelo estimado con $n = 100$ observaciones y $k = 5$ parámetros, se obtiene $\ln(SCR/n) = 2.00$. Usando las expresiones $AIC = \ln(SCR/n) + \frac{2k}{n}$ y $BIC = \ln(SCR/n) + \frac{k\ln(n)}{n}$ (con $\ln(100) \approx 4.605$), calcule los valores de AIC y BIC.}
+\begin{opts}
+    \item $AIC = 2.050$ y $BIC = 2.150$
+    \item $AIC = 2.100$ y $BIC = 2.461$
+    \item $AIC = 2.230$ y $BIC = 2.100$
+    \item $AIC = 2.100$ y $BIC = 2.230$
+\end{opts}
+
+\q{Los residuos de una regresión con $n = 120$ observaciones presentan un coeficiente de asimetría $S = 0.5$ y una curtosis $K = 4.0$. Calcule el estadístico de normalidad de Jarque-Bera ($JB = \frac{n}{6}\left[S^2 + \frac{(K-3)^2}{4}\right]$).}
+\begin{opts}
+    \item $JB = 10.00$
+    \item $JB = 07.50$
+    \item $JB = 05.00$
+    \item $JB = 15.00$
+\end{opts}
+
+\q{Se estima un modelo lineal-logarítmico del consumo mensual de agua (en $m^3$) en función del ingreso familiar: $\hat{Q}_i = 12 + 30\ln(Ingreso_i)$. Si el ingreso de un hogar aumenta en $10\%$, ¿cuál es el incremento aproximado esperado en el consumo de agua?}
+\begin{opts}
+    \item $0.30\ m^3$
+    \item $30.0\ m^3$
+    \item $3.00\ m^3$
+    \item $3.00\%$
+\end{opts}
+
+\q{En un panel de $4$ años, una EPS registra un índice de cobertura de micromedición $x_{it}$ igual a $12, 18, 21$ y $25$ en los años $t = 1, 2, 3, 4$, respectivamente. Al aplicar la transformación *within* de Efectos Fijos ($\tilde{x}_{it} = x_{it} - \bar{x}_i$), ¿cuál es el valor transformado $\tilde{x}_{i3}$ correspondiente al tercer año?}
+\begin{opts}
+    \item $\tilde{x}_{i3} = +1.0$
+    \item $\tilde{x}_{i3} = +6.0$
+    \item $\tilde{x}_{i3} = +3.0$
+    \item $\tilde{x}_{i3} = +2.0$
+\end{opts}
