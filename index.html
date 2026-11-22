@@ -400,6 +400,117 @@
     }
     footer a { color: var(--azul); text-decoration: none; }
     footer a:hover { text-decoration: underline; }
+
+    /* Reseñas BackBone Academy */
+    .reviews-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .reviews-header h2 { margin-bottom: 2px; }
+    .rating-summary {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      color: #92400e;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .star-picker {
+      display: inline-flex;
+      gap: 4px;
+      margin-top: 2px;
+    }
+    .star-btn {
+      background: none;
+      border: none;
+      font-size: 26px;
+      line-height: 1;
+      cursor: pointer;
+      color: #cbd5e1;
+      padding: 2px 3px;
+      transition: transform 0.1s ease, color 0.12s ease;
+    }
+    .star-btn.active, .star-btn:hover { color: #f59e0b; transform: scale(1.08); }
+    .review-form-box {
+      background: #f8fafc;
+      border: 1px solid var(--borde);
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-bottom: 16px;
+    }
+    .review-textarea {
+      width: 100%;
+      min-height: 76px;
+      padding: 9px 11px;
+      border: 1px solid var(--borde);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 14px;
+      resize: vertical;
+      background: #fff;
+    }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .review-item {
+      border: 1px solid var(--borde);
+      border-radius: 10px;
+      padding: 12px 14px;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .review-top {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .review-author { font-weight: 700; font-size: 14px; color: var(--azul-osc); }
+    .review-uni { font-size: 12px; color: var(--gris); }
+    .review-stars { color: #f59e0b; font-size: 14px; letter-spacing: 1px; white-space: nowrap; }
+    .review-body { font-size: 13.5px; color: var(--texto); line-height: 1.45; }
+    .review-date { font-size: 11.5px; color: #94a3b8; margin-top: auto; }
+    .growth-cta {
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #eef2ff 0%, #ecfdf5 100%);
+      border: 1px solid #c7d2fe;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .growth-cta strong { color: var(--azul-osc); display: block; margin-bottom: 2px; }
+    .growth-cta p { font-size: 13px; color: var(--gris); margin: 0; }
+    .social-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      border: 1px solid var(--borde);
+      background: #fff;
+      color: var(--azul-osc);
+    }
+    .social-pill:hover { border-color: var(--azul); color: var(--azul); }
   </style>
 </head>
 <body>
@@ -472,6 +583,65 @@
             <span class="title">4. Estadísticas y PDFs</span>
             <span class="desc">Historial de simulacros, respaldo JSON y descarga de guías en PDF.</span>
           </button>
+        </div>
+      </div>
+
+      <!-- Reseñas públicas de postulantes (BackBone Academy) -->
+      <div class="card" id="reviews-card">
+        <div class="reviews-header">
+          <div>
+            <h2>Reseñas de Postulantes · BackBone Academy</h2>
+            <span id="reviews-summary" class="rating-summary">★ Sin reseñas aún · ¡Sé el primero!</span>
+          </div>
+          <button class="btn btn-primary btn-sm" id="btn-toggle-review" onclick="toggleReviewForm()">★ Escribir reseña</button>
+        </div>
+
+        <div id="review-form-wrap" class="review-form-box hidden">
+          <div class="form-grid" style="margin-bottom: 10px;">
+            <label class="field">
+              Tu calificación
+              <div class="star-picker" id="star-picker" role="radiogroup" aria-label="Calificación de 1 a 5 estrellas">
+                <button type="button" class="star-btn active" data-val="1" onclick="setReviewRating(1)">★</button>
+                <button type="button" class="star-btn active" data-val="2" onclick="setReviewRating(2)">★</button>
+                <button type="button" class="star-btn active" data-val="3" onclick="setReviewRating(3)">★</button>
+                <button type="button" class="star-btn active" data-val="4" onclick="setReviewRating(4)">★</button>
+                <button type="button" class="star-btn active" data-val="5" onclick="setReviewRating(5)">★</button>
+              </div>
+            </label>
+            <label class="field">
+              Tu nombre o alias *
+              <input type="text" id="rev-name" maxlength="60" placeholder="Ej. María G." />
+            </label>
+            <label class="field">
+              Universidad / Carrera (opcional)
+              <input type="text" id="rev-uni" maxlength="80" placeholder="Ej. UNMSM · Economía" />
+            </label>
+          </div>
+          <label class="field" style="margin-bottom: 10px;">
+            ¿Qué te pareció el simulador y los materiales de BackBone Academy? *
+            <textarea id="rev-comment" class="review-textarea" maxlength="400" placeholder="Cuéntales a otros postulantes cómo te ayudó el simulador..."></textarea>
+          </label>
+          <div class="btn-row" style="margin-top: 6px; align-items: center;">
+            <button class="btn btn-primary btn-sm" id="btn-submit-review" onclick="submitReview()">Publicar reseña</button>
+            <button class="btn btn-sm" onclick="toggleReviewForm(false)">Cancelar</button>
+            <span id="rev-status" class="muted" style="font-size: 13px;"></span>
+          </div>
+        </div>
+
+        <div id="review-thanks" class="growth-cta hidden" style="margin-top: 0; margin-bottom: 14px;">
+          <div>
+            <strong>¡Gracias por apoyar a BackBone Academy!</strong>
+            <p>Tu reseña ayuda a que más postulantes conozcan este simulador gratuito. Síguenos para más material del PEU SUNASS:</p>
+          </div>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <a class="social-pill" href="https://www.instagram.com/backbone.academy" target="_blank" rel="noopener">Instagram @backbone.academy</a>
+            <a class="social-pill" href="https://www.tiktok.com/@backbone.academy" target="_blank" rel="noopener">TikTok @backbone.academy</a>
+          </div>
+        </div>
+
+        <div id="reviews-list" class="reviews-grid"></div>
+        <div id="reviews-more-wrap" class="btn-row hidden" style="margin-top: 12px;">
+          <button class="btn btn-sm" onclick="showAllReviews()">Ver todas las reseñas</button>
         </div>
       </div>
     </section>
@@ -630,6 +800,18 @@
       <div id="res-review-wrap" class="hidden" style="margin-top: 16px;">
         <h3>Revisión de Solucionario (Errores y Saltadas)</h3>
         <div id="res-review-list"></div>
+      </div>
+
+      <div class="growth-cta">
+        <div>
+          <strong>¿Te sirvió este simulacro? Apoya a BackBone Academy</strong>
+          <p>Deja una reseña rápida para ayudar a otros postulantes y síguenos para más bancos y clases gratuitas.</p>
+        </div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
+          <button class="btn btn-primary btn-sm" onclick="openReviewFromResults()">★ Dejar reseña</button>
+          <a class="social-pill" href="https://www.instagram.com/backbone.academy" target="_blank" rel="noopener">Instagram</a>
+          <a class="social-pill" href="https://www.tiktok.com/@backbone.academy" target="_blank" rel="noopener">TikTok</a>
+        </div>
       </div>
 
       <div class="btn-row">
@@ -1491,6 +1673,169 @@
         .map(([k, v]) => `<option value="${k}">${esc(v)}</option>`)
         .join("");
       showView("view-home");
+      loadReviews();
+    }
+
+    // =========================================================================
+    // RESEÑAS PÚBLICAS (Google Sheets + Apps Script Web App)
+    // Pega aquí tu URL de Apps Script (/exec) para sincronizar reseñas en la nube:
+    // =========================================================================
+    const REVIEWS_API_URL = "";
+    const LS_REVIEWS_FALLBACK = "peu_sunass_reviews_local_v1";
+    let allReviewsCache = [];
+    let selectedReviewRating = 5;
+    let showingAllReviews = false;
+
+    function setReviewRating(val) {
+      selectedReviewRating = Math.max(1, Math.min(5, val));
+      document.querySelectorAll("#star-picker .star-btn").forEach(btn => {
+        const v = parseInt(btn.dataset.val, 10);
+        btn.classList.toggle("active", v <= selectedReviewRating);
+      });
+    }
+
+    function toggleReviewForm(forceState) {
+      const wrap = document.getElementById("review-form-wrap");
+      const show = typeof forceState === "boolean" ? forceState : wrap.classList.contains("hidden");
+      wrap.classList.toggle("hidden", !show);
+      if (show) {
+        document.getElementById("rev-status").textContent = "";
+        document.getElementById("rev-name").focus();
+      }
+    }
+
+    function openReviewFromResults() {
+      showView("view-home");
+      toggleReviewForm(true);
+      const card = document.getElementById("reviews-card");
+      if (card) card.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function starsText(n) {
+      const r = Math.max(1, Math.min(5, parseInt(n, 10) || 5));
+      return "★".repeat(r) + "☆".repeat(5 - r);
+    }
+
+    function renderReviews() {
+      const summary = document.getElementById("reviews-summary");
+      const list = document.getElementById("reviews-list");
+      const moreWrap = document.getElementById("reviews-more-wrap");
+      if (!summary || !list) return;
+
+      if (!allReviewsCache.length) {
+        summary.textContent = "★ Sin reseñas aún · ¡Sé el primero en opinar!";
+        list.innerHTML = `<p class="muted" style="font-size:13.5px; margin:0;">Aún no hay reseñas publicadas. Comparte tu experiencia con el simulador de BackBone Academy.</p>`;
+        moreWrap.classList.add("hidden");
+        return;
+      }
+
+      const avg = allReviewsCache.reduce((s, r) => s + (Number(r.rating) || 5), 0) / allReviewsCache.length;
+      const label = allReviewsCache.length === 1 ? "reseña" : "reseñas";
+      summary.textContent = `★ ${avg.toFixed(1)} / 5.0 · ${allReviewsCache.length} ${label}`;
+
+      const visible = showingAllReviews ? allReviewsCache : allReviewsCache.slice(0, 6);
+      list.innerHTML = visible.map(r => `
+        <div class="review-item">
+          <div class="review-top">
+            <div>
+              <div class="review-author">${esc(r.nombre)}</div>
+              ${r.universidad ? `<div class="review-uni">${esc(r.universidad)}</div>` : ""}
+            </div>
+            <div class="review-stars" title="${r.rating} de 5">${starsText(r.rating)}</div>
+          </div>
+          <div class="review-body">${esc(r.comentario)}</div>
+          ${r.fecha ? `<div class="review-date">${esc(String(r.fecha).slice(0, 10))}</div>` : ""}
+        </div>
+      `).join("");
+
+      moreWrap.classList.toggle("hidden", showingAllReviews || allReviewsCache.length <= 6);
+    }
+
+    function showAllReviews() {
+      showingAllReviews = true;
+      renderReviews();
+    }
+
+    async function loadReviews() {
+      const list = document.getElementById("reviews-list");
+      if (!REVIEWS_API_URL) {
+        allReviewsCache = loadJSON(LS_REVIEWS_FALLBACK, []);
+        renderReviews();
+        return;
+      }
+      if (list) list.innerHTML = `<p class="muted" style="font-size:13.5px;margin:0;">Cargando reseñas de postulantes...</p>`;
+      try {
+        const res = await fetch(REVIEWS_API_URL, { method: "GET" });
+        const data = await res.json();
+        if (data && data.ok && Array.isArray(data.reviews)) {
+          allReviewsCache = data.reviews;
+        }
+      } catch {
+        allReviewsCache = loadJSON(LS_REVIEWS_FALLBACK, []);
+      }
+      renderReviews();
+    }
+
+    async function submitReview() {
+      const nameEl = document.getElementById("rev-name");
+      const uniEl = document.getElementById("rev-uni");
+      const commEl = document.getElementById("rev-comment");
+      const statusEl = document.getElementById("rev-status");
+      const btn = document.getElementById("btn-submit-review");
+
+      const nombre = nameEl.value.trim();
+      const universidad = uniEl.value.trim();
+      const comentario = commEl.value.trim();
+
+      if (nombre.length < 2) {
+        statusEl.textContent = "Ingresa tu nombre (mínimo 2 caracteres).";
+        return;
+      }
+      if (comentario.length < 8) {
+        statusEl.textContent = "Escribe un comentario un poco más detallado (mínimo 8 caracteres).";
+        return;
+      }
+
+      btn.disabled = true;
+      statusEl.textContent = "Publicando reseña...";
+
+      const payload = {
+        nombre,
+        universidad,
+        rating: selectedReviewRating,
+        comentario
+      };
+
+      try {
+        if (REVIEWS_API_URL) {
+          const res = await fetch(REVIEWS_API_URL, {
+            method: "POST",
+            headers: { "Content-Type": "text/plain;charset=utf-8" },
+            body: JSON.stringify(payload)
+          });
+          const data = await res.json();
+          if (!data || !data.ok) {
+            throw new Error((data && data.error) || "No se pudo guardar la reseña.");
+          }
+          allReviewsCache.unshift(data.review);
+        } else {
+          const localRev = { ...payload, fecha: new Date().toISOString().slice(0, 10) };
+          allReviewsCache.unshift(localRev);
+          saveJSON(LS_REVIEWS_FALLBACK, allReviewsCache);
+        }
+
+        nameEl.value = "";
+        uniEl.value = "";
+        commEl.value = "";
+        setReviewRating(5);
+        toggleReviewForm(false);
+        document.getElementById("review-thanks").classList.remove("hidden");
+        renderReviews();
+      } catch (err) {
+        statusEl.textContent = err.message || "Error al publicar. Intenta nuevamente.";
+      } finally {
+        btn.disabled = false;
+      }
     }
 
     // Atajos de teclado en quiz
